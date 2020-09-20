@@ -1,0 +1,258 @@
+ARM GAS  /tmp/cczuHn92.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	NMI_Handler:
+  27              	.LFB0:
+  28              		.file 1 "Src/stm32f4xx_it.c"
+   1:Src/stm32f4xx_it.c **** #include "stm32f4xx_it.h"
+   2:Src/stm32f4xx_it.c **** 
+   3:Src/stm32f4xx_it.c **** /******************************************************************************/
+   4:Src/stm32f4xx_it.c **** /*            Cortex-M4 Processor Exceptions Handlers                         */
+   5:Src/stm32f4xx_it.c **** /******************************************************************************/
+   6:Src/stm32f4xx_it.c **** 
+   7:Src/stm32f4xx_it.c **** /**
+   8:Src/stm32f4xx_it.c ****   * @brief   This function handles NMI exception.
+   9:Src/stm32f4xx_it.c ****   * @param  None
+  10:Src/stm32f4xx_it.c ****   * @retval None
+  11:Src/stm32f4xx_it.c ****   */
+  12:Src/stm32f4xx_it.c **** void NMI_Handler(void)
+  13:Src/stm32f4xx_it.c **** {
+  29              		.loc 1 13 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  14:Src/stm32f4xx_it.c **** }
+  34              		.loc 1 14 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE0:
+  39              		.section	.text.MemManage_Handler,"ax",%progbits
+  40              		.align	1
+  41              		.global	MemManage_Handler
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  45              		.fpu fpv4-sp-d16
+ARM GAS  /tmp/cczuHn92.s 			page 2
+
+
+  47              	MemManage_Handler:
+  48              	.LFB1:
+  15:Src/stm32f4xx_it.c **** 
+  16:Src/stm32f4xx_it.c **** /**
+  17:Src/stm32f4xx_it.c ****   * @brief  This function handles Hard Fault exception.
+  18:Src/stm32f4xx_it.c ****   * @param  None
+  19:Src/stm32f4xx_it.c ****   * @retval None
+  20:Src/stm32f4xx_it.c ****   */
+  21:Src/stm32f4xx_it.c **** //void HardFault_Handler(void)
+  22:Src/stm32f4xx_it.c **** //{
+  23:Src/stm32f4xx_it.c **** //  /* Go to infinite loop when Hard Fault exception occurs */
+  24:Src/stm32f4xx_it.c **** //  while (1)
+  25:Src/stm32f4xx_it.c **** //  {
+  26:Src/stm32f4xx_it.c **** //  }
+  27:Src/stm32f4xx_it.c **** //}
+  28:Src/stm32f4xx_it.c **** 
+  29:Src/stm32f4xx_it.c **** /**
+  30:Src/stm32f4xx_it.c ****   * @brief  This function handles Memory Manage exception.
+  31:Src/stm32f4xx_it.c ****   * @param  None
+  32:Src/stm32f4xx_it.c ****   * @retval None
+  33:Src/stm32f4xx_it.c ****   */
+  34:Src/stm32f4xx_it.c **** void MemManage_Handler(void)
+  35:Src/stm32f4xx_it.c **** {
+  49              		.loc 1 35 1 view -0
+  50              		.cfi_startproc
+  51              		@ Volatile: function does not return.
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54              		@ link register save eliminated.
+  55              	.L3:
+  36:Src/stm32f4xx_it.c ****   /* Go to infinite loop when Memory Manage exception occurs */
+  37:Src/stm32f4xx_it.c ****   while (1)
+  56              		.loc 1 37 3 discriminator 1 view .LVU3
+  38:Src/stm32f4xx_it.c ****   {
+  39:Src/stm32f4xx_it.c ****   }
+  57              		.loc 1 39 3 discriminator 1 view .LVU4
+  37:Src/stm32f4xx_it.c ****   {
+  58              		.loc 1 37 9 discriminator 1 view .LVU5
+  59 0000 FEE7     		b	.L3
+  60              		.cfi_endproc
+  61              	.LFE1:
+  63              		.section	.text.BusFault_Handler,"ax",%progbits
+  64              		.align	1
+  65              		.global	BusFault_Handler
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.fpu fpv4-sp-d16
+  71              	BusFault_Handler:
+  72              	.LFB2:
+  40:Src/stm32f4xx_it.c **** }
+  41:Src/stm32f4xx_it.c **** 
+  42:Src/stm32f4xx_it.c **** /**
+  43:Src/stm32f4xx_it.c ****   * @brief  This function handles Bus Fault exception.
+  44:Src/stm32f4xx_it.c ****   * @param  None
+  45:Src/stm32f4xx_it.c ****   * @retval None
+  46:Src/stm32f4xx_it.c ****   */
+ARM GAS  /tmp/cczuHn92.s 			page 3
+
+
+  47:Src/stm32f4xx_it.c **** void BusFault_Handler(void)
+  48:Src/stm32f4xx_it.c **** {
+  73              		.loc 1 48 1 view -0
+  74              		.cfi_startproc
+  75              		@ Volatile: function does not return.
+  76              		@ args = 0, pretend = 0, frame = 0
+  77              		@ frame_needed = 0, uses_anonymous_args = 0
+  78              		@ link register save eliminated.
+  79              	.L5:
+  49:Src/stm32f4xx_it.c ****   /* Go to infinite loop when Bus Fault exception occurs */
+  50:Src/stm32f4xx_it.c ****   while (1)
+  80              		.loc 1 50 3 discriminator 1 view .LVU7
+  51:Src/stm32f4xx_it.c ****   {
+  52:Src/stm32f4xx_it.c ****   }
+  81              		.loc 1 52 3 discriminator 1 view .LVU8
+  50:Src/stm32f4xx_it.c ****   {
+  82              		.loc 1 50 9 discriminator 1 view .LVU9
+  83 0000 FEE7     		b	.L5
+  84              		.cfi_endproc
+  85              	.LFE2:
+  87              		.section	.text.UsageFault_Handler,"ax",%progbits
+  88              		.align	1
+  89              		.global	UsageFault_Handler
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  93              		.fpu fpv4-sp-d16
+  95              	UsageFault_Handler:
+  96              	.LFB3:
+  53:Src/stm32f4xx_it.c **** }
+  54:Src/stm32f4xx_it.c **** 
+  55:Src/stm32f4xx_it.c **** /**
+  56:Src/stm32f4xx_it.c ****   * @brief  This function handles Usage Fault exception.
+  57:Src/stm32f4xx_it.c ****   * @param  None
+  58:Src/stm32f4xx_it.c ****   * @retval None
+  59:Src/stm32f4xx_it.c ****   */
+  60:Src/stm32f4xx_it.c **** void UsageFault_Handler(void)
+  61:Src/stm32f4xx_it.c **** {
+  97              		.loc 1 61 1 view -0
+  98              		.cfi_startproc
+  99              		@ Volatile: function does not return.
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103              	.L7:
+  62:Src/stm32f4xx_it.c ****   /* Go to infinite loop when Usage Fault exception occurs */
+  63:Src/stm32f4xx_it.c ****   while (1)
+ 104              		.loc 1 63 3 discriminator 1 view .LVU11
+  64:Src/stm32f4xx_it.c ****   {
+  65:Src/stm32f4xx_it.c ****   }
+ 105              		.loc 1 65 3 discriminator 1 view .LVU12
+  63:Src/stm32f4xx_it.c ****   {
+ 106              		.loc 1 63 9 discriminator 1 view .LVU13
+ 107 0000 FEE7     		b	.L7
+ 108              		.cfi_endproc
+ 109              	.LFE3:
+ 111              		.section	.text.SVC_Handler,"ax",%progbits
+ARM GAS  /tmp/cczuHn92.s 			page 4
+
+
+ 112              		.align	1
+ 113              		.global	SVC_Handler
+ 114              		.syntax unified
+ 115              		.thumb
+ 116              		.thumb_func
+ 117              		.fpu fpv4-sp-d16
+ 119              	SVC_Handler:
+ 120              	.LFB4:
+  66:Src/stm32f4xx_it.c **** }
+  67:Src/stm32f4xx_it.c **** 
+  68:Src/stm32f4xx_it.c **** /**
+  69:Src/stm32f4xx_it.c ****   * @brief  This function handles SVCall exception.
+  70:Src/stm32f4xx_it.c ****   * @param  None
+  71:Src/stm32f4xx_it.c ****   * @retval None
+  72:Src/stm32f4xx_it.c ****   */
+  73:Src/stm32f4xx_it.c **** void SVC_Handler(void)
+  74:Src/stm32f4xx_it.c **** {
+ 121              		.loc 1 74 1 view -0
+ 122              		.cfi_startproc
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+  75:Src/stm32f4xx_it.c **** }
+ 126              		.loc 1 75 1 view .LVU15
+ 127 0000 7047     		bx	lr
+ 128              		.cfi_endproc
+ 129              	.LFE4:
+ 131              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	DebugMon_Handler
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 137              		.fpu fpv4-sp-d16
+ 139              	DebugMon_Handler:
+ 140              	.LFB5:
+  76:Src/stm32f4xx_it.c **** 
+  77:Src/stm32f4xx_it.c **** /**
+  78:Src/stm32f4xx_it.c ****   * @brief  This function handles Debug Monitor exception.
+  79:Src/stm32f4xx_it.c ****   * @param  None
+  80:Src/stm32f4xx_it.c ****   * @retval None
+  81:Src/stm32f4xx_it.c ****   */
+  82:Src/stm32f4xx_it.c **** void DebugMon_Handler(void)
+  83:Src/stm32f4xx_it.c **** {
+ 141              		.loc 1 83 1 view -0
+ 142              		.cfi_startproc
+ 143              		@ args = 0, pretend = 0, frame = 0
+ 144              		@ frame_needed = 0, uses_anonymous_args = 0
+ 145              		@ link register save eliminated.
+  84:Src/stm32f4xx_it.c **** }
+ 146              		.loc 1 84 1 view .LVU17
+ 147 0000 7047     		bx	lr
+ 148              		.cfi_endproc
+ 149              	.LFE5:
+ 151              		.text
+ 152              	.Letext0:
+ARM GAS  /tmp/cczuHn92.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f4xx_it.c
+     /tmp/cczuHn92.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:26     .text.NMI_Handler:0000000000000000 NMI_Handler
+     /tmp/cczuHn92.s:40     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:47     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+     /tmp/cczuHn92.s:64     .text.BusFault_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:71     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+     /tmp/cczuHn92.s:88     .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:95     .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+     /tmp/cczuHn92.s:112    .text.SVC_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:119    .text.SVC_Handler:0000000000000000 SVC_Handler
+     /tmp/cczuHn92.s:132    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/cczuHn92.s:139    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+
+NO UNDEFINED SYMBOLS
