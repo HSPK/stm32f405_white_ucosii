@@ -1,0 +1,2196 @@
+ARM GAS  /tmp/ccYanot6.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"os_mbox.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.OSMboxAccept,"ax",%progbits
+  18              		.align	1
+  19              		.global	OSMboxAccept
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	OSMboxAccept:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "uCOSII/Source/os_mbox.c"
+   1:uCOSII/Source/os_mbox.c **** /*
+   2:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+   3:uCOSII/Source/os_mbox.c **** *                                                uC/OS-II
+   4:uCOSII/Source/os_mbox.c **** *                                          The Real-Time Kernel
+   5:uCOSII/Source/os_mbox.c **** *                                       MESSAGE MAILBOX MANAGEMENT
+   6:uCOSII/Source/os_mbox.c **** *
+   7:uCOSII/Source/os_mbox.c **** *                              (c) Copyright 1992-2013, Micrium, Weston, FL
+   8:uCOSII/Source/os_mbox.c **** *                                           All Rights Reserved
+   9:uCOSII/Source/os_mbox.c **** *
+  10:uCOSII/Source/os_mbox.c **** * File    : OS_MBOX.C
+  11:uCOSII/Source/os_mbox.c **** * By      : Jean J. Labrosse
+  12:uCOSII/Source/os_mbox.c **** * Version : V2.92.11
+  13:uCOSII/Source/os_mbox.c **** *
+  14:uCOSII/Source/os_mbox.c **** * LICENSING TERMS:
+  15:uCOSII/Source/os_mbox.c **** * ---------------
+  16:uCOSII/Source/os_mbox.c **** *   uC/OS-II is provided in source form for FREE evaluation, for educational use or for peaceful re
+  17:uCOSII/Source/os_mbox.c **** * If you plan on using  uC/OS-II  in a commercial product you need to contact Micrium to properly l
+  18:uCOSII/Source/os_mbox.c **** * its use in your product. We provide ALL the source code for your convenience and to help you expe
+  19:uCOSII/Source/os_mbox.c **** * uC/OS-II.   The fact that the  source is provided does  NOT  mean that you can use it without  pa
+  20:uCOSII/Source/os_mbox.c **** * licensing fee.
+  21:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+  22:uCOSII/Source/os_mbox.c **** */
+  23:uCOSII/Source/os_mbox.c **** 
+  24:uCOSII/Source/os_mbox.c **** #define  MICRIUM_SOURCE
+  25:uCOSII/Source/os_mbox.c **** 
+  26:uCOSII/Source/os_mbox.c **** #ifndef  OS_MASTER_FILE
+  27:uCOSII/Source/os_mbox.c **** #include <ucos_ii.h>
+  28:uCOSII/Source/os_mbox.c **** #endif
+  29:uCOSII/Source/os_mbox.c **** 
+ARM GAS  /tmp/ccYanot6.s 			page 2
+
+
+  30:uCOSII/Source/os_mbox.c **** #if OS_MBOX_EN > 0u
+  31:uCOSII/Source/os_mbox.c **** /*
+  32:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+  33:uCOSII/Source/os_mbox.c **** *                                        ACCEPT MESSAGE FROM MAILBOX
+  34:uCOSII/Source/os_mbox.c **** *
+  35:uCOSII/Source/os_mbox.c **** * Description: This function checks the mailbox to see if a message is available.  Unlike OSMboxPen
+  36:uCOSII/Source/os_mbox.c **** *              OSMboxAccept() does not suspend the calling task if a message is not available.
+  37:uCOSII/Source/os_mbox.c **** *
+  38:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block
+  39:uCOSII/Source/os_mbox.c **** *
+  40:uCOSII/Source/os_mbox.c **** * Returns    : != (void *)0  is the message in the mailbox if one is available.  The mailbox is cle
+  41:uCOSII/Source/os_mbox.c **** *                            so the next time OSMboxAccept() is called, the mailbox will be empty.
+  42:uCOSII/Source/os_mbox.c **** *              == (void *)0  if the mailbox is empty or,
+  43:uCOSII/Source/os_mbox.c **** *                            if 'pevent' is a NULL pointer or,
+  44:uCOSII/Source/os_mbox.c **** *                            if you didn't pass the proper event pointer.
+  45:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+  46:uCOSII/Source/os_mbox.c **** */
+  47:uCOSII/Source/os_mbox.c **** 
+  48:uCOSII/Source/os_mbox.c **** #if OS_MBOX_ACCEPT_EN > 0u
+  49:uCOSII/Source/os_mbox.c **** void  *OSMboxAccept (OS_EVENT *pevent)
+  50:uCOSII/Source/os_mbox.c **** {
+  30              		.loc 1 50 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 50 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  51:uCOSII/Source/os_mbox.c ****     void      *pmsg;
+  42              		.loc 1 51 5 is_stmt 1 view .LVU2
+  52:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                              /* Allocate storage for CPU status regist
+  53:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+  43              		.loc 1 53 5 view .LVU3
+  44              	.LVL1:
+  54:uCOSII/Source/os_mbox.c **** #endif
+  55:uCOSII/Source/os_mbox.c **** 
+  56:uCOSII/Source/os_mbox.c **** 
+  57:uCOSII/Source/os_mbox.c **** 
+  58:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+  59:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                        /* Validate 'pevent'                     
+  60:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+  61:uCOSII/Source/os_mbox.c ****     }
+  62:uCOSII/Source/os_mbox.c **** #endif
+  63:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {      /* Validate event block type             
+  45              		.loc 1 63 5 view .LVU4
+  46              		.loc 1 63 15 is_stmt 0 view .LVU5
+  47 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  48              		.loc 1 63 8 view .LVU6
+  49 0004 012B     		cmp	r3, #1
+  50 0006 09D1     		bne	.L3
+  51 0008 0446     		mov	r4, r0
+  64:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ARM GAS  /tmp/ccYanot6.s 			page 3
+
+
+  65:uCOSII/Source/os_mbox.c ****     }
+  66:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+  52              		.loc 1 66 5 is_stmt 1 view .LVU7
+  53 000a FFF7FEFF 		bl	OS_CPU_SR_Save
+  54              	.LVL2:
+  55              		.loc 1 66 24 view .LVU8
+  67:uCOSII/Source/os_mbox.c ****     pmsg               = pevent->OSEventPtr;
+  56              		.loc 1 67 5 view .LVU9
+  57              		.loc 1 67 24 is_stmt 0 view .LVU10
+  58 000e 6568     		ldr	r5, [r4, #4]
+  59              	.LVL3:
+  68:uCOSII/Source/os_mbox.c ****     pevent->OSEventPtr = (void *)0;                       /* Clear the mailbox                     
+  60              		.loc 1 68 5 is_stmt 1 view .LVU11
+  61              		.loc 1 68 24 is_stmt 0 view .LVU12
+  62 0010 0023     		movs	r3, #0
+  63 0012 6360     		str	r3, [r4, #4]
+  69:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+  64              		.loc 1 69 5 is_stmt 1 view .LVU13
+  65 0014 FFF7FEFF 		bl	OS_CPU_SR_Restore
+  66              	.LVL4:
+  67              		.loc 1 69 23 view .LVU14
+  70:uCOSII/Source/os_mbox.c ****     return (pmsg);                                        /* Return the message received (or NULL) 
+  68              		.loc 1 70 5 view .LVU15
+  69              	.L1:
+  71:uCOSII/Source/os_mbox.c **** }
+  70              		.loc 1 71 1 is_stmt 0 view .LVU16
+  71 0018 2846     		mov	r0, r5
+  72 001a 38BD     		pop	{r3, r4, r5, pc}
+  73              	.LVL5:
+  74              	.L3:
+  64:uCOSII/Source/os_mbox.c ****     }
+  75              		.loc 1 64 16 view .LVU17
+  76 001c 0025     		movs	r5, #0
+  77 001e FBE7     		b	.L1
+  78              		.cfi_endproc
+  79              	.LFE0:
+  81              		.section	.rodata.OSMboxCreate.str1.4,"aMS",%progbits,1
+  82              		.align	2
+  83              	.LC0:
+  84 0000 3F00     		.ascii	"?\000"
+  85              		.section	.text.OSMboxCreate,"ax",%progbits
+  86              		.align	1
+  87              		.global	OSMboxCreate
+  88              		.syntax unified
+  89              		.thumb
+  90              		.thumb_func
+  91              		.fpu fpv4-sp-d16
+  93              	OSMboxCreate:
+  94              	.LVL6:
+  95              	.LFB1:
+  72:uCOSII/Source/os_mbox.c **** #endif
+  73:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+  74:uCOSII/Source/os_mbox.c **** /*
+  75:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+  76:uCOSII/Source/os_mbox.c **** *                                          CREATE A MESSAGE MAILBOX
+  77:uCOSII/Source/os_mbox.c **** *
+  78:uCOSII/Source/os_mbox.c **** * Description: This function creates a message mailbox if free event control blocks are available.
+ARM GAS  /tmp/ccYanot6.s 			page 4
+
+
+  79:uCOSII/Source/os_mbox.c **** *
+  80:uCOSII/Source/os_mbox.c **** * Arguments  : pmsg          is a pointer to a message that you wish to deposit in the mailbox.  If
+  81:uCOSII/Source/os_mbox.c **** *                            you set this value to the NULL pointer (i.e. (void *)0) then the mailb
+  82:uCOSII/Source/os_mbox.c **** *                            will be considered empty.
+  83:uCOSII/Source/os_mbox.c **** *
+  84:uCOSII/Source/os_mbox.c **** * Returns    : != (OS_EVENT *)0  is a pointer to the event control clock (OS_EVENT) associated with
+  85:uCOSII/Source/os_mbox.c **** *                                created mailbox
+  86:uCOSII/Source/os_mbox.c **** *              == (OS_EVENT *)0  if no event control blocks were available
+  87:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+  88:uCOSII/Source/os_mbox.c **** */
+  89:uCOSII/Source/os_mbox.c **** 
+  90:uCOSII/Source/os_mbox.c **** OS_EVENT  *OSMboxCreate (void *pmsg)
+  91:uCOSII/Source/os_mbox.c **** {
+  96              		.loc 1 91 1 is_stmt 1 view -0
+  97              		.cfi_startproc
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		.loc 1 91 1 is_stmt 0 view .LVU19
+ 101 0000 38B5     		push	{r3, r4, r5, lr}
+ 102              	.LCFI1:
+ 103              		.cfi_def_cfa_offset 16
+ 104              		.cfi_offset 3, -16
+ 105              		.cfi_offset 4, -12
+ 106              		.cfi_offset 5, -8
+ 107              		.cfi_offset 14, -4
+  92:uCOSII/Source/os_mbox.c ****     OS_EVENT  *pevent;
+ 108              		.loc 1 92 5 is_stmt 1 view .LVU20
+  93:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
+  94:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 109              		.loc 1 94 5 view .LVU21
+ 110              	.LVL7:
+  95:uCOSII/Source/os_mbox.c **** #endif
+  96:uCOSII/Source/os_mbox.c **** 
+  97:uCOSII/Source/os_mbox.c **** 
+  98:uCOSII/Source/os_mbox.c **** 
+  99:uCOSII/Source/os_mbox.c **** #ifdef OS_SAFETY_CRITICAL_IEC61508
+ 100:uCOSII/Source/os_mbox.c ****     if (OSSafetyCriticalStartFlag == OS_TRUE) {
+ 101:uCOSII/Source/os_mbox.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 102:uCOSII/Source/os_mbox.c ****         return ((OS_EVENT *)0);
+ 103:uCOSII/Source/os_mbox.c ****     }
+ 104:uCOSII/Source/os_mbox.c **** #endif
+ 105:uCOSII/Source/os_mbox.c **** 
+ 106:uCOSII/Source/os_mbox.c ****     if (OSIntNesting > 0u) {                     /* See if called from ISR ...                     
+ 111              		.loc 1 106 5 view .LVU22
+ 112              		.loc 1 106 22 is_stmt 0 view .LVU23
+ 113 0002 0E4B     		ldr	r3, .L10
+ 114 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 115              		.loc 1 106 8 view .LVU24
+ 116 0006 B3B9     		cbnz	r3, .L8
+ 117 0008 0546     		mov	r5, r0
+ 107:uCOSII/Source/os_mbox.c ****         return ((OS_EVENT *)0);                  /* ... can't CREATE from an ISR                   
+ 108:uCOSII/Source/os_mbox.c ****     }
+ 109:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 118              		.loc 1 109 5 is_stmt 1 view .LVU25
+ 119 000a FFF7FEFF 		bl	OS_CPU_SR_Save
+ 120              	.LVL8:
+ 121              		.loc 1 109 24 view .LVU26
+ARM GAS  /tmp/ccYanot6.s 			page 5
+
+
+ 110:uCOSII/Source/os_mbox.c ****     pevent = OSEventFreeList;                    /* Get next free event control block              
+ 122              		.loc 1 110 5 view .LVU27
+ 123              		.loc 1 110 12 is_stmt 0 view .LVU28
+ 124 000e 0C4B     		ldr	r3, .L10+4
+ 125 0010 1C68     		ldr	r4, [r3]
+ 126              	.LVL9:
+ 111:uCOSII/Source/os_mbox.c ****     if (OSEventFreeList != (OS_EVENT *)0) {      /* See if pool of free ECB pool was empty         
+ 127              		.loc 1 111 5 is_stmt 1 view .LVU29
+ 128              		.loc 1 111 8 is_stmt 0 view .LVU30
+ 129 0012 0CB1     		cbz	r4, .L7
+ 112:uCOSII/Source/os_mbox.c ****         OSEventFreeList = (OS_EVENT *)OSEventFreeList->OSEventPtr;
+ 130              		.loc 1 112 9 is_stmt 1 view .LVU31
+ 131              		.loc 1 112 54 is_stmt 0 view .LVU32
+ 132 0014 6268     		ldr	r2, [r4, #4]
+ 133              		.loc 1 112 25 view .LVU33
+ 134 0016 1A60     		str	r2, [r3]
+ 135              	.L7:
+ 113:uCOSII/Source/os_mbox.c ****     }
+ 114:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 136              		.loc 1 114 5 is_stmt 1 view .LVU34
+ 137 0018 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 138              	.LVL10:
+ 139              		.loc 1 114 23 view .LVU35
+ 115:uCOSII/Source/os_mbox.c ****     if (pevent != (OS_EVENT *)0) {
+ 140              		.loc 1 115 5 view .LVU36
+ 141              		.loc 1 115 8 is_stmt 0 view .LVU37
+ 142 001c 4CB1     		cbz	r4, .L5
+ 116:uCOSII/Source/os_mbox.c ****         pevent->OSEventType    = OS_EVENT_TYPE_MBOX;
+ 143              		.loc 1 116 9 is_stmt 1 view .LVU38
+ 144              		.loc 1 116 32 is_stmt 0 view .LVU39
+ 145 001e 0123     		movs	r3, #1
+ 146 0020 2370     		strb	r3, [r4]
+ 117:uCOSII/Source/os_mbox.c ****         pevent->OSEventCnt     = 0u;
+ 147              		.loc 1 117 9 is_stmt 1 view .LVU40
+ 148              		.loc 1 117 32 is_stmt 0 view .LVU41
+ 149 0022 0023     		movs	r3, #0
+ 150 0024 2381     		strh	r3, [r4, #8]	@ movhi
+ 118:uCOSII/Source/os_mbox.c ****         pevent->OSEventPtr     = pmsg;           /* Deposit message in event control block         
+ 151              		.loc 1 118 9 is_stmt 1 view .LVU42
+ 152              		.loc 1 118 32 is_stmt 0 view .LVU43
+ 153 0026 6560     		str	r5, [r4, #4]
+ 119:uCOSII/Source/os_mbox.c **** #if OS_EVENT_NAME_EN > 0u
+ 120:uCOSII/Source/os_mbox.c ****         pevent->OSEventName    = (INT8U *)(void *)"?";
+ 154              		.loc 1 120 9 is_stmt 1 view .LVU44
+ 155              		.loc 1 120 32 is_stmt 0 view .LVU45
+ 156 0028 064B     		ldr	r3, .L10+8
+ 157 002a 6361     		str	r3, [r4, #20]
+ 121:uCOSII/Source/os_mbox.c **** #endif
+ 122:uCOSII/Source/os_mbox.c ****         OS_EventWaitListInit(pevent);
+ 158              		.loc 1 122 9 is_stmt 1 view .LVU46
+ 159 002c 2046     		mov	r0, r4
+ 160 002e FFF7FEFF 		bl	OS_EventWaitListInit
+ 161              	.LVL11:
+ 162              	.L5:
+ 123:uCOSII/Source/os_mbox.c ****     }
+ 124:uCOSII/Source/os_mbox.c ****     return (pevent);                             /* Return pointer to event control block          
+ 125:uCOSII/Source/os_mbox.c **** }
+ARM GAS  /tmp/ccYanot6.s 			page 6
+
+
+ 163              		.loc 1 125 1 is_stmt 0 view .LVU47
+ 164 0032 2046     		mov	r0, r4
+ 165 0034 38BD     		pop	{r3, r4, r5, pc}
+ 166              	.LVL12:
+ 167              	.L8:
+ 107:uCOSII/Source/os_mbox.c ****     }
+ 168              		.loc 1 107 16 view .LVU48
+ 169 0036 0024     		movs	r4, #0
+ 170 0038 FBE7     		b	.L5
+ 171              	.L11:
+ 172 003a 00BF     		.align	2
+ 173              	.L10:
+ 174 003c 00000000 		.word	OSIntNesting
+ 175 0040 00000000 		.word	OSEventFreeList
+ 176 0044 00000000 		.word	.LC0
+ 177              		.cfi_endproc
+ 178              	.LFE1:
+ 180              		.section	.text.OSMboxDel,"ax",%progbits
+ 181              		.align	1
+ 182              		.global	OSMboxDel
+ 183              		.syntax unified
+ 184              		.thumb
+ 185              		.thumb_func
+ 186              		.fpu fpv4-sp-d16
+ 188              	OSMboxDel:
+ 189              	.LVL13:
+ 190              	.LFB2:
+ 126:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 127:uCOSII/Source/os_mbox.c **** /*
+ 128:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 129:uCOSII/Source/os_mbox.c **** *                                           DELETE A MAIBOX
+ 130:uCOSII/Source/os_mbox.c **** *
+ 131:uCOSII/Source/os_mbox.c **** * Description: This function deletes a mailbox and readies all tasks pending on the mailbox.
+ 132:uCOSII/Source/os_mbox.c **** *
+ 133:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired
+ 134:uCOSII/Source/os_mbox.c **** *                            mailbox.
+ 135:uCOSII/Source/os_mbox.c **** *
+ 136:uCOSII/Source/os_mbox.c **** *              opt           determines delete options as follows:
+ 137:uCOSII/Source/os_mbox.c **** *                            opt == OS_DEL_NO_PEND   Delete the mailbox ONLY if no task pending
+ 138:uCOSII/Source/os_mbox.c **** *                            opt == OS_DEL_ALWAYS    Deletes the mailbox even if tasks are waiting.
+ 139:uCOSII/Source/os_mbox.c **** *                                                    In this case, all the tasks pending will be re
+ 140:uCOSII/Source/os_mbox.c **** *
+ 141:uCOSII/Source/os_mbox.c **** *              perr          is a pointer to an error code that can contain one of the following va
+ 142:uCOSII/Source/os_mbox.c **** *                            OS_ERR_NONE             The call was successful and the mailbox was de
+ 143:uCOSII/Source/os_mbox.c **** *                            OS_ERR_DEL_ISR          If you attempted to delete the mailbox from an
+ 144:uCOSII/Source/os_mbox.c **** *                            OS_ERR_INVALID_OPT      An invalid option was specified
+ 145:uCOSII/Source/os_mbox.c **** *                            OS_ERR_TASK_WAITING     One or more tasks were waiting on the mailbox
+ 146:uCOSII/Source/os_mbox.c **** *                            OS_ERR_EVENT_TYPE       If you didn't pass a pointer to a mailbox
+ 147:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEVENT_NULL      If 'pevent' is a NULL pointer.
+ 148:uCOSII/Source/os_mbox.c **** *
+ 149:uCOSII/Source/os_mbox.c **** * Returns    : pevent        upon error
+ 150:uCOSII/Source/os_mbox.c **** *              (OS_EVENT *)0 if the mailbox was successfully deleted.
+ 151:uCOSII/Source/os_mbox.c **** *
+ 152:uCOSII/Source/os_mbox.c **** * Note(s)    : 1) This function must be used with care.  Tasks that would normally expect the prese
+ 153:uCOSII/Source/os_mbox.c **** *                 the mailbox MUST check the return code of OSMboxPend().
+ 154:uCOSII/Source/os_mbox.c **** *              2) OSMboxAccept() callers will not know that the intended mailbox has been deleted!
+ 155:uCOSII/Source/os_mbox.c **** *              3) This call can potentially disable interrupts for a long time.  The interrupt disa
+ARM GAS  /tmp/ccYanot6.s 			page 7
+
+
+ 156:uCOSII/Source/os_mbox.c **** *                 time is directly proportional to the number of tasks waiting on the mailbox.
+ 157:uCOSII/Source/os_mbox.c **** *              4) Because ALL tasks pending on the mailbox will be readied, you MUST be careful in
+ 158:uCOSII/Source/os_mbox.c **** *                 applications where the mailbox is used for mutual exclusion because the resource(
+ 159:uCOSII/Source/os_mbox.c **** *                 will no longer be guarded by the mailbox.
+ 160:uCOSII/Source/os_mbox.c **** *              5) All tasks that were waiting for the mailbox will be readied and returned an 
+ 161:uCOSII/Source/os_mbox.c **** *                 OS_ERR_PEND_ABORT if OSMboxDel() was called with OS_DEL_ALWAYS
+ 162:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 163:uCOSII/Source/os_mbox.c **** */
+ 164:uCOSII/Source/os_mbox.c **** 
+ 165:uCOSII/Source/os_mbox.c **** #if OS_MBOX_DEL_EN > 0u
+ 166:uCOSII/Source/os_mbox.c **** OS_EVENT  *OSMboxDel (OS_EVENT  *pevent,
+ 167:uCOSII/Source/os_mbox.c ****                       INT8U      opt,
+ 168:uCOSII/Source/os_mbox.c ****                       INT8U     *perr)
+ 169:uCOSII/Source/os_mbox.c **** {
+ 191              		.loc 1 169 1 is_stmt 1 view -0
+ 192              		.cfi_startproc
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 0, uses_anonymous_args = 0
+ 195              		.loc 1 169 1 is_stmt 0 view .LVU50
+ 196 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 197              	.LCFI2:
+ 198              		.cfi_def_cfa_offset 32
+ 199              		.cfi_offset 3, -32
+ 200              		.cfi_offset 4, -28
+ 201              		.cfi_offset 5, -24
+ 202              		.cfi_offset 6, -20
+ 203              		.cfi_offset 7, -16
+ 204              		.cfi_offset 8, -12
+ 205              		.cfi_offset 9, -8
+ 206              		.cfi_offset 14, -4
+ 207 0004 0446     		mov	r4, r0
+ 208 0006 1646     		mov	r6, r2
+ 170:uCOSII/Source/os_mbox.c ****     BOOLEAN    tasks_waiting;
+ 209              		.loc 1 170 5 is_stmt 1 view .LVU51
+ 171:uCOSII/Source/os_mbox.c ****     OS_EVENT  *pevent_return;
+ 210              		.loc 1 171 5 view .LVU52
+ 172:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
+ 173:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 211              		.loc 1 173 5 view .LVU53
+ 212              	.LVL14:
+ 174:uCOSII/Source/os_mbox.c **** #endif
+ 175:uCOSII/Source/os_mbox.c **** 
+ 176:uCOSII/Source/os_mbox.c **** 
+ 177:uCOSII/Source/os_mbox.c **** 
+ 178:uCOSII/Source/os_mbox.c **** #ifdef OS_SAFETY_CRITICAL
+ 179:uCOSII/Source/os_mbox.c ****     if (perr == (INT8U *)0) {
+ 180:uCOSII/Source/os_mbox.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 181:uCOSII/Source/os_mbox.c ****         return ((OS_EVENT *)0);
+ 182:uCOSII/Source/os_mbox.c ****     }
+ 183:uCOSII/Source/os_mbox.c **** #endif
+ 184:uCOSII/Source/os_mbox.c **** 
+ 185:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 186:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                         /* Validate 'pevent'                    
+ 187:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 188:uCOSII/Source/os_mbox.c ****         return (pevent);
+ 189:uCOSII/Source/os_mbox.c ****     }
+ 190:uCOSII/Source/os_mbox.c **** #endif
+ARM GAS  /tmp/ccYanot6.s 			page 8
+
+
+ 191:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {       /* Validate event block type            
+ 213              		.loc 1 191 5 view .LVU54
+ 214              		.loc 1 191 15 is_stmt 0 view .LVU55
+ 215 0008 0578     		ldrb	r5, [r0]	@ zero_extendqisi2
+ 216              		.loc 1 191 8 view .LVU56
+ 217 000a 012D     		cmp	r5, #1
+ 218 000c 03D0     		beq	.L13
+ 192:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 219              		.loc 1 192 9 is_stmt 1 view .LVU57
+ 220              		.loc 1 192 15 is_stmt 0 view .LVU58
+ 221 000e 0123     		movs	r3, #1
+ 222 0010 1370     		strb	r3, [r2]
+ 193:uCOSII/Source/os_mbox.c ****         return (pevent);
+ 223              		.loc 1 193 9 is_stmt 1 view .LVU59
+ 224              	.LVL15:
+ 225              	.L12:
+ 194:uCOSII/Source/os_mbox.c ****     }
+ 195:uCOSII/Source/os_mbox.c ****     if (OSIntNesting > 0u) {                               /* See if called from ISR ...           
+ 196:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 197:uCOSII/Source/os_mbox.c ****         return (pevent);
+ 198:uCOSII/Source/os_mbox.c ****     }
+ 199:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 200:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on mailbox  
+ 201:uCOSII/Source/os_mbox.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 202:uCOSII/Source/os_mbox.c ****     } else {
+ 203:uCOSII/Source/os_mbox.c ****         tasks_waiting = OS_FALSE;                          /* No                                   
+ 204:uCOSII/Source/os_mbox.c ****     }
+ 205:uCOSII/Source/os_mbox.c ****     switch (opt) {
+ 206:uCOSII/Source/os_mbox.c ****         case OS_DEL_NO_PEND:                               /* Delete mailbox only if no task waitin
+ 207:uCOSII/Source/os_mbox.c ****              if (tasks_waiting == OS_FALSE) {
+ 208:uCOSII/Source/os_mbox.c **** #if OS_EVENT_NAME_EN > 0u
+ 209:uCOSII/Source/os_mbox.c ****                  pevent->OSEventName = (INT8U *)(void *)"?";
+ 210:uCOSII/Source/os_mbox.c **** #endif
+ 211:uCOSII/Source/os_mbox.c ****                  pevent->OSEventType = OS_EVENT_TYPE_UNUSED;
+ 212:uCOSII/Source/os_mbox.c ****                  pevent->OSEventPtr  = OSEventFreeList;    /* Return Event Control Block to free li
+ 213:uCOSII/Source/os_mbox.c ****                  pevent->OSEventCnt  = 0u;
+ 214:uCOSII/Source/os_mbox.c ****                  OSEventFreeList     = pevent;             /* Get next free event control block    
+ 215:uCOSII/Source/os_mbox.c ****                  OS_EXIT_CRITICAL();
+ 216:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_NONE;
+ 217:uCOSII/Source/os_mbox.c ****                  pevent_return       = (OS_EVENT *)0;      /* Mailbox has been deleted             
+ 218:uCOSII/Source/os_mbox.c ****              } else {
+ 219:uCOSII/Source/os_mbox.c ****                  OS_EXIT_CRITICAL();
+ 220:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_TASK_WAITING;
+ 221:uCOSII/Source/os_mbox.c ****                  pevent_return       = pevent;
+ 222:uCOSII/Source/os_mbox.c ****              }
+ 223:uCOSII/Source/os_mbox.c ****              break;
+ 224:uCOSII/Source/os_mbox.c **** 
+ 225:uCOSII/Source/os_mbox.c ****         case OS_DEL_ALWAYS:                                /* Always delete the mailbox            
+ 226:uCOSII/Source/os_mbox.c ****              while (pevent->OSEventGrp != 0u) {            /* Ready ALL tasks waiting for mailbox  
+ 227:uCOSII/Source/os_mbox.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 228:uCOSII/Source/os_mbox.c ****              }
+ 229:uCOSII/Source/os_mbox.c **** #if OS_EVENT_NAME_EN > 0u
+ 230:uCOSII/Source/os_mbox.c ****              pevent->OSEventName    = (INT8U *)(void *)"?";
+ 231:uCOSII/Source/os_mbox.c **** #endif
+ 232:uCOSII/Source/os_mbox.c ****              pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 233:uCOSII/Source/os_mbox.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 234:uCOSII/Source/os_mbox.c ****              pevent->OSEventCnt     = 0u;
+ARM GAS  /tmp/ccYanot6.s 			page 9
+
+
+ 235:uCOSII/Source/os_mbox.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 236:uCOSII/Source/os_mbox.c ****              OS_EXIT_CRITICAL();
+ 237:uCOSII/Source/os_mbox.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 238:uCOSII/Source/os_mbox.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 239:uCOSII/Source/os_mbox.c ****              }
+ 240:uCOSII/Source/os_mbox.c ****              *perr         = OS_ERR_NONE;
+ 241:uCOSII/Source/os_mbox.c ****              pevent_return = (OS_EVENT *)0;                /* Mailbox has been deleted             
+ 242:uCOSII/Source/os_mbox.c ****              break;
+ 243:uCOSII/Source/os_mbox.c **** 
+ 244:uCOSII/Source/os_mbox.c ****         default:
+ 245:uCOSII/Source/os_mbox.c ****              OS_EXIT_CRITICAL();
+ 246:uCOSII/Source/os_mbox.c ****              *perr         = OS_ERR_INVALID_OPT;
+ 247:uCOSII/Source/os_mbox.c ****              pevent_return = pevent;
+ 248:uCOSII/Source/os_mbox.c ****              break;
+ 249:uCOSII/Source/os_mbox.c ****     }
+ 250:uCOSII/Source/os_mbox.c ****     return (pevent_return);
+ 251:uCOSII/Source/os_mbox.c **** }
+ 226              		.loc 1 251 1 is_stmt 0 view .LVU60
+ 227 0012 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 228              	.LVL16:
+ 229              	.L13:
+ 230              		.loc 1 251 1 view .LVU61
+ 231 0016 0F46     		mov	r7, r1
+ 195:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 232              		.loc 1 195 5 is_stmt 1 view .LVU62
+ 195:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 233              		.loc 1 195 22 is_stmt 0 view .LVU63
+ 234 0018 284B     		ldr	r3, .L27
+ 235 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 195:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 236              		.loc 1 195 8 view .LVU64
+ 237 001c 13B1     		cbz	r3, .L15
+ 196:uCOSII/Source/os_mbox.c ****         return (pevent);
+ 238              		.loc 1 196 9 is_stmt 1 view .LVU65
+ 196:uCOSII/Source/os_mbox.c ****         return (pevent);
+ 239              		.loc 1 196 15 is_stmt 0 view .LVU66
+ 240 001e 0F23     		movs	r3, #15
+ 241 0020 1370     		strb	r3, [r2]
+ 197:uCOSII/Source/os_mbox.c ****     }
+ 242              		.loc 1 197 9 is_stmt 1 view .LVU67
+ 197:uCOSII/Source/os_mbox.c ****     }
+ 243              		.loc 1 197 16 is_stmt 0 view .LVU68
+ 244 0022 F6E7     		b	.L12
+ 245              	.L15:
+ 199:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on mailbox  
+ 246              		.loc 1 199 5 is_stmt 1 view .LVU69
+ 247 0024 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 248              	.LVL17:
+ 199:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on mailbox  
+ 249              		.loc 1 199 5 is_stmt 0 view .LVU70
+ 250 0028 8046     		mov	r8, r0
+ 251              	.LVL18:
+ 199:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on mailbox  
+ 252              		.loc 1 199 24 is_stmt 1 view .LVU71
+ 200:uCOSII/Source/os_mbox.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 253              		.loc 1 200 5 view .LVU72
+ 200:uCOSII/Source/os_mbox.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ARM GAS  /tmp/ccYanot6.s 			page 10
+
+
+ 254              		.loc 1 200 15 is_stmt 0 view .LVU73
+ 255 002a 94F80A90 		ldrb	r9, [r4, #10]	@ zero_extendqisi2
+ 200:uCOSII/Source/os_mbox.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 256              		.loc 1 200 8 view .LVU74
+ 257 002e B9F1000F 		cmp	r9, #0
+ 258 0032 00D0     		beq	.L16
+ 201:uCOSII/Source/os_mbox.c ****     } else {
+ 259              		.loc 1 201 23 view .LVU75
+ 260 0034 A946     		mov	r9, r5
+ 261              	.L16:
+ 262              	.LVL19:
+ 205:uCOSII/Source/os_mbox.c ****         case OS_DEL_NO_PEND:                               /* Delete mailbox only if no task waitin
+ 263              		.loc 1 205 5 is_stmt 1 view .LVU76
+ 264 0036 47B1     		cbz	r7, .L17
+ 265 0038 012F     		cmp	r7, #1
+ 266 003a 25D0     		beq	.L18
+ 245:uCOSII/Source/os_mbox.c ****              *perr         = OS_ERR_INVALID_OPT;
+ 267              		.loc 1 245 14 view .LVU77
+ 268 003c 4046     		mov	r0, r8
+ 269              	.LVL20:
+ 245:uCOSII/Source/os_mbox.c ****              *perr         = OS_ERR_INVALID_OPT;
+ 270              		.loc 1 245 14 is_stmt 0 view .LVU78
+ 271 003e FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 272              	.LVL21:
+ 245:uCOSII/Source/os_mbox.c ****              *perr         = OS_ERR_INVALID_OPT;
+ 273              		.loc 1 245 32 is_stmt 1 view .LVU79
+ 246:uCOSII/Source/os_mbox.c ****              pevent_return = pevent;
+ 274              		.loc 1 246 14 view .LVU80
+ 246:uCOSII/Source/os_mbox.c ****              pevent_return = pevent;
+ 275              		.loc 1 246 28 is_stmt 0 view .LVU81
+ 276 0042 0723     		movs	r3, #7
+ 277 0044 3370     		strb	r3, [r6]
+ 247:uCOSII/Source/os_mbox.c ****              break;
+ 278              		.loc 1 247 14 is_stmt 1 view .LVU82
+ 279              	.LVL22:
+ 248:uCOSII/Source/os_mbox.c ****     }
+ 280              		.loc 1 248 14 view .LVU83
+ 247:uCOSII/Source/os_mbox.c ****              break;
+ 281              		.loc 1 247 28 is_stmt 0 view .LVU84
+ 282 0046 2046     		mov	r0, r4
+ 283              	.LVL23:
+ 248:uCOSII/Source/os_mbox.c ****     }
+ 284              		.loc 1 248 14 view .LVU85
+ 285 0048 E3E7     		b	.L12
+ 286              	.LVL24:
+ 287              	.L17:
+ 207:uCOSII/Source/os_mbox.c **** #if OS_EVENT_NAME_EN > 0u
+ 288              		.loc 1 207 14 is_stmt 1 view .LVU86
+ 207:uCOSII/Source/os_mbox.c **** #if OS_EVENT_NAME_EN > 0u
+ 289              		.loc 1 207 17 is_stmt 0 view .LVU87
+ 290 004a B9F1000F 		cmp	r9, #0
+ 291 004e 06D0     		beq	.L25
+ 219:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_TASK_WAITING;
+ 292              		.loc 1 219 18 is_stmt 1 view .LVU88
+ 293 0050 4046     		mov	r0, r8
+ 294              	.LVL25:
+ 219:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_TASK_WAITING;
+ARM GAS  /tmp/ccYanot6.s 			page 11
+
+
+ 295              		.loc 1 219 18 is_stmt 0 view .LVU89
+ 296 0052 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 297              	.LVL26:
+ 219:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_TASK_WAITING;
+ 298              		.loc 1 219 36 is_stmt 1 view .LVU90
+ 220:uCOSII/Source/os_mbox.c ****                  pevent_return       = pevent;
+ 299              		.loc 1 220 18 view .LVU91
+ 220:uCOSII/Source/os_mbox.c ****                  pevent_return       = pevent;
+ 300              		.loc 1 220 38 is_stmt 0 view .LVU92
+ 301 0056 4923     		movs	r3, #73
+ 302 0058 3370     		strb	r3, [r6]
+ 221:uCOSII/Source/os_mbox.c ****              }
+ 303              		.loc 1 221 18 is_stmt 1 view .LVU93
+ 304              	.LVL27:
+ 221:uCOSII/Source/os_mbox.c ****              }
+ 305              		.loc 1 221 38 is_stmt 0 view .LVU94
+ 306 005a 2046     		mov	r0, r4
+ 307 005c D9E7     		b	.L12
+ 308              	.LVL28:
+ 309              	.L25:
+ 209:uCOSII/Source/os_mbox.c **** #endif
+ 310              		.loc 1 209 18 is_stmt 1 view .LVU95
+ 209:uCOSII/Source/os_mbox.c **** #endif
+ 311              		.loc 1 209 38 is_stmt 0 view .LVU96
+ 312 005e 184B     		ldr	r3, .L27+4
+ 313 0060 6361     		str	r3, [r4, #20]
+ 211:uCOSII/Source/os_mbox.c ****                  pevent->OSEventPtr  = OSEventFreeList;    /* Return Event Control Block to free li
+ 314              		.loc 1 211 18 is_stmt 1 view .LVU97
+ 211:uCOSII/Source/os_mbox.c ****                  pevent->OSEventPtr  = OSEventFreeList;    /* Return Event Control Block to free li
+ 315              		.loc 1 211 38 is_stmt 0 view .LVU98
+ 316 0062 0025     		movs	r5, #0
+ 317 0064 2570     		strb	r5, [r4]
+ 212:uCOSII/Source/os_mbox.c ****                  pevent->OSEventCnt  = 0u;
+ 318              		.loc 1 212 18 is_stmt 1 view .LVU99
+ 212:uCOSII/Source/os_mbox.c ****                  pevent->OSEventCnt  = 0u;
+ 319              		.loc 1 212 38 is_stmt 0 view .LVU100
+ 320 0066 174B     		ldr	r3, .L27+8
+ 321 0068 1A68     		ldr	r2, [r3]
+ 322 006a 6260     		str	r2, [r4, #4]
+ 213:uCOSII/Source/os_mbox.c ****                  OSEventFreeList     = pevent;             /* Get next free event control block    
+ 323              		.loc 1 213 18 is_stmt 1 view .LVU101
+ 213:uCOSII/Source/os_mbox.c ****                  OSEventFreeList     = pevent;             /* Get next free event control block    
+ 324              		.loc 1 213 38 is_stmt 0 view .LVU102
+ 325 006c 2581     		strh	r5, [r4, #8]	@ movhi
+ 214:uCOSII/Source/os_mbox.c ****                  OS_EXIT_CRITICAL();
+ 326              		.loc 1 214 18 is_stmt 1 view .LVU103
+ 214:uCOSII/Source/os_mbox.c ****                  OS_EXIT_CRITICAL();
+ 327              		.loc 1 214 38 is_stmt 0 view .LVU104
+ 328 006e 1C60     		str	r4, [r3]
+ 215:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_NONE;
+ 329              		.loc 1 215 18 is_stmt 1 view .LVU105
+ 330 0070 4046     		mov	r0, r8
+ 331              	.LVL29:
+ 215:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_NONE;
+ 332              		.loc 1 215 18 is_stmt 0 view .LVU106
+ 333 0072 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 334              	.LVL30:
+ARM GAS  /tmp/ccYanot6.s 			page 12
+
+
+ 215:uCOSII/Source/os_mbox.c ****                  *perr               = OS_ERR_NONE;
+ 335              		.loc 1 215 36 is_stmt 1 view .LVU107
+ 216:uCOSII/Source/os_mbox.c ****                  pevent_return       = (OS_EVENT *)0;      /* Mailbox has been deleted             
+ 336              		.loc 1 216 18 view .LVU108
+ 216:uCOSII/Source/os_mbox.c ****                  pevent_return       = (OS_EVENT *)0;      /* Mailbox has been deleted             
+ 337              		.loc 1 216 38 is_stmt 0 view .LVU109
+ 338 0076 3570     		strb	r5, [r6]
+ 217:uCOSII/Source/os_mbox.c ****              } else {
+ 339              		.loc 1 217 18 is_stmt 1 view .LVU110
+ 340              	.LVL31:
+ 217:uCOSII/Source/os_mbox.c ****              } else {
+ 341              		.loc 1 217 38 is_stmt 0 view .LVU111
+ 342 0078 2846     		mov	r0, r5
+ 343 007a CAE7     		b	.L12
+ 344              	.LVL32:
+ 345              	.L21:
+ 227:uCOSII/Source/os_mbox.c ****              }
+ 346              		.loc 1 227 18 is_stmt 1 view .LVU112
+ 227:uCOSII/Source/os_mbox.c ****              }
+ 347              		.loc 1 227 24 is_stmt 0 view .LVU113
+ 348 007c 0223     		movs	r3, #2
+ 349 007e 1A46     		mov	r2, r3
+ 350 0080 0021     		movs	r1, #0
+ 351 0082 2046     		mov	r0, r4
+ 352 0084 FFF7FEFF 		bl	OS_EventTaskRdy
+ 353              	.LVL33:
+ 354              	.L18:
+ 226:uCOSII/Source/os_mbox.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 355              		.loc 1 226 20 is_stmt 1 view .LVU114
+ 226:uCOSII/Source/os_mbox.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 356              		.loc 1 226 27 is_stmt 0 view .LVU115
+ 357 0088 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 226:uCOSII/Source/os_mbox.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 358              		.loc 1 226 20 view .LVU116
+ 359 008a 002B     		cmp	r3, #0
+ 360 008c F6D1     		bne	.L21
+ 230:uCOSII/Source/os_mbox.c **** #endif
+ 361              		.loc 1 230 14 is_stmt 1 view .LVU117
+ 230:uCOSII/Source/os_mbox.c **** #endif
+ 362              		.loc 1 230 37 is_stmt 0 view .LVU118
+ 363 008e 0C4B     		ldr	r3, .L27+4
+ 364 0090 6361     		str	r3, [r4, #20]
+ 232:uCOSII/Source/os_mbox.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 365              		.loc 1 232 14 is_stmt 1 view .LVU119
+ 232:uCOSII/Source/os_mbox.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 366              		.loc 1 232 37 is_stmt 0 view .LVU120
+ 367 0092 0022     		movs	r2, #0
+ 368 0094 2270     		strb	r2, [r4]
+ 233:uCOSII/Source/os_mbox.c ****              pevent->OSEventCnt     = 0u;
+ 369              		.loc 1 233 14 is_stmt 1 view .LVU121
+ 233:uCOSII/Source/os_mbox.c ****              pevent->OSEventCnt     = 0u;
+ 370              		.loc 1 233 37 is_stmt 0 view .LVU122
+ 371 0096 0B4B     		ldr	r3, .L27+8
+ 372 0098 1968     		ldr	r1, [r3]
+ 373 009a 6160     		str	r1, [r4, #4]
+ 234:uCOSII/Source/os_mbox.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 374              		.loc 1 234 14 is_stmt 1 view .LVU123
+ARM GAS  /tmp/ccYanot6.s 			page 13
+
+
+ 234:uCOSII/Source/os_mbox.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 375              		.loc 1 234 37 is_stmt 0 view .LVU124
+ 376 009c 2281     		strh	r2, [r4, #8]	@ movhi
+ 235:uCOSII/Source/os_mbox.c ****              OS_EXIT_CRITICAL();
+ 377              		.loc 1 235 14 is_stmt 1 view .LVU125
+ 235:uCOSII/Source/os_mbox.c ****              OS_EXIT_CRITICAL();
+ 378              		.loc 1 235 37 is_stmt 0 view .LVU126
+ 379 009e 1C60     		str	r4, [r3]
+ 236:uCOSII/Source/os_mbox.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 380              		.loc 1 236 14 is_stmt 1 view .LVU127
+ 381 00a0 4046     		mov	r0, r8
+ 382 00a2 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 383              	.LVL34:
+ 236:uCOSII/Source/os_mbox.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 384              		.loc 1 236 32 view .LVU128
+ 237:uCOSII/Source/os_mbox.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 385              		.loc 1 237 14 view .LVU129
+ 237:uCOSII/Source/os_mbox.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 386              		.loc 1 237 17 is_stmt 0 view .LVU130
+ 387 00a6 B9F1010F 		cmp	r9, #1
+ 388 00aa 03D0     		beq	.L26
+ 389              	.L22:
+ 240:uCOSII/Source/os_mbox.c ****              pevent_return = (OS_EVENT *)0;                /* Mailbox has been deleted             
+ 390              		.loc 1 240 14 is_stmt 1 view .LVU131
+ 240:uCOSII/Source/os_mbox.c ****              pevent_return = (OS_EVENT *)0;                /* Mailbox has been deleted             
+ 391              		.loc 1 240 28 is_stmt 0 view .LVU132
+ 392 00ac 0024     		movs	r4, #0
+ 393              	.LVL35:
+ 240:uCOSII/Source/os_mbox.c ****              pevent_return = (OS_EVENT *)0;                /* Mailbox has been deleted             
+ 394              		.loc 1 240 28 view .LVU133
+ 395 00ae 3470     		strb	r4, [r6]
+ 241:uCOSII/Source/os_mbox.c ****              break;
+ 396              		.loc 1 241 14 is_stmt 1 view .LVU134
+ 397              	.LVL36:
+ 242:uCOSII/Source/os_mbox.c **** 
+ 398              		.loc 1 242 14 view .LVU135
+ 241:uCOSII/Source/os_mbox.c ****              break;
+ 399              		.loc 1 241 28 is_stmt 0 view .LVU136
+ 400 00b0 2046     		mov	r0, r4
+ 242:uCOSII/Source/os_mbox.c **** 
+ 401              		.loc 1 242 14 view .LVU137
+ 402 00b2 AEE7     		b	.L12
+ 403              	.LVL37:
+ 404              	.L26:
+ 238:uCOSII/Source/os_mbox.c ****              }
+ 405              		.loc 1 238 18 is_stmt 1 view .LVU138
+ 406 00b4 FFF7FEFF 		bl	OS_Sched
+ 407              	.LVL38:
+ 408 00b8 F8E7     		b	.L22
+ 409              	.L28:
+ 410 00ba 00BF     		.align	2
+ 411              	.L27:
+ 412 00bc 00000000 		.word	OSIntNesting
+ 413 00c0 00000000 		.word	.LC0
+ 414 00c4 00000000 		.word	OSEventFreeList
+ 415              		.cfi_endproc
+ 416              	.LFE2:
+ARM GAS  /tmp/ccYanot6.s 			page 14
+
+
+ 418              		.section	.text.OSMboxPend,"ax",%progbits
+ 419              		.align	1
+ 420              		.global	OSMboxPend
+ 421              		.syntax unified
+ 422              		.thumb
+ 423              		.thumb_func
+ 424              		.fpu fpv4-sp-d16
+ 426              	OSMboxPend:
+ 427              	.LVL39:
+ 428              	.LFB3:
+ 252:uCOSII/Source/os_mbox.c **** #endif
+ 253:uCOSII/Source/os_mbox.c **** 
+ 254:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 255:uCOSII/Source/os_mbox.c **** /*
+ 256:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 257:uCOSII/Source/os_mbox.c **** *                                    PEND ON MAILBOX FOR A MESSAGE
+ 258:uCOSII/Source/os_mbox.c **** *
+ 259:uCOSII/Source/os_mbox.c **** * Description: This function waits for a message to be sent to a mailbox
+ 260:uCOSII/Source/os_mbox.c **** *
+ 261:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired ma
+ 262:uCOSII/Source/os_mbox.c **** *
+ 263:uCOSII/Source/os_mbox.c **** *              timeout       is an optional timeout period (in clock ticks).  If non-zero, your tas
+ 264:uCOSII/Source/os_mbox.c **** *                            wait for a message to arrive at the mailbox up to the amount of time
+ 265:uCOSII/Source/os_mbox.c **** *                            specified by this argument.  If you specify 0, however, your task will
+ 266:uCOSII/Source/os_mbox.c **** *                            forever at the specified mailbox or, until a message arrives.
+ 267:uCOSII/Source/os_mbox.c **** *
+ 268:uCOSII/Source/os_mbox.c **** *              perr          is a pointer to where an error message will be deposited.  Possible er
+ 269:uCOSII/Source/os_mbox.c **** *                            messages are:
+ 270:uCOSII/Source/os_mbox.c **** *
+ 271:uCOSII/Source/os_mbox.c **** *                            OS_ERR_NONE         The call was successful and your task received a
+ 272:uCOSII/Source/os_mbox.c **** *                                                message.
+ 273:uCOSII/Source/os_mbox.c **** *                            OS_ERR_TIMEOUT      A message was not received within the specified 't
+ 274:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEND_ABORT   The wait on the mailbox was aborted.
+ 275:uCOSII/Source/os_mbox.c **** *                            OS_ERR_EVENT_TYPE   Invalid event type
+ 276:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEND_ISR     If you called this function from an ISR and the re
+ 277:uCOSII/Source/os_mbox.c **** *                                                would lead to a suspension.
+ 278:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer
+ 279:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEND_LOCKED  If you called this function when the scheduler is 
+ 280:uCOSII/Source/os_mbox.c **** *
+ 281:uCOSII/Source/os_mbox.c **** * Returns    : != (void *)0  is a pointer to the message received
+ 282:uCOSII/Source/os_mbox.c **** *              == (void *)0  if no message was received or,
+ 283:uCOSII/Source/os_mbox.c **** *                            if 'pevent' is a NULL pointer or,
+ 284:uCOSII/Source/os_mbox.c **** *                            if you didn't pass the proper pointer to the event control block.
+ 285:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 286:uCOSII/Source/os_mbox.c **** */
+ 287:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 288:uCOSII/Source/os_mbox.c **** void  *OSMboxPend (OS_EVENT  *pevent,
+ 289:uCOSII/Source/os_mbox.c ****                    INT32U     timeout,
+ 290:uCOSII/Source/os_mbox.c ****                    INT8U     *perr)
+ 291:uCOSII/Source/os_mbox.c **** {
+ 429              		.loc 1 291 1 view -0
+ 430              		.cfi_startproc
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              		.loc 1 291 1 is_stmt 0 view .LVU140
+ 434 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 435              	.LCFI3:
+ARM GAS  /tmp/ccYanot6.s 			page 15
+
+
+ 436              		.cfi_def_cfa_offset 32
+ 437              		.cfi_offset 3, -32
+ 438              		.cfi_offset 4, -28
+ 439              		.cfi_offset 5, -24
+ 440              		.cfi_offset 6, -20
+ 441              		.cfi_offset 7, -16
+ 442              		.cfi_offset 8, -12
+ 443              		.cfi_offset 9, -8
+ 444              		.cfi_offset 14, -4
+ 445 0004 1646     		mov	r6, r2
+ 292:uCOSII/Source/os_mbox.c ****     void      *pmsg;
+ 446              		.loc 1 292 5 is_stmt 1 view .LVU141
+ 293:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 294:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 447              		.loc 1 294 5 view .LVU142
+ 448              	.LVL40:
+ 295:uCOSII/Source/os_mbox.c **** #endif
+ 296:uCOSII/Source/os_mbox.c **** 
+ 297:uCOSII/Source/os_mbox.c **** 
+ 298:uCOSII/Source/os_mbox.c **** 
+ 299:uCOSII/Source/os_mbox.c **** #ifdef OS_SAFETY_CRITICAL
+ 300:uCOSII/Source/os_mbox.c ****     if (perr == (INT8U *)0) {
+ 301:uCOSII/Source/os_mbox.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 302:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 303:uCOSII/Source/os_mbox.c ****     }
+ 304:uCOSII/Source/os_mbox.c **** #endif
+ 305:uCOSII/Source/os_mbox.c **** 
+ 306:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 307:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 308:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 309:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 310:uCOSII/Source/os_mbox.c ****     }
+ 311:uCOSII/Source/os_mbox.c **** #endif
+ 312:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {  /* Validate event block type                 
+ 449              		.loc 1 312 5 view .LVU143
+ 450              		.loc 1 312 15 is_stmt 0 view .LVU144
+ 451 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 452              		.loc 1 312 8 view .LVU145
+ 453 0008 012B     		cmp	r3, #1
+ 454 000a 12D1     		bne	.L41
+ 455 000c 0446     		mov	r4, r0
+ 456 000e 0F46     		mov	r7, r1
+ 313:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 314:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 315:uCOSII/Source/os_mbox.c ****     }
+ 316:uCOSII/Source/os_mbox.c ****     if (OSIntNesting > 0u) {                          /* See if called from ISR ...                
+ 457              		.loc 1 316 5 is_stmt 1 view .LVU146
+ 458              		.loc 1 316 22 is_stmt 0 view .LVU147
+ 459 0010 2C4B     		ldr	r3, .L44
+ 460 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 461              		.loc 1 316 8 view .LVU148
+ 462 0014 9BB9     		cbnz	r3, .L42
+ 317:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEND_ISR;                      /* ... can't PEND from an ISR                
+ 318:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 319:uCOSII/Source/os_mbox.c ****     }
+ 320:uCOSII/Source/os_mbox.c ****     if (OSLockNesting > 0u) {                         /* See if called with scheduler locked ...   
+ 463              		.loc 1 320 5 is_stmt 1 view .LVU149
+ARM GAS  /tmp/ccYanot6.s 			page 16
+
+
+ 464              		.loc 1 320 23 is_stmt 0 view .LVU150
+ 465 0016 2C4B     		ldr	r3, .L44+4
+ 466 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 467              		.loc 1 320 8 view .LVU151
+ 468 001a A3B9     		cbnz	r3, .L43
+ 321:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEND_LOCKED;                   /* ... can't PEND when locked                
+ 322:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 323:uCOSII/Source/os_mbox.c ****     }
+ 324:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 469              		.loc 1 324 5 is_stmt 1 view .LVU152
+ 470 001c FFF7FEFF 		bl	OS_CPU_SR_Save
+ 471              	.LVL41:
+ 472              		.loc 1 324 5 is_stmt 0 view .LVU153
+ 473 0020 8046     		mov	r8, r0
+ 474              	.LVL42:
+ 475              		.loc 1 324 24 is_stmt 1 view .LVU154
+ 325:uCOSII/Source/os_mbox.c ****     pmsg = pevent->OSEventPtr;
+ 476              		.loc 1 325 5 view .LVU155
+ 477              		.loc 1 325 10 is_stmt 0 view .LVU156
+ 478 0022 6568     		ldr	r5, [r4, #4]
+ 479              	.LVL43:
+ 326:uCOSII/Source/os_mbox.c ****     if (pmsg != (void *)0) {                          /* See if there is already a message         
+ 480              		.loc 1 326 5 is_stmt 1 view .LVU157
+ 481              		.loc 1 326 8 is_stmt 0 view .LVU158
+ 482 0024 9DB1     		cbz	r5, .L34
+ 327:uCOSII/Source/os_mbox.c ****         pevent->OSEventPtr = (void *)0;               /* Clear the mailbox                         
+ 483              		.loc 1 327 9 is_stmt 1 view .LVU159
+ 484              		.loc 1 327 28 is_stmt 0 view .LVU160
+ 485 0026 0027     		movs	r7, #0
+ 486              	.LVL44:
+ 487              		.loc 1 327 28 view .LVU161
+ 488 0028 6760     		str	r7, [r4, #4]
+ 328:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 489              		.loc 1 328 9 is_stmt 1 view .LVU162
+ 490 002a FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 491              	.LVL45:
+ 492              		.loc 1 328 27 view .LVU163
+ 329:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_NONE;
+ 493              		.loc 1 329 9 view .LVU164
+ 494              		.loc 1 329 15 is_stmt 0 view .LVU165
+ 495 002e 3770     		strb	r7, [r6]
+ 330:uCOSII/Source/os_mbox.c ****         return (pmsg);                                /* Return the message received (or NULL)     
+ 496              		.loc 1 330 9 is_stmt 1 view .LVU166
+ 497              		.loc 1 330 16 is_stmt 0 view .LVU167
+ 498 0030 02E0     		b	.L29
+ 499              	.LVL46:
+ 500              	.L41:
+ 313:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 501              		.loc 1 313 9 is_stmt 1 view .LVU168
+ 313:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 502              		.loc 1 313 15 is_stmt 0 view .LVU169
+ 503 0032 0123     		movs	r3, #1
+ 504 0034 1370     		strb	r3, [r2]
+ 314:uCOSII/Source/os_mbox.c ****     }
+ 505              		.loc 1 314 9 is_stmt 1 view .LVU170
+ 314:uCOSII/Source/os_mbox.c ****     }
+ 506              		.loc 1 314 16 is_stmt 0 view .LVU171
+ARM GAS  /tmp/ccYanot6.s 			page 17
+
+
+ 507 0036 0025     		movs	r5, #0
+ 508              	.LVL47:
+ 509              	.L29:
+ 331:uCOSII/Source/os_mbox.c ****     }
+ 332:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStat     |= OS_STAT_MBOX;          /* Message not available, task will pend     
+ 333:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 334:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBDly       = timeout;               /* Load timeout in TCB                       
+ 335:uCOSII/Source/os_mbox.c ****     OS_EventTaskWait(pevent);                         /* Suspend task until event or timeout occurs
+ 336:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 337:uCOSII/Source/os_mbox.c ****     OS_Sched();                                       /* Find next highest priority task ready to r
+ 338:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 339:uCOSII/Source/os_mbox.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ 340:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_OK:
+ 341:uCOSII/Source/os_mbox.c ****              pmsg =  OSTCBCur->OSTCBMsg;
+ 342:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_NONE;
+ 343:uCOSII/Source/os_mbox.c ****              break;
+ 344:uCOSII/Source/os_mbox.c **** 
+ 345:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_ABORT:
+ 346:uCOSII/Source/os_mbox.c ****              pmsg = (void *)0;
+ 347:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_PEND_ABORT;               /* Indicate that we aborted                  
+ 348:uCOSII/Source/os_mbox.c ****              break;
+ 349:uCOSII/Source/os_mbox.c **** 
+ 350:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_TO:
+ 351:uCOSII/Source/os_mbox.c ****         default:
+ 352:uCOSII/Source/os_mbox.c ****              OS_EventTaskRemove(OSTCBCur, pevent);
+ 353:uCOSII/Source/os_mbox.c ****              pmsg = (void *)0;
+ 354:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_TIMEOUT;                  /* Indicate that we didn't get event within T
+ 355:uCOSII/Source/os_mbox.c ****              break;
+ 356:uCOSII/Source/os_mbox.c ****     }
+ 357:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStat          =  OS_STAT_RDY;      /* Set   task  status to ready               
+ 358:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 359:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 360:uCOSII/Source/os_mbox.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 361:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBEventMultiPtr = (OS_EVENT **)0;
+ 362:uCOSII/Source/os_mbox.c **** #endif
+ 363:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBMsg           = (void      *)0;    /* Clear  received message                   
+ 364:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 365:uCOSII/Source/os_mbox.c ****     return (pmsg);                                    /* Return received message                   
+ 366:uCOSII/Source/os_mbox.c **** }
+ 510              		.loc 1 366 1 view .LVU172
+ 511 0038 2846     		mov	r0, r5
+ 512 003a BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 513              	.LVL48:
+ 514              	.L42:
+ 317:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 515              		.loc 1 317 9 is_stmt 1 view .LVU173
+ 317:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 516              		.loc 1 317 15 is_stmt 0 view .LVU174
+ 517 003e 0223     		movs	r3, #2
+ 518 0040 1370     		strb	r3, [r2]
+ 318:uCOSII/Source/os_mbox.c ****     }
+ 519              		.loc 1 318 9 is_stmt 1 view .LVU175
+ 318:uCOSII/Source/os_mbox.c ****     }
+ 520              		.loc 1 318 16 is_stmt 0 view .LVU176
+ 521 0042 0025     		movs	r5, #0
+ 522 0044 F8E7     		b	.L29
+ 523              	.L43:
+ARM GAS  /tmp/ccYanot6.s 			page 18
+
+
+ 321:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 524              		.loc 1 321 9 is_stmt 1 view .LVU177
+ 321:uCOSII/Source/os_mbox.c ****         return ((void *)0);
+ 525              		.loc 1 321 15 is_stmt 0 view .LVU178
+ 526 0046 0D23     		movs	r3, #13
+ 527 0048 1370     		strb	r3, [r2]
+ 322:uCOSII/Source/os_mbox.c ****     }
+ 528              		.loc 1 322 9 is_stmt 1 view .LVU179
+ 322:uCOSII/Source/os_mbox.c ****     }
+ 529              		.loc 1 322 16 is_stmt 0 view .LVU180
+ 530 004a 0025     		movs	r5, #0
+ 531 004c F4E7     		b	.L29
+ 532              	.LVL49:
+ 533              	.L34:
+ 332:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 534              		.loc 1 332 5 is_stmt 1 view .LVU181
+ 332:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 535              		.loc 1 332 29 is_stmt 0 view .LVU182
+ 536 004e DFF87C90 		ldr	r9, .L44+8
+ 537 0052 D9F80030 		ldr	r3, [r9]
+ 538 0056 93F83420 		ldrb	r2, [r3, #52]	@ zero_extendqisi2
+ 539 005a 42F00202 		orr	r2, r2, #2
+ 540 005e 83F83420 		strb	r2, [r3, #52]
+ 333:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBDly       = timeout;               /* Load timeout in TCB                       
+ 541              		.loc 1 333 5 is_stmt 1 view .LVU183
+ 333:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBDly       = timeout;               /* Load timeout in TCB                       
+ 542              		.loc 1 333 30 is_stmt 0 view .LVU184
+ 543 0062 0022     		movs	r2, #0
+ 544 0064 83F83520 		strb	r2, [r3, #53]
+ 334:uCOSII/Source/os_mbox.c ****     OS_EventTaskWait(pevent);                         /* Suspend task until event or timeout occurs
+ 545              		.loc 1 334 5 is_stmt 1 view .LVU185
+ 334:uCOSII/Source/os_mbox.c ****     OS_EventTaskWait(pevent);                         /* Suspend task until event or timeout occurs
+ 546              		.loc 1 334 30 is_stmt 0 view .LVU186
+ 547 0068 1F63     		str	r7, [r3, #48]
+ 335:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 548              		.loc 1 335 5 is_stmt 1 view .LVU187
+ 549 006a 2046     		mov	r0, r4
+ 550              	.LVL50:
+ 335:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 551              		.loc 1 335 5 is_stmt 0 view .LVU188
+ 552 006c FFF7FEFF 		bl	OS_EventTaskWait
+ 553              	.LVL51:
+ 336:uCOSII/Source/os_mbox.c ****     OS_Sched();                                       /* Find next highest priority task ready to r
+ 554              		.loc 1 336 5 is_stmt 1 view .LVU189
+ 555 0070 4046     		mov	r0, r8
+ 556 0072 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 557              	.LVL52:
+ 336:uCOSII/Source/os_mbox.c ****     OS_Sched();                                       /* Find next highest priority task ready to r
+ 558              		.loc 1 336 23 view .LVU190
+ 337:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 559              		.loc 1 337 5 view .LVU191
+ 560 0076 FFF7FEFF 		bl	OS_Sched
+ 561              	.LVL53:
+ 338:uCOSII/Source/os_mbox.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ 562              		.loc 1 338 5 view .LVU192
+ 563 007a FFF7FEFF 		bl	OS_CPU_SR_Save
+ 564              	.LVL54:
+ARM GAS  /tmp/ccYanot6.s 			page 19
+
+
+ 565 007e 0746     		mov	r7, r0
+ 566              	.LVL55:
+ 338:uCOSII/Source/os_mbox.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ 567              		.loc 1 338 24 view .LVU193
+ 339:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_OK:
+ 568              		.loc 1 339 5 view .LVU194
+ 339:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_OK:
+ 569              		.loc 1 339 21 is_stmt 0 view .LVU195
+ 570 0080 D9F80000 		ldr	r0, [r9]
+ 571              	.LVL56:
+ 339:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_OK:
+ 572              		.loc 1 339 21 view .LVU196
+ 573 0084 90F83530 		ldrb	r3, [r0, #53]	@ zero_extendqisi2
+ 339:uCOSII/Source/os_mbox.c ****         case OS_STAT_PEND_OK:
+ 574              		.loc 1 339 5 view .LVU197
+ 575 0088 3BB1     		cbz	r3, .L35
+ 576 008a 022B     		cmp	r3, #2
+ 577 008c 16D0     		beq	.L36
+ 352:uCOSII/Source/os_mbox.c ****              pmsg = (void *)0;
+ 578              		.loc 1 352 14 is_stmt 1 view .LVU198
+ 579 008e 2146     		mov	r1, r4
+ 580 0090 FFF7FEFF 		bl	OS_EventTaskRemove
+ 581              	.LVL57:
+ 353:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_TIMEOUT;                  /* Indicate that we didn't get event within T
+ 582              		.loc 1 353 14 view .LVU199
+ 354:uCOSII/Source/os_mbox.c ****              break;
+ 583              		.loc 1 354 13 view .LVU200
+ 354:uCOSII/Source/os_mbox.c ****              break;
+ 584              		.loc 1 354 19 is_stmt 0 view .LVU201
+ 585 0094 0A23     		movs	r3, #10
+ 586 0096 3370     		strb	r3, [r6]
+ 355:uCOSII/Source/os_mbox.c ****     }
+ 587              		.loc 1 355 14 is_stmt 1 view .LVU202
+ 588 0098 02E0     		b	.L38
+ 589              	.LVL58:
+ 590              	.L35:
+ 341:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_NONE;
+ 591              		.loc 1 341 14 view .LVU203
+ 341:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_NONE;
+ 592              		.loc 1 341 19 is_stmt 0 view .LVU204
+ 593 009a 456A     		ldr	r5, [r0, #36]
+ 594              	.LVL59:
+ 342:uCOSII/Source/os_mbox.c ****              break;
+ 595              		.loc 1 342 13 is_stmt 1 view .LVU205
+ 342:uCOSII/Source/os_mbox.c ****              break;
+ 596              		.loc 1 342 19 is_stmt 0 view .LVU206
+ 597 009c 0023     		movs	r3, #0
+ 598 009e 3370     		strb	r3, [r6]
+ 343:uCOSII/Source/os_mbox.c **** 
+ 599              		.loc 1 343 14 is_stmt 1 view .LVU207
+ 600              	.LVL60:
+ 601              	.L38:
+ 357:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 602              		.loc 1 357 5 view .LVU208
+ 357:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 603              		.loc 1 357 13 is_stmt 0 view .LVU209
+ 604 00a0 0A4B     		ldr	r3, .L44+8
+ARM GAS  /tmp/ccYanot6.s 			page 20
+
+
+ 605 00a2 1B68     		ldr	r3, [r3]
+ 357:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 606              		.loc 1 357 34 view .LVU210
+ 607 00a4 0022     		movs	r2, #0
+ 608 00a6 83F83420 		strb	r2, [r3, #52]
+ 358:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 609              		.loc 1 358 5 is_stmt 1 view .LVU211
+ 358:uCOSII/Source/os_mbox.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 610              		.loc 1 358 34 is_stmt 0 view .LVU212
+ 611 00aa 83F83520 		strb	r2, [r3, #53]
+ 359:uCOSII/Source/os_mbox.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 612              		.loc 1 359 5 is_stmt 1 view .LVU213
+ 359:uCOSII/Source/os_mbox.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 613              		.loc 1 359 34 is_stmt 0 view .LVU214
+ 614 00ae DA61     		str	r2, [r3, #28]
+ 361:uCOSII/Source/os_mbox.c **** #endif
+ 615              		.loc 1 361 5 is_stmt 1 view .LVU215
+ 361:uCOSII/Source/os_mbox.c **** #endif
+ 616              		.loc 1 361 34 is_stmt 0 view .LVU216
+ 617 00b0 1A62     		str	r2, [r3, #32]
+ 363:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 618              		.loc 1 363 5 is_stmt 1 view .LVU217
+ 363:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 619              		.loc 1 363 34 is_stmt 0 view .LVU218
+ 620 00b2 5A62     		str	r2, [r3, #36]
+ 364:uCOSII/Source/os_mbox.c ****     return (pmsg);                                    /* Return received message                   
+ 621              		.loc 1 364 5 is_stmt 1 view .LVU219
+ 622 00b4 3846     		mov	r0, r7
+ 623 00b6 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 624              	.LVL61:
+ 364:uCOSII/Source/os_mbox.c ****     return (pmsg);                                    /* Return received message                   
+ 625              		.loc 1 364 23 view .LVU220
+ 365:uCOSII/Source/os_mbox.c **** }
+ 626              		.loc 1 365 5 view .LVU221
+ 365:uCOSII/Source/os_mbox.c **** }
+ 627              		.loc 1 365 12 is_stmt 0 view .LVU222
+ 628 00ba BDE7     		b	.L29
+ 629              	.L36:
+ 346:uCOSII/Source/os_mbox.c ****             *perr =  OS_ERR_PEND_ABORT;               /* Indicate that we aborted                  
+ 630              		.loc 1 346 14 is_stmt 1 view .LVU223
+ 631              	.LVL62:
+ 347:uCOSII/Source/os_mbox.c ****              break;
+ 632              		.loc 1 347 13 view .LVU224
+ 347:uCOSII/Source/os_mbox.c ****              break;
+ 633              		.loc 1 347 19 is_stmt 0 view .LVU225
+ 634 00bc 0E23     		movs	r3, #14
+ 635 00be 3370     		strb	r3, [r6]
+ 348:uCOSII/Source/os_mbox.c **** 
+ 636              		.loc 1 348 14 is_stmt 1 view .LVU226
+ 637 00c0 EEE7     		b	.L38
+ 638              	.L45:
+ 639 00c2 00BF     		.align	2
+ 640              	.L44:
+ 641 00c4 00000000 		.word	OSIntNesting
+ 642 00c8 00000000 		.word	OSLockNesting
+ 643 00cc 00000000 		.word	OSTCBCur
+ 644              		.cfi_endproc
+ARM GAS  /tmp/ccYanot6.s 			page 21
+
+
+ 645              	.LFE3:
+ 647              		.section	.text.OSMboxPendAbort,"ax",%progbits
+ 648              		.align	1
+ 649              		.global	OSMboxPendAbort
+ 650              		.syntax unified
+ 651              		.thumb
+ 652              		.thumb_func
+ 653              		.fpu fpv4-sp-d16
+ 655              	OSMboxPendAbort:
+ 656              	.LVL63:
+ 657              	.LFB4:
+ 367:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 368:uCOSII/Source/os_mbox.c **** /*
+ 369:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 370:uCOSII/Source/os_mbox.c **** *                                     ABORT WAITING ON A MESSAGE MAILBOX
+ 371:uCOSII/Source/os_mbox.c **** *
+ 372:uCOSII/Source/os_mbox.c **** * Description: This function aborts & readies any tasks currently waiting on a mailbox.  This funct
+ 373:uCOSII/Source/os_mbox.c **** *              should be used to fault-abort the wait on the mailbox, rather than to normally signa
+ 374:uCOSII/Source/os_mbox.c **** *              the mailbox via OSMboxPost() or OSMboxPostOpt().
+ 375:uCOSII/Source/os_mbox.c **** *
+ 376:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired ma
+ 377:uCOSII/Source/os_mbox.c **** *
+ 378:uCOSII/Source/os_mbox.c **** *              opt           determines the type of ABORT performed:
+ 379:uCOSII/Source/os_mbox.c **** *                            OS_PEND_OPT_NONE         ABORT wait for a single task (HPT) waiting on
+ 380:uCOSII/Source/os_mbox.c **** *                                                     mailbox
+ 381:uCOSII/Source/os_mbox.c **** *                            OS_PEND_OPT_BROADCAST    ABORT wait for ALL tasks that are  waiting on
+ 382:uCOSII/Source/os_mbox.c **** *                                                     mailbox
+ 383:uCOSII/Source/os_mbox.c **** *
+ 384:uCOSII/Source/os_mbox.c **** *              perr          is a pointer to where an error message will be deposited.  Possible er
+ 385:uCOSII/Source/os_mbox.c **** *                            messages are:
+ 386:uCOSII/Source/os_mbox.c **** *
+ 387:uCOSII/Source/os_mbox.c **** *                            OS_ERR_NONE         No tasks were     waiting on the mailbox.
+ 388:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEND_ABORT   At least one task waiting on the mailbox was readi
+ 389:uCOSII/Source/os_mbox.c **** *                                                and informed of the aborted wait; check return val
+ 390:uCOSII/Source/os_mbox.c **** *                                                for the number of tasks whose wait on the mailbox
+ 391:uCOSII/Source/os_mbox.c **** *                                                was aborted.
+ 392:uCOSII/Source/os_mbox.c **** *                            OS_ERR_EVENT_TYPE   If you didn't pass a pointer to a mailbox.
+ 393:uCOSII/Source/os_mbox.c **** *                            OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer.
+ 394:uCOSII/Source/os_mbox.c **** *
+ 395:uCOSII/Source/os_mbox.c **** * Returns    : == 0          if no tasks were waiting on the mailbox, or upon error.
+ 396:uCOSII/Source/os_mbox.c **** *              >  0          if one or more tasks waiting on the mailbox are now readied and inform
+ 397:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 398:uCOSII/Source/os_mbox.c **** */
+ 399:uCOSII/Source/os_mbox.c **** 
+ 400:uCOSII/Source/os_mbox.c **** #if OS_MBOX_PEND_ABORT_EN > 0u
+ 401:uCOSII/Source/os_mbox.c **** INT8U  OSMboxPendAbort (OS_EVENT  *pevent,
+ 402:uCOSII/Source/os_mbox.c ****                         INT8U      opt,
+ 403:uCOSII/Source/os_mbox.c ****                         INT8U     *perr)
+ 404:uCOSII/Source/os_mbox.c **** {
+ 658              		.loc 1 404 1 view -0
+ 659              		.cfi_startproc
+ 660              		@ args = 0, pretend = 0, frame = 0
+ 661              		@ frame_needed = 0, uses_anonymous_args = 0
+ 662              		.loc 1 404 1 is_stmt 0 view .LVU228
+ 663 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 664              	.LCFI4:
+ 665              		.cfi_def_cfa_offset 32
+ARM GAS  /tmp/ccYanot6.s 			page 22
+
+
+ 666              		.cfi_offset 3, -32
+ 667              		.cfi_offset 4, -28
+ 668              		.cfi_offset 5, -24
+ 669              		.cfi_offset 6, -20
+ 670              		.cfi_offset 7, -16
+ 671              		.cfi_offset 8, -12
+ 672              		.cfi_offset 9, -8
+ 673              		.cfi_offset 14, -4
+ 674 0004 9046     		mov	r8, r2
+ 405:uCOSII/Source/os_mbox.c ****     INT8U      nbr_tasks;
+ 675              		.loc 1 405 5 is_stmt 1 view .LVU229
+ 406:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
+ 407:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 676              		.loc 1 407 5 view .LVU230
+ 677              	.LVL64:
+ 408:uCOSII/Source/os_mbox.c **** #endif
+ 409:uCOSII/Source/os_mbox.c **** 
+ 410:uCOSII/Source/os_mbox.c **** 
+ 411:uCOSII/Source/os_mbox.c **** 
+ 412:uCOSII/Source/os_mbox.c **** #ifdef OS_SAFETY_CRITICAL
+ 413:uCOSII/Source/os_mbox.c ****     if (perr == (INT8U *)0) {
+ 414:uCOSII/Source/os_mbox.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 415:uCOSII/Source/os_mbox.c ****         return (0u);
+ 416:uCOSII/Source/os_mbox.c ****     }
+ 417:uCOSII/Source/os_mbox.c **** #endif
+ 418:uCOSII/Source/os_mbox.c **** 
+ 419:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 420:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                         /* Validate 'pevent'                    
+ 421:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 422:uCOSII/Source/os_mbox.c ****         return (0u);
+ 423:uCOSII/Source/os_mbox.c ****     }
+ 424:uCOSII/Source/os_mbox.c **** #endif
+ 425:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {       /* Validate event block type            
+ 678              		.loc 1 425 5 view .LVU231
+ 679              		.loc 1 425 15 is_stmt 0 view .LVU232
+ 680 0006 0778     		ldrb	r7, [r0]	@ zero_extendqisi2
+ 681              		.loc 1 425 8 view .LVU233
+ 682 0008 012F     		cmp	r7, #1
+ 683 000a 05D0     		beq	.L47
+ 426:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 684              		.loc 1 426 9 is_stmt 1 view .LVU234
+ 685              		.loc 1 426 15 is_stmt 0 view .LVU235
+ 686 000c 0123     		movs	r3, #1
+ 687 000e 1370     		strb	r3, [r2]
+ 427:uCOSII/Source/os_mbox.c ****         return (0u);
+ 688              		.loc 1 427 9 is_stmt 1 view .LVU236
+ 689              		.loc 1 427 16 is_stmt 0 view .LVU237
+ 690 0010 0025     		movs	r5, #0
+ 691              	.LVL65:
+ 692              	.L48:
+ 428:uCOSII/Source/os_mbox.c ****     }
+ 429:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 430:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on mailbox?  
+ 431:uCOSII/Source/os_mbox.c ****         nbr_tasks = 0u;
+ 432:uCOSII/Source/os_mbox.c ****         switch (opt) {
+ 433:uCOSII/Source/os_mbox.c ****             case OS_PEND_OPT_BROADCAST:                    /* Do we need to abort ALL waiting tasks
+ 434:uCOSII/Source/os_mbox.c ****                  while (pevent->OSEventGrp != 0u) {        /* Yes, ready ALL tasks waiting on mailb
+ARM GAS  /tmp/ccYanot6.s 			page 23
+
+
+ 435:uCOSII/Source/os_mbox.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 436:uCOSII/Source/os_mbox.c ****                      nbr_tasks++;
+ 437:uCOSII/Source/os_mbox.c ****                  }
+ 438:uCOSII/Source/os_mbox.c ****                  break;
+ 439:uCOSII/Source/os_mbox.c **** 
+ 440:uCOSII/Source/os_mbox.c ****             case OS_PEND_OPT_NONE:
+ 441:uCOSII/Source/os_mbox.c ****             default:                                       /* No,  ready HPT       waiting on mailb
+ 442:uCOSII/Source/os_mbox.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 443:uCOSII/Source/os_mbox.c ****                  nbr_tasks++;
+ 444:uCOSII/Source/os_mbox.c ****                  break;
+ 445:uCOSII/Source/os_mbox.c ****         }
+ 446:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 447:uCOSII/Source/os_mbox.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ 448:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEND_ABORT;
+ 449:uCOSII/Source/os_mbox.c ****         return (nbr_tasks);
+ 450:uCOSII/Source/os_mbox.c ****     }
+ 451:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 452:uCOSII/Source/os_mbox.c ****     *perr = OS_ERR_NONE;
+ 453:uCOSII/Source/os_mbox.c ****     return (0u);                                           /* No tasks waiting on mailbox          
+ 454:uCOSII/Source/os_mbox.c **** }
+ 693              		.loc 1 454 1 view .LVU238
+ 694 0012 2846     		mov	r0, r5
+ 695 0014 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 696              	.LVL66:
+ 697              	.L47:
+ 698              		.loc 1 454 1 view .LVU239
+ 699 0018 0446     		mov	r4, r0
+ 700 001a 0E46     		mov	r6, r1
+ 429:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on mailbox?  
+ 701              		.loc 1 429 5 is_stmt 1 view .LVU240
+ 702 001c FFF7FEFF 		bl	OS_CPU_SR_Save
+ 703              	.LVL67:
+ 429:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on mailbox?  
+ 704              		.loc 1 429 5 is_stmt 0 view .LVU241
+ 705 0020 8146     		mov	r9, r0
+ 706              	.LVL68:
+ 429:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on mailbox?  
+ 707              		.loc 1 429 24 is_stmt 1 view .LVU242
+ 430:uCOSII/Source/os_mbox.c ****         nbr_tasks = 0u;
+ 708              		.loc 1 430 5 view .LVU243
+ 430:uCOSII/Source/os_mbox.c ****         nbr_tasks = 0u;
+ 709              		.loc 1 430 15 is_stmt 0 view .LVU244
+ 710 0022 A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
+ 430:uCOSII/Source/os_mbox.c ****         nbr_tasks = 0u;
+ 711              		.loc 1 430 8 view .LVU245
+ 712 0024 EDB1     		cbz	r5, .L49
+ 431:uCOSII/Source/os_mbox.c ****         switch (opt) {
+ 713              		.loc 1 431 9 is_stmt 1 view .LVU246
+ 714              	.LVL69:
+ 432:uCOSII/Source/os_mbox.c ****             case OS_PEND_OPT_BROADCAST:                    /* Do we need to abort ALL waiting tasks
+ 715              		.loc 1 432 9 view .LVU247
+ 716 0026 012E     		cmp	r6, #1
+ 717 0028 0BD1     		bne	.L57
+ 431:uCOSII/Source/os_mbox.c ****         switch (opt) {
+ 718              		.loc 1 431 19 is_stmt 0 view .LVU248
+ 719 002a 0025     		movs	r5, #0
+ 720              	.LVL70:
+ARM GAS  /tmp/ccYanot6.s 			page 24
+
+
+ 721              	.L50:
+ 434:uCOSII/Source/os_mbox.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 722              		.loc 1 434 24 is_stmt 1 view .LVU249
+ 434:uCOSII/Source/os_mbox.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 723              		.loc 1 434 31 is_stmt 0 view .LVU250
+ 724 002c A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 434:uCOSII/Source/os_mbox.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_MBOX, OS_STAT_PEND_ABORT);
+ 725              		.loc 1 434 24 view .LVU251
+ 726 002e 7BB1     		cbz	r3, .L53
+ 435:uCOSII/Source/os_mbox.c ****                      nbr_tasks++;
+ 727              		.loc 1 435 22 is_stmt 1 view .LVU252
+ 435:uCOSII/Source/os_mbox.c ****                      nbr_tasks++;
+ 728              		.loc 1 435 28 is_stmt 0 view .LVU253
+ 729 0030 0223     		movs	r3, #2
+ 730 0032 1A46     		mov	r2, r3
+ 731 0034 0021     		movs	r1, #0
+ 732 0036 2046     		mov	r0, r4
+ 733 0038 FFF7FEFF 		bl	OS_EventTaskRdy
+ 734              	.LVL71:
+ 436:uCOSII/Source/os_mbox.c ****                  }
+ 735              		.loc 1 436 22 is_stmt 1 view .LVU254
+ 436:uCOSII/Source/os_mbox.c ****                  }
+ 736              		.loc 1 436 31 is_stmt 0 view .LVU255
+ 737 003c 0135     		adds	r5, r5, #1
+ 738              	.LVL72:
+ 436:uCOSII/Source/os_mbox.c ****                  }
+ 739              		.loc 1 436 31 view .LVU256
+ 740 003e EDB2     		uxtb	r5, r5
+ 741              	.LVL73:
+ 436:uCOSII/Source/os_mbox.c ****                  }
+ 742              		.loc 1 436 31 view .LVU257
+ 743 0040 F4E7     		b	.L50
+ 744              	.LVL74:
+ 745              	.L57:
+ 442:uCOSII/Source/os_mbox.c ****                  nbr_tasks++;
+ 746              		.loc 1 442 18 is_stmt 1 view .LVU258
+ 442:uCOSII/Source/os_mbox.c ****                  nbr_tasks++;
+ 747              		.loc 1 442 24 is_stmt 0 view .LVU259
+ 748 0042 0223     		movs	r3, #2
+ 749 0044 1A46     		mov	r2, r3
+ 750 0046 0021     		movs	r1, #0
+ 751 0048 2046     		mov	r0, r4
+ 752              	.LVL75:
+ 442:uCOSII/Source/os_mbox.c ****                  nbr_tasks++;
+ 753              		.loc 1 442 24 view .LVU260
+ 754 004a FFF7FEFF 		bl	OS_EventTaskRdy
+ 755              	.LVL76:
+ 443:uCOSII/Source/os_mbox.c ****                  break;
+ 756              		.loc 1 443 18 is_stmt 1 view .LVU261
+ 444:uCOSII/Source/os_mbox.c ****         }
+ 757              		.loc 1 444 18 view .LVU262
+ 443:uCOSII/Source/os_mbox.c ****                  break;
+ 758              		.loc 1 443 27 is_stmt 0 view .LVU263
+ 759 004e 3D46     		mov	r5, r7
+ 760              	.LVL77:
+ 761              	.L53:
+ 446:uCOSII/Source/os_mbox.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ARM GAS  /tmp/ccYanot6.s 			page 25
+
+
+ 762              		.loc 1 446 9 is_stmt 1 view .LVU264
+ 763 0050 4846     		mov	r0, r9
+ 764 0052 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 765              	.LVL78:
+ 446:uCOSII/Source/os_mbox.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ 766              		.loc 1 446 27 view .LVU265
+ 447:uCOSII/Source/os_mbox.c ****         *perr = OS_ERR_PEND_ABORT;
+ 767              		.loc 1 447 9 view .LVU266
+ 768 0056 FFF7FEFF 		bl	OS_Sched
+ 769              	.LVL79:
+ 448:uCOSII/Source/os_mbox.c ****         return (nbr_tasks);
+ 770              		.loc 1 448 9 view .LVU267
+ 448:uCOSII/Source/os_mbox.c ****         return (nbr_tasks);
+ 771              		.loc 1 448 15 is_stmt 0 view .LVU268
+ 772 005a 0E23     		movs	r3, #14
+ 773 005c 88F80030 		strb	r3, [r8]
+ 449:uCOSII/Source/os_mbox.c ****     }
+ 774              		.loc 1 449 9 is_stmt 1 view .LVU269
+ 449:uCOSII/Source/os_mbox.c ****     }
+ 775              		.loc 1 449 16 is_stmt 0 view .LVU270
+ 776 0060 D7E7     		b	.L48
+ 777              	.LVL80:
+ 778              	.L49:
+ 451:uCOSII/Source/os_mbox.c ****     *perr = OS_ERR_NONE;
+ 779              		.loc 1 451 5 is_stmt 1 view .LVU271
+ 780 0062 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 781              	.LVL81:
+ 451:uCOSII/Source/os_mbox.c ****     *perr = OS_ERR_NONE;
+ 782              		.loc 1 451 23 view .LVU272
+ 452:uCOSII/Source/os_mbox.c ****     return (0u);                                           /* No tasks waiting on mailbox          
+ 783              		.loc 1 452 5 view .LVU273
+ 452:uCOSII/Source/os_mbox.c ****     return (0u);                                           /* No tasks waiting on mailbox          
+ 784              		.loc 1 452 11 is_stmt 0 view .LVU274
+ 785 0066 0023     		movs	r3, #0
+ 786 0068 88F80030 		strb	r3, [r8]
+ 453:uCOSII/Source/os_mbox.c **** }
+ 787              		.loc 1 453 5 is_stmt 1 view .LVU275
+ 453:uCOSII/Source/os_mbox.c **** }
+ 788              		.loc 1 453 12 is_stmt 0 view .LVU276
+ 789 006c D1E7     		b	.L48
+ 790              		.cfi_endproc
+ 791              	.LFE4:
+ 793              		.section	.text.OSMboxPost,"ax",%progbits
+ 794              		.align	1
+ 795              		.global	OSMboxPost
+ 796              		.syntax unified
+ 797              		.thumb
+ 798              		.thumb_func
+ 799              		.fpu fpv4-sp-d16
+ 801              	OSMboxPost:
+ 802              	.LVL82:
+ 803              	.LFB5:
+ 455:uCOSII/Source/os_mbox.c **** #endif
+ 456:uCOSII/Source/os_mbox.c **** 
+ 457:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 458:uCOSII/Source/os_mbox.c **** /*
+ 459:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ARM GAS  /tmp/ccYanot6.s 			page 26
+
+
+ 460:uCOSII/Source/os_mbox.c **** *                                      POST MESSAGE TO A MAILBOX
+ 461:uCOSII/Source/os_mbox.c **** *
+ 462:uCOSII/Source/os_mbox.c **** * Description: This function sends a message to a mailbox
+ 463:uCOSII/Source/os_mbox.c **** *
+ 464:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired ma
+ 465:uCOSII/Source/os_mbox.c **** *
+ 466:uCOSII/Source/os_mbox.c **** *              pmsg          is a pointer to the message to send.  You MUST NOT send a NULL pointer
+ 467:uCOSII/Source/os_mbox.c **** *
+ 468:uCOSII/Source/os_mbox.c **** * Returns    : OS_ERR_NONE          The call was successful and the message was sent
+ 469:uCOSII/Source/os_mbox.c **** *              OS_ERR_MBOX_FULL     If the mailbox already contains a message.  You can can only se
+ 470:uCOSII/Source/os_mbox.c **** *                                   message at a time and thus, the message MUST be consumed before
+ 471:uCOSII/Source/os_mbox.c **** *                                   are allowed to send another one.
+ 472:uCOSII/Source/os_mbox.c **** *              OS_ERR_EVENT_TYPE    If you are attempting to post to a non mailbox.
+ 473:uCOSII/Source/os_mbox.c **** *              OS_ERR_PEVENT_NULL   If 'pevent' is a NULL pointer
+ 474:uCOSII/Source/os_mbox.c **** *              OS_ERR_POST_NULL_PTR If you are attempting to post a NULL pointer
+ 475:uCOSII/Source/os_mbox.c **** *
+ 476:uCOSII/Source/os_mbox.c **** * Note(s)    : 1) HPT means Highest Priority Task
+ 477:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 478:uCOSII/Source/os_mbox.c **** */
+ 479:uCOSII/Source/os_mbox.c **** 
+ 480:uCOSII/Source/os_mbox.c **** #if OS_MBOX_POST_EN > 0u
+ 481:uCOSII/Source/os_mbox.c **** INT8U  OSMboxPost (OS_EVENT  *pevent,
+ 482:uCOSII/Source/os_mbox.c ****                    void      *pmsg)
+ 483:uCOSII/Source/os_mbox.c **** {
+ 804              		.loc 1 483 1 is_stmt 1 view -0
+ 805              		.cfi_startproc
+ 806              		@ args = 0, pretend = 0, frame = 0
+ 807              		@ frame_needed = 0, uses_anonymous_args = 0
+ 808              		.loc 1 483 1 is_stmt 0 view .LVU278
+ 809 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 810              	.LCFI5:
+ 811              		.cfi_def_cfa_offset 24
+ 812              		.cfi_offset 3, -24
+ 813              		.cfi_offset 4, -20
+ 814              		.cfi_offset 5, -16
+ 815              		.cfi_offset 6, -12
+ 816              		.cfi_offset 7, -8
+ 817              		.cfi_offset 14, -4
+ 484:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 485:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 818              		.loc 1 485 5 is_stmt 1 view .LVU279
+ 819              	.LVL83:
+ 486:uCOSII/Source/os_mbox.c **** #endif
+ 487:uCOSII/Source/os_mbox.c **** 
+ 488:uCOSII/Source/os_mbox.c **** 
+ 489:uCOSII/Source/os_mbox.c **** 
+ 490:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 491:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 492:uCOSII/Source/os_mbox.c ****         return (OS_ERR_PEVENT_NULL);
+ 493:uCOSII/Source/os_mbox.c ****     }
+ 494:uCOSII/Source/os_mbox.c ****     if (pmsg == (void *)0) {                          /* Make sure we are not posting a NULL pointe
+ 495:uCOSII/Source/os_mbox.c ****         return (OS_ERR_POST_NULL_PTR);
+ 496:uCOSII/Source/os_mbox.c ****     }
+ 497:uCOSII/Source/os_mbox.c **** #endif
+ 498:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {  /* Validate event block type                 
+ 820              		.loc 1 498 5 view .LVU280
+ 821              		.loc 1 498 15 is_stmt 0 view .LVU281
+ARM GAS  /tmp/ccYanot6.s 			page 27
+
+
+ 822 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 823              		.loc 1 498 8 view .LVU282
+ 824 0004 012B     		cmp	r3, #1
+ 825 0006 02D0     		beq	.L64
+ 499:uCOSII/Source/os_mbox.c ****         return (OS_ERR_EVENT_TYPE);
+ 826              		.loc 1 499 16 view .LVU283
+ 827 0008 0126     		movs	r6, #1
+ 828              	.LVL84:
+ 829              	.L59:
+ 500:uCOSII/Source/os_mbox.c ****     }
+ 501:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 502:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 503:uCOSII/Source/os_mbox.c ****                                                       /* Ready HPT waiting on event                
+ 504:uCOSII/Source/os_mbox.c ****         (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 505:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 506:uCOSII/Source/os_mbox.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 507:uCOSII/Source/os_mbox.c ****         return (OS_ERR_NONE);
+ 508:uCOSII/Source/os_mbox.c ****     }
+ 509:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventPtr != (void *)0) {            /* Make sure mailbox doesn't already have a m
+ 510:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 511:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 512:uCOSII/Source/os_mbox.c ****     }
+ 513:uCOSII/Source/os_mbox.c ****     pevent->OSEventPtr = pmsg;                        /* Place message in mailbox                  
+ 514:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 515:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 516:uCOSII/Source/os_mbox.c **** }
+ 830              		.loc 1 516 1 view .LVU284
+ 831 000a 3046     		mov	r0, r6
+ 832 000c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 833              	.LVL85:
+ 834              	.L64:
+ 835              		.loc 1 516 1 view .LVU285
+ 836 000e 0446     		mov	r4, r0
+ 837 0010 0D46     		mov	r5, r1
+ 501:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 838              		.loc 1 501 5 is_stmt 1 view .LVU286
+ 839 0012 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 840              	.LVL86:
+ 501:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 841              		.loc 1 501 5 is_stmt 0 view .LVU287
+ 842 0016 0746     		mov	r7, r0
+ 843              	.LVL87:
+ 501:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 844              		.loc 1 501 24 is_stmt 1 view .LVU288
+ 502:uCOSII/Source/os_mbox.c ****                                                       /* Ready HPT waiting on event                
+ 845              		.loc 1 502 5 view .LVU289
+ 502:uCOSII/Source/os_mbox.c ****                                                       /* Ready HPT waiting on event                
+ 846              		.loc 1 502 15 is_stmt 0 view .LVU290
+ 847 0018 A67A     		ldrb	r6, [r4, #10]	@ zero_extendqisi2
+ 502:uCOSII/Source/os_mbox.c ****                                                       /* Ready HPT waiting on event                
+ 848              		.loc 1 502 8 view .LVU291
+ 849 001a 2EB9     		cbnz	r6, .L65
+ 509:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 850              		.loc 1 509 5 is_stmt 1 view .LVU292
+ 509:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 851              		.loc 1 509 15 is_stmt 0 view .LVU293
+ 852 001c 6368     		ldr	r3, [r4, #4]
+ARM GAS  /tmp/ccYanot6.s 			page 28
+
+
+ 509:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 853              		.loc 1 509 8 view .LVU294
+ 854 001e 83B9     		cbnz	r3, .L66
+ 513:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 855              		.loc 1 513 5 is_stmt 1 view .LVU295
+ 513:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 856              		.loc 1 513 24 is_stmt 0 view .LVU296
+ 857 0020 6560     		str	r5, [r4, #4]
+ 514:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 858              		.loc 1 514 5 is_stmt 1 view .LVU297
+ 859 0022 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 860              	.LVL88:
+ 514:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 861              		.loc 1 514 23 view .LVU298
+ 515:uCOSII/Source/os_mbox.c **** }
+ 862              		.loc 1 515 5 view .LVU299
+ 515:uCOSII/Source/os_mbox.c **** }
+ 863              		.loc 1 515 12 is_stmt 0 view .LVU300
+ 864 0026 F0E7     		b	.L59
+ 865              	.LVL89:
+ 866              	.L65:
+ 504:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 867              		.loc 1 504 9 is_stmt 1 view .LVU301
+ 504:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 868              		.loc 1 504 15 is_stmt 0 view .LVU302
+ 869 0028 0023     		movs	r3, #0
+ 870 002a 0222     		movs	r2, #2
+ 871 002c 2946     		mov	r1, r5
+ 872 002e 2046     		mov	r0, r4
+ 873              	.LVL90:
+ 504:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 874              		.loc 1 504 15 view .LVU303
+ 875 0030 FFF7FEFF 		bl	OS_EventTaskRdy
+ 876              	.LVL91:
+ 505:uCOSII/Source/os_mbox.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 877              		.loc 1 505 9 is_stmt 1 view .LVU304
+ 878 0034 3846     		mov	r0, r7
+ 879 0036 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 880              	.LVL92:
+ 505:uCOSII/Source/os_mbox.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 881              		.loc 1 505 27 view .LVU305
+ 506:uCOSII/Source/os_mbox.c ****         return (OS_ERR_NONE);
+ 882              		.loc 1 506 9 view .LVU306
+ 883 003a FFF7FEFF 		bl	OS_Sched
+ 884              	.LVL93:
+ 507:uCOSII/Source/os_mbox.c ****     }
+ 885              		.loc 1 507 9 view .LVU307
+ 507:uCOSII/Source/os_mbox.c ****     }
+ 886              		.loc 1 507 16 is_stmt 0 view .LVU308
+ 887 003e 0026     		movs	r6, #0
+ 888 0040 E3E7     		b	.L59
+ 889              	.LVL94:
+ 890              	.L66:
+ 510:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 891              		.loc 1 510 9 is_stmt 1 view .LVU309
+ 892 0042 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 893              	.LVL95:
+ARM GAS  /tmp/ccYanot6.s 			page 29
+
+
+ 510:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 894              		.loc 1 510 27 view .LVU310
+ 511:uCOSII/Source/os_mbox.c ****     }
+ 895              		.loc 1 511 9 view .LVU311
+ 511:uCOSII/Source/os_mbox.c ****     }
+ 896              		.loc 1 511 16 is_stmt 0 view .LVU312
+ 897 0046 1426     		movs	r6, #20
+ 898 0048 DFE7     		b	.L59
+ 899              		.cfi_endproc
+ 900              	.LFE5:
+ 902              		.section	.text.OSMboxPostOpt,"ax",%progbits
+ 903              		.align	1
+ 904              		.global	OSMboxPostOpt
+ 905              		.syntax unified
+ 906              		.thumb
+ 907              		.thumb_func
+ 908              		.fpu fpv4-sp-d16
+ 910              	OSMboxPostOpt:
+ 911              	.LVL96:
+ 912              	.LFB6:
+ 517:uCOSII/Source/os_mbox.c **** #endif
+ 518:uCOSII/Source/os_mbox.c **** 
+ 519:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 520:uCOSII/Source/os_mbox.c **** /*
+ 521:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 522:uCOSII/Source/os_mbox.c **** *                                      POST MESSAGE TO A MAILBOX
+ 523:uCOSII/Source/os_mbox.c **** *
+ 524:uCOSII/Source/os_mbox.c **** * Description: This function sends a message to a mailbox
+ 525:uCOSII/Source/os_mbox.c **** *
+ 526:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired ma
+ 527:uCOSII/Source/os_mbox.c **** *
+ 528:uCOSII/Source/os_mbox.c **** *              pmsg          is a pointer to the message to send.  You MUST NOT send a NULL pointer
+ 529:uCOSII/Source/os_mbox.c **** *
+ 530:uCOSII/Source/os_mbox.c **** *              opt           determines the type of POST performed:
+ 531:uCOSII/Source/os_mbox.c **** *                            OS_POST_OPT_NONE         POST to a single waiting task
+ 532:uCOSII/Source/os_mbox.c **** *                                                     (Identical to OSMboxPost())
+ 533:uCOSII/Source/os_mbox.c **** *                            OS_POST_OPT_BROADCAST    POST to ALL tasks that are waiting on the mai
+ 534:uCOSII/Source/os_mbox.c **** *
+ 535:uCOSII/Source/os_mbox.c **** *                            OS_POST_OPT_NO_SCHED     Indicates that the scheduler will NOT be invo
+ 536:uCOSII/Source/os_mbox.c **** *
+ 537:uCOSII/Source/os_mbox.c **** * Returns    : OS_ERR_NONE          The call was successful and the message was sent
+ 538:uCOSII/Source/os_mbox.c **** *              OS_ERR_MBOX_FULL     If the mailbox already contains a message.  You can can only se
+ 539:uCOSII/Source/os_mbox.c **** *                                   message at a time and thus, the message MUST be consumed before
+ 540:uCOSII/Source/os_mbox.c **** *                                   are allowed to send another one.
+ 541:uCOSII/Source/os_mbox.c **** *              OS_ERR_EVENT_TYPE    If you are attempting to post to a non mailbox.
+ 542:uCOSII/Source/os_mbox.c **** *              OS_ERR_PEVENT_NULL   If 'pevent' is a NULL pointer
+ 543:uCOSII/Source/os_mbox.c **** *              OS_ERR_POST_NULL_PTR If you are attempting to post a NULL pointer
+ 544:uCOSII/Source/os_mbox.c **** *
+ 545:uCOSII/Source/os_mbox.c **** * Note(s)    : 1) HPT means Highest Priority Task
+ 546:uCOSII/Source/os_mbox.c **** *
+ 547:uCOSII/Source/os_mbox.c **** * Warning    : Interrupts can be disabled for a long time if you do a 'broadcast'.  In fact, the
+ 548:uCOSII/Source/os_mbox.c **** *              interrupt disable time is proportional to the number of tasks waiting on the mailbox
+ 549:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 550:uCOSII/Source/os_mbox.c **** */
+ 551:uCOSII/Source/os_mbox.c **** 
+ 552:uCOSII/Source/os_mbox.c **** #if OS_MBOX_POST_OPT_EN > 0u
+ 553:uCOSII/Source/os_mbox.c **** INT8U  OSMboxPostOpt (OS_EVENT  *pevent,
+ARM GAS  /tmp/ccYanot6.s 			page 30
+
+
+ 554:uCOSII/Source/os_mbox.c ****                       void      *pmsg,
+ 555:uCOSII/Source/os_mbox.c ****                       INT8U      opt)
+ 556:uCOSII/Source/os_mbox.c **** {
+ 913              		.loc 1 556 1 is_stmt 1 view -0
+ 914              		.cfi_startproc
+ 915              		@ args = 0, pretend = 0, frame = 0
+ 916              		@ frame_needed = 0, uses_anonymous_args = 0
+ 917              		.loc 1 556 1 is_stmt 0 view .LVU314
+ 918 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 919              	.LCFI6:
+ 920              		.cfi_def_cfa_offset 24
+ 921              		.cfi_offset 4, -24
+ 922              		.cfi_offset 5, -20
+ 923              		.cfi_offset 6, -16
+ 924              		.cfi_offset 7, -12
+ 925              		.cfi_offset 8, -8
+ 926              		.cfi_offset 14, -4
+ 557:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 558:uCOSII/Source/os_mbox.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 927              		.loc 1 558 5 is_stmt 1 view .LVU315
+ 928              	.LVL97:
+ 559:uCOSII/Source/os_mbox.c **** #endif
+ 560:uCOSII/Source/os_mbox.c **** 
+ 561:uCOSII/Source/os_mbox.c **** 
+ 562:uCOSII/Source/os_mbox.c **** 
+ 563:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 564:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 565:uCOSII/Source/os_mbox.c ****         return (OS_ERR_PEVENT_NULL);
+ 566:uCOSII/Source/os_mbox.c ****     }
+ 567:uCOSII/Source/os_mbox.c ****     if (pmsg == (void *)0) {                          /* Make sure we are not posting a NULL pointe
+ 568:uCOSII/Source/os_mbox.c ****         return (OS_ERR_POST_NULL_PTR);
+ 569:uCOSII/Source/os_mbox.c ****     }
+ 570:uCOSII/Source/os_mbox.c **** #endif
+ 571:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {  /* Validate event block type                 
+ 929              		.loc 1 571 5 view .LVU316
+ 930              		.loc 1 571 15 is_stmt 0 view .LVU317
+ 931 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 932              		.loc 1 571 8 view .LVU318
+ 933 0006 012B     		cmp	r3, #1
+ 934 0008 03D0     		beq	.L79
+ 572:uCOSII/Source/os_mbox.c ****         return (OS_ERR_EVENT_TYPE);
+ 935              		.loc 1 572 16 view .LVU319
+ 936 000a 0126     		movs	r6, #1
+ 937              	.LVL98:
+ 938              	.L68:
+ 573:uCOSII/Source/os_mbox.c ****     }
+ 574:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 575:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 576:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 577:uCOSII/Source/os_mbox.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on mailbox 
+ 578:uCOSII/Source/os_mbox.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 579:uCOSII/Source/os_mbox.c ****             }
+ 580:uCOSII/Source/os_mbox.c ****         } else {                                      /* No,  Post to HPT waiting on mbox          
+ 581:uCOSII/Source/os_mbox.c ****             (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 582:uCOSII/Source/os_mbox.c ****         }
+ 583:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 584:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ARM GAS  /tmp/ccYanot6.s 			page 31
+
+
+ 585:uCOSII/Source/os_mbox.c ****             OS_Sched();                               /* Find HPT ready to run                     
+ 586:uCOSII/Source/os_mbox.c ****         }
+ 587:uCOSII/Source/os_mbox.c ****         return (OS_ERR_NONE);
+ 588:uCOSII/Source/os_mbox.c ****     }
+ 589:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventPtr != (void *)0) {            /* Make sure mailbox doesn't already have a m
+ 590:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 591:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 592:uCOSII/Source/os_mbox.c ****     }
+ 593:uCOSII/Source/os_mbox.c ****     pevent->OSEventPtr = pmsg;                        /* Place message in mailbox                  
+ 594:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 595:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 596:uCOSII/Source/os_mbox.c **** }
+ 939              		.loc 1 596 1 view .LVU320
+ 940 000c 3046     		mov	r0, r6
+ 941 000e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 942              	.LVL99:
+ 943              	.L79:
+ 944              		.loc 1 596 1 view .LVU321
+ 945 0012 0446     		mov	r4, r0
+ 946 0014 0F46     		mov	r7, r1
+ 947 0016 1546     		mov	r5, r2
+ 574:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 948              		.loc 1 574 5 is_stmt 1 view .LVU322
+ 949 0018 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 950              	.LVL100:
+ 574:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 951              		.loc 1 574 5 is_stmt 0 view .LVU323
+ 952 001c 8046     		mov	r8, r0
+ 953              	.LVL101:
+ 574:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on mailbox        
+ 954              		.loc 1 574 24 is_stmt 1 view .LVU324
+ 575:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 955              		.loc 1 575 5 view .LVU325
+ 575:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 956              		.loc 1 575 15 is_stmt 0 view .LVU326
+ 957 001e A67A     		ldrb	r6, [r4, #10]	@ zero_extendqisi2
+ 575:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 958              		.loc 1 575 8 view .LVU327
+ 959 0020 2EB9     		cbnz	r6, .L80
+ 589:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 960              		.loc 1 589 5 is_stmt 1 view .LVU328
+ 589:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 961              		.loc 1 589 15 is_stmt 0 view .LVU329
+ 962 0022 6368     		ldr	r3, [r4, #4]
+ 589:uCOSII/Source/os_mbox.c ****         OS_EXIT_CRITICAL();
+ 963              		.loc 1 589 8 view .LVU330
+ 964 0024 03BB     		cbnz	r3, .L81
+ 593:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 965              		.loc 1 593 5 is_stmt 1 view .LVU331
+ 593:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 966              		.loc 1 593 24 is_stmt 0 view .LVU332
+ 967 0026 6760     		str	r7, [r4, #4]
+ 594:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 968              		.loc 1 594 5 is_stmt 1 view .LVU333
+ 969 0028 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 970              	.LVL102:
+ 594:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ARM GAS  /tmp/ccYanot6.s 			page 32
+
+
+ 971              		.loc 1 594 23 view .LVU334
+ 595:uCOSII/Source/os_mbox.c **** }
+ 972              		.loc 1 595 5 view .LVU335
+ 595:uCOSII/Source/os_mbox.c **** }
+ 973              		.loc 1 595 12 is_stmt 0 view .LVU336
+ 974 002c EEE7     		b	.L68
+ 975              	.LVL103:
+ 976              	.L80:
+ 576:uCOSII/Source/os_mbox.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on mailbox 
+ 977              		.loc 1 576 9 is_stmt 1 view .LVU337
+ 576:uCOSII/Source/os_mbox.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on mailbox 
+ 978              		.loc 1 576 12 is_stmt 0 view .LVU338
+ 979 002e 15F0010F 		tst	r5, #1
+ 980 0032 08D0     		beq	.L82
+ 981              	.LVL104:
+ 982              	.L70:
+ 577:uCOSII/Source/os_mbox.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 983              		.loc 1 577 19 is_stmt 1 view .LVU339
+ 577:uCOSII/Source/os_mbox.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 984              		.loc 1 577 26 is_stmt 0 view .LVU340
+ 985 0034 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 577:uCOSII/Source/os_mbox.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_MBOX, OS_STAT_PEND_OK);
+ 986              		.loc 1 577 19 view .LVU341
+ 987 0036 63B1     		cbz	r3, .L73
+ 578:uCOSII/Source/os_mbox.c ****             }
+ 988              		.loc 1 578 17 is_stmt 1 view .LVU342
+ 578:uCOSII/Source/os_mbox.c ****             }
+ 989              		.loc 1 578 23 is_stmt 0 view .LVU343
+ 990 0038 0023     		movs	r3, #0
+ 991 003a 0222     		movs	r2, #2
+ 992 003c 3946     		mov	r1, r7
+ 993 003e 2046     		mov	r0, r4
+ 994 0040 FFF7FEFF 		bl	OS_EventTaskRdy
+ 995              	.LVL105:
+ 996 0044 F6E7     		b	.L70
+ 997              	.LVL106:
+ 998              	.L82:
+ 581:uCOSII/Source/os_mbox.c ****         }
+ 999              		.loc 1 581 13 is_stmt 1 view .LVU344
+ 581:uCOSII/Source/os_mbox.c ****         }
+ 1000              		.loc 1 581 19 is_stmt 0 view .LVU345
+ 1001 0046 0023     		movs	r3, #0
+ 1002 0048 0222     		movs	r2, #2
+ 1003 004a 3946     		mov	r1, r7
+ 1004 004c 2046     		mov	r0, r4
+ 1005              	.LVL107:
+ 581:uCOSII/Source/os_mbox.c ****         }
+ 1006              		.loc 1 581 19 view .LVU346
+ 1007 004e FFF7FEFF 		bl	OS_EventTaskRdy
+ 1008              	.LVL108:
+ 1009              	.L73:
+ 583:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ 1010              		.loc 1 583 9 is_stmt 1 view .LVU347
+ 1011 0052 4046     		mov	r0, r8
+ 1012 0054 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1013              	.LVL109:
+ 583:uCOSII/Source/os_mbox.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ARM GAS  /tmp/ccYanot6.s 			page 33
+
+
+ 1014              		.loc 1 583 27 view .LVU348
+ 584:uCOSII/Source/os_mbox.c ****             OS_Sched();                               /* Find HPT ready to run                     
+ 1015              		.loc 1 584 9 view .LVU349
+ 584:uCOSII/Source/os_mbox.c ****             OS_Sched();                               /* Find HPT ready to run                     
+ 1016              		.loc 1 584 12 is_stmt 0 view .LVU350
+ 1017 0058 15F0040F 		tst	r5, #4
+ 1018 005c 01D0     		beq	.L83
+ 1019              	.L74:
+ 587:uCOSII/Source/os_mbox.c ****     }
+ 1020              		.loc 1 587 9 is_stmt 1 view .LVU351
+ 587:uCOSII/Source/os_mbox.c ****     }
+ 1021              		.loc 1 587 16 is_stmt 0 view .LVU352
+ 1022 005e 0026     		movs	r6, #0
+ 1023 0060 D4E7     		b	.L68
+ 1024              	.L83:
+ 585:uCOSII/Source/os_mbox.c ****         }
+ 1025              		.loc 1 585 13 is_stmt 1 view .LVU353
+ 1026 0062 FFF7FEFF 		bl	OS_Sched
+ 1027              	.LVL110:
+ 1028 0066 FAE7     		b	.L74
+ 1029              	.LVL111:
+ 1030              	.L81:
+ 590:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 1031              		.loc 1 590 9 view .LVU354
+ 1032 0068 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1033              	.LVL112:
+ 590:uCOSII/Source/os_mbox.c ****         return (OS_ERR_MBOX_FULL);
+ 1034              		.loc 1 590 27 view .LVU355
+ 591:uCOSII/Source/os_mbox.c ****     }
+ 1035              		.loc 1 591 9 view .LVU356
+ 591:uCOSII/Source/os_mbox.c ****     }
+ 1036              		.loc 1 591 16 is_stmt 0 view .LVU357
+ 1037 006c 1426     		movs	r6, #20
+ 1038 006e CDE7     		b	.L68
+ 1039              		.cfi_endproc
+ 1040              	.LFE6:
+ 1042              		.section	.text.OSMboxQuery,"ax",%progbits
+ 1043              		.align	1
+ 1044              		.global	OSMboxQuery
+ 1045              		.syntax unified
+ 1046              		.thumb
+ 1047              		.thumb_func
+ 1048              		.fpu fpv4-sp-d16
+ 1050              	OSMboxQuery:
+ 1051              	.LVL113:
+ 1052              	.LFB7:
+ 597:uCOSII/Source/os_mbox.c **** #endif
+ 598:uCOSII/Source/os_mbox.c **** 
+ 599:uCOSII/Source/os_mbox.c **** /*$PAGE*/
+ 600:uCOSII/Source/os_mbox.c **** /*
+ 601:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 602:uCOSII/Source/os_mbox.c **** *                                       QUERY A MESSAGE MAILBOX
+ 603:uCOSII/Source/os_mbox.c **** *
+ 604:uCOSII/Source/os_mbox.c **** * Description: This function obtains information about a message mailbox.
+ 605:uCOSII/Source/os_mbox.c **** *
+ 606:uCOSII/Source/os_mbox.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired ma
+ 607:uCOSII/Source/os_mbox.c **** *
+ARM GAS  /tmp/ccYanot6.s 			page 34
+
+
+ 608:uCOSII/Source/os_mbox.c **** *              p_mbox_data   is a pointer to a structure that will contain information about the me
+ 609:uCOSII/Source/os_mbox.c **** *                            mailbox.
+ 610:uCOSII/Source/os_mbox.c **** *
+ 611:uCOSII/Source/os_mbox.c **** * Returns    : OS_ERR_NONE         The call was successful and the message was sent
+ 612:uCOSII/Source/os_mbox.c **** *              OS_ERR_EVENT_TYPE   If you are attempting to obtain data from a non mailbox.
+ 613:uCOSII/Source/os_mbox.c **** *              OS_ERR_PEVENT_NULL  If 'pevent'      is a NULL pointer
+ 614:uCOSII/Source/os_mbox.c **** *              OS_ERR_PDATA_NULL   If 'p_mbox_data' is a NULL pointer
+ 615:uCOSII/Source/os_mbox.c **** ***************************************************************************************************
+ 616:uCOSII/Source/os_mbox.c **** */
+ 617:uCOSII/Source/os_mbox.c **** 
+ 618:uCOSII/Source/os_mbox.c **** #if OS_MBOX_QUERY_EN > 0u
+ 619:uCOSII/Source/os_mbox.c **** INT8U  OSMboxQuery (OS_EVENT      *pevent,
+ 620:uCOSII/Source/os_mbox.c ****                     OS_MBOX_DATA  *p_mbox_data)
+ 621:uCOSII/Source/os_mbox.c **** {
+ 1053              		.loc 1 621 1 is_stmt 1 view -0
+ 1054              		.cfi_startproc
+ 1055              		@ args = 0, pretend = 0, frame = 0
+ 1056              		@ frame_needed = 0, uses_anonymous_args = 0
+ 622:uCOSII/Source/os_mbox.c ****     INT8U       i;
+ 1057              		.loc 1 622 5 view .LVU359
+ 623:uCOSII/Source/os_mbox.c ****     OS_PRIO    *psrc;
+ 1058              		.loc 1 623 5 view .LVU360
+ 624:uCOSII/Source/os_mbox.c ****     OS_PRIO    *pdest;
+ 1059              		.loc 1 624 5 view .LVU361
+ 625:uCOSII/Source/os_mbox.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
+ 626:uCOSII/Source/os_mbox.c ****     OS_CPU_SR   cpu_sr = 0u;
+ 1060              		.loc 1 626 5 view .LVU362
+ 627:uCOSII/Source/os_mbox.c **** #endif
+ 628:uCOSII/Source/os_mbox.c **** 
+ 629:uCOSII/Source/os_mbox.c **** 
+ 630:uCOSII/Source/os_mbox.c **** 
+ 631:uCOSII/Source/os_mbox.c **** #if OS_ARG_CHK_EN > 0u
+ 632:uCOSII/Source/os_mbox.c ****     if (pevent == (OS_EVENT *)0) {                         /* Validate 'pevent'                    
+ 633:uCOSII/Source/os_mbox.c ****         return (OS_ERR_PEVENT_NULL);
+ 634:uCOSII/Source/os_mbox.c ****     }
+ 635:uCOSII/Source/os_mbox.c ****     if (p_mbox_data == (OS_MBOX_DATA *)0) {                /* Validate 'p_mbox_data'               
+ 636:uCOSII/Source/os_mbox.c ****         return (OS_ERR_PDATA_NULL);
+ 637:uCOSII/Source/os_mbox.c ****     }
+ 638:uCOSII/Source/os_mbox.c **** #endif
+ 639:uCOSII/Source/os_mbox.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MBOX) {       /* Validate event block type            
+ 1061              		.loc 1 639 5 view .LVU363
+ 1062              		.loc 1 639 15 is_stmt 0 view .LVU364
+ 1063 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1064              		.loc 1 639 8 view .LVU365
+ 1065 0002 012B     		cmp	r3, #1
+ 1066 0004 01D0     		beq	.L93
+ 640:uCOSII/Source/os_mbox.c ****         return (OS_ERR_EVENT_TYPE);
+ 1067              		.loc 1 640 16 view .LVU366
+ 1068 0006 0120     		movs	r0, #1
+ 1069              	.LVL114:
+ 641:uCOSII/Source/os_mbox.c ****     }
+ 642:uCOSII/Source/os_mbox.c ****     OS_ENTER_CRITICAL();
+ 643:uCOSII/Source/os_mbox.c ****     p_mbox_data->OSEventGrp = pevent->OSEventGrp;          /* Copy message mailbox wait list       
+ 644:uCOSII/Source/os_mbox.c ****     psrc                    = &pevent->OSEventTbl[0];
+ 645:uCOSII/Source/os_mbox.c ****     pdest                   = &p_mbox_data->OSEventTbl[0];
+ 646:uCOSII/Source/os_mbox.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 647:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ARM GAS  /tmp/ccYanot6.s 			page 35
+
+
+ 648:uCOSII/Source/os_mbox.c ****     }
+ 649:uCOSII/Source/os_mbox.c ****     p_mbox_data->OSMsg = pevent->OSEventPtr;               /* Get message from mailbox             
+ 650:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 651:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 652:uCOSII/Source/os_mbox.c **** }
+ 1070              		.loc 1 652 1 view .LVU367
+ 1071 0008 7047     		bx	lr
+ 1072              	.LVL115:
+ 1073              	.L93:
+ 621:uCOSII/Source/os_mbox.c ****     INT8U       i;
+ 1074              		.loc 1 621 1 view .LVU368
+ 1075 000a 70B5     		push	{r4, r5, r6, lr}
+ 1076              	.LCFI7:
+ 1077              		.cfi_def_cfa_offset 16
+ 1078              		.cfi_offset 4, -16
+ 1079              		.cfi_offset 5, -12
+ 1080              		.cfi_offset 6, -8
+ 1081              		.cfi_offset 14, -4
+ 1082 000c 0546     		mov	r5, r0
+ 1083 000e 0E46     		mov	r6, r1
+ 642:uCOSII/Source/os_mbox.c ****     p_mbox_data->OSEventGrp = pevent->OSEventGrp;          /* Copy message mailbox wait list       
+ 1084              		.loc 1 642 5 is_stmt 1 view .LVU369
+ 1085 0010 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 1086              	.LVL116:
+ 642:uCOSII/Source/os_mbox.c ****     p_mbox_data->OSEventGrp = pevent->OSEventGrp;          /* Copy message mailbox wait list       
+ 1087              		.loc 1 642 24 view .LVU370
+ 643:uCOSII/Source/os_mbox.c ****     psrc                    = &pevent->OSEventTbl[0];
+ 1088              		.loc 1 643 5 view .LVU371
+ 643:uCOSII/Source/os_mbox.c ****     psrc                    = &pevent->OSEventTbl[0];
+ 1089              		.loc 1 643 37 is_stmt 0 view .LVU372
+ 1090 0014 AB7A     		ldrb	r3, [r5, #10]	@ zero_extendqisi2
+ 643:uCOSII/Source/os_mbox.c ****     psrc                    = &pevent->OSEventTbl[0];
+ 1091              		.loc 1 643 29 view .LVU373
+ 1092 0016 3373     		strb	r3, [r6, #12]
+ 644:uCOSII/Source/os_mbox.c ****     pdest                   = &p_mbox_data->OSEventTbl[0];
+ 1093              		.loc 1 644 5 is_stmt 1 view .LVU374
+ 644:uCOSII/Source/os_mbox.c ****     pdest                   = &p_mbox_data->OSEventTbl[0];
+ 1094              		.loc 1 644 29 is_stmt 0 view .LVU375
+ 1095 0018 05F10B02 		add	r2, r5, #11
+ 1096              	.LVL117:
+ 645:uCOSII/Source/os_mbox.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 1097              		.loc 1 645 5 is_stmt 1 view .LVU376
+ 645:uCOSII/Source/os_mbox.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 1098              		.loc 1 645 29 is_stmt 0 view .LVU377
+ 1099 001c 331D     		adds	r3, r6, #4
+ 1100              	.LVL118:
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1101              		.loc 1 646 5 is_stmt 1 view .LVU378
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1102              		.loc 1 646 12 is_stmt 0 view .LVU379
+ 1103 001e 0024     		movs	r4, #0
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1104              		.loc 1 646 5 view .LVU380
+ 1105 0020 05E0     		b	.L86
+ 1106              	.LVL119:
+ 1107              	.L87:
+ 647:uCOSII/Source/os_mbox.c ****     }
+ARM GAS  /tmp/ccYanot6.s 			page 36
+
+
+ 1108              		.loc 1 647 9 is_stmt 1 discriminator 3 view .LVU381
+ 647:uCOSII/Source/os_mbox.c ****     }
+ 1109              		.loc 1 647 20 is_stmt 0 discriminator 3 view .LVU382
+ 1110 0022 12F8011B 		ldrb	r1, [r2], #1	@ zero_extendqisi2
+ 1111              	.LVL120:
+ 647:uCOSII/Source/os_mbox.c ****     }
+ 1112              		.loc 1 647 18 discriminator 3 view .LVU383
+ 1113 0026 03F8011B 		strb	r1, [r3], #1
+ 1114              	.LVL121:
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1115              		.loc 1 646 41 is_stmt 1 discriminator 3 view .LVU384
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1116              		.loc 1 646 42 is_stmt 0 discriminator 3 view .LVU385
+ 1117 002a 0134     		adds	r4, r4, #1
+ 1118              	.LVL122:
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1119              		.loc 1 646 42 discriminator 3 view .LVU386
+ 1120 002c E4B2     		uxtb	r4, r4
+ 1121              	.LVL123:
+ 1122              	.L86:
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1123              		.loc 1 646 18 is_stmt 1 discriminator 1 view .LVU387
+ 646:uCOSII/Source/os_mbox.c ****         *pdest++ = *psrc++;
+ 1124              		.loc 1 646 5 is_stmt 0 discriminator 1 view .LVU388
+ 1125 002e 072C     		cmp	r4, #7
+ 1126 0030 F7D9     		bls	.L87
+ 649:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 1127              		.loc 1 649 5 is_stmt 1 view .LVU389
+ 649:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 1128              		.loc 1 649 32 is_stmt 0 view .LVU390
+ 1129 0032 6B68     		ldr	r3, [r5, #4]
+ 1130              	.LVL124:
+ 649:uCOSII/Source/os_mbox.c ****     OS_EXIT_CRITICAL();
+ 1131              		.loc 1 649 24 view .LVU391
+ 1132 0034 3360     		str	r3, [r6]
+ 650:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 1133              		.loc 1 650 5 is_stmt 1 view .LVU392
+ 1134 0036 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1135              	.LVL125:
+ 650:uCOSII/Source/os_mbox.c ****     return (OS_ERR_NONE);
+ 1136              		.loc 1 650 23 view .LVU393
+ 651:uCOSII/Source/os_mbox.c **** }
+ 1137              		.loc 1 651 5 view .LVU394
+ 651:uCOSII/Source/os_mbox.c **** }
+ 1138              		.loc 1 651 12 is_stmt 0 view .LVU395
+ 1139 003a 0020     		movs	r0, #0
+ 1140              		.loc 1 652 1 view .LVU396
+ 1141 003c 70BD     		pop	{r4, r5, r6, pc}
+ 1142              		.loc 1 652 1 view .LVU397
+ 1143              		.cfi_endproc
+ 1144              	.LFE7:
+ 1146              		.text
+ 1147              	.Letext0:
+ 1148              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
+ 1149              		.file 3 "uCOSII/Include/ucos_ii.h"
+ARM GAS  /tmp/ccYanot6.s 			page 37
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 os_mbox.c
+     /tmp/ccYanot6.s:18     .text.OSMboxAccept:0000000000000000 $t
+     /tmp/ccYanot6.s:26     .text.OSMboxAccept:0000000000000000 OSMboxAccept
+     /tmp/ccYanot6.s:82     .rodata.OSMboxCreate.str1.4:0000000000000000 $d
+     /tmp/ccYanot6.s:86     .text.OSMboxCreate:0000000000000000 $t
+     /tmp/ccYanot6.s:93     .text.OSMboxCreate:0000000000000000 OSMboxCreate
+     /tmp/ccYanot6.s:174    .text.OSMboxCreate:000000000000003c $d
+     /tmp/ccYanot6.s:181    .text.OSMboxDel:0000000000000000 $t
+     /tmp/ccYanot6.s:188    .text.OSMboxDel:0000000000000000 OSMboxDel
+     /tmp/ccYanot6.s:412    .text.OSMboxDel:00000000000000bc $d
+     /tmp/ccYanot6.s:419    .text.OSMboxPend:0000000000000000 $t
+     /tmp/ccYanot6.s:426    .text.OSMboxPend:0000000000000000 OSMboxPend
+     /tmp/ccYanot6.s:641    .text.OSMboxPend:00000000000000c4 $d
+     /tmp/ccYanot6.s:648    .text.OSMboxPendAbort:0000000000000000 $t
+     /tmp/ccYanot6.s:655    .text.OSMboxPendAbort:0000000000000000 OSMboxPendAbort
+     /tmp/ccYanot6.s:794    .text.OSMboxPost:0000000000000000 $t
+     /tmp/ccYanot6.s:801    .text.OSMboxPost:0000000000000000 OSMboxPost
+     /tmp/ccYanot6.s:903    .text.OSMboxPostOpt:0000000000000000 $t
+     /tmp/ccYanot6.s:910    .text.OSMboxPostOpt:0000000000000000 OSMboxPostOpt
+     /tmp/ccYanot6.s:1043   .text.OSMboxQuery:0000000000000000 $t
+     /tmp/ccYanot6.s:1050   .text.OSMboxQuery:0000000000000000 OSMboxQuery
+
+UNDEFINED SYMBOLS
+OS_CPU_SR_Save
+OS_CPU_SR_Restore
+OS_EventWaitListInit
+OSIntNesting
+OSEventFreeList
+OS_EventTaskRdy
+OS_Sched
+OS_EventTaskWait
+OS_EventTaskRemove
+OSLockNesting
+OSTCBCur

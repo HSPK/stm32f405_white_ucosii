@@ -11,6 +11,45 @@ Archive member included to satisfy reference by file (symbol)
 /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libnosys.a(_exit.o)
                               /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-exit.o) (_exit)
 
+Allocating common symbols
+Common symbol       size              file
+
+OSLockNesting       0x1               build/os_core.o
+OSTaskRegNextAvailID
+                    0x1               build/os_core.o
+OSRunning           0x1               build/os_core.o
+OSIdleCtr           0x4               build/os_core.o
+OSPrioHighRdy       0x1               build/os_core.o
+OSFlagTbl           0x50              build/os_core.o
+OSPrioCur           0x1               build/os_core.o
+OSTCBList           0x4               build/os_core.o
+OSTickStepState     0x1               build/os_core.o
+OSTaskStatStk       0x200             build/os_core.o
+OSCtxSwCtr          0x4               build/os_core.o
+OSIdleCtrMax        0x4               build/os_core.o
+OSTCBFreeList       0x4               build/os_core.o
+OS_CPU_ExceptStkBase
+                    0x4               build/os_cpu_c.o
+OSCPUUsage          0x1               build/os_core.o
+OSTaskCtr           0x1               build/os_core.o
+OSQTbl              0x60              build/os_core.o
+OSTCBHighRdy        0x4               build/os_core.o
+OSQFreeList         0x4               build/os_core.o
+OSRdyGrp            0x1               build/os_core.o
+OSRdyTbl            0x8               build/os_core.o
+OSEventFreeList     0x4               build/os_core.o
+OS_CPU_ExceptStk    0x200             build/os_cpu_c.o
+OSIntNesting        0x1               build/os_core.o
+OSTCBCur            0x4               build/os_core.o
+OSTime              0x4               build/os_core.o
+OSTaskIdleStk       0x200             build/os_core.o
+OSEventTbl          0x1e0             build/os_core.o
+OSTCBTbl            0x790             build/os_core.o
+OSFlagFreeList      0x4               build/os_core.o
+OSStatRdy           0x1               build/os_core.o
+OSTCBPrioTbl        0x100             build/os_core.o
+OSIdleCtrRun        0x4               build/os_core.o
+
 Discarded input sections
 
  .text          0x0000000000000000        0x0 /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/thumb/v7e-m+fp/hard/crti.o
@@ -59,7 +98,7 @@ Discarded input sections
                 0x0000000000000000       0x40 build/misc.o
  .debug_ranges  0x0000000000000000       0x30 build/misc.o
  .debug_line    0x0000000000000000      0x2b4 build/misc.o
- .debug_str     0x0000000000000000      0x426 build/misc.o
+ .debug_str     0x0000000000000000      0x42b build/misc.o
  .comment       0x0000000000000000       0x4d build/misc.o
  .debug_frame   0x0000000000000000       0x60 build/misc.o
  .ARM.attributes
@@ -124,7 +163,7 @@ Discarded input sections
                 0x0000000000000000       0xe0 build/stm32f4xx_can.o
  .debug_ranges  0x0000000000000000       0xd0 build/stm32f4xx_can.o
  .debug_line    0x0000000000000000      0xe5f build/stm32f4xx_can.o
- .debug_str     0x0000000000000000      0x7ad build/stm32f4xx_can.o
+ .debug_str     0x0000000000000000      0x7b2 build/stm32f4xx_can.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_can.o
  .debug_frame   0x0000000000000000      0x208 build/stm32f4xx_can.o
  .ARM.attributes
@@ -214,7 +253,7 @@ Discarded input sections
                 0x0000000000000000      0x148 build/stm32f4xx_adc.o
  .debug_ranges  0x0000000000000000      0x138 build/stm32f4xx_adc.o
  .debug_line    0x0000000000000000      0xb09 build/stm32f4xx_adc.o
- .debug_str     0x0000000000000000      0x873 build/stm32f4xx_adc.o
+ .debug_str     0x0000000000000000      0x878 build/stm32f4xx_adc.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_adc.o
  .debug_frame   0x0000000000000000      0x2d4 build/stm32f4xx_adc.o
  .ARM.attributes
@@ -241,7 +280,7 @@ Discarded input sections
                 0x0000000000000000       0x48 build/stm32f4xx_crc.o
  .debug_ranges  0x0000000000000000       0x38 build/stm32f4xx_crc.o
  .debug_line    0x0000000000000000      0x251 build/stm32f4xx_crc.o
- .debug_str     0x0000000000000000      0x2a3 build/stm32f4xx_crc.o
+ .debug_str     0x0000000000000000      0x2a8 build/stm32f4xx_crc.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_crc.o
  .debug_frame   0x0000000000000000       0x7c build/stm32f4xx_crc.o
  .ARM.attributes
@@ -290,7 +329,7 @@ Discarded input sections
                 0x0000000000000000       0xa0 build/stm32f4xx_cryp.o
  .debug_ranges  0x0000000000000000       0x90 build/stm32f4xx_cryp.o
  .debug_line    0x0000000000000000      0x6fd build/stm32f4xx_cryp.o
- .debug_str     0x0000000000000000      0x62c build/stm32f4xx_cryp.o
+ .debug_str     0x0000000000000000      0x631 build/stm32f4xx_cryp.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_cryp.o
  .debug_frame   0x0000000000000000      0x140 build/stm32f4xx_cryp.o
  .ARM.attributes
@@ -311,7 +350,7 @@ Discarded input sections
                 0x0000000000000000       0x30 build/stm32f4xx_cryp_aes.o
  .debug_ranges  0x0000000000000000       0x20 build/stm32f4xx_cryp_aes.o
  .debug_line    0x0000000000000000      0xf15 build/stm32f4xx_cryp_aes.o
- .debug_str     0x0000000000000000      0x4b2 build/stm32f4xx_cryp_aes.o
+ .debug_str     0x0000000000000000      0x4b7 build/stm32f4xx_cryp_aes.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_cryp_aes.o
  .debug_frame   0x0000000000000000       0x90 build/stm32f4xx_cryp_aes.o
  .ARM.attributes
@@ -330,7 +369,7 @@ Discarded input sections
                 0x0000000000000000       0x28 build/stm32f4xx_cryp_des.o
  .debug_ranges  0x0000000000000000       0x18 build/stm32f4xx_cryp_des.o
  .debug_line    0x0000000000000000      0x4d3 build/stm32f4xx_cryp_des.o
- .debug_str     0x0000000000000000      0x49d build/stm32f4xx_cryp_des.o
+ .debug_str     0x0000000000000000      0x4a2 build/stm32f4xx_cryp_des.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_cryp_des.o
  .debug_frame   0x0000000000000000       0x60 build/stm32f4xx_cryp_des.o
  .ARM.attributes
@@ -349,7 +388,7 @@ Discarded input sections
                 0x0000000000000000       0x28 build/stm32f4xx_cryp_tdes.o
  .debug_ranges  0x0000000000000000       0x18 build/stm32f4xx_cryp_tdes.o
  .debug_line    0x0000000000000000      0x5df build/stm32f4xx_cryp_tdes.o
- .debug_str     0x0000000000000000      0x4a3 build/stm32f4xx_cryp_tdes.o
+ .debug_str     0x0000000000000000      0x4a8 build/stm32f4xx_cryp_tdes.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_cryp_tdes.o
  .debug_frame   0x0000000000000000       0x60 build/stm32f4xx_cryp_tdes.o
  .ARM.attributes
@@ -397,7 +436,7 @@ Discarded input sections
                 0x0000000000000000       0xa0 build/stm32f4xx_dac.o
  .debug_ranges  0x0000000000000000       0x90 build/stm32f4xx_dac.o
  .debug_line    0x0000000000000000      0x550 build/stm32f4xx_dac.o
- .debug_str     0x0000000000000000      0x4c2 build/stm32f4xx_dac.o
+ .debug_str     0x0000000000000000      0x4c7 build/stm32f4xx_dac.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_dac.o
  .debug_frame   0x0000000000000000      0x14c build/stm32f4xx_dac.o
  .ARM.attributes
@@ -422,7 +461,7 @@ Discarded input sections
                 0x0000000000000000       0x40 build/stm32f4xx_dbgmcu.o
  .debug_ranges  0x0000000000000000       0x30 build/stm32f4xx_dbgmcu.o
  .debug_line    0x0000000000000000      0x216 build/stm32f4xx_dbgmcu.o
- .debug_str     0x0000000000000000      0x298 build/stm32f4xx_dbgmcu.o
+ .debug_str     0x0000000000000000      0x29d build/stm32f4xx_dbgmcu.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_dbgmcu.o
  .debug_frame   0x0000000000000000       0x60 build/stm32f4xx_dbgmcu.o
  .ARM.attributes
@@ -467,7 +506,7 @@ Discarded input sections
                 0x0000000000000000       0x90 build/stm32f4xx_dcmi.o
  .debug_ranges  0x0000000000000000       0x80 build/stm32f4xx_dcmi.o
  .debug_line    0x0000000000000000      0x4aa build/stm32f4xx_dcmi.o
- .debug_str     0x0000000000000000      0x531 build/stm32f4xx_dcmi.o
+ .debug_str     0x0000000000000000      0x536 build/stm32f4xx_dcmi.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_dcmi.o
  .debug_frame   0x0000000000000000      0x110 build/stm32f4xx_dcmi.o
  .ARM.attributes
@@ -519,7 +558,7 @@ Discarded input sections
                 0x0000000000000000       0xb0 build/stm32f4xx_dma.o
  .debug_ranges  0x0000000000000000       0xa0 build/stm32f4xx_dma.o
  .debug_line    0x0000000000000000      0x80b build/stm32f4xx_dma.o
- .debug_str     0x0000000000000000      0x59a build/stm32f4xx_dma.o
+ .debug_str     0x0000000000000000      0x59f build/stm32f4xx_dma.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_dma.o
  .debug_frame   0x0000000000000000      0x158 build/stm32f4xx_dma.o
  .ARM.attributes
@@ -550,7 +589,7 @@ Discarded input sections
                 0x0000000000000000       0x58 build/stm32f4xx_exti.o
  .debug_ranges  0x0000000000000000       0x48 build/stm32f4xx_exti.o
  .debug_line    0x0000000000000000      0x394 build/stm32f4xx_exti.o
- .debug_str     0x0000000000000000      0x3b1 build/stm32f4xx_exti.o
+ .debug_str     0x0000000000000000      0x3b6 build/stm32f4xx_exti.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_exti.o
  .debug_frame   0x0000000000000000       0xa0 build/stm32f4xx_exti.o
  .ARM.attributes
@@ -625,7 +664,7 @@ Discarded input sections
                 0x0000000000000000      0x108 build/stm32f4xx_flash.o
  .debug_ranges  0x0000000000000000       0xf8 build/stm32f4xx_flash.o
  .debug_line    0x0000000000000000      0x855 build/stm32f4xx_flash.o
- .debug_str     0x0000000000000000      0x5ea build/stm32f4xx_flash.o
+ .debug_str     0x0000000000000000      0x5ef build/stm32f4xx_flash.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_flash.o
  .debug_frame   0x0000000000000000      0x270 build/stm32f4xx_flash.o
  .ARM.attributes
@@ -678,7 +717,7 @@ Discarded input sections
                 0x0000000000000000       0xb0 build/stm32f4xx_fsmc.o
  .debug_ranges  0x0000000000000000       0xa0 build/stm32f4xx_fsmc.o
  .debug_line    0x0000000000000000      0xa53 build/stm32f4xx_fsmc.o
- .debug_str     0x0000000000000000      0x7e2 build/stm32f4xx_fsmc.o
+ .debug_str     0x0000000000000000      0x7e7 build/stm32f4xx_fsmc.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_fsmc.o
  .debug_frame   0x0000000000000000      0x168 build/stm32f4xx_fsmc.o
  .ARM.attributes
@@ -752,7 +791,7 @@ Discarded input sections
                 0x0000000000000000       0xa0 build/stm32f4xx_hash.o
  .debug_ranges  0x0000000000000000       0x90 build/stm32f4xx_hash.o
  .debug_line    0x0000000000000000      0x566 build/stm32f4xx_hash.o
- .debug_str     0x0000000000000000      0x4a1 build/stm32f4xx_hash.o
+ .debug_str     0x0000000000000000      0x4a6 build/stm32f4xx_hash.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_hash.o
  .debug_frame   0x0000000000000000      0x140 build/stm32f4xx_hash.o
  .ARM.attributes
@@ -771,7 +810,7 @@ Discarded input sections
                 0x0000000000000000       0x28 build/stm32f4xx_hash_md5.o
  .debug_ranges  0x0000000000000000       0x18 build/stm32f4xx_hash_md5.o
  .debug_line    0x0000000000000000      0x61d build/stm32f4xx_hash_md5.o
- .debug_str     0x0000000000000000      0x3b5 build/stm32f4xx_hash_md5.o
+ .debug_str     0x0000000000000000      0x3ba build/stm32f4xx_hash_md5.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_hash_md5.o
  .debug_frame   0x0000000000000000       0x64 build/stm32f4xx_hash_md5.o
  .ARM.attributes
@@ -790,7 +829,7 @@ Discarded input sections
                 0x0000000000000000       0x28 build/stm32f4xx_hash_sha1.o
  .debug_ranges  0x0000000000000000       0x18 build/stm32f4xx_hash_sha1.o
  .debug_line    0x0000000000000000      0x660 build/stm32f4xx_hash_sha1.o
- .debug_str     0x0000000000000000      0x3ba build/stm32f4xx_hash_sha1.o
+ .debug_str     0x0000000000000000      0x3bf build/stm32f4xx_hash_sha1.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_hash_sha1.o
  .debug_frame   0x0000000000000000       0x64 build/stm32f4xx_hash_sha1.o
  .ARM.attributes
@@ -870,7 +909,7 @@ Discarded input sections
                 0x0000000000000000      0x120 build/stm32f4xx_i2c.o
  .debug_ranges  0x0000000000000000      0x110 build/stm32f4xx_i2c.o
  .debug_line    0x0000000000000000      0x952 build/stm32f4xx_i2c.o
- .debug_str     0x0000000000000000      0x6e6 build/stm32f4xx_i2c.o
+ .debug_str     0x0000000000000000      0x6eb build/stm32f4xx_i2c.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_i2c.o
  .debug_frame   0x0000000000000000      0x254 build/stm32f4xx_i2c.o
  .ARM.attributes
@@ -897,7 +936,7 @@ Discarded input sections
                 0x0000000000000000       0x48 build/stm32f4xx_iwdg.o
  .debug_ranges  0x0000000000000000       0x38 build/stm32f4xx_iwdg.o
  .debug_line    0x0000000000000000      0x207 build/stm32f4xx_iwdg.o
- .debug_str     0x0000000000000000      0x2c4 build/stm32f4xx_iwdg.o
+ .debug_str     0x0000000000000000      0x2c9 build/stm32f4xx_iwdg.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_iwdg.o
  .debug_frame   0x0000000000000000       0x70 build/stm32f4xx_iwdg.o
  .ARM.attributes
@@ -936,7 +975,7 @@ Discarded input sections
                 0x0000000000000000       0x78 build/stm32f4xx_pwr.o
  .debug_ranges  0x0000000000000000       0x68 build/stm32f4xx_pwr.o
  .debug_line    0x0000000000000000      0x364 build/stm32f4xx_pwr.o
- .debug_str     0x0000000000000000      0x3f4 build/stm32f4xx_pwr.o
+ .debug_str     0x0000000000000000      0x3f9 build/stm32f4xx_pwr.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_pwr.o
  .debug_frame   0x0000000000000000       0xd8 build/stm32f4xx_pwr.o
  .ARM.attributes
@@ -1057,7 +1096,7 @@ Discarded input sections
                 0x0000000000000000       0x58 build/stm32f4xx_rng.o
  .debug_ranges  0x0000000000000000       0x48 build/stm32f4xx_rng.o
  .debug_line    0x0000000000000000      0x2ad build/stm32f4xx_rng.o
- .debug_str     0x0000000000000000      0x2e8 build/stm32f4xx_rng.o
+ .debug_str     0x0000000000000000      0x2ed build/stm32f4xx_rng.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_rng.o
  .debug_frame   0x0000000000000000       0x98 build/stm32f4xx_rng.o
  .ARM.attributes
@@ -1186,7 +1225,7 @@ Discarded input sections
                 0x0000000000000000      0x1e0 build/stm32f4xx_rtc.o
  .debug_ranges  0x0000000000000000      0x1d0 build/stm32f4xx_rtc.o
  .debug_line    0x0000000000000000     0x15cd build/stm32f4xx_rtc.o
- .debug_str     0x0000000000000000      0xba0 build/stm32f4xx_rtc.o
+ .debug_str     0x0000000000000000      0xba5 build/stm32f4xx_rtc.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_rtc.o
  .debug_frame   0x0000000000000000      0x4ac build/stm32f4xx_rtc.o
  .ARM.attributes
@@ -1261,7 +1300,7 @@ Discarded input sections
                 0x0000000000000000      0x108 build/stm32f4xx_sdio.o
  .debug_ranges  0x0000000000000000       0xf8 build/stm32f4xx_sdio.o
  .debug_line    0x0000000000000000      0x67e build/stm32f4xx_sdio.o
- .debug_str     0x0000000000000000      0x6af build/stm32f4xx_sdio.o
+ .debug_str     0x0000000000000000      0x6b4 build/stm32f4xx_sdio.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_sdio.o
  .debug_frame   0x0000000000000000      0x224 build/stm32f4xx_sdio.o
  .ARM.attributes
@@ -1324,7 +1363,7 @@ Discarded input sections
                 0x0000000000000000       0xe0 build/stm32f4xx_spi.o
  .debug_ranges  0x0000000000000000       0xd0 build/stm32f4xx_spi.o
  .debug_line    0x0000000000000000      0x822 build/stm32f4xx_spi.o
- .debug_str     0x0000000000000000      0x710 build/stm32f4xx_spi.o
+ .debug_str     0x0000000000000000      0x715 build/stm32f4xx_spi.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_spi.o
  .debug_frame   0x0000000000000000      0x1e0 build/stm32f4xx_spi.o
  .ARM.attributes
@@ -1351,7 +1390,7 @@ Discarded input sections
                 0x0000000000000000       0x48 build/stm32f4xx_syscfg.o
  .debug_ranges  0x0000000000000000       0x38 build/stm32f4xx_syscfg.o
  .debug_line    0x0000000000000000      0x263 build/stm32f4xx_syscfg.o
- .debug_str     0x0000000000000000      0x363 build/stm32f4xx_syscfg.o
+ .debug_str     0x0000000000000000      0x368 build/stm32f4xx_syscfg.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_syscfg.o
  .debug_frame   0x0000000000000000       0x84 build/stm32f4xx_syscfg.o
  .ARM.attributes
@@ -1549,7 +1588,7 @@ Discarded input sections
                 0x0000000000000000      0x2f8 build/stm32f4xx_tim.o
  .debug_ranges  0x0000000000000000      0x2e8 build/stm32f4xx_tim.o
  .debug_line    0x0000000000000000     0x191c build/stm32f4xx_tim.o
- .debug_str     0x0000000000000000      0xe56 build/stm32f4xx_tim.o
+ .debug_str     0x0000000000000000      0xe5b build/stm32f4xx_tim.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_tim.o
  .debug_frame   0x0000000000000000      0x6d0 build/stm32f4xx_tim.o
  .ARM.attributes
@@ -1622,7 +1661,7 @@ Discarded input sections
                 0x0000000000000000      0x100 build/stm32f4xx_usart.o
  .debug_ranges  0x0000000000000000       0xf0 build/stm32f4xx_usart.o
  .debug_line    0x0000000000000000      0x8f6 build/stm32f4xx_usart.o
- .debug_str     0x0000000000000000      0x727 build/stm32f4xx_usart.o
+ .debug_str     0x0000000000000000      0x72c build/stm32f4xx_usart.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_usart.o
  .debug_frame   0x0000000000000000      0x224 build/stm32f4xx_usart.o
  .ARM.attributes
@@ -1653,14 +1692,558 @@ Discarded input sections
                 0x0000000000000000       0x58 build/stm32f4xx_wwdg.o
  .debug_ranges  0x0000000000000000       0x48 build/stm32f4xx_wwdg.o
  .debug_line    0x0000000000000000      0x2b4 build/stm32f4xx_wwdg.o
- .debug_str     0x0000000000000000      0x2e6 build/stm32f4xx_wwdg.o
+ .debug_str     0x0000000000000000      0x2eb build/stm32f4xx_wwdg.o
  .comment       0x0000000000000000       0x4d build/stm32f4xx_wwdg.o
  .debug_frame   0x0000000000000000       0xa0 build/stm32f4xx_wwdg.o
  .ARM.attributes
                 0x0000000000000000       0x34 build/stm32f4xx_wwdg.o
+ .text          0x0000000000000000        0x0 build/os_core.o
+ .data          0x0000000000000000        0x0 build/os_core.o
+ .bss           0x0000000000000000        0x0 build/os_core.o
+ .text.OS_InitMisc
+                0x0000000000000000       0x5c build/os_core.o
+ .text.OS_InitRdyList
+                0x0000000000000000       0x44 build/os_core.o
+ .text.OS_SchedNew
+                0x0000000000000000       0x2c build/os_core.o
+ .rodata.OS_InitTaskIdle.str1.4
+                0x0000000000000000        0xe build/os_core.o
+ .text.OS_InitTaskIdle
+                0x0000000000000000       0x44 build/os_core.o
+ .rodata.OS_InitTaskStat.str1.4
+                0x0000000000000000        0xe build/os_core.o
+ .text.OS_InitTaskStat
+                0x0000000000000000       0x44 build/os_core.o
+ .text.OS_TaskIdle
+                0x0000000000000000       0x1c build/os_core.o
+ .text.OSEventNameSet
+                0x0000000000000000       0x38 build/os_core.o
+ .text.OSIntEnter
+                0x0000000000000000       0x24 build/os_core.o
+ .text.OSIntExit
+                0x0000000000000000       0x80 build/os_core.o
+ .text.OSSchedLock
+                0x0000000000000000       0x38 build/os_core.o
+ .text.OSStart  0x0000000000000000       0x44 build/os_core.o
+ .text.OSStatInit
+                0x0000000000000000       0x40 build/os_core.o
+ .text.OSTimeTick
+                0x0000000000000000       0xc4 build/os_core.o
+ .text.OSVersion
+                0x0000000000000000        0x6 build/os_core.o
+ .text.OS_Dummy
+                0x0000000000000000        0x2 build/os_core.o
+ .text.OS_EventTaskWait
+                0x0000000000000000       0x58 build/os_core.o
+ .text.OS_EventTaskWaitMulti
+                0x0000000000000000       0x64 build/os_core.o
+ .text.OS_EventTaskRemove
+                0x0000000000000000       0x2c build/os_core.o
+ .text.OS_EventTaskRemoveMulti
+                0x0000000000000000       0x34 build/os_core.o
+ .text.OS_EventTaskRdy
+                0x0000000000000000       0x7c build/os_core.o
+ .text.OS_EventWaitListInit
+                0x0000000000000000       0x16 build/os_core.o
+ .text.OS_MemClr
+                0x0000000000000000       0x10 build/os_core.o
+ .rodata.OS_InitTCBList.str1.4
+                0x0000000000000000        0x2 build/os_core.o
+ .text.OS_InitTCBList
+                0x0000000000000000       0x64 build/os_core.o
+ .text.OS_InitEventList
+                0x0000000000000000       0x5c build/os_core.o
+ .text.OSInit   0x0000000000000000       0x30 build/os_core.o
+ .text.OS_MemCopy
+                0x0000000000000000       0x12 build/os_core.o
+ .text.OS_Sched
+                0x0000000000000000       0x68 build/os_core.o
+ .text.OSEventPendMulti
+                0x0000000000000000      0x230 build/os_core.o
+ .text.OSSchedUnlock
+                0x0000000000000000       0x50 build/os_core.o
+ .text.OS_StrLen
+                0x0000000000000000       0x12 build/os_core.o
+ .text.OSEventNameGet
+                0x0000000000000000       0x4c build/os_core.o
+ .text.OS_TaskStatStkChk
+                0x0000000000000000       0x44 build/os_core.o
+ .text.OS_TaskStat
+                0x0000000000000000       0x94 build/os_core.o
+ .text.OS_TCBInit
+                0x0000000000000000      0x114 build/os_core.o
+ .rodata.OSUnMapTbl
+                0x0000000000000000      0x100 build/os_core.o
+ .debug_info    0x0000000000000000     0x1967 build/os_core.o
+ .debug_abbrev  0x0000000000000000      0x339 build/os_core.o
+ .debug_loc     0x0000000000000000     0x15ce build/os_core.o
+ .debug_aranges
+                0x0000000000000000      0x128 build/os_core.o
+ .debug_ranges  0x0000000000000000      0x118 build/os_core.o
+ .debug_line    0x0000000000000000     0x1243 build/os_core.o
+ .debug_str     0x0000000000000000      0x9fc build/os_core.o
+ .comment       0x0000000000000000       0x4d build/os_core.o
+ .debug_frame   0x0000000000000000      0x348 build/os_core.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_core.o
+ COMMON         0x0000000000000000      0xf78 build/os_core.o
+ .text          0x0000000000000000        0x0 build/os_flag.o
+ .data          0x0000000000000000        0x0 build/os_flag.o
+ .bss           0x0000000000000000        0x0 build/os_flag.o
+ .text.OS_FlagBlock
+                0x0000000000000000       0x6c build/os_flag.o
+ .text.OSFlagAccept
+                0x0000000000000000       0xd4 build/os_flag.o
+ .rodata.OSFlagCreate.str1.4
+                0x0000000000000000        0x2 build/os_flag.o
+ .text.OSFlagCreate
+                0x0000000000000000       0x50 build/os_flag.o
+ .text.OSFlagNameGet
+                0x0000000000000000       0x4c build/os_flag.o
+ .text.OSFlagNameSet
+                0x0000000000000000       0x38 build/os_flag.o
+ .text.OSFlagPendGetFlagsRdy
+                0x0000000000000000       0x18 build/os_flag.o
+ .text.OSFlagQuery
+                0x0000000000000000       0x26 build/os_flag.o
+ .text.OS_FlagInit
+                0x0000000000000000       0x54 build/os_flag.o
+ .text.OS_FlagUnlink
+                0x0000000000000000       0x22 build/os_flag.o
+ .text.OS_FlagTaskRdy
+                0x0000000000000000       0x50 build/os_flag.o
+ .text.OSFlagDel
+                0x0000000000000000       0xc0 build/os_flag.o
+ .text.OSFlagPost
+                0x0000000000000000      0x108 build/os_flag.o
+ .text.OSFlagPend
+                0x0000000000000000      0x220 build/os_flag.o
+ .debug_info    0x0000000000000000     0x1358 build/os_flag.o
+ .debug_abbrev  0x0000000000000000      0x25d build/os_flag.o
+ .debug_loc     0x0000000000000000     0x144b build/os_flag.o
+ .debug_aranges
+                0x0000000000000000       0x80 build/os_flag.o
+ .debug_ranges  0x0000000000000000       0x70 build/os_flag.o
+ .debug_line    0x0000000000000000      0xc2d build/os_flag.o
+ .debug_str     0x0000000000000000      0x786 build/os_flag.o
+ .comment       0x0000000000000000       0x4d build/os_flag.o
+ .debug_frame   0x0000000000000000      0x190 build/os_flag.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_flag.o
+ .text          0x0000000000000000        0x0 build/os_mbox.o
+ .data          0x0000000000000000        0x0 build/os_mbox.o
+ .bss           0x0000000000000000        0x0 build/os_mbox.o
+ .text.OSMboxAccept
+                0x0000000000000000       0x20 build/os_mbox.o
+ .rodata.OSMboxCreate.str1.4
+                0x0000000000000000        0x2 build/os_mbox.o
+ .text.OSMboxCreate
+                0x0000000000000000       0x48 build/os_mbox.o
+ .text.OSMboxDel
+                0x0000000000000000       0xc8 build/os_mbox.o
+ .text.OSMboxPend
+                0x0000000000000000       0xd0 build/os_mbox.o
+ .text.OSMboxPendAbort
+                0x0000000000000000       0x6e build/os_mbox.o
+ .text.OSMboxPost
+                0x0000000000000000       0x4a build/os_mbox.o
+ .text.OSMboxPostOpt
+                0x0000000000000000       0x70 build/os_mbox.o
+ .text.OSMboxQuery
+                0x0000000000000000       0x3e build/os_mbox.o
+ .debug_info    0x0000000000000000      0xeb1 build/os_mbox.o
+ .debug_abbrev  0x0000000000000000      0x1e1 build/os_mbox.o
+ .debug_loc     0x0000000000000000      0xa76 build/os_mbox.o
+ .debug_aranges
+                0x0000000000000000       0x58 build/os_mbox.o
+ .debug_ranges  0x0000000000000000       0x48 build/os_mbox.o
+ .debug_line    0x0000000000000000      0x698 build/os_mbox.o
+ .debug_str     0x0000000000000000      0x738 build/os_mbox.o
+ .comment       0x0000000000000000       0x4d build/os_mbox.o
+ .debug_frame   0x0000000000000000      0x110 build/os_mbox.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_mbox.o
+ .text          0x0000000000000000        0x0 build/os_mem.o
+ .data          0x0000000000000000        0x0 build/os_mem.o
+ .bss           0x0000000000000000        0x0 build/os_mem.o
+ .debug_info    0x0000000000000000      0x757 build/os_mem.o
+ .debug_abbrev  0x0000000000000000       0xbc build/os_mem.o
+ .debug_aranges
+                0x0000000000000000       0x18 build/os_mem.o
+ .debug_line    0x0000000000000000       0x6c build/os_mem.o
+ .debug_str     0x0000000000000000      0x5d9 build/os_mem.o
+ .comment       0x0000000000000000       0x4d build/os_mem.o
+ .ARM.attributes
+                0x0000000000000000       0x39 build/os_mem.o
+ .text          0x0000000000000000        0x0 build/os_mutex.o
+ .data          0x0000000000000000        0x0 build/os_mutex.o
+ .bss           0x0000000000000000        0x0 build/os_mutex.o
+ .text.OSMutex_RdyAtPrio
+                0x0000000000000000       0x7c build/os_mutex.o
+ .text.OSMutexAccept
+                0x0000000000000000       0x7c build/os_mutex.o
+ .rodata.OSMutexCreate.str1.4
+                0x0000000000000000        0x2 build/os_mutex.o
+ .text.OSMutexCreate
+                0x0000000000000000       0x90 build/os_mutex.o
+ .text.OSMutexDel
+                0x0000000000000000      0x108 build/os_mutex.o
+ .text.OSMutexPend
+                0x0000000000000000      0x200 build/os_mutex.o
+ .text.OSMutexPost
+                0x0000000000000000       0xc8 build/os_mutex.o
+ .text.OSMutexQuery
+                0x0000000000000000       0x60 build/os_mutex.o
+ .debug_info    0x0000000000000000      0xe76 build/os_mutex.o
+ .debug_abbrev  0x0000000000000000      0x228 build/os_mutex.o
+ .debug_loc     0x0000000000000000      0xa1c build/os_mutex.o
+ .debug_aranges
+                0x0000000000000000       0x50 build/os_mutex.o
+ .debug_ranges  0x0000000000000000       0x40 build/os_mutex.o
+ .debug_line    0x0000000000000000      0x934 build/os_mutex.o
+ .debug_str     0x0000000000000000      0x758 build/os_mutex.o
+ .comment       0x0000000000000000       0x4d build/os_mutex.o
+ .debug_frame   0x0000000000000000       0xe4 build/os_mutex.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_mutex.o
+ .text          0x0000000000000000        0x0 build/os_q.o
+ .data          0x0000000000000000        0x0 build/os_q.o
+ .bss           0x0000000000000000        0x0 build/os_q.o
+ .text.OSQAccept
+                0x0000000000000000       0x4a build/os_q.o
+ .rodata.OSQCreate.str1.4
+                0x0000000000000000        0x2 build/os_q.o
+ .text.OSQCreate
+                0x0000000000000000       0x80 build/os_q.o
+ .text.OSQDel   0x0000000000000000       0xe0 build/os_q.o
+ .text.OSQFlush
+                0x0000000000000000       0x1c build/os_q.o
+ .text.OSQPend  0x0000000000000000       0xec build/os_q.o
+ .text.OSQPendAbort
+                0x0000000000000000       0x6a build/os_q.o
+ .text.OSQPost  0x0000000000000000       0x6c build/os_q.o
+ .text.OSQPostFront
+                0x0000000000000000       0x6e build/os_q.o
+ .text.OSQPostOpt
+                0x0000000000000000       0xb0 build/os_q.o
+ .text.OSQQuery
+                0x0000000000000000       0x56 build/os_q.o
+ .text.OS_QInit
+                0x0000000000000000       0x44 build/os_q.o
+ .debug_info    0x0000000000000000     0x1174 build/os_q.o
+ .debug_abbrev  0x0000000000000000      0x220 build/os_q.o
+ .debug_loc     0x0000000000000000      0xf98 build/os_q.o
+ .debug_aranges
+                0x0000000000000000       0x70 build/os_q.o
+ .debug_ranges  0x0000000000000000       0x60 build/os_q.o
+ .debug_line    0x0000000000000000      0xa58 build/os_q.o
+ .debug_str     0x0000000000000000      0x758 build/os_q.o
+ .comment       0x0000000000000000       0x4d build/os_q.o
+ .debug_frame   0x0000000000000000      0x158 build/os_q.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_q.o
+ .text          0x0000000000000000        0x0 build/os_sem.o
+ .data          0x0000000000000000        0x0 build/os_sem.o
+ .bss           0x0000000000000000        0x0 build/os_sem.o
+ .text.OSSemAccept
+                0x0000000000000000       0x22 build/os_sem.o
+ .rodata.OSSemCreate.str1.4
+                0x0000000000000000        0x2 build/os_sem.o
+ .text.OSSemCreate
+                0x0000000000000000       0x48 build/os_sem.o
+ .text.OSSemDel
+                0x0000000000000000       0xc8 build/os_sem.o
+ .text.OSSemPend
+                0x0000000000000000       0xc4 build/os_sem.o
+ .text.OSSemPendAbort
+                0x0000000000000000       0x6a build/os_sem.o
+ .text.OSSemPost
+                0x0000000000000000       0x50 build/os_sem.o
+ .text.OSSemQuery
+                0x0000000000000000       0x3e build/os_sem.o
+ .text.OSSemSet
+                0x0000000000000000       0x36 build/os_sem.o
+ .debug_info    0x0000000000000000      0xdfa build/os_sem.o
+ .debug_abbrev  0x0000000000000000      0x211 build/os_sem.o
+ .debug_loc     0x0000000000000000      0x94c build/os_sem.o
+ .debug_aranges
+                0x0000000000000000       0x58 build/os_sem.o
+ .debug_ranges  0x0000000000000000       0x48 build/os_sem.o
+ .debug_line    0x0000000000000000      0x637 build/os_sem.o
+ .debug_str     0x0000000000000000      0x723 build/os_sem.o
+ .comment       0x0000000000000000       0x4d build/os_sem.o
+ .debug_frame   0x0000000000000000       0xfc build/os_sem.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_sem.o
+ .text          0x0000000000000000        0x0 build/os_task.o
+ .data          0x0000000000000000        0x0 build/os_task.o
+ .bss           0x0000000000000000        0x0 build/os_task.o
+ .text.OSTaskChangePrio
+                0x0000000000000000      0x158 build/os_task.o
+ .text.OSTaskCreate
+                0x0000000000000000       0x8c build/os_task.o
+ .rodata.OSTaskDel.str1.4
+                0x0000000000000000        0x2 build/os_task.o
+ .text.OSTaskDel
+                0x0000000000000000      0x148 build/os_task.o
+ .text.OSTaskDelReq
+                0x0000000000000000       0x5c build/os_task.o
+ .text.OSTaskNameGet
+                0x0000000000000000       0x78 build/os_task.o
+ .text.OSTaskNameSet
+                0x0000000000000000       0x60 build/os_task.o
+ .text.OSTaskResume
+                0x0000000000000000       0x94 build/os_task.o
+ .text.OSTaskStkChk
+                0x0000000000000000       0x78 build/os_task.o
+ .text.OSTaskSuspend
+                0x0000000000000000       0x98 build/os_task.o
+ .text.OSTaskQuery
+                0x0000000000000000       0x54 build/os_task.o
+ .text.OSTaskRegGet
+                0x0000000000000000       0x38 build/os_task.o
+ .text.OSTaskRegGetID
+                0x0000000000000000       0x30 build/os_task.o
+ .text.OSTaskRegSet
+                0x0000000000000000       0x38 build/os_task.o
+ .text.OS_TaskReturn
+                0x0000000000000000       0x18 build/os_task.o
+ .text.OS_TaskStkClr
+                0x0000000000000000       0x1c build/os_task.o
+ .text.OSTaskCreateExt
+                0x0000000000000000       0xa8 build/os_task.o
+ .debug_info    0x0000000000000000     0x1600 build/os_task.o
+ .debug_abbrev  0x0000000000000000      0x23a build/os_task.o
+ .debug_loc     0x0000000000000000     0x14d1 build/os_task.o
+ .debug_aranges
+                0x0000000000000000       0x98 build/os_task.o
+ .debug_ranges  0x0000000000000000       0x88 build/os_task.o
+ .debug_line    0x0000000000000000      0xc11 build/os_task.o
+ .debug_str     0x0000000000000000      0x86e build/os_task.o
+ .comment       0x0000000000000000       0x4d build/os_task.o
+ .debug_frame   0x0000000000000000      0x1f0 build/os_task.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_task.o
+ .text          0x0000000000000000        0x0 build/os_time.o
+ .data          0x0000000000000000        0x0 build/os_time.o
+ .bss           0x0000000000000000        0x0 build/os_time.o
+ .text.OSTimeDly
+                0x0000000000000000       0x60 build/os_time.o
+ .text.OSTimeDlyHMSM
+                0x0000000000000000       0x50 build/os_time.o
+ .text.OSTimeDlyResume
+                0x0000000000000000       0xa4 build/os_time.o
+ .text.OSTimeGet
+                0x0000000000000000       0x18 build/os_time.o
+ .text.OSTimeSet
+                0x0000000000000000       0x18 build/os_time.o
+ .debug_info    0x0000000000000000      0x9e3 build/os_time.o
+ .debug_abbrev  0x0000000000000000      0x193 build/os_time.o
+ .debug_loc     0x0000000000000000      0x3d3 build/os_time.o
+ .debug_aranges
+                0x0000000000000000       0x40 build/os_time.o
+ .debug_ranges  0x0000000000000000       0x30 build/os_time.o
+ .debug_line    0x0000000000000000      0x29b build/os_time.o
+ .debug_str     0x0000000000000000      0x677 build/os_time.o
+ .comment       0x0000000000000000       0x4d build/os_time.o
+ .debug_frame   0x0000000000000000       0x9c build/os_time.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_time.o
+ .text          0x0000000000000000        0x0 build/os_tmr.o
+ .data          0x0000000000000000        0x0 build/os_tmr.o
+ .bss           0x0000000000000000        0x0 build/os_tmr.o
+ .debug_info    0x0000000000000000      0x757 build/os_tmr.o
+ .debug_abbrev  0x0000000000000000       0xbc build/os_tmr.o
+ .debug_aranges
+                0x0000000000000000       0x18 build/os_tmr.o
+ .debug_line    0x0000000000000000       0x6c build/os_tmr.o
+ .debug_str     0x0000000000000000      0x5d9 build/os_tmr.o
+ .comment       0x0000000000000000       0x4d build/os_tmr.o
+ .ARM.attributes
+                0x0000000000000000       0x39 build/os_tmr.o
+ .text          0x0000000000000000        0x0 build/os_cpu_c.o
+ .data          0x0000000000000000        0x0 build/os_cpu_c.o
+ .bss           0x0000000000000000        0x0 build/os_cpu_c.o
+ .text.OSInitHookBegin
+                0x0000000000000000       0x28 build/os_cpu_c.o
+ .text.OSInitHookEnd
+                0x0000000000000000        0x2 build/os_cpu_c.o
+ .text.OSTaskCreateHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTaskDelHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTaskIdleHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTaskReturnHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTaskStatHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTaskStkInit
+                0x0000000000000000      0x1a0 build/os_cpu_c.o
+ .text.OSTaskSwHook
+                0x0000000000000000       0x38 build/os_cpu_c.o
+ .text.OSTCBInitHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OSTimeTickHook
+                0x0000000000000000        0x8 build/os_cpu_c.o
+ .text.OS_CPU_SysTickHandler
+                0x0000000000000000       0x20 build/os_cpu_c.o
+ .text.OS_CPU_SysTickInit
+                0x0000000000000000       0x28 build/os_cpu_c.o
+ .debug_info    0x0000000000000000     0x121e build/os_cpu_c.o
+ .debug_abbrev  0x0000000000000000      0x2de build/os_cpu_c.o
+ .debug_loc     0x0000000000000000      0x65c build/os_cpu_c.o
+ .debug_aranges
+                0x0000000000000000       0x80 build/os_cpu_c.o
+ .debug_ranges  0x0000000000000000       0x70 build/os_cpu_c.o
+ .debug_line    0x0000000000000000      0x502 build/os_cpu_c.o
+ .debug_str     0x0000000000000000      0xe70 build/os_cpu_c.o
+ .comment       0x0000000000000000       0x4d build/os_cpu_c.o
+ .debug_frame   0x0000000000000000      0x134 build/os_cpu_c.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_cpu_c.o
+ COMMON         0x0000000000000000      0x204 build/os_cpu_c.o
+ .text          0x0000000000000000        0x0 build/os_dbg.o
+ .data          0x0000000000000000        0x0 build/os_dbg.o
+ .bss           0x0000000000000000        0x0 build/os_dbg.o
+ .text.OSDebugInit
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSDataSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSDebugEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEndiannessTest
+                0x0000000000000000        0x4 build/os_dbg.o
+ .rodata.OSEventEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEventMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEventMultiEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEventNameEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEventSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSEventTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagGrpSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagNameEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagNodeSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSFlagWidth
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSLowestPrio
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMboxEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMemEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMemMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMemNameEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMemSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMemTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSMutexEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSPtrSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSQEn  0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSQMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSQSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSRdyTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSSemEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSStkWidth
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTCBPrioTblMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTCBSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskCreateEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskCreateExtEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskDelEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskIdleStkSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskNameEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskProfileEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskRegTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskStatEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskStatStkChkEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskStatStkSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTaskSwHookEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTicksPerSec
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTimeTickHookEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrCfgMax
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrCfgNameEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrCfgTicksPerSec
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrCfgWheelSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrEn
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrWheelSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSTmrWheelTblSize
+                0x0000000000000000        0x2 build/os_dbg.o
+ .rodata.OSVersionNbr
+                0x0000000000000000        0x2 build/os_dbg.o
+ .debug_info    0x0000000000000000      0xbb8 build/os_dbg.o
+ .debug_abbrev  0x0000000000000000       0xfe build/os_dbg.o
+ .debug_aranges
+                0x0000000000000000       0x20 build/os_dbg.o
+ .debug_ranges  0x0000000000000000       0x10 build/os_dbg.o
+ .debug_line    0x0000000000000000       0xc2 build/os_dbg.o
+ .debug_str     0x0000000000000000      0x8ca build/os_dbg.o
+ .comment       0x0000000000000000       0x4d build/os_dbg.o
+ .debug_frame   0x0000000000000000       0x20 build/os_dbg.o
+ .ARM.attributes
+                0x0000000000000000       0x34 build/os_dbg.o
  .text          0x0000000000000000       0x14 build/startup_stm32f405xx.o
  .data          0x0000000000000000        0x0 build/startup_stm32f405xx.o
  .bss           0x0000000000000000        0x0 build/startup_stm32f405xx.o
+ .text          0x0000000000000000       0xdc build/os_cpu_a.o
+ .data          0x0000000000000000        0x0 build/os_cpu_a.o
+ .bss           0x0000000000000000        0x0 build/os_cpu_a.o
+ .debug_line    0x0000000000000000       0xc9 build/os_cpu_a.o
+ .debug_info    0x0000000000000000       0x26 build/os_cpu_a.o
+ .debug_abbrev  0x0000000000000000       0x14 build/os_cpu_a.o
+ .debug_aranges
+                0x0000000000000000       0x20 build/os_cpu_a.o
+ .debug_str     0x0000000000000000       0x80 build/os_cpu_a.o
+ .ARM.attributes
+                0x0000000000000000       0x20 build/os_cpu_a.o
  .text          0x0000000000000000        0x0 /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-exit.o)
  .data          0x0000000000000000        0x0 /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-exit.o)
  .bss           0x0000000000000000        0x0 /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a(lib_a-exit.o)
@@ -1753,7 +2336,20 @@ LOAD build/stm32f4xx_syscfg.o
 LOAD build/stm32f4xx_tim.o
 LOAD build/stm32f4xx_usart.o
 LOAD build/stm32f4xx_wwdg.o
+LOAD build/os_core.o
+LOAD build/os_flag.o
+LOAD build/os_mbox.o
+LOAD build/os_mem.o
+LOAD build/os_mutex.o
+LOAD build/os_q.o
+LOAD build/os_sem.o
+LOAD build/os_task.o
+LOAD build/os_time.o
+LOAD build/os_tmr.o
+LOAD build/os_cpu_c.o
+LOAD build/os_dbg.o
 LOAD build/startup_stm32f405xx.o
+LOAD build/os_cpu_a.o
 LOAD /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libc_nano.a
 LOAD /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libm.a
 LOAD /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard/libnosys.a
@@ -2109,19 +2705,19 @@ LOAD /home/way/Programs/gcc-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/9.3.1/thu
  .debug_line    0x0000000000000c1b      0xac8 build/stm32f4xx_rcc.o
  .debug_line    0x00000000000016e3       0x74 build/startup_stm32f405xx.o
 
-.debug_str      0x0000000000000000      0xcd1
- .debug_str     0x0000000000000000      0x371 build/main.o
-                                        0x3bf (size before relaxing)
- .debug_str     0x0000000000000371       0x72 build/stm32f4xx_it.o
-                                        0x151 (size before relaxing)
- .debug_str     0x00000000000003e3      0x1f5 build/system_stm32f4xx.o
-                                        0x3d5 (size before relaxing)
- .debug_str     0x00000000000005d8      0x18c build/stm32f4xx_gpio.o
-                                        0x512 (size before relaxing)
- .debug_str     0x0000000000000764      0x549 build/stm32f4xx_rcc.o
-                                        0x8a8 (size before relaxing)
- .debug_str     0x0000000000000cad       0x24 build/startup_stm32f405xx.o
-                                         0x5f (size before relaxing)
+.debug_str      0x0000000000000000      0xcd6
+ .debug_str     0x0000000000000000      0x376 build/main.o
+                                        0x3c4 (size before relaxing)
+ .debug_str     0x0000000000000376       0x72 build/stm32f4xx_it.o
+                                        0x156 (size before relaxing)
+ .debug_str     0x00000000000003e8      0x1f5 build/system_stm32f4xx.o
+                                        0x3da (size before relaxing)
+ .debug_str     0x00000000000005dd      0x18c build/stm32f4xx_gpio.o
+                                        0x517 (size before relaxing)
+ .debug_str     0x0000000000000769      0x549 build/stm32f4xx_rcc.o
+                                        0x8ad (size before relaxing)
+ .debug_str     0x0000000000000cb2       0x24 build/startup_stm32f405xx.o
+                                         0x64 (size before relaxing)
 
 .comment        0x0000000000000000       0x4c
  .comment       0x0000000000000000       0x4c build/main.o
@@ -2182,6 +2778,14 @@ ADC_StructInit                                    build/stm32f4xx_adc.o
 ADC_TempSensorVrefintCmd                          build/stm32f4xx_adc.o
 ADC_VBATCmd                                       build/stm32f4xx_adc.o
 AHBPrescTable                                     build/system_stm32f4xx.o
+App_TCBInitHook                                   build/os_cpu_c.o
+App_TaskCreateHook                                build/os_cpu_c.o
+App_TaskDelHook                                   build/os_cpu_c.o
+App_TaskIdleHook                                  build/os_cpu_c.o
+App_TaskReturnHook                                build/os_cpu_c.o
+App_TaskStatHook                                  build/os_cpu_c.o
+App_TaskSwHook                                    build/os_cpu_c.o
+App_TimeTickHook                                  build/os_cpu_c.o
 BusFault_Handler                                  build/stm32f4xx_it.o
 CAN1_RX0_IRQHandler                               build/startup_stm32f405xx.o
 CAN1_RX1_IRQHandler                               build/startup_stm32f405xx.o
@@ -2523,6 +3127,344 @@ NVIC_Init                                         build/misc.o
 NVIC_PriorityGroupConfig                          build/misc.o
 NVIC_SetVectorTable                               build/misc.o
 NVIC_SystemLPConfig                               build/misc.o
+OSCPUUsage                                        build/os_core.o
+OSCtxSw                                           build/os_cpu_a.o
+                                                  build/os_core.o
+OSCtxSwCtr                                        build/os_core.o
+OSDataSize                                        build/os_dbg.o
+OSDebugEn                                         build/os_dbg.o
+OSDebugInit                                       build/os_dbg.o
+                                                  build/os_core.o
+OSEndiannessTest                                  build/os_dbg.o
+OSEventEn                                         build/os_dbg.o
+OSEventFreeList                                   build/os_core.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+OSEventMax                                        build/os_dbg.o
+OSEventMultiEn                                    build/os_dbg.o
+OSEventNameEn                                     build/os_dbg.o
+OSEventNameGet                                    build/os_core.o
+OSEventNameSet                                    build/os_core.o
+OSEventPendMulti                                  build/os_core.o
+OSEventSize                                       build/os_dbg.o
+OSEventTbl                                        build/os_core.o
+OSEventTblSize                                    build/os_dbg.o
+OSFlagAccept                                      build/os_flag.o
+OSFlagCreate                                      build/os_flag.o
+OSFlagDel                                         build/os_flag.o
+OSFlagEn                                          build/os_dbg.o
+OSFlagFreeList                                    build/os_core.o
+                                                  build/os_flag.o
+OSFlagGrpSize                                     build/os_dbg.o
+OSFlagMax                                         build/os_dbg.o
+OSFlagNameEn                                      build/os_dbg.o
+OSFlagNameGet                                     build/os_flag.o
+OSFlagNameSet                                     build/os_flag.o
+OSFlagNodeSize                                    build/os_dbg.o
+OSFlagPend                                        build/os_flag.o
+OSFlagPendGetFlagsRdy                             build/os_flag.o
+OSFlagPost                                        build/os_flag.o
+OSFlagQuery                                       build/os_flag.o
+OSFlagTbl                                         build/os_core.o
+                                                  build/os_flag.o
+OSFlagWidth                                       build/os_dbg.o
+OSIdleCtr                                         build/os_core.o
+OSIdleCtrMax                                      build/os_core.o
+OSIdleCtrRun                                      build/os_core.o
+OSInit                                            build/os_core.o
+OSInitHookBegin                                   build/os_cpu_c.o
+                                                  build/os_core.o
+OSInitHookEnd                                     build/os_cpu_c.o
+                                                  build/os_core.o
+OSIntCtxSw                                        build/os_cpu_a.o
+                                                  build/os_core.o
+OSIntEnter                                        build/os_core.o
+OSIntExit                                         build/os_core.o
+                                                  build/os_cpu_c.o
+OSIntNesting                                      build/os_core.o
+                                                  build/os_cpu_c.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+OSLockNesting                                     build/os_core.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+OSLowestPrio                                      build/os_dbg.o
+OSMboxAccept                                      build/os_mbox.o
+OSMboxCreate                                      build/os_mbox.o
+OSMboxDel                                         build/os_mbox.o
+OSMboxEn                                          build/os_dbg.o
+OSMboxPend                                        build/os_mbox.o
+OSMboxPendAbort                                   build/os_mbox.o
+OSMboxPost                                        build/os_mbox.o
+OSMboxPostOpt                                     build/os_mbox.o
+OSMboxQuery                                       build/os_mbox.o
+OSMemEn                                           build/os_dbg.o
+OSMemMax                                          build/os_dbg.o
+OSMemNameEn                                       build/os_dbg.o
+OSMemSize                                         build/os_dbg.o
+OSMemTblSize                                      build/os_dbg.o
+OSMutexAccept                                     build/os_mutex.o
+OSMutexCreate                                     build/os_mutex.o
+OSMutexDel                                        build/os_mutex.o
+OSMutexEn                                         build/os_dbg.o
+OSMutexPend                                       build/os_mutex.o
+OSMutexPost                                       build/os_mutex.o
+OSMutexQuery                                      build/os_mutex.o
+OSPrioCur                                         build/os_core.o
+                                                  build/os_cpu_a.o
+                                                  build/os_mutex.o
+OSPrioHighRdy                                     build/os_core.o
+                                                  build/os_cpu_a.o
+OSPtrSize                                         build/os_dbg.o
+OSQAccept                                         build/os_q.o
+OSQCreate                                         build/os_q.o
+OSQDel                                            build/os_q.o
+OSQEn                                             build/os_dbg.o
+OSQFlush                                          build/os_q.o
+OSQFreeList                                       build/os_core.o
+                                                  build/os_q.o
+OSQMax                                            build/os_dbg.o
+OSQPend                                           build/os_q.o
+OSQPendAbort                                      build/os_q.o
+OSQPost                                           build/os_q.o
+OSQPostFront                                      build/os_q.o
+OSQPostOpt                                        build/os_q.o
+OSQQuery                                          build/os_q.o
+OSQSize                                           build/os_dbg.o
+OSQTbl                                            build/os_core.o
+                                                  build/os_q.o
+OSRdyGrp                                          build/os_core.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_mutex.o
+                                                  build/os_flag.o
+OSRdyTbl                                          build/os_core.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_mutex.o
+                                                  build/os_flag.o
+OSRdyTblSize                                      build/os_dbg.o
+OSRunning                                         build/os_core.o
+                                                  build/os_cpu_a.o
+                                                  build/os_task.o
+OSSchedLock                                       build/os_core.o
+OSSchedUnlock                                     build/os_core.o
+OSSemAccept                                       build/os_sem.o
+OSSemCreate                                       build/os_sem.o
+OSSemDel                                          build/os_sem.o
+OSSemEn                                           build/os_dbg.o
+OSSemPend                                         build/os_sem.o
+OSSemPendAbort                                    build/os_sem.o
+OSSemPost                                         build/os_sem.o
+OSSemQuery                                        build/os_sem.o
+OSSemSet                                          build/os_sem.o
+OSStart                                           build/os_core.o
+OSStartHighRdy                                    build/os_cpu_a.o
+                                                  build/os_core.o
+OSStatInit                                        build/os_core.o
+OSStatRdy                                         build/os_core.o
+OSStkWidth                                        build/os_dbg.o
+OSTCBCur                                          build/os_core.o
+                                                  build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+OSTCBFreeList                                     build/os_core.o
+                                                  build/os_task.o
+OSTCBHighRdy                                      build/os_core.o
+                                                  build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+OSTCBInitHook                                     build/os_cpu_c.o
+                                                  build/os_core.o
+OSTCBList                                         build/os_core.o
+                                                  build/os_task.o
+OSTCBPrioTbl                                      build/os_core.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_mutex.o
+OSTCBPrioTblMax                                   build/os_dbg.o
+OSTCBSize                                         build/os_dbg.o
+OSTCBTbl                                          build/os_core.o
+OSTaskChangePrio                                  build/os_task.o
+OSTaskCreate                                      build/os_task.o
+OSTaskCreateEn                                    build/os_dbg.o
+OSTaskCreateExt                                   build/os_task.o
+                                                  build/os_core.o
+OSTaskCreateExtEn                                 build/os_dbg.o
+OSTaskCreateHook                                  build/os_cpu_c.o
+                                                  build/os_core.o
+OSTaskCtr                                         build/os_core.o
+                                                  build/os_task.o
+OSTaskDel                                         build/os_task.o
+OSTaskDelEn                                       build/os_dbg.o
+OSTaskDelHook                                     build/os_cpu_c.o
+                                                  build/os_task.o
+OSTaskDelReq                                      build/os_task.o
+OSTaskIdleHook                                    build/os_cpu_c.o
+                                                  build/os_core.o
+OSTaskIdleStk                                     build/os_core.o
+OSTaskIdleStkSize                                 build/os_dbg.o
+OSTaskMax                                         build/os_dbg.o
+OSTaskNameEn                                      build/os_dbg.o
+OSTaskNameGet                                     build/os_task.o
+OSTaskNameSet                                     build/os_task.o
+                                                  build/os_core.o
+OSTaskProfileEn                                   build/os_dbg.o
+OSTaskQuery                                       build/os_task.o
+OSTaskRegGet                                      build/os_task.o
+OSTaskRegGetID                                    build/os_task.o
+OSTaskRegNextAvailID                              build/os_core.o
+                                                  build/os_task.o
+OSTaskRegSet                                      build/os_task.o
+OSTaskRegTblSize                                  build/os_dbg.o
+OSTaskResume                                      build/os_task.o
+OSTaskReturnHook                                  build/os_cpu_c.o
+                                                  build/os_task.o
+OSTaskStatEn                                      build/os_dbg.o
+OSTaskStatHook                                    build/os_cpu_c.o
+                                                  build/os_core.o
+OSTaskStatStk                                     build/os_core.o
+OSTaskStatStkChkEn                                build/os_dbg.o
+OSTaskStatStkSize                                 build/os_dbg.o
+OSTaskStkChk                                      build/os_task.o
+                                                  build/os_core.o
+OSTaskStkInit                                     build/os_cpu_c.o
+                                                  build/os_task.o
+OSTaskSuspend                                     build/os_task.o
+                                                  build/os_core.o
+OSTaskSwHook                                      build/os_cpu_c.o
+                                                  build/os_cpu_a.o
+OSTaskSwHookEn                                    build/os_dbg.o
+OSTickStepState                                   build/os_core.o
+OSTicksPerSec                                     build/os_dbg.o
+OSTime                                            build/os_core.o
+                                                  build/os_time.o
+OSTimeDly                                         build/os_time.o
+                                                  build/os_core.o
+OSTimeDlyHMSM                                     build/os_time.o
+OSTimeDlyResume                                   build/os_time.o
+OSTimeGet                                         build/os_time.o
+OSTimeSet                                         build/os_time.o
+OSTimeTick                                        build/os_core.o
+                                                  build/os_cpu_c.o
+OSTimeTickHook                                    build/os_cpu_c.o
+                                                  build/os_core.o
+OSTimeTickHookEn                                  build/os_dbg.o
+OSTmrCfgMax                                       build/os_dbg.o
+OSTmrCfgNameEn                                    build/os_dbg.o
+OSTmrCfgTicksPerSec                               build/os_dbg.o
+OSTmrCfgWheelSize                                 build/os_dbg.o
+OSTmrEn                                           build/os_dbg.o
+OSTmrSize                                         build/os_dbg.o
+OSTmrTblSize                                      build/os_dbg.o
+OSTmrWheelSize                                    build/os_dbg.o
+OSTmrWheelTblSize                                 build/os_dbg.o
+OSUnMapTbl                                        build/os_core.o
+OSVersion                                         build/os_core.o
+OSVersionNbr                                      build/os_dbg.o
+OS_CPU_ExceptStk                                  build/os_cpu_c.o
+OS_CPU_ExceptStkBase                              build/os_cpu_c.o
+                                                  build/os_cpu_a.o
+OS_CPU_FP_Reg_Pop                                 build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+OS_CPU_FP_Reg_Push                                build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+OS_CPU_PendSVHandler                              build/os_cpu_a.o
+OS_CPU_SR_Restore                                 build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+                                                  build/os_core.o
+OS_CPU_SR_Save                                    build/os_cpu_a.o
+                                                  build/os_cpu_c.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+                                                  build/os_core.o
+OS_CPU_SysTickHandler                             build/os_cpu_c.o
+OS_CPU_SysTickInit                                build/os_cpu_c.o
+OS_Dummy                                          build/os_core.o
+                                                  build/os_task.o
+OS_EventTaskRdy                                   build/os_core.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+OS_EventTaskRemove                                build/os_core.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+OS_EventTaskRemoveMulti                           build/os_core.o
+                                                  build/os_task.o
+OS_EventTaskWait                                  build/os_core.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+OS_EventTaskWaitMulti                             build/os_core.o
+OS_EventWaitListInit                              build/os_core.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+OS_FlagInit                                       build/os_flag.o
+                                                  build/os_core.o
+OS_FlagUnlink                                     build/os_flag.o
+                                                  build/os_task.o
+OS_MemClr                                         build/os_core.o
+                                                  build/os_q.o
+                                                  build/os_flag.o
+OS_MemCopy                                        build/os_core.o
+                                                  build/os_task.o
+OS_QInit                                          build/os_q.o
+                                                  build/os_core.o
+OS_Sched                                          build/os_core.o
+                                                  build/os_time.o
+                                                  build/os_task.o
+                                                  build/os_sem.o
+                                                  build/os_q.o
+                                                  build/os_mutex.o
+                                                  build/os_mbox.o
+                                                  build/os_flag.o
+OS_StrLen                                         build/os_core.o
+                                                  build/os_task.o
+                                                  build/os_flag.o
+OS_TCBInit                                        build/os_core.o
+                                                  build/os_task.o
+OS_TaskIdle                                       build/os_core.o
+OS_TaskReturn                                     build/os_task.o
+                                                  build/os_cpu_c.o
+OS_TaskStat                                       build/os_core.o
+OS_TaskStatStkChk                                 build/os_core.o
+OS_TaskStkClr                                     build/os_task.o
 OTG_FS_IRQHandler                                 build/startup_stm32f405xx.o
 OTG_FS_WKUP_IRQHandler                            build/startup_stm32f405xx.o
 OTG_HS_EP1_IN_IRQHandler                          build/startup_stm32f405xx.o

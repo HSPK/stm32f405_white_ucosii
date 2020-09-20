@@ -11,7 +11,9 @@
                 "D:/Program Files (x86)/GNU Tools Arm Embedded/9 2019-q4-major/lib/gcc/arm-none-eabi/9.2.1/include-fixed",
                 "Drivers/STM32F4xx_StdPeriph_Driver/inc",
                 "Inc",
-                "Src"
+                "Src",
+                "uCOSII/Include",
+                "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU"
             ],
             "defines": [
                 "_DEBUG",

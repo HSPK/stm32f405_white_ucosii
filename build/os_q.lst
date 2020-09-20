@@ -1,0 +1,3275 @@
+ARM GAS  /tmp/cc5CWVKc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"os_q.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.OSQAccept,"ax",%progbits
+  18              		.align	1
+  19              		.global	OSQAccept
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	OSQAccept:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "uCOSII/Source/os_q.c"
+   1:uCOSII/Source/os_q.c **** /*
+   2:uCOSII/Source/os_q.c **** ***************************************************************************************************
+   3:uCOSII/Source/os_q.c **** *                                                uC/OS-II
+   4:uCOSII/Source/os_q.c **** *                                          The Real-Time Kernel
+   5:uCOSII/Source/os_q.c **** *                                        MESSAGE QUEUE MANAGEMENT
+   6:uCOSII/Source/os_q.c **** *
+   7:uCOSII/Source/os_q.c **** *                              (c) Copyright 1992-2013, Micrium, Weston, FL
+   8:uCOSII/Source/os_q.c **** *                                           All Rights Reserved
+   9:uCOSII/Source/os_q.c **** *
+  10:uCOSII/Source/os_q.c **** * File    : OS_Q.C
+  11:uCOSII/Source/os_q.c **** * By      : Jean J. Labrosse
+  12:uCOSII/Source/os_q.c **** * Version : V2.92.11
+  13:uCOSII/Source/os_q.c **** *
+  14:uCOSII/Source/os_q.c **** * LICENSING TERMS:
+  15:uCOSII/Source/os_q.c **** * ---------------
+  16:uCOSII/Source/os_q.c **** *   uC/OS-II is provided in source form for FREE evaluation, for educational use or for peaceful re
+  17:uCOSII/Source/os_q.c **** * If you plan on using  uC/OS-II  in a commercial product you need to contact Micrium to properly l
+  18:uCOSII/Source/os_q.c **** * its use in your product. We provide ALL the source code for your convenience and to help you expe
+  19:uCOSII/Source/os_q.c **** * uC/OS-II.   The fact that the  source is provided does  NOT  mean that you can use it without  pa
+  20:uCOSII/Source/os_q.c **** * licensing fee.
+  21:uCOSII/Source/os_q.c **** ***************************************************************************************************
+  22:uCOSII/Source/os_q.c **** */
+  23:uCOSII/Source/os_q.c **** 
+  24:uCOSII/Source/os_q.c **** #define  MICRIUM_SOURCE
+  25:uCOSII/Source/os_q.c **** 
+  26:uCOSII/Source/os_q.c **** #ifndef  OS_MASTER_FILE
+  27:uCOSII/Source/os_q.c **** #include <ucos_ii.h>
+  28:uCOSII/Source/os_q.c **** #endif
+  29:uCOSII/Source/os_q.c **** 
+ARM GAS  /tmp/cc5CWVKc.s 			page 2
+
+
+  30:uCOSII/Source/os_q.c **** #if (OS_Q_EN > 0u) && (OS_MAX_QS > 0u)
+  31:uCOSII/Source/os_q.c **** /*
+  32:uCOSII/Source/os_q.c **** ***************************************************************************************************
+  33:uCOSII/Source/os_q.c **** *                                      ACCEPT MESSAGE FROM QUEUE
+  34:uCOSII/Source/os_q.c **** *
+  35:uCOSII/Source/os_q.c **** * Description: This function checks the queue to see if a message is available.  Unlike OSQPend(),
+  36:uCOSII/Source/os_q.c **** *              OSQAccept() does not suspend the calling task if a message is not available.
+  37:uCOSII/Source/os_q.c **** *
+  38:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block
+  39:uCOSII/Source/os_q.c **** *
+  40:uCOSII/Source/os_q.c **** *              perr          is a pointer to where an error message will be deposited.  Possible er
+  41:uCOSII/Source/os_q.c **** *                            messages are:
+  42:uCOSII/Source/os_q.c **** *
+  43:uCOSII/Source/os_q.c **** *                            OS_ERR_NONE         The call was successful and your task received a
+  44:uCOSII/Source/os_q.c **** *                                                message.
+  45:uCOSII/Source/os_q.c **** *                            OS_ERR_EVENT_TYPE   You didn't pass a pointer to a queue
+  46:uCOSII/Source/os_q.c **** *                            OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer
+  47:uCOSII/Source/os_q.c **** *                            OS_ERR_Q_EMPTY      The queue did not contain any messages
+  48:uCOSII/Source/os_q.c **** *
+  49:uCOSII/Source/os_q.c **** * Returns    : != (void *)0  is the message in the queue if one is available.  The message is remov
+  50:uCOSII/Source/os_q.c **** *                            from the so the next time OSQAccept() is called, the queue will contai
+  51:uCOSII/Source/os_q.c **** *                            one less entry.
+  52:uCOSII/Source/os_q.c **** *              == (void *)0  if you received a NULL pointer message
+  53:uCOSII/Source/os_q.c **** *                            if the queue is empty or,
+  54:uCOSII/Source/os_q.c **** *                            if 'pevent' is a NULL pointer or,
+  55:uCOSII/Source/os_q.c **** *                            if you passed an invalid event type
+  56:uCOSII/Source/os_q.c **** *
+  57:uCOSII/Source/os_q.c **** * Note(s)    : As of V2.60, you can now pass NULL pointers through queues.  Because of this, the ar
+  58:uCOSII/Source/os_q.c **** *              'perr' has been added to the API to tell you about the outcome of the call.
+  59:uCOSII/Source/os_q.c **** ***************************************************************************************************
+  60:uCOSII/Source/os_q.c **** */
+  61:uCOSII/Source/os_q.c **** 
+  62:uCOSII/Source/os_q.c **** #if OS_Q_ACCEPT_EN > 0u
+  63:uCOSII/Source/os_q.c **** void  *OSQAccept (OS_EVENT  *pevent,
+  64:uCOSII/Source/os_q.c ****                   INT8U     *perr)
+  65:uCOSII/Source/os_q.c **** {
+  30              		.loc 1 65 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 65 1 is_stmt 0 view .LVU1
+  35 0000 38B5     		push	{r3, r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 16
+  38              		.cfi_offset 3, -16
+  39              		.cfi_offset 4, -12
+  40              		.cfi_offset 5, -8
+  41              		.cfi_offset 14, -4
+  42 0002 0D46     		mov	r5, r1
+  66:uCOSII/Source/os_q.c ****     void      *pmsg;
+  43              		.loc 1 66 5 is_stmt 1 view .LVU2
+  67:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+  44              		.loc 1 67 5 view .LVU3
+  68:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
+  69:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+  45              		.loc 1 69 5 view .LVU4
+  46              	.LVL1:
+ARM GAS  /tmp/cc5CWVKc.s 			page 3
+
+
+  70:uCOSII/Source/os_q.c **** #endif
+  71:uCOSII/Source/os_q.c **** 
+  72:uCOSII/Source/os_q.c **** 
+  73:uCOSII/Source/os_q.c **** 
+  74:uCOSII/Source/os_q.c **** #ifdef OS_SAFETY_CRITICAL
+  75:uCOSII/Source/os_q.c ****     if (perr == (INT8U *)0) {
+  76:uCOSII/Source/os_q.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+  77:uCOSII/Source/os_q.c ****         return ((void *)0);
+  78:uCOSII/Source/os_q.c ****     }
+  79:uCOSII/Source/os_q.c **** #endif
+  80:uCOSII/Source/os_q.c **** 
+  81:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+  82:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {               /* Validate 'pevent'                              
+  83:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEVENT_NULL;
+  84:uCOSII/Source/os_q.c ****         return ((void *)0);
+  85:uCOSII/Source/os_q.c ****     }
+  86:uCOSII/Source/os_q.c **** #endif
+  87:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {/* Validate event block type                      
+  47              		.loc 1 87 5 view .LVU5
+  48              		.loc 1 87 15 is_stmt 0 view .LVU6
+  49 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  50              		.loc 1 87 8 view .LVU7
+  51 0006 022B     		cmp	r3, #2
+  52 0008 14D1     		bne	.L8
+  53 000a 0446     		mov	r4, r0
+  88:uCOSII/Source/os_q.c ****         *perr = OS_ERR_EVENT_TYPE;
+  89:uCOSII/Source/os_q.c ****         return ((void *)0);
+  90:uCOSII/Source/os_q.c ****     }
+  91:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+  54              		.loc 1 91 5 is_stmt 1 view .LVU8
+  55 000c FFF7FEFF 		bl	OS_CPU_SR_Save
+  56              	.LVL2:
+  57              		.loc 1 91 24 view .LVU9
+  92:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;             /* Point at queue control block                   
+  58              		.loc 1 92 5 view .LVU10
+  59              		.loc 1 92 8 is_stmt 0 view .LVU11
+  60 0010 6368     		ldr	r3, [r4, #4]
+  61              	.LVL3:
+  93:uCOSII/Source/os_q.c ****     if (pq->OSQEntries > 0u) {                   /* See if any messages in the queue               
+  62              		.loc 1 93 5 is_stmt 1 view .LVU12
+  63              		.loc 1 93 11 is_stmt 0 view .LVU13
+  64 0012 DA8A     		ldrh	r2, [r3, #22]
+  65              		.loc 1 93 8 view .LVU14
+  66 0014 AAB1     		cbz	r2, .L4
+  94:uCOSII/Source/os_q.c ****         pmsg = *pq->OSQOut++;                    /* Yes, extract oldest message from the queue     
+  67              		.loc 1 94 9 is_stmt 1 view .LVU15
+  68              		.loc 1 94 19 is_stmt 0 view .LVU16
+  69 0016 1C69     		ldr	r4, [r3, #16]
+  70              	.LVL4:
+  71              		.loc 1 94 27 view .LVU17
+  72 0018 211D     		adds	r1, r4, #4
+  73 001a 1961     		str	r1, [r3, #16]
+  74              		.loc 1 94 14 view .LVU18
+  75 001c 2468     		ldr	r4, [r4]
+  76              	.LVL5:
+  95:uCOSII/Source/os_q.c ****         pq->OSQEntries--;                        /* Update the number of entries in the queue      
+  77              		.loc 1 95 9 is_stmt 1 view .LVU19
+ARM GAS  /tmp/cc5CWVKc.s 			page 4
+
+
+  78              		.loc 1 95 23 is_stmt 0 view .LVU20
+  79 001e 013A     		subs	r2, r2, #1
+  80 0020 DA82     		strh	r2, [r3, #22]	@ movhi
+  96:uCOSII/Source/os_q.c ****         if (pq->OSQOut == pq->OSQEnd) {          /* Wrap OUT pointer if we are at the end of the qu
+  81              		.loc 1 96 9 is_stmt 1 view .LVU21
+  82              		.loc 1 96 29 is_stmt 0 view .LVU22
+  83 0022 9A68     		ldr	r2, [r3, #8]
+  84              		.loc 1 96 12 view .LVU23
+  85 0024 9142     		cmp	r1, r2
+  86 0026 09D0     		beq	.L9
+  87              	.L5:
+  97:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQStart;
+  98:uCOSII/Source/os_q.c ****         }
+  99:uCOSII/Source/os_q.c ****         *perr = OS_ERR_NONE;
+  88              		.loc 1 99 9 is_stmt 1 view .LVU24
+  89              		.loc 1 99 15 is_stmt 0 view .LVU25
+  90 0028 0023     		movs	r3, #0
+  91              	.LVL6:
+  92              		.loc 1 99 15 view .LVU26
+  93 002a 2B70     		strb	r3, [r5]
+  94              	.LVL7:
+  95              	.L6:
+ 100:uCOSII/Source/os_q.c ****     } else {
+ 101:uCOSII/Source/os_q.c ****         *perr = OS_ERR_Q_EMPTY;
+ 102:uCOSII/Source/os_q.c ****         pmsg  = (void *)0;                       /* Queue is empty                                 
+ 103:uCOSII/Source/os_q.c ****     }
+ 104:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+  96              		.loc 1 104 5 is_stmt 1 view .LVU27
+  97 002c FFF7FEFF 		bl	OS_CPU_SR_Restore
+  98              	.LVL8:
+  99              		.loc 1 104 23 view .LVU28
+ 105:uCOSII/Source/os_q.c ****     return (pmsg);                               /* Return message received (or NULL)              
+ 100              		.loc 1 105 5 view .LVU29
+ 101              	.L1:
+ 106:uCOSII/Source/os_q.c **** }
+ 102              		.loc 1 106 1 is_stmt 0 view .LVU30
+ 103 0030 2046     		mov	r0, r4
+ 104 0032 38BD     		pop	{r3, r4, r5, pc}
+ 105              	.LVL9:
+ 106              	.L8:
+  88:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 107              		.loc 1 88 9 is_stmt 1 view .LVU31
+  88:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 108              		.loc 1 88 15 is_stmt 0 view .LVU32
+ 109 0034 0123     		movs	r3, #1
+ 110 0036 0B70     		strb	r3, [r1]
+  89:uCOSII/Source/os_q.c ****     }
+ 111              		.loc 1 89 9 is_stmt 1 view .LVU33
+  89:uCOSII/Source/os_q.c ****     }
+ 112              		.loc 1 89 16 is_stmt 0 view .LVU34
+ 113 0038 0024     		movs	r4, #0
+ 114 003a F9E7     		b	.L1
+ 115              	.LVL10:
+ 116              	.L9:
+  97:uCOSII/Source/os_q.c ****         }
+ 117              		.loc 1 97 13 is_stmt 1 view .LVU35
+  97:uCOSII/Source/os_q.c ****         }
+ARM GAS  /tmp/cc5CWVKc.s 			page 5
+
+
+ 118              		.loc 1 97 28 is_stmt 0 view .LVU36
+ 119 003c 5A68     		ldr	r2, [r3, #4]
+  97:uCOSII/Source/os_q.c ****         }
+ 120              		.loc 1 97 24 view .LVU37
+ 121 003e 1A61     		str	r2, [r3, #16]
+ 122 0040 F2E7     		b	.L5
+ 123              	.LVL11:
+ 124              	.L4:
+ 101:uCOSII/Source/os_q.c ****         pmsg  = (void *)0;                       /* Queue is empty                                 
+ 125              		.loc 1 101 9 is_stmt 1 view .LVU38
+ 101:uCOSII/Source/os_q.c ****         pmsg  = (void *)0;                       /* Queue is empty                                 
+ 126              		.loc 1 101 15 is_stmt 0 view .LVU39
+ 127 0042 1F23     		movs	r3, #31
+ 128              	.LVL12:
+ 101:uCOSII/Source/os_q.c ****         pmsg  = (void *)0;                       /* Queue is empty                                 
+ 129              		.loc 1 101 15 view .LVU40
+ 130 0044 2B70     		strb	r3, [r5]
+ 131              	.LVL13:
+ 102:uCOSII/Source/os_q.c ****     }
+ 132              		.loc 1 102 9 is_stmt 1 view .LVU41
+ 102:uCOSII/Source/os_q.c ****     }
+ 133              		.loc 1 102 15 is_stmt 0 view .LVU42
+ 134 0046 0024     		movs	r4, #0
+ 135              	.LVL14:
+ 102:uCOSII/Source/os_q.c ****     }
+ 136              		.loc 1 102 15 view .LVU43
+ 137 0048 F0E7     		b	.L6
+ 138              		.cfi_endproc
+ 139              	.LFE0:
+ 141              		.section	.rodata.OSQCreate.str1.4,"aMS",%progbits,1
+ 142              		.align	2
+ 143              	.LC0:
+ 144 0000 3F00     		.ascii	"?\000"
+ 145              		.section	.text.OSQCreate,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	OSQCreate
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 151              		.fpu fpv4-sp-d16
+ 153              	OSQCreate:
+ 154              	.LVL15:
+ 155              	.LFB1:
+ 107:uCOSII/Source/os_q.c **** #endif
+ 108:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 109:uCOSII/Source/os_q.c **** /*
+ 110:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 111:uCOSII/Source/os_q.c **** *                                       CREATE A MESSAGE QUEUE
+ 112:uCOSII/Source/os_q.c **** *
+ 113:uCOSII/Source/os_q.c **** * Description: This function creates a message queue if free event control blocks are available.
+ 114:uCOSII/Source/os_q.c **** *
+ 115:uCOSII/Source/os_q.c **** * Arguments  : start         is a pointer to the base address of the message queue storage area.  T
+ 116:uCOSII/Source/os_q.c **** *                            storage area MUST be declared as an array of pointers to 'void' as fol
+ 117:uCOSII/Source/os_q.c **** *
+ 118:uCOSII/Source/os_q.c **** *                            void *MessageStorage[size]
+ 119:uCOSII/Source/os_q.c **** *
+ 120:uCOSII/Source/os_q.c **** *              size          is the number of elements in the storage area
+ARM GAS  /tmp/cc5CWVKc.s 			page 6
+
+
+ 121:uCOSII/Source/os_q.c **** *
+ 122:uCOSII/Source/os_q.c **** * Returns    : != (OS_EVENT *)0  is a pointer to the event control clock (OS_EVENT) associated with
+ 123:uCOSII/Source/os_q.c **** *                                created queue
+ 124:uCOSII/Source/os_q.c **** *              == (OS_EVENT *)0  if no event control blocks were available or an error was detected
+ 125:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 126:uCOSII/Source/os_q.c **** */
+ 127:uCOSII/Source/os_q.c **** 
+ 128:uCOSII/Source/os_q.c **** OS_EVENT  *OSQCreate (void    **start,
+ 129:uCOSII/Source/os_q.c ****                       INT16U    size)
+ 130:uCOSII/Source/os_q.c **** {
+ 156              		.loc 1 130 1 is_stmt 1 view -0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		.loc 1 130 1 is_stmt 0 view .LVU45
+ 161 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 162              	.LCFI1:
+ 163              		.cfi_def_cfa_offset 24
+ 164              		.cfi_offset 3, -24
+ 165              		.cfi_offset 4, -20
+ 166              		.cfi_offset 5, -16
+ 167              		.cfi_offset 6, -12
+ 168              		.cfi_offset 7, -8
+ 169              		.cfi_offset 14, -4
+ 131:uCOSII/Source/os_q.c ****     OS_EVENT  *pevent;
+ 170              		.loc 1 131 5 is_stmt 1 view .LVU46
+ 132:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 171              		.loc 1 132 5 view .LVU47
+ 133:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
+ 134:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 172              		.loc 1 134 5 view .LVU48
+ 173              	.LVL16:
+ 135:uCOSII/Source/os_q.c **** #endif
+ 136:uCOSII/Source/os_q.c **** 
+ 137:uCOSII/Source/os_q.c **** 
+ 138:uCOSII/Source/os_q.c **** 
+ 139:uCOSII/Source/os_q.c **** #ifdef OS_SAFETY_CRITICAL_IEC61508
+ 140:uCOSII/Source/os_q.c ****     if (OSSafetyCriticalStartFlag == OS_TRUE) {
+ 141:uCOSII/Source/os_q.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 142:uCOSII/Source/os_q.c ****         return ((OS_EVENT *)0);
+ 143:uCOSII/Source/os_q.c ****     }
+ 144:uCOSII/Source/os_q.c **** #endif
+ 145:uCOSII/Source/os_q.c **** 
+ 146:uCOSII/Source/os_q.c ****     if (OSIntNesting > 0u) {                     /* See if called from ISR ...                     
+ 174              		.loc 1 146 5 view .LVU49
+ 175              		.loc 1 146 22 is_stmt 0 view .LVU50
+ 176 0002 1B4B     		ldr	r3, .L16
+ 177 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 178              		.loc 1 146 8 view .LVU51
+ 179 0006 002B     		cmp	r3, #0
+ 180 0008 30D1     		bne	.L14
+ 181 000a 0546     		mov	r5, r0
+ 182 000c 0F46     		mov	r7, r1
+ 147:uCOSII/Source/os_q.c ****         return ((OS_EVENT *)0);                  /* ... can't CREATE from an ISR                   
+ 148:uCOSII/Source/os_q.c ****     }
+ 149:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 183              		.loc 1 149 5 is_stmt 1 view .LVU52
+ARM GAS  /tmp/cc5CWVKc.s 			page 7
+
+
+ 184 000e FFF7FEFF 		bl	OS_CPU_SR_Save
+ 185              	.LVL17:
+ 186              		.loc 1 149 24 view .LVU53
+ 150:uCOSII/Source/os_q.c ****     pevent = OSEventFreeList;                    /* Get next free event control block              
+ 187              		.loc 1 150 5 view .LVU54
+ 188              		.loc 1 150 12 is_stmt 0 view .LVU55
+ 189 0012 184B     		ldr	r3, .L16+4
+ 190 0014 1C68     		ldr	r4, [r3]
+ 191              	.LVL18:
+ 151:uCOSII/Source/os_q.c ****     if (OSEventFreeList != (OS_EVENT *)0) {      /* See if pool of free ECB pool was empty         
+ 192              		.loc 1 151 5 is_stmt 1 view .LVU56
+ 193              		.loc 1 151 8 is_stmt 0 view .LVU57
+ 194 0016 0CB1     		cbz	r4, .L12
+ 152:uCOSII/Source/os_q.c ****         OSEventFreeList = (OS_EVENT *)OSEventFreeList->OSEventPtr;
+ 195              		.loc 1 152 9 is_stmt 1 view .LVU58
+ 196              		.loc 1 152 54 is_stmt 0 view .LVU59
+ 197 0018 6268     		ldr	r2, [r4, #4]
+ 198              		.loc 1 152 25 view .LVU60
+ 199 001a 1A60     		str	r2, [r3]
+ 200              	.L12:
+ 153:uCOSII/Source/os_q.c ****     }
+ 154:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 201              		.loc 1 154 5 is_stmt 1 view .LVU61
+ 202 001c FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 203              	.LVL19:
+ 204              		.loc 1 154 23 view .LVU62
+ 155:uCOSII/Source/os_q.c ****     if (pevent != (OS_EVENT *)0) {               /* See if we have an event control block          
+ 205              		.loc 1 155 5 view .LVU63
+ 206              		.loc 1 155 8 is_stmt 0 view .LVU64
+ 207 0020 D4B1     		cbz	r4, .L10
+ 156:uCOSII/Source/os_q.c ****         OS_ENTER_CRITICAL();
+ 208              		.loc 1 156 9 is_stmt 1 view .LVU65
+ 209 0022 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 210              	.LVL20:
+ 211              		.loc 1 156 28 view .LVU66
+ 157:uCOSII/Source/os_q.c ****         pq = OSQFreeList;                        /* Get a free queue control block                 
+ 212              		.loc 1 157 9 view .LVU67
+ 213              		.loc 1 157 12 is_stmt 0 view .LVU68
+ 214 0026 144B     		ldr	r3, .L16+8
+ 215 0028 1E68     		ldr	r6, [r3]
+ 216              	.LVL21:
+ 158:uCOSII/Source/os_q.c ****         if (pq != (OS_Q *)0) {                   /* Were we able to get a queue control block ?    
+ 217              		.loc 1 158 9 is_stmt 1 view .LVU69
+ 218              		.loc 1 158 12 is_stmt 0 view .LVU70
+ 219 002a BEB1     		cbz	r6, .L13
+ 159:uCOSII/Source/os_q.c ****             OSQFreeList            = OSQFreeList->OSQPtr; /* Yes, Adjust free list pointer to next 
+ 220              		.loc 1 159 13 is_stmt 1 view .LVU71
+ 221              		.loc 1 159 49 is_stmt 0 view .LVU72
+ 222 002c 3268     		ldr	r2, [r6]
+ 223              		.loc 1 159 36 view .LVU73
+ 224 002e 1A60     		str	r2, [r3]
+ 160:uCOSII/Source/os_q.c ****             OS_EXIT_CRITICAL();
+ 225              		.loc 1 160 13 is_stmt 1 view .LVU74
+ 226 0030 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 227              	.LVL22:
+ 228              		.loc 1 160 31 view .LVU75
+ 161:uCOSII/Source/os_q.c ****             pq->OSQStart           = start;               /*      Initialize the queue             
+ARM GAS  /tmp/cc5CWVKc.s 			page 8
+
+
+ 229              		.loc 1 161 13 view .LVU76
+ 230              		.loc 1 161 36 is_stmt 0 view .LVU77
+ 231 0034 7560     		str	r5, [r6, #4]
+ 162:uCOSII/Source/os_q.c ****             pq->OSQEnd             = &start[size];
+ 232              		.loc 1 162 13 is_stmt 1 view .LVU78
+ 233              		.loc 1 162 38 is_stmt 0 view .LVU79
+ 234 0036 05EB8703 		add	r3, r5, r7, lsl #2
+ 235              		.loc 1 162 36 view .LVU80
+ 236 003a B360     		str	r3, [r6, #8]
+ 163:uCOSII/Source/os_q.c ****             pq->OSQIn              = start;
+ 237              		.loc 1 163 13 is_stmt 1 view .LVU81
+ 238              		.loc 1 163 36 is_stmt 0 view .LVU82
+ 239 003c F560     		str	r5, [r6, #12]
+ 164:uCOSII/Source/os_q.c ****             pq->OSQOut             = start;
+ 240              		.loc 1 164 13 is_stmt 1 view .LVU83
+ 241              		.loc 1 164 36 is_stmt 0 view .LVU84
+ 242 003e 3561     		str	r5, [r6, #16]
+ 165:uCOSII/Source/os_q.c ****             pq->OSQSize            = size;
+ 243              		.loc 1 165 13 is_stmt 1 view .LVU85
+ 244              		.loc 1 165 36 is_stmt 0 view .LVU86
+ 245 0040 B782     		strh	r7, [r6, #20]	@ movhi
+ 166:uCOSII/Source/os_q.c ****             pq->OSQEntries         = 0u;
+ 246              		.loc 1 166 13 is_stmt 1 view .LVU87
+ 247              		.loc 1 166 36 is_stmt 0 view .LVU88
+ 248 0042 0023     		movs	r3, #0
+ 249 0044 F382     		strh	r3, [r6, #22]	@ movhi
+ 167:uCOSII/Source/os_q.c ****             pevent->OSEventType    = OS_EVENT_TYPE_Q;
+ 250              		.loc 1 167 13 is_stmt 1 view .LVU89
+ 251              		.loc 1 167 36 is_stmt 0 view .LVU90
+ 252 0046 0222     		movs	r2, #2
+ 253 0048 2270     		strb	r2, [r4]
+ 168:uCOSII/Source/os_q.c ****             pevent->OSEventCnt     = 0u;
+ 254              		.loc 1 168 13 is_stmt 1 view .LVU91
+ 255              		.loc 1 168 36 is_stmt 0 view .LVU92
+ 256 004a 2381     		strh	r3, [r4, #8]	@ movhi
+ 169:uCOSII/Source/os_q.c ****             pevent->OSEventPtr     = pq;
+ 257              		.loc 1 169 13 is_stmt 1 view .LVU93
+ 258              		.loc 1 169 36 is_stmt 0 view .LVU94
+ 259 004c 6660     		str	r6, [r4, #4]
+ 170:uCOSII/Source/os_q.c **** #if OS_EVENT_NAME_EN > 0u
+ 171:uCOSII/Source/os_q.c ****             pevent->OSEventName    = (INT8U *)(void *)"?";
+ 260              		.loc 1 171 13 is_stmt 1 view .LVU95
+ 261              		.loc 1 171 36 is_stmt 0 view .LVU96
+ 262 004e 0B4B     		ldr	r3, .L16+12
+ 263 0050 6361     		str	r3, [r4, #20]
+ 172:uCOSII/Source/os_q.c **** #endif
+ 173:uCOSII/Source/os_q.c ****             OS_EventWaitListInit(pevent);                 /*      Initialize the wait list         
+ 264              		.loc 1 173 13 is_stmt 1 view .LVU97
+ 265 0052 2046     		mov	r0, r4
+ 266 0054 FFF7FEFF 		bl	OS_EventWaitListInit
+ 267              	.LVL23:
+ 268              	.L10:
+ 174:uCOSII/Source/os_q.c ****         } else {
+ 175:uCOSII/Source/os_q.c ****             pevent->OSEventPtr = (void *)OSEventFreeList; /* No,  Return event control block on err
+ 176:uCOSII/Source/os_q.c ****             OSEventFreeList    = pevent;
+ 177:uCOSII/Source/os_q.c ****             OS_EXIT_CRITICAL();
+ 178:uCOSII/Source/os_q.c ****             pevent = (OS_EVENT *)0;
+ARM GAS  /tmp/cc5CWVKc.s 			page 9
+
+
+ 179:uCOSII/Source/os_q.c ****         }
+ 180:uCOSII/Source/os_q.c ****     }
+ 181:uCOSII/Source/os_q.c ****     return (pevent);
+ 182:uCOSII/Source/os_q.c **** }
+ 269              		.loc 1 182 1 is_stmt 0 view .LVU98
+ 270 0058 2046     		mov	r0, r4
+ 271 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 272              	.LVL24:
+ 273              	.L13:
+ 175:uCOSII/Source/os_q.c ****             OSEventFreeList    = pevent;
+ 274              		.loc 1 175 13 is_stmt 1 view .LVU99
+ 175:uCOSII/Source/os_q.c ****             OSEventFreeList    = pevent;
+ 275              		.loc 1 175 32 is_stmt 0 view .LVU100
+ 276 005c 054B     		ldr	r3, .L16+4
+ 277 005e 1A68     		ldr	r2, [r3]
+ 278 0060 6260     		str	r2, [r4, #4]
+ 176:uCOSII/Source/os_q.c ****             OS_EXIT_CRITICAL();
+ 279              		.loc 1 176 13 is_stmt 1 view .LVU101
+ 176:uCOSII/Source/os_q.c ****             OS_EXIT_CRITICAL();
+ 280              		.loc 1 176 32 is_stmt 0 view .LVU102
+ 281 0062 1C60     		str	r4, [r3]
+ 177:uCOSII/Source/os_q.c ****             pevent = (OS_EVENT *)0;
+ 282              		.loc 1 177 13 is_stmt 1 view .LVU103
+ 283 0064 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 284              	.LVL25:
+ 177:uCOSII/Source/os_q.c ****             pevent = (OS_EVENT *)0;
+ 285              		.loc 1 177 31 view .LVU104
+ 178:uCOSII/Source/os_q.c ****         }
+ 286              		.loc 1 178 13 view .LVU105
+ 178:uCOSII/Source/os_q.c ****         }
+ 287              		.loc 1 178 20 is_stmt 0 view .LVU106
+ 288 0068 3446     		mov	r4, r6
+ 289 006a F5E7     		b	.L10
+ 290              	.LVL26:
+ 291              	.L14:
+ 147:uCOSII/Source/os_q.c ****     }
+ 292              		.loc 1 147 16 view .LVU107
+ 293 006c 0024     		movs	r4, #0
+ 294 006e F3E7     		b	.L10
+ 295              	.L17:
+ 296              		.align	2
+ 297              	.L16:
+ 298 0070 00000000 		.word	OSIntNesting
+ 299 0074 00000000 		.word	OSEventFreeList
+ 300 0078 00000000 		.word	OSQFreeList
+ 301 007c 00000000 		.word	.LC0
+ 302              		.cfi_endproc
+ 303              	.LFE1:
+ 305              		.section	.text.OSQDel,"ax",%progbits
+ 306              		.align	1
+ 307              		.global	OSQDel
+ 308              		.syntax unified
+ 309              		.thumb
+ 310              		.thumb_func
+ 311              		.fpu fpv4-sp-d16
+ 313              	OSQDel:
+ 314              	.LVL27:
+ARM GAS  /tmp/cc5CWVKc.s 			page 10
+
+
+ 315              	.LFB2:
+ 183:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 184:uCOSII/Source/os_q.c **** /*
+ 185:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 186:uCOSII/Source/os_q.c **** *                                       DELETE A MESSAGE QUEUE
+ 187:uCOSII/Source/os_q.c **** *
+ 188:uCOSII/Source/os_q.c **** * Description: This function deletes a message queue and readies all tasks pending on the queue.
+ 189:uCOSII/Source/os_q.c **** *
+ 190:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired
+ 191:uCOSII/Source/os_q.c **** *                            queue.
+ 192:uCOSII/Source/os_q.c **** *
+ 193:uCOSII/Source/os_q.c **** *              opt           determines delete options as follows:
+ 194:uCOSII/Source/os_q.c **** *                            opt == OS_DEL_NO_PEND   Delete the queue ONLY if no task pending
+ 195:uCOSII/Source/os_q.c **** *                            opt == OS_DEL_ALWAYS    Deletes the queue even if tasks are waiting.
+ 196:uCOSII/Source/os_q.c **** *                                                    In this case, all the tasks pending will be re
+ 197:uCOSII/Source/os_q.c **** *
+ 198:uCOSII/Source/os_q.c **** *              perr          is a pointer to an error code that can contain one of the following va
+ 199:uCOSII/Source/os_q.c **** *                            OS_ERR_NONE             The call was successful and the queue was dele
+ 200:uCOSII/Source/os_q.c **** *                            OS_ERR_DEL_ISR          If you tried to delete the queue from an ISR
+ 201:uCOSII/Source/os_q.c **** *                            OS_ERR_INVALID_OPT      An invalid option was specified
+ 202:uCOSII/Source/os_q.c **** *                            OS_ERR_TASK_WAITING     One or more tasks were waiting on the queue
+ 203:uCOSII/Source/os_q.c **** *                            OS_ERR_EVENT_TYPE       If you didn't pass a pointer to a queue
+ 204:uCOSII/Source/os_q.c **** *                            OS_ERR_PEVENT_NULL      If 'pevent' is a NULL pointer.
+ 205:uCOSII/Source/os_q.c **** *
+ 206:uCOSII/Source/os_q.c **** * Returns    : pevent        upon error
+ 207:uCOSII/Source/os_q.c **** *              (OS_EVENT *)0 if the queue was successfully deleted.
+ 208:uCOSII/Source/os_q.c **** *
+ 209:uCOSII/Source/os_q.c **** * Note(s)    : 1) This function must be used with care.  Tasks that would normally expect the prese
+ 210:uCOSII/Source/os_q.c **** *                 the queue MUST check the return code of OSQPend().
+ 211:uCOSII/Source/os_q.c **** *              2) OSQAccept() callers will not know that the intended queue has been deleted unless
+ 212:uCOSII/Source/os_q.c **** *                 they check 'pevent' to see that it's a NULL pointer.
+ 213:uCOSII/Source/os_q.c **** *              3) This call can potentially disable interrupts for a long time.  The interrupt disa
+ 214:uCOSII/Source/os_q.c **** *                 time is directly proportional to the number of tasks waiting on the queue.
+ 215:uCOSII/Source/os_q.c **** *              4) Because ALL tasks pending on the queue will be readied, you MUST be careful in
+ 216:uCOSII/Source/os_q.c **** *                 applications where the queue is used for mutual exclusion because the resource(s)
+ 217:uCOSII/Source/os_q.c **** *                 will no longer be guarded by the queue.
+ 218:uCOSII/Source/os_q.c **** *              5) If the storage for the message queue was allocated dynamically (i.e. using a mall
+ 219:uCOSII/Source/os_q.c **** *                 type call) then your application MUST release the memory storage by call the coun
+ 220:uCOSII/Source/os_q.c **** *                 call of the dynamic allocation scheme used.  If the queue storage was created sta
+ 221:uCOSII/Source/os_q.c **** *                 then, the storage can be reused.
+ 222:uCOSII/Source/os_q.c **** *              6) All tasks that were waiting for the queue will be readied and returned an 
+ 223:uCOSII/Source/os_q.c **** *                 OS_ERR_PEND_ABORT if OSQDel() was called with OS_DEL_ALWAYS
+ 224:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 225:uCOSII/Source/os_q.c **** */
+ 226:uCOSII/Source/os_q.c **** 
+ 227:uCOSII/Source/os_q.c **** #if OS_Q_DEL_EN > 0u
+ 228:uCOSII/Source/os_q.c **** OS_EVENT  *OSQDel (OS_EVENT  *pevent,
+ 229:uCOSII/Source/os_q.c ****                    INT8U      opt,
+ 230:uCOSII/Source/os_q.c ****                    INT8U     *perr)
+ 231:uCOSII/Source/os_q.c **** {
+ 316              		.loc 1 231 1 is_stmt 1 view -0
+ 317              		.cfi_startproc
+ 318              		@ args = 0, pretend = 0, frame = 0
+ 319              		@ frame_needed = 0, uses_anonymous_args = 0
+ 320              		.loc 1 231 1 is_stmt 0 view .LVU109
+ 321 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 322              	.LCFI2:
+ARM GAS  /tmp/cc5CWVKc.s 			page 11
+
+
+ 323              		.cfi_def_cfa_offset 24
+ 324              		.cfi_offset 4, -24
+ 325              		.cfi_offset 5, -20
+ 326              		.cfi_offset 6, -16
+ 327              		.cfi_offset 7, -12
+ 328              		.cfi_offset 8, -8
+ 329              		.cfi_offset 14, -4
+ 330 0004 0446     		mov	r4, r0
+ 331 0006 1546     		mov	r5, r2
+ 232:uCOSII/Source/os_q.c ****     BOOLEAN    tasks_waiting;
+ 332              		.loc 1 232 5 is_stmt 1 view .LVU110
+ 233:uCOSII/Source/os_q.c ****     OS_EVENT  *pevent_return;
+ 333              		.loc 1 233 5 view .LVU111
+ 234:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 334              		.loc 1 234 5 view .LVU112
+ 235:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
+ 236:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 335              		.loc 1 236 5 view .LVU113
+ 336              	.LVL28:
+ 237:uCOSII/Source/os_q.c **** #endif
+ 238:uCOSII/Source/os_q.c **** 
+ 239:uCOSII/Source/os_q.c **** 
+ 240:uCOSII/Source/os_q.c **** 
+ 241:uCOSII/Source/os_q.c **** #ifdef OS_SAFETY_CRITICAL
+ 242:uCOSII/Source/os_q.c ****     if (perr == (INT8U *)0) {
+ 243:uCOSII/Source/os_q.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 244:uCOSII/Source/os_q.c ****         return ((OS_EVENT *)0);
+ 245:uCOSII/Source/os_q.c ****     }
+ 246:uCOSII/Source/os_q.c **** #endif
+ 247:uCOSII/Source/os_q.c **** 
+ 248:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 249:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                         /* Validate 'pevent'                    
+ 250:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 251:uCOSII/Source/os_q.c ****         return (pevent);
+ 252:uCOSII/Source/os_q.c ****     }
+ 253:uCOSII/Source/os_q.c **** #endif
+ 254:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {          /* Validate event block type            
+ 337              		.loc 1 254 5 view .LVU114
+ 338              		.loc 1 254 15 is_stmt 0 view .LVU115
+ 339 0008 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 340              		.loc 1 254 8 view .LVU116
+ 341 000a 022B     		cmp	r3, #2
+ 342 000c 03D0     		beq	.L19
+ 255:uCOSII/Source/os_q.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 343              		.loc 1 255 9 is_stmt 1 view .LVU117
+ 344              		.loc 1 255 15 is_stmt 0 view .LVU118
+ 345 000e 0123     		movs	r3, #1
+ 346 0010 1370     		strb	r3, [r2]
+ 256:uCOSII/Source/os_q.c ****         return (pevent);
+ 347              		.loc 1 256 9 is_stmt 1 view .LVU119
+ 348              	.LVL29:
+ 349              	.L18:
+ 257:uCOSII/Source/os_q.c ****     }
+ 258:uCOSII/Source/os_q.c ****     if (OSIntNesting > 0u) {                               /* See if called from ISR ...           
+ 259:uCOSII/Source/os_q.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 260:uCOSII/Source/os_q.c ****         return (pevent);
+ 261:uCOSII/Source/os_q.c ****     }
+ARM GAS  /tmp/cc5CWVKc.s 			page 12
+
+
+ 262:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 263:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on queue    
+ 264:uCOSII/Source/os_q.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 265:uCOSII/Source/os_q.c ****     } else {
+ 266:uCOSII/Source/os_q.c ****         tasks_waiting = OS_FALSE;                          /* No                                   
+ 267:uCOSII/Source/os_q.c ****     }
+ 268:uCOSII/Source/os_q.c ****     switch (opt) {
+ 269:uCOSII/Source/os_q.c ****         case OS_DEL_NO_PEND:                               /* Delete queue only if no task waiting 
+ 270:uCOSII/Source/os_q.c ****              if (tasks_waiting == OS_FALSE) {
+ 271:uCOSII/Source/os_q.c **** #if OS_EVENT_NAME_EN > 0u
+ 272:uCOSII/Source/os_q.c ****                  pevent->OSEventName    = (INT8U *)(void *)"?";
+ 273:uCOSII/Source/os_q.c **** #endif
+ 274:uCOSII/Source/os_q.c ****                  pq                     = (OS_Q *)pevent->OSEventPtr;  /* Return OS_Q to free list 
+ 275:uCOSII/Source/os_q.c ****                  pq->OSQPtr             = OSQFreeList;
+ 276:uCOSII/Source/os_q.c ****                  OSQFreeList            = pq;
+ 277:uCOSII/Source/os_q.c ****                  pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 278:uCOSII/Source/os_q.c ****                  pevent->OSEventPtr     = OSEventFreeList; /* Return Event Control Block to free li
+ 279:uCOSII/Source/os_q.c ****                  pevent->OSEventCnt     = 0u;
+ 280:uCOSII/Source/os_q.c ****                  OSEventFreeList        = pevent;          /* Get next free event control block    
+ 281:uCOSII/Source/os_q.c ****                  OS_EXIT_CRITICAL();
+ 282:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_NONE;
+ 283:uCOSII/Source/os_q.c ****                  pevent_return          = (OS_EVENT *)0;   /* Queue has been deleted               
+ 284:uCOSII/Source/os_q.c ****              } else {
+ 285:uCOSII/Source/os_q.c ****                  OS_EXIT_CRITICAL();
+ 286:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_TASK_WAITING;
+ 287:uCOSII/Source/os_q.c ****                  pevent_return          = pevent;
+ 288:uCOSII/Source/os_q.c ****              }
+ 289:uCOSII/Source/os_q.c ****              break;
+ 290:uCOSII/Source/os_q.c **** 
+ 291:uCOSII/Source/os_q.c ****         case OS_DEL_ALWAYS:                                /* Always delete the queue              
+ 292:uCOSII/Source/os_q.c ****              while (pevent->OSEventGrp != 0u) {            /* Ready ALL tasks waiting for queue    
+ 293:uCOSII/Source/os_q.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 294:uCOSII/Source/os_q.c ****              }
+ 295:uCOSII/Source/os_q.c **** #if OS_EVENT_NAME_EN > 0u
+ 296:uCOSII/Source/os_q.c ****              pevent->OSEventName    = (INT8U *)(void *)"?";
+ 297:uCOSII/Source/os_q.c **** #endif
+ 298:uCOSII/Source/os_q.c ****              pq                     = (OS_Q *)pevent->OSEventPtr;   /* Return OS_Q to free list    
+ 299:uCOSII/Source/os_q.c ****              pq->OSQPtr             = OSQFreeList;
+ 300:uCOSII/Source/os_q.c ****              OSQFreeList            = pq;
+ 301:uCOSII/Source/os_q.c ****              pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 302:uCOSII/Source/os_q.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 303:uCOSII/Source/os_q.c ****              pevent->OSEventCnt     = 0u;
+ 304:uCOSII/Source/os_q.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 305:uCOSII/Source/os_q.c ****              OS_EXIT_CRITICAL();
+ 306:uCOSII/Source/os_q.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 307:uCOSII/Source/os_q.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 308:uCOSII/Source/os_q.c ****              }
+ 309:uCOSII/Source/os_q.c ****              *perr                  = OS_ERR_NONE;
+ 310:uCOSII/Source/os_q.c ****              pevent_return          = (OS_EVENT *)0;       /* Queue has been deleted               
+ 311:uCOSII/Source/os_q.c ****              break;
+ 312:uCOSII/Source/os_q.c **** 
+ 313:uCOSII/Source/os_q.c ****         default:
+ 314:uCOSII/Source/os_q.c ****              OS_EXIT_CRITICAL();
+ 315:uCOSII/Source/os_q.c ****              *perr                  = OS_ERR_INVALID_OPT;
+ 316:uCOSII/Source/os_q.c ****              pevent_return          = pevent;
+ 317:uCOSII/Source/os_q.c ****              break;
+ 318:uCOSII/Source/os_q.c ****     }
+ARM GAS  /tmp/cc5CWVKc.s 			page 13
+
+
+ 319:uCOSII/Source/os_q.c ****     return (pevent_return);
+ 320:uCOSII/Source/os_q.c **** }
+ 350              		.loc 1 320 1 is_stmt 0 view .LVU120
+ 351 0012 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 352              	.LVL30:
+ 353              	.L19:
+ 354              		.loc 1 320 1 view .LVU121
+ 355 0016 0E46     		mov	r6, r1
+ 258:uCOSII/Source/os_q.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 356              		.loc 1 258 5 is_stmt 1 view .LVU122
+ 258:uCOSII/Source/os_q.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 357              		.loc 1 258 22 is_stmt 0 view .LVU123
+ 358 0018 2D4B     		ldr	r3, .L33
+ 359 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 258:uCOSII/Source/os_q.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
+ 360              		.loc 1 258 8 view .LVU124
+ 361 001c 13B1     		cbz	r3, .L21
+ 259:uCOSII/Source/os_q.c ****         return (pevent);
+ 362              		.loc 1 259 9 is_stmt 1 view .LVU125
+ 259:uCOSII/Source/os_q.c ****         return (pevent);
+ 363              		.loc 1 259 15 is_stmt 0 view .LVU126
+ 364 001e 0F23     		movs	r3, #15
+ 365 0020 1370     		strb	r3, [r2]
+ 260:uCOSII/Source/os_q.c ****     }
+ 366              		.loc 1 260 9 is_stmt 1 view .LVU127
+ 260:uCOSII/Source/os_q.c ****     }
+ 367              		.loc 1 260 16 is_stmt 0 view .LVU128
+ 368 0022 F6E7     		b	.L18
+ 369              	.L21:
+ 262:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on queue    
+ 370              		.loc 1 262 5 is_stmt 1 view .LVU129
+ 371 0024 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 372              	.LVL31:
+ 262:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on queue    
+ 373              		.loc 1 262 5 is_stmt 0 view .LVU130
+ 374 0028 0746     		mov	r7, r0
+ 375              	.LVL32:
+ 262:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any tasks waiting on queue    
+ 376              		.loc 1 262 24 is_stmt 1 view .LVU131
+ 263:uCOSII/Source/os_q.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 377              		.loc 1 263 5 view .LVU132
+ 263:uCOSII/Source/os_q.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 378              		.loc 1 263 15 is_stmt 0 view .LVU133
+ 379 002a 94F80A80 		ldrb	r8, [r4, #10]	@ zero_extendqisi2
+ 263:uCOSII/Source/os_q.c ****         tasks_waiting = OS_TRUE;                           /* Yes                                  
+ 380              		.loc 1 263 8 view .LVU134
+ 381 002e B8F1000F 		cmp	r8, #0
+ 382 0032 01D0     		beq	.L22
+ 264:uCOSII/Source/os_q.c ****     } else {
+ 383              		.loc 1 264 23 view .LVU135
+ 384 0034 4FF00108 		mov	r8, #1
+ 385              	.L22:
+ 386              	.LVL33:
+ 268:uCOSII/Source/os_q.c ****         case OS_DEL_NO_PEND:                               /* Delete queue only if no task waiting 
+ 387              		.loc 1 268 5 is_stmt 1 view .LVU136
+ 388 0038 46B1     		cbz	r6, .L23
+ 389 003a 012E     		cmp	r6, #1
+ARM GAS  /tmp/cc5CWVKc.s 			page 14
+
+
+ 390 003c 2AD0     		beq	.L24
+ 314:uCOSII/Source/os_q.c ****              *perr                  = OS_ERR_INVALID_OPT;
+ 391              		.loc 1 314 14 view .LVU137
+ 392 003e 3846     		mov	r0, r7
+ 393              	.LVL34:
+ 314:uCOSII/Source/os_q.c ****              *perr                  = OS_ERR_INVALID_OPT;
+ 394              		.loc 1 314 14 is_stmt 0 view .LVU138
+ 395 0040 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 396              	.LVL35:
+ 314:uCOSII/Source/os_q.c ****              *perr                  = OS_ERR_INVALID_OPT;
+ 397              		.loc 1 314 32 is_stmt 1 view .LVU139
+ 315:uCOSII/Source/os_q.c ****              pevent_return          = pevent;
+ 398              		.loc 1 315 14 view .LVU140
+ 315:uCOSII/Source/os_q.c ****              pevent_return          = pevent;
+ 399              		.loc 1 315 37 is_stmt 0 view .LVU141
+ 400 0044 0723     		movs	r3, #7
+ 401 0046 2B70     		strb	r3, [r5]
+ 316:uCOSII/Source/os_q.c ****              break;
+ 402              		.loc 1 316 14 is_stmt 1 view .LVU142
+ 403              	.LVL36:
+ 317:uCOSII/Source/os_q.c ****     }
+ 404              		.loc 1 317 14 view .LVU143
+ 316:uCOSII/Source/os_q.c ****              break;
+ 405              		.loc 1 316 37 is_stmt 0 view .LVU144
+ 406 0048 2046     		mov	r0, r4
+ 407              	.LVL37:
+ 317:uCOSII/Source/os_q.c ****     }
+ 408              		.loc 1 317 14 view .LVU145
+ 409 004a E2E7     		b	.L18
+ 410              	.LVL38:
+ 411              	.L23:
+ 270:uCOSII/Source/os_q.c **** #if OS_EVENT_NAME_EN > 0u
+ 412              		.loc 1 270 14 is_stmt 1 view .LVU146
+ 270:uCOSII/Source/os_q.c **** #if OS_EVENT_NAME_EN > 0u
+ 413              		.loc 1 270 17 is_stmt 0 view .LVU147
+ 414 004c B8F1000F 		cmp	r8, #0
+ 415 0050 06D0     		beq	.L31
+ 285:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_TASK_WAITING;
+ 416              		.loc 1 285 18 is_stmt 1 view .LVU148
+ 417 0052 3846     		mov	r0, r7
+ 418              	.LVL39:
+ 285:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_TASK_WAITING;
+ 419              		.loc 1 285 18 is_stmt 0 view .LVU149
+ 420 0054 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 421              	.LVL40:
+ 285:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_TASK_WAITING;
+ 422              		.loc 1 285 36 is_stmt 1 view .LVU150
+ 286:uCOSII/Source/os_q.c ****                  pevent_return          = pevent;
+ 423              		.loc 1 286 18 view .LVU151
+ 286:uCOSII/Source/os_q.c ****                  pevent_return          = pevent;
+ 424              		.loc 1 286 41 is_stmt 0 view .LVU152
+ 425 0058 4923     		movs	r3, #73
+ 426 005a 2B70     		strb	r3, [r5]
+ 287:uCOSII/Source/os_q.c ****              }
+ 427              		.loc 1 287 18 is_stmt 1 view .LVU153
+ 428              	.LVL41:
+ 287:uCOSII/Source/os_q.c ****              }
+ARM GAS  /tmp/cc5CWVKc.s 			page 15
+
+
+ 429              		.loc 1 287 41 is_stmt 0 view .LVU154
+ 430 005c 2046     		mov	r0, r4
+ 431 005e D8E7     		b	.L18
+ 432              	.LVL42:
+ 433              	.L31:
+ 272:uCOSII/Source/os_q.c **** #endif
+ 434              		.loc 1 272 18 is_stmt 1 view .LVU155
+ 272:uCOSII/Source/os_q.c **** #endif
+ 435              		.loc 1 272 41 is_stmt 0 view .LVU156
+ 436 0060 1C4B     		ldr	r3, .L33+4
+ 437 0062 6361     		str	r3, [r4, #20]
+ 274:uCOSII/Source/os_q.c ****                  pq->OSQPtr             = OSQFreeList;
+ 438              		.loc 1 274 18 is_stmt 1 view .LVU157
+ 274:uCOSII/Source/os_q.c ****                  pq->OSQPtr             = OSQFreeList;
+ 439              		.loc 1 274 41 is_stmt 0 view .LVU158
+ 440 0064 6268     		ldr	r2, [r4, #4]
+ 441              	.LVL43:
+ 275:uCOSII/Source/os_q.c ****                  OSQFreeList            = pq;
+ 442              		.loc 1 275 18 is_stmt 1 view .LVU159
+ 275:uCOSII/Source/os_q.c ****                  OSQFreeList            = pq;
+ 443              		.loc 1 275 41 is_stmt 0 view .LVU160
+ 444 0066 1C4B     		ldr	r3, .L33+8
+ 445 0068 1968     		ldr	r1, [r3]
+ 446 006a 1160     		str	r1, [r2]
+ 276:uCOSII/Source/os_q.c ****                  pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 447              		.loc 1 276 18 is_stmt 1 view .LVU161
+ 276:uCOSII/Source/os_q.c ****                  pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 448              		.loc 1 276 41 is_stmt 0 view .LVU162
+ 449 006c 1A60     		str	r2, [r3]
+ 277:uCOSII/Source/os_q.c ****                  pevent->OSEventPtr     = OSEventFreeList; /* Return Event Control Block to free li
+ 450              		.loc 1 277 18 is_stmt 1 view .LVU163
+ 277:uCOSII/Source/os_q.c ****                  pevent->OSEventPtr     = OSEventFreeList; /* Return Event Control Block to free li
+ 451              		.loc 1 277 41 is_stmt 0 view .LVU164
+ 452 006e 0026     		movs	r6, #0
+ 453 0070 2670     		strb	r6, [r4]
+ 278:uCOSII/Source/os_q.c ****                  pevent->OSEventCnt     = 0u;
+ 454              		.loc 1 278 18 is_stmt 1 view .LVU165
+ 278:uCOSII/Source/os_q.c ****                  pevent->OSEventCnt     = 0u;
+ 455              		.loc 1 278 41 is_stmt 0 view .LVU166
+ 456 0072 1A4B     		ldr	r3, .L33+12
+ 457 0074 1A68     		ldr	r2, [r3]
+ 458              	.LVL44:
+ 278:uCOSII/Source/os_q.c ****                  pevent->OSEventCnt     = 0u;
+ 459              		.loc 1 278 41 view .LVU167
+ 460 0076 6260     		str	r2, [r4, #4]
+ 279:uCOSII/Source/os_q.c ****                  OSEventFreeList        = pevent;          /* Get next free event control block    
+ 461              		.loc 1 279 18 is_stmt 1 view .LVU168
+ 279:uCOSII/Source/os_q.c ****                  OSEventFreeList        = pevent;          /* Get next free event control block    
+ 462              		.loc 1 279 41 is_stmt 0 view .LVU169
+ 463 0078 2681     		strh	r6, [r4, #8]	@ movhi
+ 280:uCOSII/Source/os_q.c ****                  OS_EXIT_CRITICAL();
+ 464              		.loc 1 280 18 is_stmt 1 view .LVU170
+ 280:uCOSII/Source/os_q.c ****                  OS_EXIT_CRITICAL();
+ 465              		.loc 1 280 41 is_stmt 0 view .LVU171
+ 466 007a 1C60     		str	r4, [r3]
+ 281:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_NONE;
+ 467              		.loc 1 281 18 is_stmt 1 view .LVU172
+ARM GAS  /tmp/cc5CWVKc.s 			page 16
+
+
+ 468 007c 3846     		mov	r0, r7
+ 469              	.LVL45:
+ 281:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_NONE;
+ 470              		.loc 1 281 18 is_stmt 0 view .LVU173
+ 471 007e FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 472              	.LVL46:
+ 281:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_NONE;
+ 473              		.loc 1 281 36 is_stmt 1 view .LVU174
+ 282:uCOSII/Source/os_q.c ****                  pevent_return          = (OS_EVENT *)0;   /* Queue has been deleted               
+ 474              		.loc 1 282 18 view .LVU175
+ 282:uCOSII/Source/os_q.c ****                  pevent_return          = (OS_EVENT *)0;   /* Queue has been deleted               
+ 475              		.loc 1 282 41 is_stmt 0 view .LVU176
+ 476 0082 2E70     		strb	r6, [r5]
+ 283:uCOSII/Source/os_q.c ****              } else {
+ 477              		.loc 1 283 18 is_stmt 1 view .LVU177
+ 478              	.LVL47:
+ 283:uCOSII/Source/os_q.c ****              } else {
+ 479              		.loc 1 283 41 is_stmt 0 view .LVU178
+ 480 0084 3046     		mov	r0, r6
+ 481 0086 C4E7     		b	.L18
+ 482              	.LVL48:
+ 483              	.L27:
+ 293:uCOSII/Source/os_q.c ****              }
+ 484              		.loc 1 293 18 is_stmt 1 view .LVU179
+ 293:uCOSII/Source/os_q.c ****              }
+ 485              		.loc 1 293 24 is_stmt 0 view .LVU180
+ 486 0088 0223     		movs	r3, #2
+ 487 008a 0422     		movs	r2, #4
+ 488 008c 0021     		movs	r1, #0
+ 489 008e 2046     		mov	r0, r4
+ 490 0090 FFF7FEFF 		bl	OS_EventTaskRdy
+ 491              	.LVL49:
+ 492              	.L24:
+ 292:uCOSII/Source/os_q.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 493              		.loc 1 292 20 is_stmt 1 view .LVU181
+ 292:uCOSII/Source/os_q.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 494              		.loc 1 292 27 is_stmt 0 view .LVU182
+ 495 0094 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 292:uCOSII/Source/os_q.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 496              		.loc 1 292 20 view .LVU183
+ 497 0096 002B     		cmp	r3, #0
+ 498 0098 F6D1     		bne	.L27
+ 296:uCOSII/Source/os_q.c **** #endif
+ 499              		.loc 1 296 14 is_stmt 1 view .LVU184
+ 296:uCOSII/Source/os_q.c **** #endif
+ 500              		.loc 1 296 37 is_stmt 0 view .LVU185
+ 501 009a 0E4B     		ldr	r3, .L33+4
+ 502 009c 6361     		str	r3, [r4, #20]
+ 298:uCOSII/Source/os_q.c ****              pq->OSQPtr             = OSQFreeList;
+ 503              		.loc 1 298 14 is_stmt 1 view .LVU186
+ 298:uCOSII/Source/os_q.c ****              pq->OSQPtr             = OSQFreeList;
+ 504              		.loc 1 298 37 is_stmt 0 view .LVU187
+ 505 009e 6268     		ldr	r2, [r4, #4]
+ 506              	.LVL50:
+ 299:uCOSII/Source/os_q.c ****              OSQFreeList            = pq;
+ 507              		.loc 1 299 14 is_stmt 1 view .LVU188
+ 299:uCOSII/Source/os_q.c ****              OSQFreeList            = pq;
+ARM GAS  /tmp/cc5CWVKc.s 			page 17
+
+
+ 508              		.loc 1 299 37 is_stmt 0 view .LVU189
+ 509 00a0 0D4B     		ldr	r3, .L33+8
+ 510 00a2 1968     		ldr	r1, [r3]
+ 511 00a4 1160     		str	r1, [r2]
+ 300:uCOSII/Source/os_q.c ****              pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 512              		.loc 1 300 14 is_stmt 1 view .LVU190
+ 300:uCOSII/Source/os_q.c ****              pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
+ 513              		.loc 1 300 37 is_stmt 0 view .LVU191
+ 514 00a6 1A60     		str	r2, [r3]
+ 301:uCOSII/Source/os_q.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 515              		.loc 1 301 14 is_stmt 1 view .LVU192
+ 301:uCOSII/Source/os_q.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 516              		.loc 1 301 37 is_stmt 0 view .LVU193
+ 517 00a8 0022     		movs	r2, #0
+ 518              	.LVL51:
+ 301:uCOSII/Source/os_q.c ****              pevent->OSEventPtr     = OSEventFreeList;     /* Return Event Control Block to free li
+ 519              		.loc 1 301 37 view .LVU194
+ 520 00aa 2270     		strb	r2, [r4]
+ 521              	.LVL52:
+ 302:uCOSII/Source/os_q.c ****              pevent->OSEventCnt     = 0u;
+ 522              		.loc 1 302 14 is_stmt 1 view .LVU195
+ 302:uCOSII/Source/os_q.c ****              pevent->OSEventCnt     = 0u;
+ 523              		.loc 1 302 37 is_stmt 0 view .LVU196
+ 524 00ac 0B4B     		ldr	r3, .L33+12
+ 525 00ae 1968     		ldr	r1, [r3]
+ 526 00b0 6160     		str	r1, [r4, #4]
+ 303:uCOSII/Source/os_q.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 527              		.loc 1 303 14 is_stmt 1 view .LVU197
+ 303:uCOSII/Source/os_q.c ****              OSEventFreeList        = pevent;              /* Get next free event control block    
+ 528              		.loc 1 303 37 is_stmt 0 view .LVU198
+ 529 00b2 2281     		strh	r2, [r4, #8]	@ movhi
+ 304:uCOSII/Source/os_q.c ****              OS_EXIT_CRITICAL();
+ 530              		.loc 1 304 14 is_stmt 1 view .LVU199
+ 304:uCOSII/Source/os_q.c ****              OS_EXIT_CRITICAL();
+ 531              		.loc 1 304 37 is_stmt 0 view .LVU200
+ 532 00b4 1C60     		str	r4, [r3]
+ 305:uCOSII/Source/os_q.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 533              		.loc 1 305 14 is_stmt 1 view .LVU201
+ 534 00b6 3846     		mov	r0, r7
+ 535 00b8 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 536              	.LVL53:
+ 305:uCOSII/Source/os_q.c ****              if (tasks_waiting == OS_TRUE) {               /* Reschedule only if task(s) were waiti
+ 537              		.loc 1 305 32 view .LVU202
+ 306:uCOSII/Source/os_q.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 538              		.loc 1 306 14 view .LVU203
+ 306:uCOSII/Source/os_q.c ****                  OS_Sched();                               /* Find highest priority task ready to r
+ 539              		.loc 1 306 17 is_stmt 0 view .LVU204
+ 540 00bc B8F1010F 		cmp	r8, #1
+ 541 00c0 03D0     		beq	.L32
+ 542              	.L28:
+ 309:uCOSII/Source/os_q.c ****              pevent_return          = (OS_EVENT *)0;       /* Queue has been deleted               
+ 543              		.loc 1 309 14 is_stmt 1 view .LVU205
+ 309:uCOSII/Source/os_q.c ****              pevent_return          = (OS_EVENT *)0;       /* Queue has been deleted               
+ 544              		.loc 1 309 37 is_stmt 0 view .LVU206
+ 545 00c2 0024     		movs	r4, #0
+ 546              	.LVL54:
+ 309:uCOSII/Source/os_q.c ****              pevent_return          = (OS_EVENT *)0;       /* Queue has been deleted               
+ARM GAS  /tmp/cc5CWVKc.s 			page 18
+
+
+ 547              		.loc 1 309 37 view .LVU207
+ 548 00c4 2C70     		strb	r4, [r5]
+ 310:uCOSII/Source/os_q.c ****              break;
+ 549              		.loc 1 310 14 is_stmt 1 view .LVU208
+ 550              	.LVL55:
+ 311:uCOSII/Source/os_q.c **** 
+ 551              		.loc 1 311 14 view .LVU209
+ 310:uCOSII/Source/os_q.c ****              break;
+ 552              		.loc 1 310 37 is_stmt 0 view .LVU210
+ 553 00c6 2046     		mov	r0, r4
+ 311:uCOSII/Source/os_q.c **** 
+ 554              		.loc 1 311 14 view .LVU211
+ 555 00c8 A3E7     		b	.L18
+ 556              	.LVL56:
+ 557              	.L32:
+ 307:uCOSII/Source/os_q.c ****              }
+ 558              		.loc 1 307 18 is_stmt 1 view .LVU212
+ 559 00ca FFF7FEFF 		bl	OS_Sched
+ 560              	.LVL57:
+ 561 00ce F8E7     		b	.L28
+ 562              	.L34:
+ 563              		.align	2
+ 564              	.L33:
+ 565 00d0 00000000 		.word	OSIntNesting
+ 566 00d4 00000000 		.word	.LC0
+ 567 00d8 00000000 		.word	OSQFreeList
+ 568 00dc 00000000 		.word	OSEventFreeList
+ 569              		.cfi_endproc
+ 570              	.LFE2:
+ 572              		.section	.text.OSQFlush,"ax",%progbits
+ 573              		.align	1
+ 574              		.global	OSQFlush
+ 575              		.syntax unified
+ 576              		.thumb
+ 577              		.thumb_func
+ 578              		.fpu fpv4-sp-d16
+ 580              	OSQFlush:
+ 581              	.LVL58:
+ 582              	.LFB3:
+ 321:uCOSII/Source/os_q.c **** #endif
+ 322:uCOSII/Source/os_q.c **** 
+ 323:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 324:uCOSII/Source/os_q.c **** /*
+ 325:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 326:uCOSII/Source/os_q.c **** *                                             FLUSH QUEUE
+ 327:uCOSII/Source/os_q.c **** *
+ 328:uCOSII/Source/os_q.c **** * Description : This function is used to flush the contents of the message queue.
+ 329:uCOSII/Source/os_q.c **** *
+ 330:uCOSII/Source/os_q.c **** * Arguments   : none
+ 331:uCOSII/Source/os_q.c **** *
+ 332:uCOSII/Source/os_q.c **** * Returns     : OS_ERR_NONE         upon success
+ 333:uCOSII/Source/os_q.c **** *               OS_ERR_EVENT_TYPE   If you didn't pass a pointer to a queue
+ 334:uCOSII/Source/os_q.c **** *               OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer
+ 335:uCOSII/Source/os_q.c **** *
+ 336:uCOSII/Source/os_q.c **** * WARNING     : You should use this function with great care because, when to flush the queue, you 
+ 337:uCOSII/Source/os_q.c **** *               the references to what the queue entries are pointing to and thus, you could cause
+ 338:uCOSII/Source/os_q.c **** *               'memory leaks'.  In other words, the data you are pointing to that's being referenc
+ARM GAS  /tmp/cc5CWVKc.s 			page 19
+
+
+ 339:uCOSII/Source/os_q.c **** *               by the queue entries should, most likely, need to be de-allocated (i.e. freed).
+ 340:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 341:uCOSII/Source/os_q.c **** */
+ 342:uCOSII/Source/os_q.c **** 
+ 343:uCOSII/Source/os_q.c **** #if OS_Q_FLUSH_EN > 0u
+ 344:uCOSII/Source/os_q.c **** INT8U  OSQFlush (OS_EVENT *pevent)
+ 345:uCOSII/Source/os_q.c **** {
+ 583              		.loc 1 345 1 view -0
+ 584              		.cfi_startproc
+ 585              		@ args = 0, pretend = 0, frame = 0
+ 586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 587              		.loc 1 345 1 is_stmt 0 view .LVU214
+ 588 0000 10B5     		push	{r4, lr}
+ 589              	.LCFI3:
+ 590              		.cfi_def_cfa_offset 8
+ 591              		.cfi_offset 4, -8
+ 592              		.cfi_offset 14, -4
+ 593 0002 0446     		mov	r4, r0
+ 346:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 594              		.loc 1 346 5 is_stmt 1 view .LVU215
+ 347:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 348:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 595              		.loc 1 348 5 view .LVU216
+ 596              	.LVL59:
+ 349:uCOSII/Source/os_q.c **** #endif
+ 350:uCOSII/Source/os_q.c **** 
+ 351:uCOSII/Source/os_q.c **** 
+ 352:uCOSII/Source/os_q.c **** 
+ 353:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 354:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 355:uCOSII/Source/os_q.c ****         return (OS_ERR_PEVENT_NULL);
+ 356:uCOSII/Source/os_q.c ****     }
+ 357:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {     /* Validate event block type                 
+ 358:uCOSII/Source/os_q.c ****         return (OS_ERR_EVENT_TYPE);
+ 359:uCOSII/Source/os_q.c ****     }
+ 360:uCOSII/Source/os_q.c **** #endif
+ 361:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 597              		.loc 1 361 5 view .LVU217
+ 598 0004 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 599              	.LVL60:
+ 600              		.loc 1 361 24 view .LVU218
+ 362:uCOSII/Source/os_q.c ****     pq             = (OS_Q *)pevent->OSEventPtr;      /* Point to queue storage structure          
+ 601              		.loc 1 362 5 view .LVU219
+ 602              		.loc 1 362 20 is_stmt 0 view .LVU220
+ 603 0008 6368     		ldr	r3, [r4, #4]
+ 604              	.LVL61:
+ 363:uCOSII/Source/os_q.c ****     pq->OSQIn      = pq->OSQStart;
+ 605              		.loc 1 363 5 is_stmt 1 view .LVU221
+ 606              		.loc 1 363 24 is_stmt 0 view .LVU222
+ 607 000a 5A68     		ldr	r2, [r3, #4]
+ 608              		.loc 1 363 20 view .LVU223
+ 609 000c DA60     		str	r2, [r3, #12]
+ 364:uCOSII/Source/os_q.c ****     pq->OSQOut     = pq->OSQStart;
+ 610              		.loc 1 364 5 is_stmt 1 view .LVU224
+ 611              		.loc 1 364 20 is_stmt 0 view .LVU225
+ 612 000e 1A61     		str	r2, [r3, #16]
+ 365:uCOSII/Source/os_q.c ****     pq->OSQEntries = 0u;
+ARM GAS  /tmp/cc5CWVKc.s 			page 20
+
+
+ 613              		.loc 1 365 5 is_stmt 1 view .LVU226
+ 614              		.loc 1 365 20 is_stmt 0 view .LVU227
+ 615 0010 0024     		movs	r4, #0
+ 616              	.LVL62:
+ 617              		.loc 1 365 20 view .LVU228
+ 618 0012 DC82     		strh	r4, [r3, #22]	@ movhi
+ 366:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 619              		.loc 1 366 5 is_stmt 1 view .LVU229
+ 620 0014 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 621              	.LVL63:
+ 622              		.loc 1 366 23 view .LVU230
+ 367:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 623              		.loc 1 367 5 view .LVU231
+ 368:uCOSII/Source/os_q.c **** }
+ 624              		.loc 1 368 1 is_stmt 0 view .LVU232
+ 625 0018 2046     		mov	r0, r4
+ 626 001a 10BD     		pop	{r4, pc}
+ 627              		.cfi_endproc
+ 628              	.LFE3:
+ 630              		.section	.text.OSQPend,"ax",%progbits
+ 631              		.align	1
+ 632              		.global	OSQPend
+ 633              		.syntax unified
+ 634              		.thumb
+ 635              		.thumb_func
+ 636              		.fpu fpv4-sp-d16
+ 638              	OSQPend:
+ 639              	.LVL64:
+ 640              	.LFB4:
+ 369:uCOSII/Source/os_q.c **** #endif
+ 370:uCOSII/Source/os_q.c **** 
+ 371:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 372:uCOSII/Source/os_q.c **** /*
+ 373:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 374:uCOSII/Source/os_q.c **** *                                    PEND ON A QUEUE FOR A MESSAGE
+ 375:uCOSII/Source/os_q.c **** *
+ 376:uCOSII/Source/os_q.c **** * Description: This function waits for a message to be sent to a queue
+ 377:uCOSII/Source/os_q.c **** *
+ 378:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 379:uCOSII/Source/os_q.c **** *
+ 380:uCOSII/Source/os_q.c **** *              timeout       is an optional timeout period (in clock ticks).  If non-zero, your tas
+ 381:uCOSII/Source/os_q.c **** *                            wait for a message to arrive at the queue up to the amount of time
+ 382:uCOSII/Source/os_q.c **** *                            specified by this argument.  If you specify 0, however, your task will
+ 383:uCOSII/Source/os_q.c **** *                            forever at the specified queue or, until a message arrives.
+ 384:uCOSII/Source/os_q.c **** *
+ 385:uCOSII/Source/os_q.c **** *              perr          is a pointer to where an error message will be deposited.  Possible er
+ 386:uCOSII/Source/os_q.c **** *                            messages are:
+ 387:uCOSII/Source/os_q.c **** *
+ 388:uCOSII/Source/os_q.c **** *                            OS_ERR_NONE         The call was successful and your task received a
+ 389:uCOSII/Source/os_q.c **** *                                                message.
+ 390:uCOSII/Source/os_q.c **** *                            OS_ERR_TIMEOUT      A message was not received within the specified 't
+ 391:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_ABORT   The wait on the queue was aborted.
+ 392:uCOSII/Source/os_q.c **** *                            OS_ERR_EVENT_TYPE   You didn't pass a pointer to a queue
+ 393:uCOSII/Source/os_q.c **** *                            OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer
+ 394:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_ISR     If you called this function from an ISR and the re
+ 395:uCOSII/Source/os_q.c **** *                                                would lead to a suspension.
+ 396:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_LOCKED  If you called this function with the scheduler is 
+ARM GAS  /tmp/cc5CWVKc.s 			page 21
+
+
+ 397:uCOSII/Source/os_q.c **** *
+ 398:uCOSII/Source/os_q.c **** * Returns    : != (void *)0  is a pointer to the message received
+ 399:uCOSII/Source/os_q.c **** *              == (void *)0  if you received a NULL pointer message or,
+ 400:uCOSII/Source/os_q.c **** *                            if no message was received or,
+ 401:uCOSII/Source/os_q.c **** *                            if 'pevent' is a NULL pointer or,
+ 402:uCOSII/Source/os_q.c **** *                            if you didn't pass a pointer to a queue.
+ 403:uCOSII/Source/os_q.c **** *
+ 404:uCOSII/Source/os_q.c **** * Note(s)    : As of V2.60, this function allows you to receive NULL pointer messages.
+ 405:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 406:uCOSII/Source/os_q.c **** */
+ 407:uCOSII/Source/os_q.c **** 
+ 408:uCOSII/Source/os_q.c **** void  *OSQPend (OS_EVENT  *pevent,
+ 409:uCOSII/Source/os_q.c ****                 INT32U     timeout,
+ 410:uCOSII/Source/os_q.c ****                 INT8U     *perr)
+ 411:uCOSII/Source/os_q.c **** {
+ 641              		.loc 1 411 1 is_stmt 1 view -0
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 0
+ 644              		@ frame_needed = 0, uses_anonymous_args = 0
+ 645              		.loc 1 411 1 is_stmt 0 view .LVU234
+ 646 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 647              	.LCFI4:
+ 648              		.cfi_def_cfa_offset 24
+ 649              		.cfi_offset 4, -24
+ 650              		.cfi_offset 5, -20
+ 651              		.cfi_offset 6, -16
+ 652              		.cfi_offset 7, -12
+ 653              		.cfi_offset 8, -8
+ 654              		.cfi_offset 14, -4
+ 655 0004 1546     		mov	r5, r2
+ 412:uCOSII/Source/os_q.c ****     void      *pmsg;
+ 656              		.loc 1 412 5 is_stmt 1 view .LVU235
+ 413:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 657              		.loc 1 413 5 view .LVU236
+ 414:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
+ 415:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 658              		.loc 1 415 5 view .LVU237
+ 659              	.LVL65:
+ 416:uCOSII/Source/os_q.c **** #endif
+ 417:uCOSII/Source/os_q.c **** 
+ 418:uCOSII/Source/os_q.c **** 
+ 419:uCOSII/Source/os_q.c **** 
+ 420:uCOSII/Source/os_q.c **** #ifdef OS_SAFETY_CRITICAL
+ 421:uCOSII/Source/os_q.c ****     if (perr == (INT8U *)0) {
+ 422:uCOSII/Source/os_q.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 423:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 424:uCOSII/Source/os_q.c ****     }
+ 425:uCOSII/Source/os_q.c **** #endif
+ 426:uCOSII/Source/os_q.c **** 
+ 427:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 428:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {               /* Validate 'pevent'                              
+ 429:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 430:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 431:uCOSII/Source/os_q.c ****     }
+ 432:uCOSII/Source/os_q.c **** #endif
+ 433:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {/* Validate event block type                      
+ 660              		.loc 1 433 5 view .LVU238
+ARM GAS  /tmp/cc5CWVKc.s 			page 22
+
+
+ 661              		.loc 1 433 15 is_stmt 0 view .LVU239
+ 662 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 663              		.loc 1 433 8 view .LVU240
+ 664 0008 022B     		cmp	r3, #2
+ 665 000a 1CD1     		bne	.L50
+ 666 000c 0446     		mov	r4, r0
+ 667 000e 0E46     		mov	r6, r1
+ 434:uCOSII/Source/os_q.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 435:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 436:uCOSII/Source/os_q.c ****     }
+ 437:uCOSII/Source/os_q.c ****     if (OSIntNesting > 0u) {                     /* See if called from ISR ...                     
+ 668              		.loc 1 437 5 is_stmt 1 view .LVU241
+ 669              		.loc 1 437 22 is_stmt 0 view .LVU242
+ 670 0010 334B     		ldr	r3, .L54
+ 671 0012 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 672              		.loc 1 437 8 view .LVU243
+ 673 0014 EBB9     		cbnz	r3, .L51
+ 438:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEND_ISR;                 /* ... can't PEND from an ISR                     
+ 439:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 440:uCOSII/Source/os_q.c ****     }
+ 441:uCOSII/Source/os_q.c ****     if (OSLockNesting > 0u) {                    /* See if called with scheduler locked ...        
+ 674              		.loc 1 441 5 is_stmt 1 view .LVU244
+ 675              		.loc 1 441 23 is_stmt 0 view .LVU245
+ 676 0016 334B     		ldr	r3, .L54+4
+ 677 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 678              		.loc 1 441 8 view .LVU246
+ 679 001a F3B9     		cbnz	r3, .L52
+ 442:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEND_LOCKED;              /* ... can't PEND when locked                     
+ 443:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 444:uCOSII/Source/os_q.c ****     }
+ 445:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 680              		.loc 1 445 5 is_stmt 1 view .LVU247
+ 681 001c FFF7FEFF 		bl	OS_CPU_SR_Save
+ 682              	.LVL66:
+ 683              		.loc 1 445 5 is_stmt 0 view .LVU248
+ 684 0020 0746     		mov	r7, r0
+ 685              	.LVL67:
+ 686              		.loc 1 445 24 is_stmt 1 view .LVU249
+ 446:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;             /* Point at queue control block                   
+ 687              		.loc 1 446 5 view .LVU250
+ 688              		.loc 1 446 8 is_stmt 0 view .LVU251
+ 689 0022 6368     		ldr	r3, [r4, #4]
+ 690              	.LVL68:
+ 447:uCOSII/Source/os_q.c ****     if (pq->OSQEntries > 0u) {                   /* See if any messages in the queue               
+ 691              		.loc 1 447 5 is_stmt 1 view .LVU252
+ 692              		.loc 1 447 11 is_stmt 0 view .LVU253
+ 693 0024 DA8A     		ldrh	r2, [r3, #22]
+ 694              		.loc 1 447 8 view .LVU254
+ 695 0026 FAB1     		cbz	r2, .L42
+ 448:uCOSII/Source/os_q.c ****         pmsg = *pq->OSQOut++;                    /* Yes, extract oldest message from the queue     
+ 696              		.loc 1 448 9 is_stmt 1 view .LVU255
+ 697              		.loc 1 448 19 is_stmt 0 view .LVU256
+ 698 0028 1869     		ldr	r0, [r3, #16]
+ 699              	.LVL69:
+ 700              		.loc 1 448 27 view .LVU257
+ 701 002a 011D     		adds	r1, r0, #4
+ 702 002c 1961     		str	r1, [r3, #16]
+ARM GAS  /tmp/cc5CWVKc.s 			page 23
+
+
+ 703              		.loc 1 448 14 view .LVU258
+ 704 002e 0468     		ldr	r4, [r0]
+ 705              	.LVL70:
+ 449:uCOSII/Source/os_q.c ****         pq->OSQEntries--;                        /* Update the number of entries in the queue      
+ 706              		.loc 1 449 9 is_stmt 1 view .LVU259
+ 707              		.loc 1 449 23 is_stmt 0 view .LVU260
+ 708 0030 013A     		subs	r2, r2, #1
+ 709 0032 DA82     		strh	r2, [r3, #22]	@ movhi
+ 450:uCOSII/Source/os_q.c ****         if (pq->OSQOut == pq->OSQEnd) {          /* Wrap OUT pointer if we are at the end of the qu
+ 710              		.loc 1 450 9 is_stmt 1 view .LVU261
+ 711              		.loc 1 450 29 is_stmt 0 view .LVU262
+ 712 0034 9A68     		ldr	r2, [r3, #8]
+ 713              		.loc 1 450 12 view .LVU263
+ 714 0036 9142     		cmp	r1, r2
+ 715 0038 13D0     		beq	.L53
+ 716              	.L43:
+ 451:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQStart;
+ 452:uCOSII/Source/os_q.c ****         }
+ 453:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 717              		.loc 1 453 9 is_stmt 1 view .LVU264
+ 718 003a 3846     		mov	r0, r7
+ 719 003c FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 720              	.LVL71:
+ 721              		.loc 1 453 27 view .LVU265
+ 454:uCOSII/Source/os_q.c ****         *perr = OS_ERR_NONE;
+ 722              		.loc 1 454 9 view .LVU266
+ 723              		.loc 1 454 15 is_stmt 0 view .LVU267
+ 724 0040 0023     		movs	r3, #0
+ 725 0042 2B70     		strb	r3, [r5]
+ 455:uCOSII/Source/os_q.c ****         return (pmsg);                           /* Return message received                        
+ 726              		.loc 1 455 9 is_stmt 1 view .LVU268
+ 727              		.loc 1 455 16 is_stmt 0 view .LVU269
+ 728 0044 02E0     		b	.L37
+ 729              	.LVL72:
+ 730              	.L50:
+ 434:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 731              		.loc 1 434 9 is_stmt 1 view .LVU270
+ 434:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 732              		.loc 1 434 15 is_stmt 0 view .LVU271
+ 733 0046 0123     		movs	r3, #1
+ 734 0048 1370     		strb	r3, [r2]
+ 435:uCOSII/Source/os_q.c ****     }
+ 735              		.loc 1 435 9 is_stmt 1 view .LVU272
+ 435:uCOSII/Source/os_q.c ****     }
+ 736              		.loc 1 435 16 is_stmt 0 view .LVU273
+ 737 004a 0024     		movs	r4, #0
+ 738              	.LVL73:
+ 739              	.L37:
+ 456:uCOSII/Source/os_q.c ****     }
+ 457:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStat     |= OS_STAT_Q;        /* Task will have to pend for a message to be post
+ 458:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 459:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBDly       = timeout;          /* Load timeout into TCB                          
+ 460:uCOSII/Source/os_q.c ****     OS_EventTaskWait(pevent);                    /* Suspend task until event or timeout occurs     
+ 461:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 462:uCOSII/Source/os_q.c ****     OS_Sched();                                  /* Find next highest priority task ready to run   
+ 463:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 464:uCOSII/Source/os_q.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ARM GAS  /tmp/cc5CWVKc.s 			page 24
+
+
+ 465:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
+ 466:uCOSII/Source/os_q.c ****              pmsg =  OSTCBCur->OSTCBMsg;
+ 467:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_NONE;
+ 468:uCOSII/Source/os_q.c ****              break;
+ 469:uCOSII/Source/os_q.c **** 
+ 470:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_ABORT:
+ 471:uCOSII/Source/os_q.c ****              pmsg = (void *)0;
+ 472:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_PEND_ABORT;               /* Indicate that we aborted                  
+ 473:uCOSII/Source/os_q.c ****              break;
+ 474:uCOSII/Source/os_q.c **** 
+ 475:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_TO:
+ 476:uCOSII/Source/os_q.c ****         default:
+ 477:uCOSII/Source/os_q.c ****              OS_EventTaskRemove(OSTCBCur, pevent);
+ 478:uCOSII/Source/os_q.c ****              pmsg = (void *)0;
+ 479:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_TIMEOUT;                  /* Indicate that we didn't get event within T
+ 480:uCOSII/Source/os_q.c ****              break;
+ 481:uCOSII/Source/os_q.c ****     }
+ 482:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStat          =  OS_STAT_RDY;      /* Set   task  status to ready               
+ 483:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 484:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 485:uCOSII/Source/os_q.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 486:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBEventMultiPtr = (OS_EVENT **)0;
+ 487:uCOSII/Source/os_q.c **** #endif
+ 488:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBMsg           = (void      *)0;    /* Clear  received message                   
+ 489:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 490:uCOSII/Source/os_q.c ****     return (pmsg);                                    /* Return received message                   
+ 491:uCOSII/Source/os_q.c **** }
+ 740              		.loc 1 491 1 view .LVU274
+ 741 004c 2046     		mov	r0, r4
+ 742 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 743              	.LVL74:
+ 744              	.L51:
+ 438:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 745              		.loc 1 438 9 is_stmt 1 view .LVU275
+ 438:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 746              		.loc 1 438 15 is_stmt 0 view .LVU276
+ 747 0052 0223     		movs	r3, #2
+ 748 0054 1370     		strb	r3, [r2]
+ 439:uCOSII/Source/os_q.c ****     }
+ 749              		.loc 1 439 9 is_stmt 1 view .LVU277
+ 439:uCOSII/Source/os_q.c ****     }
+ 750              		.loc 1 439 16 is_stmt 0 view .LVU278
+ 751 0056 0024     		movs	r4, #0
+ 752 0058 F8E7     		b	.L37
+ 753              	.L52:
+ 442:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 754              		.loc 1 442 9 is_stmt 1 view .LVU279
+ 442:uCOSII/Source/os_q.c ****         return ((void *)0);
+ 755              		.loc 1 442 15 is_stmt 0 view .LVU280
+ 756 005a 0D23     		movs	r3, #13
+ 757 005c 1370     		strb	r3, [r2]
+ 443:uCOSII/Source/os_q.c ****     }
+ 758              		.loc 1 443 9 is_stmt 1 view .LVU281
+ 443:uCOSII/Source/os_q.c ****     }
+ 759              		.loc 1 443 16 is_stmt 0 view .LVU282
+ 760 005e 0024     		movs	r4, #0
+ 761 0060 F4E7     		b	.L37
+ARM GAS  /tmp/cc5CWVKc.s 			page 25
+
+
+ 762              	.LVL75:
+ 763              	.L53:
+ 451:uCOSII/Source/os_q.c ****         }
+ 764              		.loc 1 451 13 is_stmt 1 view .LVU283
+ 451:uCOSII/Source/os_q.c ****         }
+ 765              		.loc 1 451 28 is_stmt 0 view .LVU284
+ 766 0062 5A68     		ldr	r2, [r3, #4]
+ 451:uCOSII/Source/os_q.c ****         }
+ 767              		.loc 1 451 24 view .LVU285
+ 768 0064 1A61     		str	r2, [r3, #16]
+ 769 0066 E8E7     		b	.L43
+ 770              	.LVL76:
+ 771              	.L42:
+ 457:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 772              		.loc 1 457 5 is_stmt 1 view .LVU286
+ 457:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 773              		.loc 1 457 29 is_stmt 0 view .LVU287
+ 774 0068 DFF87C80 		ldr	r8, .L54+8
+ 775 006c D8F80030 		ldr	r3, [r8]
+ 776              	.LVL77:
+ 457:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend  = OS_STAT_PEND_OK;
+ 777              		.loc 1 457 29 view .LVU288
+ 778 0070 93F83420 		ldrb	r2, [r3, #52]	@ zero_extendqisi2
+ 779 0074 42F00402 		orr	r2, r2, #4
+ 780 0078 83F83420 		strb	r2, [r3, #52]
+ 781              	.LVL78:
+ 458:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBDly       = timeout;          /* Load timeout into TCB                          
+ 782              		.loc 1 458 5 is_stmt 1 view .LVU289
+ 458:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBDly       = timeout;          /* Load timeout into TCB                          
+ 783              		.loc 1 458 30 is_stmt 0 view .LVU290
+ 784 007c 0022     		movs	r2, #0
+ 785 007e 83F83520 		strb	r2, [r3, #53]
+ 459:uCOSII/Source/os_q.c ****     OS_EventTaskWait(pevent);                    /* Suspend task until event or timeout occurs     
+ 786              		.loc 1 459 5 is_stmt 1 view .LVU291
+ 459:uCOSII/Source/os_q.c ****     OS_EventTaskWait(pevent);                    /* Suspend task until event or timeout occurs     
+ 787              		.loc 1 459 30 is_stmt 0 view .LVU292
+ 788 0082 1E63     		str	r6, [r3, #48]
+ 460:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 789              		.loc 1 460 5 is_stmt 1 view .LVU293
+ 790 0084 2046     		mov	r0, r4
+ 791              	.LVL79:
+ 460:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 792              		.loc 1 460 5 is_stmt 0 view .LVU294
+ 793 0086 FFF7FEFF 		bl	OS_EventTaskWait
+ 794              	.LVL80:
+ 461:uCOSII/Source/os_q.c ****     OS_Sched();                                  /* Find next highest priority task ready to run   
+ 795              		.loc 1 461 5 is_stmt 1 view .LVU295
+ 796 008a 3846     		mov	r0, r7
+ 797 008c FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 798              	.LVL81:
+ 461:uCOSII/Source/os_q.c ****     OS_Sched();                                  /* Find next highest priority task ready to run   
+ 799              		.loc 1 461 23 view .LVU296
+ 462:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 800              		.loc 1 462 5 view .LVU297
+ 801 0090 FFF7FEFF 		bl	OS_Sched
+ 802              	.LVL82:
+ 463:uCOSII/Source/os_q.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ARM GAS  /tmp/cc5CWVKc.s 			page 26
+
+
+ 803              		.loc 1 463 5 view .LVU298
+ 804 0094 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 805              	.LVL83:
+ 806 0098 0646     		mov	r6, r0
+ 807              	.LVL84:
+ 463:uCOSII/Source/os_q.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
+ 808              		.loc 1 463 24 view .LVU299
+ 464:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
+ 809              		.loc 1 464 5 view .LVU300
+ 464:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
+ 810              		.loc 1 464 21 is_stmt 0 view .LVU301
+ 811 009a D8F80000 		ldr	r0, [r8]
+ 812              	.LVL85:
+ 464:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
+ 813              		.loc 1 464 21 view .LVU302
+ 814 009e 90F83530 		ldrb	r3, [r0, #53]	@ zero_extendqisi2
+ 464:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
+ 815              		.loc 1 464 5 view .LVU303
+ 816 00a2 43B1     		cbz	r3, .L44
+ 817 00a4 022B     		cmp	r3, #2
+ 818 00a6 17D0     		beq	.L45
+ 477:uCOSII/Source/os_q.c ****              pmsg = (void *)0;
+ 819              		.loc 1 477 14 is_stmt 1 view .LVU304
+ 820 00a8 2146     		mov	r1, r4
+ 821 00aa FFF7FEFF 		bl	OS_EventTaskRemove
+ 822              	.LVL86:
+ 478:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_TIMEOUT;                  /* Indicate that we didn't get event within T
+ 823              		.loc 1 478 14 view .LVU305
+ 479:uCOSII/Source/os_q.c ****              break;
+ 824              		.loc 1 479 13 view .LVU306
+ 479:uCOSII/Source/os_q.c ****              break;
+ 825              		.loc 1 479 19 is_stmt 0 view .LVU307
+ 826 00ae 0A23     		movs	r3, #10
+ 827 00b0 2B70     		strb	r3, [r5]
+ 480:uCOSII/Source/os_q.c ****     }
+ 828              		.loc 1 480 14 is_stmt 1 view .LVU308
+ 478:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_TIMEOUT;                  /* Indicate that we didn't get event within T
+ 829              		.loc 1 478 19 is_stmt 0 view .LVU309
+ 830 00b2 0024     		movs	r4, #0
+ 831              	.LVL87:
+ 480:uCOSII/Source/os_q.c ****     }
+ 832              		.loc 1 480 14 view .LVU310
+ 833 00b4 02E0     		b	.L47
+ 834              	.LVL88:
+ 835              	.L44:
+ 466:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_NONE;
+ 836              		.loc 1 466 14 is_stmt 1 view .LVU311
+ 466:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_NONE;
+ 837              		.loc 1 466 19 is_stmt 0 view .LVU312
+ 838 00b6 446A     		ldr	r4, [r0, #36]
+ 839              	.LVL89:
+ 467:uCOSII/Source/os_q.c ****              break;
+ 840              		.loc 1 467 13 is_stmt 1 view .LVU313
+ 467:uCOSII/Source/os_q.c ****              break;
+ 841              		.loc 1 467 19 is_stmt 0 view .LVU314
+ 842 00b8 0023     		movs	r3, #0
+ 843 00ba 2B70     		strb	r3, [r5]
+ARM GAS  /tmp/cc5CWVKc.s 			page 27
+
+
+ 468:uCOSII/Source/os_q.c **** 
+ 844              		.loc 1 468 14 is_stmt 1 view .LVU315
+ 845              	.LVL90:
+ 846              	.L47:
+ 482:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 847              		.loc 1 482 5 view .LVU316
+ 482:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 848              		.loc 1 482 13 is_stmt 0 view .LVU317
+ 849 00bc 0A4B     		ldr	r3, .L54+8
+ 850 00be 1B68     		ldr	r3, [r3]
+ 482:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBStatPend      =  OS_STAT_PEND_OK;  /* Clear pend  status                        
+ 851              		.loc 1 482 34 view .LVU318
+ 852 00c0 0022     		movs	r2, #0
+ 853 00c2 83F83420 		strb	r2, [r3, #52]
+ 483:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 854              		.loc 1 483 5 is_stmt 1 view .LVU319
+ 483:uCOSII/Source/os_q.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;    /* Clear event pointers                      
+ 855              		.loc 1 483 34 is_stmt 0 view .LVU320
+ 856 00c6 83F83520 		strb	r2, [r3, #53]
+ 484:uCOSII/Source/os_q.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 857              		.loc 1 484 5 is_stmt 1 view .LVU321
+ 484:uCOSII/Source/os_q.c **** #if (OS_EVENT_MULTI_EN > 0u)
+ 858              		.loc 1 484 34 is_stmt 0 view .LVU322
+ 859 00ca DA61     		str	r2, [r3, #28]
+ 486:uCOSII/Source/os_q.c **** #endif
+ 860              		.loc 1 486 5 is_stmt 1 view .LVU323
+ 486:uCOSII/Source/os_q.c **** #endif
+ 861              		.loc 1 486 34 is_stmt 0 view .LVU324
+ 862 00cc 1A62     		str	r2, [r3, #32]
+ 488:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 863              		.loc 1 488 5 is_stmt 1 view .LVU325
+ 488:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 864              		.loc 1 488 34 is_stmt 0 view .LVU326
+ 865 00ce 5A62     		str	r2, [r3, #36]
+ 489:uCOSII/Source/os_q.c ****     return (pmsg);                                    /* Return received message                   
+ 866              		.loc 1 489 5 is_stmt 1 view .LVU327
+ 867 00d0 3046     		mov	r0, r6
+ 868 00d2 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 869              	.LVL91:
+ 489:uCOSII/Source/os_q.c ****     return (pmsg);                                    /* Return received message                   
+ 870              		.loc 1 489 23 view .LVU328
+ 490:uCOSII/Source/os_q.c **** }
+ 871              		.loc 1 490 5 view .LVU329
+ 490:uCOSII/Source/os_q.c **** }
+ 872              		.loc 1 490 12 is_stmt 0 view .LVU330
+ 873 00d6 B9E7     		b	.L37
+ 874              	.LVL92:
+ 875              	.L45:
+ 471:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_PEND_ABORT;               /* Indicate that we aborted                  
+ 876              		.loc 1 471 14 is_stmt 1 view .LVU331
+ 472:uCOSII/Source/os_q.c ****              break;
+ 877              		.loc 1 472 13 view .LVU332
+ 472:uCOSII/Source/os_q.c ****              break;
+ 878              		.loc 1 472 19 is_stmt 0 view .LVU333
+ 879 00d8 0E23     		movs	r3, #14
+ 880 00da 2B70     		strb	r3, [r5]
+ 473:uCOSII/Source/os_q.c **** 
+ARM GAS  /tmp/cc5CWVKc.s 			page 28
+
+
+ 881              		.loc 1 473 14 is_stmt 1 view .LVU334
+ 471:uCOSII/Source/os_q.c ****             *perr =  OS_ERR_PEND_ABORT;               /* Indicate that we aborted                  
+ 882              		.loc 1 471 19 is_stmt 0 view .LVU335
+ 883 00dc 0024     		movs	r4, #0
+ 884              	.LVL93:
+ 473:uCOSII/Source/os_q.c **** 
+ 885              		.loc 1 473 14 view .LVU336
+ 886 00de EDE7     		b	.L47
+ 887              	.L55:
+ 888              		.align	2
+ 889              	.L54:
+ 890 00e0 00000000 		.word	OSIntNesting
+ 891 00e4 00000000 		.word	OSLockNesting
+ 892 00e8 00000000 		.word	OSTCBCur
+ 893              		.cfi_endproc
+ 894              	.LFE4:
+ 896              		.section	.text.OSQPendAbort,"ax",%progbits
+ 897              		.align	1
+ 898              		.global	OSQPendAbort
+ 899              		.syntax unified
+ 900              		.thumb
+ 901              		.thumb_func
+ 902              		.fpu fpv4-sp-d16
+ 904              	OSQPendAbort:
+ 905              	.LVL94:
+ 906              	.LFB5:
+ 492:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 493:uCOSII/Source/os_q.c **** /*
+ 494:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 495:uCOSII/Source/os_q.c **** *                                  ABORT WAITING ON A MESSAGE QUEUE
+ 496:uCOSII/Source/os_q.c **** *
+ 497:uCOSII/Source/os_q.c **** * Description: This function aborts & readies any tasks currently waiting on a queue.  This functio
+ 498:uCOSII/Source/os_q.c **** *              should be used to fault-abort the wait on the queue, rather than to normally signal
+ 499:uCOSII/Source/os_q.c **** *              the queue via OSQPost(), OSQPostFront() or OSQPostOpt().
+ 500:uCOSII/Source/os_q.c **** *
+ 501:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 502:uCOSII/Source/os_q.c **** *
+ 503:uCOSII/Source/os_q.c **** *              opt           determines the type of ABORT performed:
+ 504:uCOSII/Source/os_q.c **** *                            OS_PEND_OPT_NONE         ABORT wait for a single task (HPT) waiting on
+ 505:uCOSII/Source/os_q.c **** *                                                     queue
+ 506:uCOSII/Source/os_q.c **** *                            OS_PEND_OPT_BROADCAST    ABORT wait for ALL tasks that are  waiting on
+ 507:uCOSII/Source/os_q.c **** *                                                     queue
+ 508:uCOSII/Source/os_q.c **** *
+ 509:uCOSII/Source/os_q.c **** *              perr          is a pointer to where an error message will be deposited.  Possible er
+ 510:uCOSII/Source/os_q.c **** *                            messages are:
+ 511:uCOSII/Source/os_q.c **** *
+ 512:uCOSII/Source/os_q.c **** *                            OS_ERR_NONE         No tasks were     waiting on the queue.
+ 513:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_ABORT   At least one task waiting on the queue was readied
+ 514:uCOSII/Source/os_q.c **** *                                                and informed of the aborted wait; check return val
+ 515:uCOSII/Source/os_q.c **** *                                                for the number of tasks whose wait on the queue
+ 516:uCOSII/Source/os_q.c **** *                                                was aborted.
+ 517:uCOSII/Source/os_q.c **** *                            OS_ERR_EVENT_TYPE   If you didn't pass a pointer to a queue.
+ 518:uCOSII/Source/os_q.c **** *                            OS_ERR_PEVENT_NULL  If 'pevent' is a NULL pointer.
+ 519:uCOSII/Source/os_q.c **** *
+ 520:uCOSII/Source/os_q.c **** * Returns    : == 0          if no tasks were waiting on the queue, or upon error.
+ 521:uCOSII/Source/os_q.c **** *              >  0          if one or more tasks waiting on the queue are now readied and informed
+ 522:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ARM GAS  /tmp/cc5CWVKc.s 			page 29
+
+
+ 523:uCOSII/Source/os_q.c **** */
+ 524:uCOSII/Source/os_q.c **** 
+ 525:uCOSII/Source/os_q.c **** #if OS_Q_PEND_ABORT_EN > 0u
+ 526:uCOSII/Source/os_q.c **** INT8U  OSQPendAbort (OS_EVENT  *pevent,
+ 527:uCOSII/Source/os_q.c ****                      INT8U      opt,
+ 528:uCOSII/Source/os_q.c ****                      INT8U     *perr)
+ 529:uCOSII/Source/os_q.c **** {
+ 907              		.loc 1 529 1 is_stmt 1 view -0
+ 908              		.cfi_startproc
+ 909              		@ args = 0, pretend = 0, frame = 0
+ 910              		@ frame_needed = 0, uses_anonymous_args = 0
+ 911              		.loc 1 529 1 is_stmt 0 view .LVU338
+ 912 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 913              	.LCFI5:
+ 914              		.cfi_def_cfa_offset 24
+ 915              		.cfi_offset 4, -24
+ 916              		.cfi_offset 5, -20
+ 917              		.cfi_offset 6, -16
+ 918              		.cfi_offset 7, -12
+ 919              		.cfi_offset 8, -8
+ 920              		.cfi_offset 14, -4
+ 921 0004 1746     		mov	r7, r2
+ 530:uCOSII/Source/os_q.c ****     INT8U      nbr_tasks;
+ 922              		.loc 1 530 5 is_stmt 1 view .LVU339
+ 531:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
+ 532:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 923              		.loc 1 532 5 view .LVU340
+ 924              	.LVL95:
+ 533:uCOSII/Source/os_q.c **** #endif
+ 534:uCOSII/Source/os_q.c **** 
+ 535:uCOSII/Source/os_q.c **** 
+ 536:uCOSII/Source/os_q.c **** 
+ 537:uCOSII/Source/os_q.c **** #ifdef OS_SAFETY_CRITICAL
+ 538:uCOSII/Source/os_q.c ****     if (perr == (INT8U *)0) {
+ 539:uCOSII/Source/os_q.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
+ 540:uCOSII/Source/os_q.c ****         return (0u);
+ 541:uCOSII/Source/os_q.c ****     }
+ 542:uCOSII/Source/os_q.c **** #endif
+ 543:uCOSII/Source/os_q.c **** 
+ 544:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 545:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                         /* Validate 'pevent'                    
+ 546:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEVENT_NULL;
+ 547:uCOSII/Source/os_q.c ****         return (0u);
+ 548:uCOSII/Source/os_q.c ****     }
+ 549:uCOSII/Source/os_q.c **** #endif
+ 550:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {          /* Validate event block type            
+ 925              		.loc 1 550 5 view .LVU341
+ 926              		.loc 1 550 15 is_stmt 0 view .LVU342
+ 927 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 928              		.loc 1 550 8 view .LVU343
+ 929 0008 022B     		cmp	r3, #2
+ 930 000a 05D0     		beq	.L57
+ 551:uCOSII/Source/os_q.c ****         *perr = OS_ERR_EVENT_TYPE;
+ 931              		.loc 1 551 9 is_stmt 1 view .LVU344
+ 932              		.loc 1 551 15 is_stmt 0 view .LVU345
+ 933 000c 0123     		movs	r3, #1
+ 934 000e 1370     		strb	r3, [r2]
+ARM GAS  /tmp/cc5CWVKc.s 			page 30
+
+
+ 552:uCOSII/Source/os_q.c ****         return (0u);
+ 935              		.loc 1 552 9 is_stmt 1 view .LVU346
+ 936              		.loc 1 552 16 is_stmt 0 view .LVU347
+ 937 0010 0025     		movs	r5, #0
+ 938              	.LVL96:
+ 939              	.L58:
+ 553:uCOSII/Source/os_q.c ****     }
+ 554:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 555:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on queue?    
+ 556:uCOSII/Source/os_q.c ****         nbr_tasks = 0u;
+ 557:uCOSII/Source/os_q.c ****         switch (opt) {
+ 558:uCOSII/Source/os_q.c ****             case OS_PEND_OPT_BROADCAST:                    /* Do we need to abort ALL waiting tasks
+ 559:uCOSII/Source/os_q.c ****                  while (pevent->OSEventGrp != 0u) {        /* Yes, ready ALL tasks waiting on queue
+ 560:uCOSII/Source/os_q.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 561:uCOSII/Source/os_q.c ****                      nbr_tasks++;
+ 562:uCOSII/Source/os_q.c ****                  }
+ 563:uCOSII/Source/os_q.c ****                  break;
+ 564:uCOSII/Source/os_q.c **** 
+ 565:uCOSII/Source/os_q.c ****             case OS_PEND_OPT_NONE:
+ 566:uCOSII/Source/os_q.c ****             default:                                       /* No,  ready HPT       waiting on queue
+ 567:uCOSII/Source/os_q.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 568:uCOSII/Source/os_q.c ****                  nbr_tasks++;
+ 569:uCOSII/Source/os_q.c ****                  break;
+ 570:uCOSII/Source/os_q.c ****         }
+ 571:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 572:uCOSII/Source/os_q.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ 573:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEND_ABORT;
+ 574:uCOSII/Source/os_q.c ****         return (nbr_tasks);
+ 575:uCOSII/Source/os_q.c ****     }
+ 576:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 577:uCOSII/Source/os_q.c ****     *perr = OS_ERR_NONE;
+ 578:uCOSII/Source/os_q.c ****     return (0u);                                           /* No tasks waiting on queue            
+ 579:uCOSII/Source/os_q.c **** }
+ 940              		.loc 1 579 1 view .LVU348
+ 941 0012 2846     		mov	r0, r5
+ 942 0014 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 943              	.LVL97:
+ 944              	.L57:
+ 945              		.loc 1 579 1 view .LVU349
+ 946 0018 0446     		mov	r4, r0
+ 947 001a 0E46     		mov	r6, r1
+ 554:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on queue?    
+ 948              		.loc 1 554 5 is_stmt 1 view .LVU350
+ 949 001c FFF7FEFF 		bl	OS_CPU_SR_Save
+ 950              	.LVL98:
+ 554:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on queue?    
+ 951              		.loc 1 554 5 is_stmt 0 view .LVU351
+ 952 0020 8046     		mov	r8, r0
+ 953              	.LVL99:
+ 554:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                        /* See if any task waiting on queue?    
+ 954              		.loc 1 554 24 is_stmt 1 view .LVU352
+ 555:uCOSII/Source/os_q.c ****         nbr_tasks = 0u;
+ 955              		.loc 1 555 5 view .LVU353
+ 555:uCOSII/Source/os_q.c ****         nbr_tasks = 0u;
+ 956              		.loc 1 555 15 is_stmt 0 view .LVU354
+ 957 0022 A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
+ 555:uCOSII/Source/os_q.c ****         nbr_tasks = 0u;
+ARM GAS  /tmp/cc5CWVKc.s 			page 31
+
+
+ 958              		.loc 1 555 8 view .LVU355
+ 959 0024 E5B1     		cbz	r5, .L59
+ 556:uCOSII/Source/os_q.c ****         switch (opt) {
+ 960              		.loc 1 556 9 is_stmt 1 view .LVU356
+ 961              	.LVL100:
+ 557:uCOSII/Source/os_q.c ****             case OS_PEND_OPT_BROADCAST:                    /* Do we need to abort ALL waiting tasks
+ 962              		.loc 1 557 9 view .LVU357
+ 963 0026 012E     		cmp	r6, #1
+ 964 0028 0BD1     		bne	.L67
+ 556:uCOSII/Source/os_q.c ****         switch (opt) {
+ 965              		.loc 1 556 19 is_stmt 0 view .LVU358
+ 966 002a 0025     		movs	r5, #0
+ 967              	.LVL101:
+ 968              	.L60:
+ 559:uCOSII/Source/os_q.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 969              		.loc 1 559 24 is_stmt 1 view .LVU359
+ 559:uCOSII/Source/os_q.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 970              		.loc 1 559 31 is_stmt 0 view .LVU360
+ 971 002c A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 559:uCOSII/Source/os_q.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_Q, OS_STAT_PEND_ABORT);
+ 972              		.loc 1 559 24 view .LVU361
+ 973 002e 7BB1     		cbz	r3, .L63
+ 560:uCOSII/Source/os_q.c ****                      nbr_tasks++;
+ 974              		.loc 1 560 22 is_stmt 1 view .LVU362
+ 560:uCOSII/Source/os_q.c ****                      nbr_tasks++;
+ 975              		.loc 1 560 28 is_stmt 0 view .LVU363
+ 976 0030 0223     		movs	r3, #2
+ 977 0032 0422     		movs	r2, #4
+ 978 0034 0021     		movs	r1, #0
+ 979 0036 2046     		mov	r0, r4
+ 980 0038 FFF7FEFF 		bl	OS_EventTaskRdy
+ 981              	.LVL102:
+ 561:uCOSII/Source/os_q.c ****                  }
+ 982              		.loc 1 561 22 is_stmt 1 view .LVU364
+ 561:uCOSII/Source/os_q.c ****                  }
+ 983              		.loc 1 561 31 is_stmt 0 view .LVU365
+ 984 003c 0135     		adds	r5, r5, #1
+ 985              	.LVL103:
+ 561:uCOSII/Source/os_q.c ****                  }
+ 986              		.loc 1 561 31 view .LVU366
+ 987 003e EDB2     		uxtb	r5, r5
+ 988              	.LVL104:
+ 561:uCOSII/Source/os_q.c ****                  }
+ 989              		.loc 1 561 31 view .LVU367
+ 990 0040 F4E7     		b	.L60
+ 991              	.LVL105:
+ 992              	.L67:
+ 567:uCOSII/Source/os_q.c ****                  nbr_tasks++;
+ 993              		.loc 1 567 18 is_stmt 1 view .LVU368
+ 567:uCOSII/Source/os_q.c ****                  nbr_tasks++;
+ 994              		.loc 1 567 24 is_stmt 0 view .LVU369
+ 995 0042 0223     		movs	r3, #2
+ 996 0044 0422     		movs	r2, #4
+ 997 0046 0021     		movs	r1, #0
+ 998 0048 2046     		mov	r0, r4
+ 999              	.LVL106:
+ 567:uCOSII/Source/os_q.c ****                  nbr_tasks++;
+ARM GAS  /tmp/cc5CWVKc.s 			page 32
+
+
+ 1000              		.loc 1 567 24 view .LVU370
+ 1001 004a FFF7FEFF 		bl	OS_EventTaskRdy
+ 1002              	.LVL107:
+ 568:uCOSII/Source/os_q.c ****                  break;
+ 1003              		.loc 1 568 18 is_stmt 1 view .LVU371
+ 569:uCOSII/Source/os_q.c ****         }
+ 1004              		.loc 1 569 18 view .LVU372
+ 568:uCOSII/Source/os_q.c ****                  break;
+ 1005              		.loc 1 568 27 is_stmt 0 view .LVU373
+ 1006 004e 0125     		movs	r5, #1
+ 1007              	.LVL108:
+ 1008              	.L63:
+ 571:uCOSII/Source/os_q.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ 1009              		.loc 1 571 9 is_stmt 1 view .LVU374
+ 1010 0050 4046     		mov	r0, r8
+ 1011 0052 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1012              	.LVL109:
+ 571:uCOSII/Source/os_q.c ****         OS_Sched();                                        /* Find HPT ready to run                
+ 1013              		.loc 1 571 27 view .LVU375
+ 572:uCOSII/Source/os_q.c ****         *perr = OS_ERR_PEND_ABORT;
+ 1014              		.loc 1 572 9 view .LVU376
+ 1015 0056 FFF7FEFF 		bl	OS_Sched
+ 1016              	.LVL110:
+ 573:uCOSII/Source/os_q.c ****         return (nbr_tasks);
+ 1017              		.loc 1 573 9 view .LVU377
+ 573:uCOSII/Source/os_q.c ****         return (nbr_tasks);
+ 1018              		.loc 1 573 15 is_stmt 0 view .LVU378
+ 1019 005a 0E23     		movs	r3, #14
+ 1020 005c 3B70     		strb	r3, [r7]
+ 574:uCOSII/Source/os_q.c ****     }
+ 1021              		.loc 1 574 9 is_stmt 1 view .LVU379
+ 574:uCOSII/Source/os_q.c ****     }
+ 1022              		.loc 1 574 16 is_stmt 0 view .LVU380
+ 1023 005e D8E7     		b	.L58
+ 1024              	.LVL111:
+ 1025              	.L59:
+ 576:uCOSII/Source/os_q.c ****     *perr = OS_ERR_NONE;
+ 1026              		.loc 1 576 5 is_stmt 1 view .LVU381
+ 1027 0060 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1028              	.LVL112:
+ 576:uCOSII/Source/os_q.c ****     *perr = OS_ERR_NONE;
+ 1029              		.loc 1 576 23 view .LVU382
+ 577:uCOSII/Source/os_q.c ****     return (0u);                                           /* No tasks waiting on queue            
+ 1030              		.loc 1 577 5 view .LVU383
+ 577:uCOSII/Source/os_q.c ****     return (0u);                                           /* No tasks waiting on queue            
+ 1031              		.loc 1 577 11 is_stmt 0 view .LVU384
+ 1032 0064 0023     		movs	r3, #0
+ 1033 0066 3B70     		strb	r3, [r7]
+ 578:uCOSII/Source/os_q.c **** }
+ 1034              		.loc 1 578 5 is_stmt 1 view .LVU385
+ 578:uCOSII/Source/os_q.c **** }
+ 1035              		.loc 1 578 12 is_stmt 0 view .LVU386
+ 1036 0068 D3E7     		b	.L58
+ 1037              		.cfi_endproc
+ 1038              	.LFE5:
+ 1040              		.section	.text.OSQPost,"ax",%progbits
+ 1041              		.align	1
+ARM GAS  /tmp/cc5CWVKc.s 			page 33
+
+
+ 1042              		.global	OSQPost
+ 1043              		.syntax unified
+ 1044              		.thumb
+ 1045              		.thumb_func
+ 1046              		.fpu fpv4-sp-d16
+ 1048              	OSQPost:
+ 1049              	.LVL113:
+ 1050              	.LFB6:
+ 580:uCOSII/Source/os_q.c **** #endif
+ 581:uCOSII/Source/os_q.c **** 
+ 582:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 583:uCOSII/Source/os_q.c **** /*
+ 584:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 585:uCOSII/Source/os_q.c **** *                                       POST MESSAGE TO A QUEUE
+ 586:uCOSII/Source/os_q.c **** *
+ 587:uCOSII/Source/os_q.c **** * Description: This function sends a message to a queue
+ 588:uCOSII/Source/os_q.c **** *
+ 589:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 590:uCOSII/Source/os_q.c **** *
+ 591:uCOSII/Source/os_q.c **** *              pmsg          is a pointer to the message to send.
+ 592:uCOSII/Source/os_q.c **** *
+ 593:uCOSII/Source/os_q.c **** * Returns    : OS_ERR_NONE           The call was successful and the message was sent
+ 594:uCOSII/Source/os_q.c **** *              OS_ERR_Q_FULL         If the queue cannot accept any more messages because it is ful
+ 595:uCOSII/Source/os_q.c **** *              OS_ERR_EVENT_TYPE     If you didn't pass a pointer to a queue.
+ 596:uCOSII/Source/os_q.c **** *              OS_ERR_PEVENT_NULL    If 'pevent' is a NULL pointer
+ 597:uCOSII/Source/os_q.c **** *
+ 598:uCOSII/Source/os_q.c **** * Note(s)    : As of V2.60, this function allows you to send NULL pointer messages.
+ 599:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 600:uCOSII/Source/os_q.c **** */
+ 601:uCOSII/Source/os_q.c **** 
+ 602:uCOSII/Source/os_q.c **** #if OS_Q_POST_EN > 0u
+ 603:uCOSII/Source/os_q.c **** INT8U  OSQPost (OS_EVENT  *pevent,
+ 604:uCOSII/Source/os_q.c ****                 void      *pmsg)
+ 605:uCOSII/Source/os_q.c **** {
+ 1051              		.loc 1 605 1 is_stmt 1 view -0
+ 1052              		.cfi_startproc
+ 1053              		@ args = 0, pretend = 0, frame = 0
+ 1054              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1055              		.loc 1 605 1 is_stmt 0 view .LVU388
+ 1056 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1057              	.LCFI6:
+ 1058              		.cfi_def_cfa_offset 24
+ 1059              		.cfi_offset 3, -24
+ 1060              		.cfi_offset 4, -20
+ 1061              		.cfi_offset 5, -16
+ 1062              		.cfi_offset 6, -12
+ 1063              		.cfi_offset 7, -8
+ 1064              		.cfi_offset 14, -4
+ 606:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 1065              		.loc 1 606 5 is_stmt 1 view .LVU389
+ 607:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                           /* Allocate storage for CPU status register 
+ 608:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 1066              		.loc 1 608 5 view .LVU390
+ 1067              	.LVL114:
+ 609:uCOSII/Source/os_q.c **** #endif
+ 610:uCOSII/Source/os_q.c **** 
+ 611:uCOSII/Source/os_q.c **** 
+ARM GAS  /tmp/cc5CWVKc.s 			page 34
+
+
+ 612:uCOSII/Source/os_q.c **** 
+ 613:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 614:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                     /* Validate 'pevent'                        
+ 615:uCOSII/Source/os_q.c ****         return (OS_ERR_PEVENT_NULL);
+ 616:uCOSII/Source/os_q.c ****     }
+ 617:uCOSII/Source/os_q.c **** #endif
+ 618:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {      /* Validate event block type                
+ 1068              		.loc 1 618 5 view .LVU391
+ 1069              		.loc 1 618 15 is_stmt 0 view .LVU392
+ 1070 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1071              		.loc 1 618 8 view .LVU393
+ 1072 0004 022B     		cmp	r3, #2
+ 1073 0006 02D0     		beq	.L75
+ 619:uCOSII/Source/os_q.c ****         return (OS_ERR_EVENT_TYPE);
+ 1074              		.loc 1 619 16 view .LVU394
+ 1075 0008 0125     		movs	r5, #1
+ 1076              	.LVL115:
+ 1077              	.L69:
+ 620:uCOSII/Source/os_q.c ****     }
+ 621:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 622:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                    /* See if any task pending on queue         
+ 623:uCOSII/Source/os_q.c ****                                                        /* Ready highest priority task waiting on ev
+ 624:uCOSII/Source/os_q.c ****         (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 625:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 626:uCOSII/Source/os_q.c ****         OS_Sched();                                    /* Find highest priority task ready to run  
+ 627:uCOSII/Source/os_q.c ****         return (OS_ERR_NONE);
+ 628:uCOSII/Source/os_q.c ****     }
+ 629:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;                   /* Point to queue control block             
+ 630:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {               /* Make sure queue is not full              
+ 631:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 632:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 633:uCOSII/Source/os_q.c ****     }
+ 634:uCOSII/Source/os_q.c ****     *pq->OSQIn++ = pmsg;                               /* Insert message into queue                
+ 635:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                  /* Update the nbr of entries in the queue   
+ 636:uCOSII/Source/os_q.c ****     if (pq->OSQIn == pq->OSQEnd) {                     /* Wrap IN ptr if we are at end of queue    
+ 637:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
+ 638:uCOSII/Source/os_q.c ****     }
+ 639:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 640:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 641:uCOSII/Source/os_q.c **** }
+ 1078              		.loc 1 641 1 view .LVU395
+ 1079 000a 2846     		mov	r0, r5
+ 1080 000c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1081              	.LVL116:
+ 1082              	.L75:
+ 1083              		.loc 1 641 1 view .LVU396
+ 1084 000e 0446     		mov	r4, r0
+ 1085 0010 0E46     		mov	r6, r1
+ 621:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                    /* See if any task pending on queue         
+ 1086              		.loc 1 621 5 is_stmt 1 view .LVU397
+ 1087 0012 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 1088              	.LVL117:
+ 621:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                    /* See if any task pending on queue         
+ 1089              		.loc 1 621 5 is_stmt 0 view .LVU398
+ 1090 0016 0746     		mov	r7, r0
+ 1091              	.LVL118:
+ 621:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                    /* See if any task pending on queue         
+ARM GAS  /tmp/cc5CWVKc.s 			page 35
+
+
+ 1092              		.loc 1 621 24 is_stmt 1 view .LVU399
+ 622:uCOSII/Source/os_q.c ****                                                        /* Ready highest priority task waiting on ev
+ 1093              		.loc 1 622 5 view .LVU400
+ 622:uCOSII/Source/os_q.c ****                                                        /* Ready highest priority task waiting on ev
+ 1094              		.loc 1 622 15 is_stmt 0 view .LVU401
+ 1095 0018 A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
+ 622:uCOSII/Source/os_q.c ****                                                        /* Ready highest priority task waiting on ev
+ 1096              		.loc 1 622 8 view .LVU402
+ 1097 001a 9DB9     		cbnz	r5, .L76
+ 629:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {               /* Make sure queue is not full              
+ 1098              		.loc 1 629 5 is_stmt 1 view .LVU403
+ 629:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {               /* Make sure queue is not full              
+ 1099              		.loc 1 629 8 is_stmt 0 view .LVU404
+ 1100 001c 6368     		ldr	r3, [r4, #4]
+ 1101              	.LVL119:
+ 630:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1102              		.loc 1 630 5 is_stmt 1 view .LVU405
+ 630:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1103              		.loc 1 630 11 is_stmt 0 view .LVU406
+ 1104 001e D98A     		ldrh	r1, [r3, #22]
+ 630:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1105              		.loc 1 630 29 view .LVU407
+ 1106 0020 9A8A     		ldrh	r2, [r3, #20]
+ 630:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1107              		.loc 1 630 8 view .LVU408
+ 1108 0022 9142     		cmp	r1, r2
+ 1109 0024 1BD2     		bcs	.L77
+ 634:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                  /* Update the nbr of entries in the queue   
+ 1110              		.loc 1 634 5 is_stmt 1 view .LVU409
+ 634:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                  /* Update the nbr of entries in the queue   
+ 1111              		.loc 1 634 8 is_stmt 0 view .LVU410
+ 1112 0026 DA68     		ldr	r2, [r3, #12]
+ 634:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                  /* Update the nbr of entries in the queue   
+ 1113              		.loc 1 634 15 view .LVU411
+ 1114 0028 111D     		adds	r1, r2, #4
+ 1115 002a D960     		str	r1, [r3, #12]
+ 634:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                  /* Update the nbr of entries in the queue   
+ 1116              		.loc 1 634 18 view .LVU412
+ 1117 002c 1660     		str	r6, [r2]
+ 635:uCOSII/Source/os_q.c ****     if (pq->OSQIn == pq->OSQEnd) {                     /* Wrap IN ptr if we are at end of queue    
+ 1118              		.loc 1 635 5 is_stmt 1 view .LVU413
+ 635:uCOSII/Source/os_q.c ****     if (pq->OSQIn == pq->OSQEnd) {                     /* Wrap IN ptr if we are at end of queue    
+ 1119              		.loc 1 635 7 is_stmt 0 view .LVU414
+ 1120 002e DA8A     		ldrh	r2, [r3, #22]
+ 635:uCOSII/Source/os_q.c ****     if (pq->OSQIn == pq->OSQEnd) {                     /* Wrap IN ptr if we are at end of queue    
+ 1121              		.loc 1 635 19 view .LVU415
+ 1122 0030 0132     		adds	r2, r2, #1
+ 1123 0032 DA82     		strh	r2, [r3, #22]	@ movhi
+ 636:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
+ 1124              		.loc 1 636 5 is_stmt 1 view .LVU416
+ 636:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
+ 1125              		.loc 1 636 11 is_stmt 0 view .LVU417
+ 1126 0034 D968     		ldr	r1, [r3, #12]
+ 636:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
+ 1127              		.loc 1 636 24 view .LVU418
+ 1128 0036 9A68     		ldr	r2, [r3, #8]
+ 636:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
+ARM GAS  /tmp/cc5CWVKc.s 			page 36
+
+
+ 1129              		.loc 1 636 8 view .LVU419
+ 1130 0038 9142     		cmp	r1, r2
+ 1131 003a 14D0     		beq	.L78
+ 1132              	.L72:
+ 639:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1133              		.loc 1 639 5 is_stmt 1 view .LVU420
+ 1134 003c 3846     		mov	r0, r7
+ 1135              	.LVL120:
+ 639:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1136              		.loc 1 639 5 is_stmt 0 view .LVU421
+ 1137 003e FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1138              	.LVL121:
+ 639:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1139              		.loc 1 639 23 is_stmt 1 view .LVU422
+ 640:uCOSII/Source/os_q.c **** }
+ 1140              		.loc 1 640 5 view .LVU423
+ 640:uCOSII/Source/os_q.c **** }
+ 1141              		.loc 1 640 12 is_stmt 0 view .LVU424
+ 1142 0042 E2E7     		b	.L69
+ 1143              	.LVL122:
+ 1144              	.L76:
+ 624:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1145              		.loc 1 624 9 is_stmt 1 view .LVU425
+ 624:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1146              		.loc 1 624 15 is_stmt 0 view .LVU426
+ 1147 0044 0023     		movs	r3, #0
+ 1148 0046 0422     		movs	r2, #4
+ 1149 0048 3146     		mov	r1, r6
+ 1150 004a 2046     		mov	r0, r4
+ 1151              	.LVL123:
+ 624:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1152              		.loc 1 624 15 view .LVU427
+ 1153 004c FFF7FEFF 		bl	OS_EventTaskRdy
+ 1154              	.LVL124:
+ 625:uCOSII/Source/os_q.c ****         OS_Sched();                                    /* Find highest priority task ready to run  
+ 1155              		.loc 1 625 9 is_stmt 1 view .LVU428
+ 1156 0050 3846     		mov	r0, r7
+ 1157 0052 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1158              	.LVL125:
+ 625:uCOSII/Source/os_q.c ****         OS_Sched();                                    /* Find highest priority task ready to run  
+ 1159              		.loc 1 625 27 view .LVU429
+ 626:uCOSII/Source/os_q.c ****         return (OS_ERR_NONE);
+ 1160              		.loc 1 626 9 view .LVU430
+ 1161 0056 FFF7FEFF 		bl	OS_Sched
+ 1162              	.LVL126:
+ 627:uCOSII/Source/os_q.c ****     }
+ 1163              		.loc 1 627 9 view .LVU431
+ 627:uCOSII/Source/os_q.c ****     }
+ 1164              		.loc 1 627 16 is_stmt 0 view .LVU432
+ 1165 005a 0025     		movs	r5, #0
+ 1166 005c D5E7     		b	.L69
+ 1167              	.LVL127:
+ 1168              	.L77:
+ 631:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1169              		.loc 1 631 9 is_stmt 1 view .LVU433
+ 1170 005e FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1171              	.LVL128:
+ARM GAS  /tmp/cc5CWVKc.s 			page 37
+
+
+ 631:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1172              		.loc 1 631 27 view .LVU434
+ 632:uCOSII/Source/os_q.c ****     }
+ 1173              		.loc 1 632 9 view .LVU435
+ 632:uCOSII/Source/os_q.c ****     }
+ 1174              		.loc 1 632 16 is_stmt 0 view .LVU436
+ 1175 0062 1E25     		movs	r5, #30
+ 1176 0064 D1E7     		b	.L69
+ 1177              	.LVL129:
+ 1178              	.L78:
+ 637:uCOSII/Source/os_q.c ****     }
+ 1179              		.loc 1 637 9 is_stmt 1 view .LVU437
+ 637:uCOSII/Source/os_q.c ****     }
+ 1180              		.loc 1 637 23 is_stmt 0 view .LVU438
+ 1181 0066 5A68     		ldr	r2, [r3, #4]
+ 637:uCOSII/Source/os_q.c ****     }
+ 1182              		.loc 1 637 19 view .LVU439
+ 1183 0068 DA60     		str	r2, [r3, #12]
+ 1184 006a E7E7     		b	.L72
+ 1185              		.cfi_endproc
+ 1186              	.LFE6:
+ 1188              		.section	.text.OSQPostFront,"ax",%progbits
+ 1189              		.align	1
+ 1190              		.global	OSQPostFront
+ 1191              		.syntax unified
+ 1192              		.thumb
+ 1193              		.thumb_func
+ 1194              		.fpu fpv4-sp-d16
+ 1196              	OSQPostFront:
+ 1197              	.LVL130:
+ 1198              	.LFB7:
+ 642:uCOSII/Source/os_q.c **** #endif
+ 643:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 644:uCOSII/Source/os_q.c **** /*
+ 645:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 646:uCOSII/Source/os_q.c **** *                                POST MESSAGE TO THE FRONT OF A QUEUE
+ 647:uCOSII/Source/os_q.c **** *
+ 648:uCOSII/Source/os_q.c **** * Description: This function sends a message to a queue but unlike OSQPost(), the message is posted
+ 649:uCOSII/Source/os_q.c **** *              the front instead of the end of the queue.  Using OSQPostFront() allows you to send
+ 650:uCOSII/Source/os_q.c **** *              'priority' messages.
+ 651:uCOSII/Source/os_q.c **** *
+ 652:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 653:uCOSII/Source/os_q.c **** *
+ 654:uCOSII/Source/os_q.c **** *              pmsg          is a pointer to the message to send.
+ 655:uCOSII/Source/os_q.c **** *
+ 656:uCOSII/Source/os_q.c **** * Returns    : OS_ERR_NONE           The call was successful and the message was sent
+ 657:uCOSII/Source/os_q.c **** *              OS_ERR_Q_FULL         If the queue cannot accept any more messages because it is ful
+ 658:uCOSII/Source/os_q.c **** *              OS_ERR_EVENT_TYPE     If you didn't pass a pointer to a queue.
+ 659:uCOSII/Source/os_q.c **** *              OS_ERR_PEVENT_NULL    If 'pevent' is a NULL pointer
+ 660:uCOSII/Source/os_q.c **** *
+ 661:uCOSII/Source/os_q.c **** * Note(s)    : As of V2.60, this function allows you to send NULL pointer messages.
+ 662:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 663:uCOSII/Source/os_q.c **** */
+ 664:uCOSII/Source/os_q.c **** 
+ 665:uCOSII/Source/os_q.c **** #if OS_Q_POST_FRONT_EN > 0u
+ 666:uCOSII/Source/os_q.c **** INT8U  OSQPostFront (OS_EVENT  *pevent,
+ 667:uCOSII/Source/os_q.c ****                      void      *pmsg)
+ARM GAS  /tmp/cc5CWVKc.s 			page 38
+
+
+ 668:uCOSII/Source/os_q.c **** {
+ 1199              		.loc 1 668 1 is_stmt 1 view -0
+ 1200              		.cfi_startproc
+ 1201              		@ args = 0, pretend = 0, frame = 0
+ 1202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1203              		.loc 1 668 1 is_stmt 0 view .LVU441
+ 1204 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1205              	.LCFI7:
+ 1206              		.cfi_def_cfa_offset 24
+ 1207              		.cfi_offset 3, -24
+ 1208              		.cfi_offset 4, -20
+ 1209              		.cfi_offset 5, -16
+ 1210              		.cfi_offset 6, -12
+ 1211              		.cfi_offset 7, -8
+ 1212              		.cfi_offset 14, -4
+ 669:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 1213              		.loc 1 669 5 is_stmt 1 view .LVU442
+ 670:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 671:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 1214              		.loc 1 671 5 view .LVU443
+ 1215              	.LVL131:
+ 672:uCOSII/Source/os_q.c **** #endif
+ 673:uCOSII/Source/os_q.c **** 
+ 674:uCOSII/Source/os_q.c **** 
+ 675:uCOSII/Source/os_q.c **** 
+ 676:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 677:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 678:uCOSII/Source/os_q.c ****         return (OS_ERR_PEVENT_NULL);
+ 679:uCOSII/Source/os_q.c ****     }
+ 680:uCOSII/Source/os_q.c **** #endif
+ 681:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {     /* Validate event block type                 
+ 1216              		.loc 1 681 5 view .LVU444
+ 1217              		.loc 1 681 15 is_stmt 0 view .LVU445
+ 1218 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1219              		.loc 1 681 8 view .LVU446
+ 1220 0004 022B     		cmp	r3, #2
+ 1221 0006 02D0     		beq	.L86
+ 682:uCOSII/Source/os_q.c ****         return (OS_ERR_EVENT_TYPE);
+ 1222              		.loc 1 682 16 view .LVU447
+ 1223 0008 0125     		movs	r5, #1
+ 1224              	.LVL132:
+ 1225              	.L80:
+ 683:uCOSII/Source/os_q.c ****     }
+ 684:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 685:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on queue          
+ 686:uCOSII/Source/os_q.c ****                                                       /* Ready highest priority task waiting on eve
+ 687:uCOSII/Source/os_q.c ****         (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 688:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 689:uCOSII/Source/os_q.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 690:uCOSII/Source/os_q.c ****         return (OS_ERR_NONE);
+ 691:uCOSII/Source/os_q.c ****     }
+ 692:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;                  /* Point to queue control block              
+ 693:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 694:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 695:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 696:uCOSII/Source/os_q.c ****     }
+ 697:uCOSII/Source/os_q.c ****     if (pq->OSQOut == pq->OSQStart) {                 /* Wrap OUT ptr if we are at the 1st queue en
+ARM GAS  /tmp/cc5CWVKc.s 			page 39
+
+
+ 698:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
+ 699:uCOSII/Source/os_q.c ****     }
+ 700:uCOSII/Source/os_q.c ****     pq->OSQOut--;
+ 701:uCOSII/Source/os_q.c ****     *pq->OSQOut = pmsg;                               /* Insert message into queue                 
+ 702:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                 /* Update the nbr of entries in the queue    
+ 703:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 704:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 705:uCOSII/Source/os_q.c **** }
+ 1226              		.loc 1 705 1 view .LVU448
+ 1227 000a 2846     		mov	r0, r5
+ 1228 000c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1229              	.LVL133:
+ 1230              	.L86:
+ 1231              		.loc 1 705 1 view .LVU449
+ 1232 000e 0446     		mov	r4, r0
+ 1233 0010 0E46     		mov	r6, r1
+ 684:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on queue          
+ 1234              		.loc 1 684 5 is_stmt 1 view .LVU450
+ 1235 0012 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 1236              	.LVL134:
+ 684:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on queue          
+ 1237              		.loc 1 684 5 is_stmt 0 view .LVU451
+ 1238 0016 0746     		mov	r7, r0
+ 1239              	.LVL135:
+ 684:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                   /* See if any task pending on queue          
+ 1240              		.loc 1 684 24 is_stmt 1 view .LVU452
+ 685:uCOSII/Source/os_q.c ****                                                       /* Ready highest priority task waiting on eve
+ 1241              		.loc 1 685 5 view .LVU453
+ 685:uCOSII/Source/os_q.c ****                                                       /* Ready highest priority task waiting on eve
+ 1242              		.loc 1 685 15 is_stmt 0 view .LVU454
+ 1243 0018 A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
+ 685:uCOSII/Source/os_q.c ****                                                       /* Ready highest priority task waiting on eve
+ 1244              		.loc 1 685 8 view .LVU455
+ 1245 001a A5B9     		cbnz	r5, .L87
+ 692:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 1246              		.loc 1 692 5 is_stmt 1 view .LVU456
+ 692:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 1247              		.loc 1 692 8 is_stmt 0 view .LVU457
+ 1248 001c 6368     		ldr	r3, [r4, #4]
+ 1249              	.LVL136:
+ 693:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1250              		.loc 1 693 5 is_stmt 1 view .LVU458
+ 693:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1251              		.loc 1 693 11 is_stmt 0 view .LVU459
+ 1252 001e D98A     		ldrh	r1, [r3, #22]
+ 693:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1253              		.loc 1 693 29 view .LVU460
+ 1254 0020 9A8A     		ldrh	r2, [r3, #20]
+ 693:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1255              		.loc 1 693 8 view .LVU461
+ 1256 0022 9142     		cmp	r1, r2
+ 1257 0024 1CD2     		bcs	.L88
+ 697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
+ 1258              		.loc 1 697 5 is_stmt 1 view .LVU462
+ 697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
+ 1259              		.loc 1 697 11 is_stmt 0 view .LVU463
+ 1260 0026 1969     		ldr	r1, [r3, #16]
+ARM GAS  /tmp/cc5CWVKc.s 			page 40
+
+
+ 697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
+ 1261              		.loc 1 697 25 view .LVU464
+ 1262 0028 5A68     		ldr	r2, [r3, #4]
+ 697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
+ 1263              		.loc 1 697 8 view .LVU465
+ 1264 002a 9142     		cmp	r1, r2
+ 1265 002c 1CD0     		beq	.L89
+ 1266              	.L83:
+ 700:uCOSII/Source/os_q.c ****     *pq->OSQOut = pmsg;                               /* Insert message into queue                 
+ 1267              		.loc 1 700 5 is_stmt 1 view .LVU466
+ 700:uCOSII/Source/os_q.c ****     *pq->OSQOut = pmsg;                               /* Insert message into queue                 
+ 1268              		.loc 1 700 7 is_stmt 0 view .LVU467
+ 1269 002e 1A69     		ldr	r2, [r3, #16]
+ 700:uCOSII/Source/os_q.c ****     *pq->OSQOut = pmsg;                               /* Insert message into queue                 
+ 1270              		.loc 1 700 15 view .LVU468
+ 1271 0030 111F     		subs	r1, r2, #4
+ 1272 0032 1961     		str	r1, [r3, #16]
+ 701:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                 /* Update the nbr of entries in the queue    
+ 1273              		.loc 1 701 5 is_stmt 1 view .LVU469
+ 701:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                 /* Update the nbr of entries in the queue    
+ 1274              		.loc 1 701 17 is_stmt 0 view .LVU470
+ 1275 0034 42F8046C 		str	r6, [r2, #-4]
+ 702:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1276              		.loc 1 702 5 is_stmt 1 view .LVU471
+ 702:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1277              		.loc 1 702 7 is_stmt 0 view .LVU472
+ 1278 0038 DA8A     		ldrh	r2, [r3, #22]
+ 702:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1279              		.loc 1 702 19 view .LVU473
+ 1280 003a 0132     		adds	r2, r2, #1
+ 1281 003c DA82     		strh	r2, [r3, #22]	@ movhi
+ 703:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1282              		.loc 1 703 5 is_stmt 1 view .LVU474
+ 1283 003e 3846     		mov	r0, r7
+ 1284              	.LVL137:
+ 703:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1285              		.loc 1 703 5 is_stmt 0 view .LVU475
+ 1286 0040 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1287              	.LVL138:
+ 703:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1288              		.loc 1 703 23 is_stmt 1 view .LVU476
+ 704:uCOSII/Source/os_q.c **** }
+ 1289              		.loc 1 704 5 view .LVU477
+ 704:uCOSII/Source/os_q.c **** }
+ 1290              		.loc 1 704 12 is_stmt 0 view .LVU478
+ 1291 0044 E1E7     		b	.L80
+ 1292              	.LVL139:
+ 1293              	.L87:
+ 687:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1294              		.loc 1 687 9 is_stmt 1 view .LVU479
+ 687:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1295              		.loc 1 687 15 is_stmt 0 view .LVU480
+ 1296 0046 0023     		movs	r3, #0
+ 1297 0048 0422     		movs	r2, #4
+ 1298 004a 3146     		mov	r1, r6
+ 1299 004c 2046     		mov	r0, r4
+ 1300              	.LVL140:
+ARM GAS  /tmp/cc5CWVKc.s 			page 41
+
+
+ 687:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1301              		.loc 1 687 15 view .LVU481
+ 1302 004e FFF7FEFF 		bl	OS_EventTaskRdy
+ 1303              	.LVL141:
+ 688:uCOSII/Source/os_q.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 1304              		.loc 1 688 9 is_stmt 1 view .LVU482
+ 1305 0052 3846     		mov	r0, r7
+ 1306 0054 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1307              	.LVL142:
+ 688:uCOSII/Source/os_q.c ****         OS_Sched();                                   /* Find highest priority task ready to run   
+ 1308              		.loc 1 688 27 view .LVU483
+ 689:uCOSII/Source/os_q.c ****         return (OS_ERR_NONE);
+ 1309              		.loc 1 689 9 view .LVU484
+ 1310 0058 FFF7FEFF 		bl	OS_Sched
+ 1311              	.LVL143:
+ 690:uCOSII/Source/os_q.c ****     }
+ 1312              		.loc 1 690 9 view .LVU485
+ 690:uCOSII/Source/os_q.c ****     }
+ 1313              		.loc 1 690 16 is_stmt 0 view .LVU486
+ 1314 005c 0025     		movs	r5, #0
+ 1315 005e D4E7     		b	.L80
+ 1316              	.LVL144:
+ 1317              	.L88:
+ 694:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1318              		.loc 1 694 9 is_stmt 1 view .LVU487
+ 1319 0060 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1320              	.LVL145:
+ 694:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1321              		.loc 1 694 27 view .LVU488
+ 695:uCOSII/Source/os_q.c ****     }
+ 1322              		.loc 1 695 9 view .LVU489
+ 695:uCOSII/Source/os_q.c ****     }
+ 1323              		.loc 1 695 16 is_stmt 0 view .LVU490
+ 1324 0064 1E25     		movs	r5, #30
+ 1325 0066 D0E7     		b	.L80
+ 1326              	.LVL146:
+ 1327              	.L89:
+ 698:uCOSII/Source/os_q.c ****     }
+ 1328              		.loc 1 698 9 is_stmt 1 view .LVU491
+ 698:uCOSII/Source/os_q.c ****     }
+ 1329              		.loc 1 698 24 is_stmt 0 view .LVU492
+ 1330 0068 9A68     		ldr	r2, [r3, #8]
+ 698:uCOSII/Source/os_q.c ****     }
+ 1331              		.loc 1 698 20 view .LVU493
+ 1332 006a 1A61     		str	r2, [r3, #16]
+ 1333 006c DFE7     		b	.L83
+ 1334              		.cfi_endproc
+ 1335              	.LFE7:
+ 1337              		.section	.text.OSQPostOpt,"ax",%progbits
+ 1338              		.align	1
+ 1339              		.global	OSQPostOpt
+ 1340              		.syntax unified
+ 1341              		.thumb
+ 1342              		.thumb_func
+ 1343              		.fpu fpv4-sp-d16
+ 1345              	OSQPostOpt:
+ 1346              	.LVL147:
+ARM GAS  /tmp/cc5CWVKc.s 			page 42
+
+
+ 1347              	.LFB8:
+ 706:uCOSII/Source/os_q.c **** #endif
+ 707:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 708:uCOSII/Source/os_q.c **** /*
+ 709:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 710:uCOSII/Source/os_q.c **** *                                       POST MESSAGE TO A QUEUE
+ 711:uCOSII/Source/os_q.c **** *
+ 712:uCOSII/Source/os_q.c **** * Description: This function sends a message to a queue.  This call has been added to reduce code s
+ 713:uCOSII/Source/os_q.c **** *              since it can replace both OSQPost() and OSQPostFront().  Also, this function adds th
+ 714:uCOSII/Source/os_q.c **** *              capability to broadcast a message to ALL tasks waiting on the message queue.
+ 715:uCOSII/Source/os_q.c **** *
+ 716:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 717:uCOSII/Source/os_q.c **** *
+ 718:uCOSII/Source/os_q.c **** *              pmsg          is a pointer to the message to send.
+ 719:uCOSII/Source/os_q.c **** *
+ 720:uCOSII/Source/os_q.c **** *              opt           determines the type of POST performed:
+ 721:uCOSII/Source/os_q.c **** *                            OS_POST_OPT_NONE         POST to a single waiting task
+ 722:uCOSII/Source/os_q.c **** *                                                     (Identical to OSQPost())
+ 723:uCOSII/Source/os_q.c **** *                            OS_POST_OPT_BROADCAST    POST to ALL tasks that are waiting on the que
+ 724:uCOSII/Source/os_q.c **** *                            OS_POST_OPT_FRONT        POST as LIFO (Simulates OSQPostFront())
+ 725:uCOSII/Source/os_q.c **** *                            OS_POST_OPT_NO_SCHED     Indicates that the scheduler will NOT be invo
+ 726:uCOSII/Source/os_q.c **** *
+ 727:uCOSII/Source/os_q.c **** * Returns    : OS_ERR_NONE           The call was successful and the message was sent
+ 728:uCOSII/Source/os_q.c **** *              OS_ERR_Q_FULL         If the queue cannot accept any more messages because it is ful
+ 729:uCOSII/Source/os_q.c **** *              OS_ERR_EVENT_TYPE     If you didn't pass a pointer to a queue.
+ 730:uCOSII/Source/os_q.c **** *              OS_ERR_PEVENT_NULL    If 'pevent' is a NULL pointer
+ 731:uCOSII/Source/os_q.c **** *
+ 732:uCOSII/Source/os_q.c **** * Warning    : Interrupts can be disabled for a long time if you do a 'broadcast'.  In fact, the
+ 733:uCOSII/Source/os_q.c **** *              interrupt disable time is proportional to the number of tasks waiting on the queue.
+ 734:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 735:uCOSII/Source/os_q.c **** */
+ 736:uCOSII/Source/os_q.c **** 
+ 737:uCOSII/Source/os_q.c **** #if OS_Q_POST_OPT_EN > 0u
+ 738:uCOSII/Source/os_q.c **** INT8U  OSQPostOpt (OS_EVENT  *pevent,
+ 739:uCOSII/Source/os_q.c ****                    void      *pmsg,
+ 740:uCOSII/Source/os_q.c ****                    INT8U      opt)
+ 741:uCOSII/Source/os_q.c **** {
+ 1348              		.loc 1 741 1 is_stmt 1 view -0
+ 1349              		.cfi_startproc
+ 1350              		@ args = 0, pretend = 0, frame = 0
+ 1351              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1352              		.loc 1 741 1 is_stmt 0 view .LVU495
+ 1353 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 1354              	.LCFI8:
+ 1355              		.cfi_def_cfa_offset 24
+ 1356              		.cfi_offset 4, -24
+ 1357              		.cfi_offset 5, -20
+ 1358              		.cfi_offset 6, -16
+ 1359              		.cfi_offset 7, -12
+ 1360              		.cfi_offset 8, -8
+ 1361              		.cfi_offset 14, -4
+ 742:uCOSII/Source/os_q.c ****     OS_Q      *pq;
+ 1362              		.loc 1 742 5 is_stmt 1 view .LVU496
+ 743:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                          /* Allocate storage for CPU status register  
+ 744:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
+ 1363              		.loc 1 744 5 view .LVU497
+ 1364              	.LVL148:
+ARM GAS  /tmp/cc5CWVKc.s 			page 43
+
+
+ 745:uCOSII/Source/os_q.c **** #endif
+ 746:uCOSII/Source/os_q.c **** 
+ 747:uCOSII/Source/os_q.c **** 
+ 748:uCOSII/Source/os_q.c **** 
+ 749:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 750:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                    /* Validate 'pevent'                         
+ 751:uCOSII/Source/os_q.c ****         return (OS_ERR_PEVENT_NULL);
+ 752:uCOSII/Source/os_q.c ****     }
+ 753:uCOSII/Source/os_q.c **** #endif
+ 754:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {     /* Validate event block type                 
+ 1365              		.loc 1 754 5 view .LVU498
+ 1366              		.loc 1 754 15 is_stmt 0 view .LVU499
+ 1367 0004 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1368              		.loc 1 754 8 view .LVU500
+ 1369 0006 022B     		cmp	r3, #2
+ 1370 0008 03D0     		beq	.L105
+ 755:uCOSII/Source/os_q.c ****         return (OS_ERR_EVENT_TYPE);
+ 1371              		.loc 1 755 16 view .LVU501
+ 1372 000a 0125     		movs	r5, #1
+ 1373              	.LVL149:
+ 1374              	.L91:
+ 756:uCOSII/Source/os_q.c ****     }
+ 757:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 758:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0x00u) {                /* See if any task pending on queue          
+ 759:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 760:uCOSII/Source/os_q.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on queue   
+ 761:uCOSII/Source/os_q.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 762:uCOSII/Source/os_q.c ****             }
+ 763:uCOSII/Source/os_q.c ****         } else {                                      /* No,  Post to HPT waiting on queue         
+ 764:uCOSII/Source/os_q.c ****             (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 765:uCOSII/Source/os_q.c ****         }
+ 766:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 767:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ 768:uCOSII/Source/os_q.c ****             OS_Sched();                               /* Find highest priority task ready to run   
+ 769:uCOSII/Source/os_q.c ****         }
+ 770:uCOSII/Source/os_q.c ****         return (OS_ERR_NONE);
+ 771:uCOSII/Source/os_q.c ****     }
+ 772:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;                  /* Point to queue control block              
+ 773:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 774:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 775:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 776:uCOSII/Source/os_q.c ****     }
+ 777:uCOSII/Source/os_q.c ****     if ((opt & OS_POST_OPT_FRONT) != 0x00u) {         /* Do we post to the FRONT of the queue?     
+ 778:uCOSII/Source/os_q.c ****         if (pq->OSQOut == pq->OSQStart) {             /* Yes, Post as LIFO, Wrap OUT pointer if we 
+ 779:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
+ 780:uCOSII/Source/os_q.c ****         }
+ 781:uCOSII/Source/os_q.c ****         pq->OSQOut--;
+ 782:uCOSII/Source/os_q.c ****         *pq->OSQOut = pmsg;                           /*      Insert message into queue            
+ 783:uCOSII/Source/os_q.c ****     } else {                                          /* No,  Post as FIFO                         
+ 784:uCOSII/Source/os_q.c ****         *pq->OSQIn++ = pmsg;                          /*      Insert message into queue            
+ 785:uCOSII/Source/os_q.c ****         if (pq->OSQIn == pq->OSQEnd) {                /*      Wrap IN ptr if we are at end of queue
+ 786:uCOSII/Source/os_q.c ****             pq->OSQIn = pq->OSQStart;
+ 787:uCOSII/Source/os_q.c ****         }
+ 788:uCOSII/Source/os_q.c ****     }
+ 789:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                 /* Update the nbr of entries in the queue    
+ 790:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 791:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ARM GAS  /tmp/cc5CWVKc.s 			page 44
+
+
+ 792:uCOSII/Source/os_q.c **** }
+ 1375              		.loc 1 792 1 view .LVU502
+ 1376 000c 2846     		mov	r0, r5
+ 1377 000e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1378              	.LVL150:
+ 1379              	.L105:
+ 1380              		.loc 1 792 1 view .LVU503
+ 1381 0012 0446     		mov	r4, r0
+ 1382 0014 0F46     		mov	r7, r1
+ 1383 0016 1646     		mov	r6, r2
+ 757:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0x00u) {                /* See if any task pending on queue          
+ 1384              		.loc 1 757 5 is_stmt 1 view .LVU504
+ 1385 0018 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 1386              	.LVL151:
+ 757:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0x00u) {                /* See if any task pending on queue          
+ 1387              		.loc 1 757 5 is_stmt 0 view .LVU505
+ 1388 001c 8046     		mov	r8, r0
+ 1389              	.LVL152:
+ 757:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0x00u) {                /* See if any task pending on queue          
+ 1390              		.loc 1 757 24 is_stmt 1 view .LVU506
+ 758:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 1391              		.loc 1 758 5 view .LVU507
+ 758:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 1392              		.loc 1 758 15 is_stmt 0 view .LVU508
+ 1393 001e A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
+ 758:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_BROADCAST) != 0x00u) { /* Do we need to post msg to ALL waiting task
+ 1394              		.loc 1 758 8 view .LVU509
+ 1395 0020 BDB9     		cbnz	r5, .L106
+ 772:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 1396              		.loc 1 772 5 is_stmt 1 view .LVU510
+ 772:uCOSII/Source/os_q.c ****     if (pq->OSQEntries >= pq->OSQSize) {              /* Make sure queue is not full               
+ 1397              		.loc 1 772 8 is_stmt 0 view .LVU511
+ 1398 0022 6368     		ldr	r3, [r4, #4]
+ 1399              	.LVL153:
+ 773:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1400              		.loc 1 773 5 is_stmt 1 view .LVU512
+ 773:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1401              		.loc 1 773 11 is_stmt 0 view .LVU513
+ 1402 0024 D98A     		ldrh	r1, [r3, #22]
+ 773:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1403              		.loc 1 773 29 view .LVU514
+ 1404 0026 9A8A     		ldrh	r2, [r3, #20]
+ 773:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
+ 1405              		.loc 1 773 8 view .LVU515
+ 1406 0028 9142     		cmp	r1, r2
+ 1407 002a 2FD2     		bcs	.L107
+ 777:uCOSII/Source/os_q.c ****         if (pq->OSQOut == pq->OSQStart) {             /* Yes, Post as LIFO, Wrap OUT pointer if we 
+ 1408              		.loc 1 777 5 is_stmt 1 view .LVU516
+ 777:uCOSII/Source/os_q.c ****         if (pq->OSQOut == pq->OSQStart) {             /* Yes, Post as LIFO, Wrap OUT pointer if we 
+ 1409              		.loc 1 777 8 is_stmt 0 view .LVU517
+ 1410 002c 16F0020F 		tst	r6, #2
+ 1411 0030 33D0     		beq	.L99
+ 778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
+ 1412              		.loc 1 778 9 is_stmt 1 view .LVU518
+ 778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
+ 1413              		.loc 1 778 15 is_stmt 0 view .LVU519
+ 1414 0032 1969     		ldr	r1, [r3, #16]
+ARM GAS  /tmp/cc5CWVKc.s 			page 45
+
+
+ 778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
+ 1415              		.loc 1 778 29 view .LVU520
+ 1416 0034 5A68     		ldr	r2, [r3, #4]
+ 778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
+ 1417              		.loc 1 778 12 view .LVU521
+ 1418 0036 9142     		cmp	r1, r2
+ 1419 0038 2CD0     		beq	.L108
+ 1420              	.L100:
+ 781:uCOSII/Source/os_q.c ****         *pq->OSQOut = pmsg;                           /*      Insert message into queue            
+ 1421              		.loc 1 781 9 is_stmt 1 view .LVU522
+ 781:uCOSII/Source/os_q.c ****         *pq->OSQOut = pmsg;                           /*      Insert message into queue            
+ 1422              		.loc 1 781 11 is_stmt 0 view .LVU523
+ 1423 003a 1A69     		ldr	r2, [r3, #16]
+ 781:uCOSII/Source/os_q.c ****         *pq->OSQOut = pmsg;                           /*      Insert message into queue            
+ 1424              		.loc 1 781 19 view .LVU524
+ 1425 003c 111F     		subs	r1, r2, #4
+ 1426 003e 1961     		str	r1, [r3, #16]
+ 782:uCOSII/Source/os_q.c ****     } else {                                          /* No,  Post as FIFO                         
+ 1427              		.loc 1 782 9 is_stmt 1 view .LVU525
+ 782:uCOSII/Source/os_q.c ****     } else {                                          /* No,  Post as FIFO                         
+ 1428              		.loc 1 782 21 is_stmt 0 view .LVU526
+ 1429 0040 42F8047C 		str	r7, [r2, #-4]
+ 1430              	.L101:
+ 789:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1431              		.loc 1 789 5 is_stmt 1 view .LVU527
+ 789:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1432              		.loc 1 789 7 is_stmt 0 view .LVU528
+ 1433 0044 DA8A     		ldrh	r2, [r3, #22]
+ 789:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1434              		.loc 1 789 19 view .LVU529
+ 1435 0046 0132     		adds	r2, r2, #1
+ 1436 0048 DA82     		strh	r2, [r3, #22]	@ movhi
+ 790:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1437              		.loc 1 790 5 is_stmt 1 view .LVU530
+ 1438 004a 4046     		mov	r0, r8
+ 1439              	.LVL154:
+ 790:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1440              		.loc 1 790 5 is_stmt 0 view .LVU531
+ 1441 004c FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1442              	.LVL155:
+ 790:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1443              		.loc 1 790 23 is_stmt 1 view .LVU532
+ 791:uCOSII/Source/os_q.c **** }
+ 1444              		.loc 1 791 5 view .LVU533
+ 791:uCOSII/Source/os_q.c **** }
+ 1445              		.loc 1 791 12 is_stmt 0 view .LVU534
+ 1446 0050 DCE7     		b	.L91
+ 1447              	.LVL156:
+ 1448              	.L106:
+ 759:uCOSII/Source/os_q.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on queue   
+ 1449              		.loc 1 759 9 is_stmt 1 view .LVU535
+ 759:uCOSII/Source/os_q.c ****             while (pevent->OSEventGrp != 0u) {        /* Yes, Post to ALL tasks waiting on queue   
+ 1450              		.loc 1 759 12 is_stmt 0 view .LVU536
+ 1451 0052 16F0010F 		tst	r6, #1
+ 1452 0056 08D0     		beq	.L109
+ 1453              	.LVL157:
+ 1454              	.L93:
+ARM GAS  /tmp/cc5CWVKc.s 			page 46
+
+
+ 760:uCOSII/Source/os_q.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 1455              		.loc 1 760 19 is_stmt 1 view .LVU537
+ 760:uCOSII/Source/os_q.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 1456              		.loc 1 760 26 is_stmt 0 view .LVU538
+ 1457 0058 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 760:uCOSII/Source/os_q.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
+ 1458              		.loc 1 760 19 view .LVU539
+ 1459 005a 63B1     		cbz	r3, .L96
+ 761:uCOSII/Source/os_q.c ****             }
+ 1460              		.loc 1 761 17 is_stmt 1 view .LVU540
+ 761:uCOSII/Source/os_q.c ****             }
+ 1461              		.loc 1 761 23 is_stmt 0 view .LVU541
+ 1462 005c 0023     		movs	r3, #0
+ 1463 005e 0422     		movs	r2, #4
+ 1464 0060 3946     		mov	r1, r7
+ 1465 0062 2046     		mov	r0, r4
+ 1466 0064 FFF7FEFF 		bl	OS_EventTaskRdy
+ 1467              	.LVL158:
+ 1468 0068 F6E7     		b	.L93
+ 1469              	.LVL159:
+ 1470              	.L109:
+ 764:uCOSII/Source/os_q.c ****         }
+ 1471              		.loc 1 764 13 is_stmt 1 view .LVU542
+ 764:uCOSII/Source/os_q.c ****         }
+ 1472              		.loc 1 764 19 is_stmt 0 view .LVU543
+ 1473 006a 0023     		movs	r3, #0
+ 1474 006c 0422     		movs	r2, #4
+ 1475 006e 3946     		mov	r1, r7
+ 1476 0070 2046     		mov	r0, r4
+ 1477              	.LVL160:
+ 764:uCOSII/Source/os_q.c ****         }
+ 1478              		.loc 1 764 19 view .LVU544
+ 1479 0072 FFF7FEFF 		bl	OS_EventTaskRdy
+ 1480              	.LVL161:
+ 1481              	.L96:
+ 766:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ 1482              		.loc 1 766 9 is_stmt 1 view .LVU545
+ 1483 0076 4046     		mov	r0, r8
+ 1484 0078 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1485              	.LVL162:
+ 766:uCOSII/Source/os_q.c ****         if ((opt & OS_POST_OPT_NO_SCHED) == 0u) {     /* See if scheduler needs to be invoked      
+ 1486              		.loc 1 766 27 view .LVU546
+ 767:uCOSII/Source/os_q.c ****             OS_Sched();                               /* Find highest priority task ready to run   
+ 1487              		.loc 1 767 9 view .LVU547
+ 767:uCOSII/Source/os_q.c ****             OS_Sched();                               /* Find highest priority task ready to run   
+ 1488              		.loc 1 767 12 is_stmt 0 view .LVU548
+ 1489 007c 16F0040F 		tst	r6, #4
+ 1490 0080 01D0     		beq	.L110
+ 1491              	.L97:
+ 770:uCOSII/Source/os_q.c ****     }
+ 1492              		.loc 1 770 9 is_stmt 1 view .LVU549
+ 770:uCOSII/Source/os_q.c ****     }
+ 1493              		.loc 1 770 16 is_stmt 0 view .LVU550
+ 1494 0082 0025     		movs	r5, #0
+ 1495 0084 C2E7     		b	.L91
+ 1496              	.L110:
+ 768:uCOSII/Source/os_q.c ****         }
+ARM GAS  /tmp/cc5CWVKc.s 			page 47
+
+
+ 1497              		.loc 1 768 13 is_stmt 1 view .LVU551
+ 1498 0086 FFF7FEFF 		bl	OS_Sched
+ 1499              	.LVL163:
+ 1500 008a FAE7     		b	.L97
+ 1501              	.LVL164:
+ 1502              	.L107:
+ 774:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1503              		.loc 1 774 9 view .LVU552
+ 1504 008c FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1505              	.LVL165:
+ 774:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
+ 1506              		.loc 1 774 27 view .LVU553
+ 775:uCOSII/Source/os_q.c ****     }
+ 1507              		.loc 1 775 9 view .LVU554
+ 775:uCOSII/Source/os_q.c ****     }
+ 1508              		.loc 1 775 16 is_stmt 0 view .LVU555
+ 1509 0090 1E25     		movs	r5, #30
+ 1510 0092 BBE7     		b	.L91
+ 1511              	.LVL166:
+ 1512              	.L108:
+ 779:uCOSII/Source/os_q.c ****         }
+ 1513              		.loc 1 779 13 is_stmt 1 view .LVU556
+ 779:uCOSII/Source/os_q.c ****         }
+ 1514              		.loc 1 779 28 is_stmt 0 view .LVU557
+ 1515 0094 9A68     		ldr	r2, [r3, #8]
+ 779:uCOSII/Source/os_q.c ****         }
+ 1516              		.loc 1 779 24 view .LVU558
+ 1517 0096 1A61     		str	r2, [r3, #16]
+ 1518 0098 CFE7     		b	.L100
+ 1519              	.L99:
+ 784:uCOSII/Source/os_q.c ****         if (pq->OSQIn == pq->OSQEnd) {                /*      Wrap IN ptr if we are at end of queue
+ 1520              		.loc 1 784 9 is_stmt 1 view .LVU559
+ 784:uCOSII/Source/os_q.c ****         if (pq->OSQIn == pq->OSQEnd) {                /*      Wrap IN ptr if we are at end of queue
+ 1521              		.loc 1 784 12 is_stmt 0 view .LVU560
+ 1522 009a DA68     		ldr	r2, [r3, #12]
+ 784:uCOSII/Source/os_q.c ****         if (pq->OSQIn == pq->OSQEnd) {                /*      Wrap IN ptr if we are at end of queue
+ 1523              		.loc 1 784 19 view .LVU561
+ 1524 009c 111D     		adds	r1, r2, #4
+ 1525 009e D960     		str	r1, [r3, #12]
+ 784:uCOSII/Source/os_q.c ****         if (pq->OSQIn == pq->OSQEnd) {                /*      Wrap IN ptr if we are at end of queue
+ 1526              		.loc 1 784 22 view .LVU562
+ 1527 00a0 1760     		str	r7, [r2]
+ 785:uCOSII/Source/os_q.c ****             pq->OSQIn = pq->OSQStart;
+ 1528              		.loc 1 785 9 is_stmt 1 view .LVU563
+ 785:uCOSII/Source/os_q.c ****             pq->OSQIn = pq->OSQStart;
+ 1529              		.loc 1 785 15 is_stmt 0 view .LVU564
+ 1530 00a2 D968     		ldr	r1, [r3, #12]
+ 785:uCOSII/Source/os_q.c ****             pq->OSQIn = pq->OSQStart;
+ 1531              		.loc 1 785 28 view .LVU565
+ 1532 00a4 9A68     		ldr	r2, [r3, #8]
+ 785:uCOSII/Source/os_q.c ****             pq->OSQIn = pq->OSQStart;
+ 1533              		.loc 1 785 12 view .LVU566
+ 1534 00a6 9142     		cmp	r1, r2
+ 1535 00a8 CCD1     		bne	.L101
+ 786:uCOSII/Source/os_q.c ****         }
+ 1536              		.loc 1 786 13 is_stmt 1 view .LVU567
+ 786:uCOSII/Source/os_q.c ****         }
+ARM GAS  /tmp/cc5CWVKc.s 			page 48
+
+
+ 1537              		.loc 1 786 27 is_stmt 0 view .LVU568
+ 1538 00aa 5A68     		ldr	r2, [r3, #4]
+ 786:uCOSII/Source/os_q.c ****         }
+ 1539              		.loc 1 786 23 view .LVU569
+ 1540 00ac DA60     		str	r2, [r3, #12]
+ 1541 00ae C9E7     		b	.L101
+ 1542              		.cfi_endproc
+ 1543              	.LFE8:
+ 1545              		.section	.text.OSQQuery,"ax",%progbits
+ 1546              		.align	1
+ 1547              		.global	OSQQuery
+ 1548              		.syntax unified
+ 1549              		.thumb
+ 1550              		.thumb_func
+ 1551              		.fpu fpv4-sp-d16
+ 1553              	OSQQuery:
+ 1554              	.LVL167:
+ 1555              	.LFB9:
+ 793:uCOSII/Source/os_q.c **** #endif
+ 794:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 795:uCOSII/Source/os_q.c **** /*
+ 796:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 797:uCOSII/Source/os_q.c **** *                                        QUERY A MESSAGE QUEUE
+ 798:uCOSII/Source/os_q.c **** *
+ 799:uCOSII/Source/os_q.c **** * Description: This function obtains information about a message queue.
+ 800:uCOSII/Source/os_q.c **** *
+ 801:uCOSII/Source/os_q.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired qu
+ 802:uCOSII/Source/os_q.c **** *
+ 803:uCOSII/Source/os_q.c **** *              p_q_data      is a pointer to a structure that will contain information about the me
+ 804:uCOSII/Source/os_q.c **** *                            queue.
+ 805:uCOSII/Source/os_q.c **** *
+ 806:uCOSII/Source/os_q.c **** * Returns    : OS_ERR_NONE         The call was successful and the message was sent
+ 807:uCOSII/Source/os_q.c **** *              OS_ERR_EVENT_TYPE   If you are attempting to obtain data from a non queue.
+ 808:uCOSII/Source/os_q.c **** *              OS_ERR_PEVENT_NULL  If 'pevent'   is a NULL pointer
+ 809:uCOSII/Source/os_q.c **** *              OS_ERR_PDATA_NULL   If 'p_q_data' is a NULL pointer
+ 810:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 811:uCOSII/Source/os_q.c **** */
+ 812:uCOSII/Source/os_q.c **** 
+ 813:uCOSII/Source/os_q.c **** #if OS_Q_QUERY_EN > 0u
+ 814:uCOSII/Source/os_q.c **** INT8U  OSQQuery (OS_EVENT  *pevent,
+ 815:uCOSII/Source/os_q.c ****                  OS_Q_DATA *p_q_data)
+ 816:uCOSII/Source/os_q.c **** {
+ 1556              		.loc 1 816 1 is_stmt 1 view -0
+ 1557              		.cfi_startproc
+ 1558              		@ args = 0, pretend = 0, frame = 0
+ 1559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 817:uCOSII/Source/os_q.c ****     OS_Q       *pq;
+ 1560              		.loc 1 817 5 view .LVU571
+ 818:uCOSII/Source/os_q.c ****     INT8U       i;
+ 1561              		.loc 1 818 5 view .LVU572
+ 819:uCOSII/Source/os_q.c ****     OS_PRIO    *psrc;
+ 1562              		.loc 1 819 5 view .LVU573
+ 820:uCOSII/Source/os_q.c ****     OS_PRIO    *pdest;
+ 1563              		.loc 1 820 5 view .LVU574
+ 821:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                           /* Allocate storage for CPU status register 
+ 822:uCOSII/Source/os_q.c ****     OS_CPU_SR   cpu_sr = 0u;
+ 1564              		.loc 1 822 5 view .LVU575
+ARM GAS  /tmp/cc5CWVKc.s 			page 49
+
+
+ 823:uCOSII/Source/os_q.c **** #endif
+ 824:uCOSII/Source/os_q.c **** 
+ 825:uCOSII/Source/os_q.c **** 
+ 826:uCOSII/Source/os_q.c **** 
+ 827:uCOSII/Source/os_q.c **** #if OS_ARG_CHK_EN > 0u
+ 828:uCOSII/Source/os_q.c ****     if (pevent == (OS_EVENT *)0) {                     /* Validate 'pevent'                        
+ 829:uCOSII/Source/os_q.c ****         return (OS_ERR_PEVENT_NULL);
+ 830:uCOSII/Source/os_q.c ****     }
+ 831:uCOSII/Source/os_q.c ****     if (p_q_data == (OS_Q_DATA *)0) {                  /* Validate 'p_q_data'                      
+ 832:uCOSII/Source/os_q.c ****         return (OS_ERR_PDATA_NULL);
+ 833:uCOSII/Source/os_q.c ****     }
+ 834:uCOSII/Source/os_q.c **** #endif
+ 835:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {      /* Validate event block type                
+ 1565              		.loc 1 835 5 view .LVU576
+ 1566              		.loc 1 835 15 is_stmt 0 view .LVU577
+ 1567 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 1568              		.loc 1 835 8 view .LVU578
+ 1569 0002 022B     		cmp	r3, #2
+ 1570 0004 01D0     		beq	.L122
+ 836:uCOSII/Source/os_q.c ****         return (OS_ERR_EVENT_TYPE);
+ 1571              		.loc 1 836 16 view .LVU579
+ 1572 0006 0120     		movs	r0, #1
+ 1573              	.LVL168:
+ 837:uCOSII/Source/os_q.c ****     }
+ 838:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
+ 839:uCOSII/Source/os_q.c ****     p_q_data->OSEventGrp = pevent->OSEventGrp;         /* Copy message queue wait list             
+ 840:uCOSII/Source/os_q.c ****     psrc                 = &pevent->OSEventTbl[0];
+ 841:uCOSII/Source/os_q.c ****     pdest                = &p_q_data->OSEventTbl[0];
+ 842:uCOSII/Source/os_q.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 843:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 844:uCOSII/Source/os_q.c ****     }
+ 845:uCOSII/Source/os_q.c ****     pq = (OS_Q *)pevent->OSEventPtr;
+ 846:uCOSII/Source/os_q.c ****     if (pq->OSQEntries > 0u) {
+ 847:uCOSII/Source/os_q.c ****         p_q_data->OSMsg = *pq->OSQOut;                 /* Get next message to return if available  
+ 848:uCOSII/Source/os_q.c ****     } else {
+ 849:uCOSII/Source/os_q.c ****         p_q_data->OSMsg = (void *)0;
+ 850:uCOSII/Source/os_q.c ****     }
+ 851:uCOSII/Source/os_q.c ****     p_q_data->OSNMsgs = pq->OSQEntries;
+ 852:uCOSII/Source/os_q.c ****     p_q_data->OSQSize = pq->OSQSize;
+ 853:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 854:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 855:uCOSII/Source/os_q.c **** }
+ 1574              		.loc 1 855 1 view .LVU580
+ 1575 0008 7047     		bx	lr
+ 1576              	.LVL169:
+ 1577              	.L122:
+ 816:uCOSII/Source/os_q.c ****     OS_Q       *pq;
+ 1578              		.loc 1 816 1 view .LVU581
+ 1579 000a 70B5     		push	{r4, r5, r6, lr}
+ 1580              	.LCFI9:
+ 1581              		.cfi_def_cfa_offset 16
+ 1582              		.cfi_offset 4, -16
+ 1583              		.cfi_offset 5, -12
+ 1584              		.cfi_offset 6, -8
+ 1585              		.cfi_offset 14, -4
+ 1586 000c 0546     		mov	r5, r0
+ 1587 000e 0E46     		mov	r6, r1
+ARM GAS  /tmp/cc5CWVKc.s 			page 50
+
+
+ 838:uCOSII/Source/os_q.c ****     p_q_data->OSEventGrp = pevent->OSEventGrp;         /* Copy message queue wait list             
+ 1588              		.loc 1 838 5 is_stmt 1 view .LVU582
+ 1589 0010 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 1590              	.LVL170:
+ 838:uCOSII/Source/os_q.c ****     p_q_data->OSEventGrp = pevent->OSEventGrp;         /* Copy message queue wait list             
+ 1591              		.loc 1 838 24 view .LVU583
+ 839:uCOSII/Source/os_q.c ****     psrc                 = &pevent->OSEventTbl[0];
+ 1592              		.loc 1 839 5 view .LVU584
+ 839:uCOSII/Source/os_q.c ****     psrc                 = &pevent->OSEventTbl[0];
+ 1593              		.loc 1 839 34 is_stmt 0 view .LVU585
+ 1594 0014 AB7A     		ldrb	r3, [r5, #10]	@ zero_extendqisi2
+ 839:uCOSII/Source/os_q.c ****     psrc                 = &pevent->OSEventTbl[0];
+ 1595              		.loc 1 839 26 view .LVU586
+ 1596 0016 3374     		strb	r3, [r6, #16]
+ 840:uCOSII/Source/os_q.c ****     pdest                = &p_q_data->OSEventTbl[0];
+ 1597              		.loc 1 840 5 is_stmt 1 view .LVU587
+ 840:uCOSII/Source/os_q.c ****     pdest                = &p_q_data->OSEventTbl[0];
+ 1598              		.loc 1 840 26 is_stmt 0 view .LVU588
+ 1599 0018 05F10B02 		add	r2, r5, #11
+ 1600              	.LVL171:
+ 841:uCOSII/Source/os_q.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 1601              		.loc 1 841 5 is_stmt 1 view .LVU589
+ 841:uCOSII/Source/os_q.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
+ 1602              		.loc 1 841 26 is_stmt 0 view .LVU590
+ 1603 001c 06F10803 		add	r3, r6, #8
+ 1604              	.LVL172:
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1605              		.loc 1 842 5 is_stmt 1 view .LVU591
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1606              		.loc 1 842 12 is_stmt 0 view .LVU592
+ 1607 0020 0024     		movs	r4, #0
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1608              		.loc 1 842 5 view .LVU593
+ 1609 0022 05E0     		b	.L113
+ 1610              	.LVL173:
+ 1611              	.L114:
+ 843:uCOSII/Source/os_q.c ****     }
+ 1612              		.loc 1 843 9 is_stmt 1 discriminator 3 view .LVU594
+ 843:uCOSII/Source/os_q.c ****     }
+ 1613              		.loc 1 843 20 is_stmt 0 discriminator 3 view .LVU595
+ 1614 0024 12F8011B 		ldrb	r1, [r2], #1	@ zero_extendqisi2
+ 1615              	.LVL174:
+ 843:uCOSII/Source/os_q.c ****     }
+ 1616              		.loc 1 843 18 discriminator 3 view .LVU596
+ 1617 0028 03F8011B 		strb	r1, [r3], #1
+ 1618              	.LVL175:
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1619              		.loc 1 842 41 is_stmt 1 discriminator 3 view .LVU597
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1620              		.loc 1 842 42 is_stmt 0 discriminator 3 view .LVU598
+ 1621 002c 0134     		adds	r4, r4, #1
+ 1622              	.LVL176:
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1623              		.loc 1 842 42 discriminator 3 view .LVU599
+ 1624 002e E4B2     		uxtb	r4, r4
+ 1625              	.LVL177:
+ 1626              	.L113:
+ARM GAS  /tmp/cc5CWVKc.s 			page 51
+
+
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1627              		.loc 1 842 18 is_stmt 1 discriminator 1 view .LVU600
+ 842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
+ 1628              		.loc 1 842 5 is_stmt 0 discriminator 1 view .LVU601
+ 1629 0030 072C     		cmp	r4, #7
+ 1630 0032 F7D9     		bls	.L114
+ 845:uCOSII/Source/os_q.c ****     if (pq->OSQEntries > 0u) {
+ 1631              		.loc 1 845 5 is_stmt 1 view .LVU602
+ 845:uCOSII/Source/os_q.c ****     if (pq->OSQEntries > 0u) {
+ 1632              		.loc 1 845 8 is_stmt 0 view .LVU603
+ 1633 0034 6B68     		ldr	r3, [r5, #4]
+ 1634              	.LVL178:
+ 846:uCOSII/Source/os_q.c ****         p_q_data->OSMsg = *pq->OSQOut;                 /* Get next message to return if available  
+ 1635              		.loc 1 846 5 is_stmt 1 view .LVU604
+ 846:uCOSII/Source/os_q.c ****         p_q_data->OSMsg = *pq->OSQOut;                 /* Get next message to return if available  
+ 1636              		.loc 1 846 11 is_stmt 0 view .LVU605
+ 1637 0036 DA8A     		ldrh	r2, [r3, #22]
+ 1638              	.LVL179:
+ 846:uCOSII/Source/os_q.c ****         p_q_data->OSMsg = *pq->OSQOut;                 /* Get next message to return if available  
+ 1639              		.loc 1 846 8 view .LVU606
+ 1640 0038 52B1     		cbz	r2, .L115
+ 847:uCOSII/Source/os_q.c ****     } else {
+ 1641              		.loc 1 847 9 is_stmt 1 view .LVU607
+ 847:uCOSII/Source/os_q.c ****     } else {
+ 1642              		.loc 1 847 30 is_stmt 0 view .LVU608
+ 1643 003a 1A69     		ldr	r2, [r3, #16]
+ 847:uCOSII/Source/os_q.c ****     } else {
+ 1644              		.loc 1 847 27 view .LVU609
+ 1645 003c 1268     		ldr	r2, [r2]
+ 847:uCOSII/Source/os_q.c ****     } else {
+ 1646              		.loc 1 847 25 view .LVU610
+ 1647 003e 3260     		str	r2, [r6]
+ 1648              	.L116:
+ 851:uCOSII/Source/os_q.c ****     p_q_data->OSQSize = pq->OSQSize;
+ 1649              		.loc 1 851 5 is_stmt 1 view .LVU611
+ 851:uCOSII/Source/os_q.c ****     p_q_data->OSQSize = pq->OSQSize;
+ 1650              		.loc 1 851 27 is_stmt 0 view .LVU612
+ 1651 0040 DA8A     		ldrh	r2, [r3, #22]
+ 851:uCOSII/Source/os_q.c ****     p_q_data->OSQSize = pq->OSQSize;
+ 1652              		.loc 1 851 23 view .LVU613
+ 1653 0042 B280     		strh	r2, [r6, #4]	@ movhi
+ 852:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1654              		.loc 1 852 5 is_stmt 1 view .LVU614
+ 852:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1655              		.loc 1 852 27 is_stmt 0 view .LVU615
+ 1656 0044 9B8A     		ldrh	r3, [r3, #20]
+ 1657              	.LVL180:
+ 852:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
+ 1658              		.loc 1 852 23 view .LVU616
+ 1659 0046 F380     		strh	r3, [r6, #6]	@ movhi
+ 853:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1660              		.loc 1 853 5 is_stmt 1 view .LVU617
+ 1661 0048 FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 1662              	.LVL181:
+ 853:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
+ 1663              		.loc 1 853 23 view .LVU618
+ 854:uCOSII/Source/os_q.c **** }
+ARM GAS  /tmp/cc5CWVKc.s 			page 52
+
+
+ 1664              		.loc 1 854 5 view .LVU619
+ 854:uCOSII/Source/os_q.c **** }
+ 1665              		.loc 1 854 12 is_stmt 0 view .LVU620
+ 1666 004c 0020     		movs	r0, #0
+ 1667              		.loc 1 855 1 view .LVU621
+ 1668 004e 70BD     		pop	{r4, r5, r6, pc}
+ 1669              	.LVL182:
+ 1670              	.L115:
+ 849:uCOSII/Source/os_q.c ****     }
+ 1671              		.loc 1 849 9 is_stmt 1 view .LVU622
+ 849:uCOSII/Source/os_q.c ****     }
+ 1672              		.loc 1 849 25 is_stmt 0 view .LVU623
+ 1673 0050 0022     		movs	r2, #0
+ 1674 0052 3260     		str	r2, [r6]
+ 1675 0054 F4E7     		b	.L116
+ 1676              		.cfi_endproc
+ 1677              	.LFE9:
+ 1679              		.section	.text.OS_QInit,"ax",%progbits
+ 1680              		.align	1
+ 1681              		.global	OS_QInit
+ 1682              		.syntax unified
+ 1683              		.thumb
+ 1684              		.thumb_func
+ 1685              		.fpu fpv4-sp-d16
+ 1687              	OS_QInit:
+ 1688              	.LFB10:
+ 856:uCOSII/Source/os_q.c **** #endif                                                 /* OS_Q_QUERY_EN                            
+ 857:uCOSII/Source/os_q.c **** 
+ 858:uCOSII/Source/os_q.c **** /*$PAGE*/
+ 859:uCOSII/Source/os_q.c **** /*
+ 860:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 861:uCOSII/Source/os_q.c **** *                                     QUEUE MODULE INITIALIZATION
+ 862:uCOSII/Source/os_q.c **** *
+ 863:uCOSII/Source/os_q.c **** * Description : This function is called by uC/OS-II to initialize the message queue module.  Your
+ 864:uCOSII/Source/os_q.c **** *               application MUST NOT call this function.
+ 865:uCOSII/Source/os_q.c **** *
+ 866:uCOSII/Source/os_q.c **** * Arguments   :  none
+ 867:uCOSII/Source/os_q.c **** *
+ 868:uCOSII/Source/os_q.c **** * Returns     : none
+ 869:uCOSII/Source/os_q.c **** *
+ 870:uCOSII/Source/os_q.c **** * Note(s)    : This function is INTERNAL to uC/OS-II and your application should not call it.
+ 871:uCOSII/Source/os_q.c **** ***************************************************************************************************
+ 872:uCOSII/Source/os_q.c **** */
+ 873:uCOSII/Source/os_q.c **** 
+ 874:uCOSII/Source/os_q.c **** void  OS_QInit (void)
+ 875:uCOSII/Source/os_q.c **** {
+ 1689              		.loc 1 875 1 is_stmt 1 view -0
+ 1690              		.cfi_startproc
+ 1691              		@ args = 0, pretend = 0, frame = 0
+ 1692              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1693 0000 10B5     		push	{r4, lr}
+ 1694              	.LCFI10:
+ 1695              		.cfi_def_cfa_offset 8
+ 1696              		.cfi_offset 4, -8
+ 1697              		.cfi_offset 14, -4
+ 876:uCOSII/Source/os_q.c **** #if OS_MAX_QS == 1u
+ 877:uCOSII/Source/os_q.c ****     OSQFreeList         = &OSQTbl[0];                /* Only ONE queue!                            
+ARM GAS  /tmp/cc5CWVKc.s 			page 53
+
+
+ 878:uCOSII/Source/os_q.c ****     OSQFreeList->OSQPtr = (OS_Q *)0;
+ 879:uCOSII/Source/os_q.c **** #endif
+ 880:uCOSII/Source/os_q.c **** 
+ 881:uCOSII/Source/os_q.c **** #if OS_MAX_QS >= 2u
+ 882:uCOSII/Source/os_q.c ****     INT16U   ix;
+ 1698              		.loc 1 882 5 view .LVU625
+ 883:uCOSII/Source/os_q.c ****     INT16U   ix_next;
+ 1699              		.loc 1 883 5 view .LVU626
+ 884:uCOSII/Source/os_q.c ****     OS_Q    *pq1;
+ 1700              		.loc 1 884 5 view .LVU627
+ 885:uCOSII/Source/os_q.c ****     OS_Q    *pq2;
+ 1701              		.loc 1 885 5 view .LVU628
+ 886:uCOSII/Source/os_q.c **** 
+ 887:uCOSII/Source/os_q.c **** 
+ 888:uCOSII/Source/os_q.c **** 
+ 889:uCOSII/Source/os_q.c ****     OS_MemClr((INT8U *)&OSQTbl[0], sizeof(OSQTbl));  /* Clear the queue table                      
+ 1702              		.loc 1 889 5 view .LVU629
+ 1703 0002 6021     		movs	r1, #96
+ 1704 0004 0D48     		ldr	r0, .L127
+ 1705 0006 FFF7FEFF 		bl	OS_MemClr
+ 1706              	.LVL183:
+ 890:uCOSII/Source/os_q.c ****     for (ix = 0u; ix < (OS_MAX_QS - 1u); ix++) {     /* Init. list of free QUEUE control blocks    
+ 1707              		.loc 1 890 5 view .LVU630
+ 1708              		.loc 1 890 13 is_stmt 0 view .LVU631
+ 1709 000a 0023     		movs	r3, #0
+ 1710              		.loc 1 890 5 view .LVU632
+ 1711 000c 0BE0     		b	.L124
+ 1712              	.LVL184:
+ 1713              	.L125:
+ 891:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
+ 1714              		.loc 1 891 9 is_stmt 1 discriminator 3 view .LVU633
+ 1715              		.loc 1 891 17 is_stmt 0 discriminator 3 view .LVU634
+ 1716 000e 5A1C     		adds	r2, r3, #1
+ 1717 0010 92B2     		uxth	r2, r2
+ 1718              	.LVL185:
+ 892:uCOSII/Source/os_q.c ****         pq1 = &OSQTbl[ix];
+ 1719              		.loc 1 892 9 is_stmt 1 discriminator 3 view .LVU635
+ 893:uCOSII/Source/os_q.c ****         pq2 = &OSQTbl[ix_next];
+ 1720              		.loc 1 893 9 discriminator 3 view .LVU636
+ 1721              		.loc 1 893 13 is_stmt 0 discriminator 3 view .LVU637
+ 1722 0012 02EB4200 		add	r0, r2, r2, lsl #1
+ 1723 0016 C100     		lsls	r1, r0, #3
+ 1724 0018 084C     		ldr	r4, .L127
+ 1725 001a 2144     		add	r1, r1, r4
+ 1726              	.LVL186:
+ 894:uCOSII/Source/os_q.c ****         pq1->OSQPtr = pq2;
+ 1727              		.loc 1 894 9 is_stmt 1 discriminator 3 view .LVU638
+ 1728              		.loc 1 894 21 is_stmt 0 discriminator 3 view .LVU639
+ 1729 001c 03EB4303 		add	r3, r3, r3, lsl #1
+ 1730              	.LVL187:
+ 1731              		.loc 1 894 21 discriminator 3 view .LVU640
+ 1732 0020 D800     		lsls	r0, r3, #3
+ 1733 0022 2150     		str	r1, [r4, r0]
+ 890:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
+ 1734              		.loc 1 890 42 is_stmt 1 discriminator 3 view .LVU641
+ 1735              	.LVL188:
+ 890:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
+ARM GAS  /tmp/cc5CWVKc.s 			page 54
+
+
+ 1736              		.loc 1 890 44 is_stmt 0 discriminator 3 view .LVU642
+ 1737 0024 1346     		mov	r3, r2
+ 1738              	.LVL189:
+ 1739              	.L124:
+ 890:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
+ 1740              		.loc 1 890 19 is_stmt 1 discriminator 1 view .LVU643
+ 890:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
+ 1741              		.loc 1 890 5 is_stmt 0 discriminator 1 view .LVU644
+ 1742 0026 022B     		cmp	r3, #2
+ 1743 0028 F1D9     		bls	.L125
+ 895:uCOSII/Source/os_q.c ****     }
+ 896:uCOSII/Source/os_q.c ****     pq1         = &OSQTbl[ix];
+ 1744              		.loc 1 896 5 is_stmt 1 view .LVU645
+ 1745              	.LVL190:
+ 897:uCOSII/Source/os_q.c ****     pq1->OSQPtr = (OS_Q *)0;
+ 1746              		.loc 1 897 5 view .LVU646
+ 1747              		.loc 1 897 17 is_stmt 0 view .LVU647
+ 1748 002a 044A     		ldr	r2, .L127
+ 1749 002c 03EB4303 		add	r3, r3, r3, lsl #1
+ 1750              	.LVL191:
+ 1751              		.loc 1 897 17 view .LVU648
+ 1752 0030 D900     		lsls	r1, r3, #3
+ 1753 0032 0023     		movs	r3, #0
+ 1754 0034 5350     		str	r3, [r2, r1]
+ 898:uCOSII/Source/os_q.c ****     OSQFreeList = &OSQTbl[0];
+ 1755              		.loc 1 898 5 is_stmt 1 view .LVU649
+ 1756              		.loc 1 898 17 is_stmt 0 view .LVU650
+ 1757 0036 024B     		ldr	r3, .L127+4
+ 1758 0038 1A60     		str	r2, [r3]
+ 899:uCOSII/Source/os_q.c **** #endif
+ 900:uCOSII/Source/os_q.c **** }
+ 1759              		.loc 1 900 1 view .LVU651
+ 1760 003a 10BD     		pop	{r4, pc}
+ 1761              	.L128:
+ 1762              		.align	2
+ 1763              	.L127:
+ 1764 003c 00000000 		.word	OSQTbl
+ 1765 0040 00000000 		.word	OSQFreeList
+ 1766              		.cfi_endproc
+ 1767              	.LFE10:
+ 1769              		.text
+ 1770              	.Letext0:
+ 1771              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
+ 1772              		.file 3 "uCOSII/Include/ucos_ii.h"
+ARM GAS  /tmp/cc5CWVKc.s 			page 55
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 os_q.c
+     /tmp/cc5CWVKc.s:18     .text.OSQAccept:0000000000000000 $t
+     /tmp/cc5CWVKc.s:26     .text.OSQAccept:0000000000000000 OSQAccept
+     /tmp/cc5CWVKc.s:142    .rodata.OSQCreate.str1.4:0000000000000000 $d
+     /tmp/cc5CWVKc.s:146    .text.OSQCreate:0000000000000000 $t
+     /tmp/cc5CWVKc.s:153    .text.OSQCreate:0000000000000000 OSQCreate
+     /tmp/cc5CWVKc.s:298    .text.OSQCreate:0000000000000070 $d
+     /tmp/cc5CWVKc.s:306    .text.OSQDel:0000000000000000 $t
+     /tmp/cc5CWVKc.s:313    .text.OSQDel:0000000000000000 OSQDel
+     /tmp/cc5CWVKc.s:565    .text.OSQDel:00000000000000d0 $d
+     /tmp/cc5CWVKc.s:573    .text.OSQFlush:0000000000000000 $t
+     /tmp/cc5CWVKc.s:580    .text.OSQFlush:0000000000000000 OSQFlush
+     /tmp/cc5CWVKc.s:631    .text.OSQPend:0000000000000000 $t
+     /tmp/cc5CWVKc.s:638    .text.OSQPend:0000000000000000 OSQPend
+     /tmp/cc5CWVKc.s:890    .text.OSQPend:00000000000000e0 $d
+     /tmp/cc5CWVKc.s:897    .text.OSQPendAbort:0000000000000000 $t
+     /tmp/cc5CWVKc.s:904    .text.OSQPendAbort:0000000000000000 OSQPendAbort
+     /tmp/cc5CWVKc.s:1041   .text.OSQPost:0000000000000000 $t
+     /tmp/cc5CWVKc.s:1048   .text.OSQPost:0000000000000000 OSQPost
+     /tmp/cc5CWVKc.s:1189   .text.OSQPostFront:0000000000000000 $t
+     /tmp/cc5CWVKc.s:1196   .text.OSQPostFront:0000000000000000 OSQPostFront
+     /tmp/cc5CWVKc.s:1338   .text.OSQPostOpt:0000000000000000 $t
+     /tmp/cc5CWVKc.s:1345   .text.OSQPostOpt:0000000000000000 OSQPostOpt
+     /tmp/cc5CWVKc.s:1546   .text.OSQQuery:0000000000000000 $t
+     /tmp/cc5CWVKc.s:1553   .text.OSQQuery:0000000000000000 OSQQuery
+     /tmp/cc5CWVKc.s:1680   .text.OS_QInit:0000000000000000 $t
+     /tmp/cc5CWVKc.s:1687   .text.OS_QInit:0000000000000000 OS_QInit
+     /tmp/cc5CWVKc.s:1764   .text.OS_QInit:000000000000003c $d
+
+UNDEFINED SYMBOLS
+OS_CPU_SR_Save
+OS_CPU_SR_Restore
+OS_EventWaitListInit
+OSIntNesting
+OSEventFreeList
+OSQFreeList
+OS_EventTaskRdy
+OS_Sched
+OS_EventTaskWait
+OS_EventTaskRemove
+OSLockNesting
+OSTCBCur
+OS_MemClr
+OSQTbl

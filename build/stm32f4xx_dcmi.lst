@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccLcSMWA.s 			page 1
+ARM GAS  /tmp/ccjpiEQT.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *                 RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOx, ENABLE);
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          2. DCMI pins configuration 
-ARM GAS  /tmp/ccLcSMWA.s 			page 2
+ARM GAS  /tmp/ccjpiEQT.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *             - Connect the involved DCMI pins to AF13 using the following function 
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** 
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /* Includes ------------------------------------------------------------------*/
-ARM GAS  /tmp/ccLcSMWA.s 			page 3
+ARM GAS  /tmp/ccjpiEQT.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** #include "stm32f4xx_dcmi.h"
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
   39              		.loc 1 131 3 is_stmt 1 view .LVU3
   40              		.loc 1 131 13 is_stmt 0 view .LVU4
   41 0006 DA60     		str	r2, [r3, #12]
-ARM GAS  /tmp/ccLcSMWA.s 			page 4
+ARM GAS  /tmp/ccjpiEQT.s 			page 4
 
 
  132:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   DCMI->ICR = 0x1F;
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
   83 0000 F0B5     		push	{r4, r5, r6, r7, lr}
   84              	.LCFI0:
   85              		.cfi_def_cfa_offset 20
-ARM GAS  /tmp/ccLcSMWA.s 			page 5
+ARM GAS  /tmp/ccjpiEQT.s 			page 5
 
 
   86              		.cfi_offset 4, -20
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  169:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Sets the new configuration of the DCMI peripheral */
  170:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   temp |= ((uint32_t)DCMI_InitStruct->DCMI_CaptureMode |
  118              		.loc 1 170 3 is_stmt 1 view .LVU33
-ARM GAS  /tmp/ccLcSMWA.s 			page 6
+ARM GAS  /tmp/ccjpiEQT.s 			page 6
 
 
  119              		.loc 1 170 37 is_stmt 0 view .LVU34
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  162              		.thumb_func
  163              		.fpu fpv4-sp-d16
  165              	DCMI_StructInit:
-ARM GAS  /tmp/ccLcSMWA.s 			page 7
+ARM GAS  /tmp/ccjpiEQT.s 			page 7
 
 
  166              	.LVL7:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  203              		.syntax unified
  204              		.thumb
  205              		.thumb_func
-ARM GAS  /tmp/ccLcSMWA.s 			page 8
+ARM GAS  /tmp/ccjpiEQT.s 			page 8
 
 
  206              		.fpu fpv4-sp-d16
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  238              		.align	2
  239              	.L10:
  240 0018 00000550 		.word	1342504960
-ARM GAS  /tmp/ccLcSMWA.s 			page 9
+ARM GAS  /tmp/ccjpiEQT.s 			page 9
 
 
  241              		.cfi_endproc
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  275 0010 1368     		ldr	r3, [r2]
  276 0012 23F00403 		bic	r3, r3, #4
  277 0016 1360     		str	r3, [r2]
-ARM GAS  /tmp/ccLcSMWA.s 			page 10
+ARM GAS  /tmp/ccjpiEQT.s 			page 10
 
 
  239:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  316              		.loc 1 250 16 view .LVU92
  317 0010 43EA0263 		orr	r3, r3, r2, lsl #24
  250:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****                           ((uint32_t)DCMI_CodesInitStruct->DCMI_LineStartCode << 8)|
-ARM GAS  /tmp/ccLcSMWA.s 			page 11
+ARM GAS  /tmp/ccjpiEQT.s 			page 11
 
 
  318              		.loc 1 250 14 view .LVU93
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  356 000c 7047     		bx	lr
  357              	.L21:
  272:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
-ARM GAS  /tmp/ccLcSMWA.s 			page 12
+ARM GAS  /tmp/ccjpiEQT.s 			page 12
 
 
  273:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   else
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  384              		.loc 1 302 1 is_stmt 1 view -0
  385              		.cfi_startproc
  386              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccLcSMWA.s 			page 13
+ARM GAS  /tmp/ccjpiEQT.s 			page 13
 
 
  387              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  319:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI Capture.
  320:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  NewState: new state of the DCMI capture. 
  321:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be: ENABLE or DISABLE.
-ARM GAS  /tmp/ccLcSMWA.s 			page 14
+ARM GAS  /tmp/ccjpiEQT.s 			page 14
 
 
  322:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval None
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  464              		.thumb_func
  465              		.fpu fpv4-sp-d16
  467              	DCMI_ReadData:
-ARM GAS  /tmp/ccLcSMWA.s 			page 15
+ARM GAS  /tmp/ccjpiEQT.s 			page 15
 
 
  468              	.LFB139:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  366:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
  367:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Enables or disables the DCMI interface interrupts.
  368:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_IT: specifies the DCMI interrupt sources to be enabled or disabled. 
-ARM GAS  /tmp/ccLcSMWA.s 			page 16
+ARM GAS  /tmp/ccjpiEQT.s 			page 16
 
 
  369:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be any combination of the following values:
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  527 0012 80B2     		uxth	r0, r0
  528              		.loc 1 393 15 view .LVU138
  529 0014 1840     		ands	r0, r0, r3
-ARM GAS  /tmp/ccLcSMWA.s 			page 17
+ARM GAS  /tmp/ccjpiEQT.s 			page 17
 
 
  530 0016 D060     		str	r0, [r2, #12]
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  422:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   assert_param(IS_DCMI_GET_FLAG(DCMI_FLAG));
  558              		.loc 1 422 3 view .LVU143
  423:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   
-ARM GAS  /tmp/ccLcSMWA.s 			page 18
+ARM GAS  /tmp/ccjpiEQT.s 			page 18
 
 
  424:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   /* Get the DCMI register index */
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  590              		.loc 1 437 13 is_stmt 0 view .LVU158
  591 0014 034B     		ldr	r3, .L50
  592              	.LVL24:
-ARM GAS  /tmp/ccLcSMWA.s 			page 19
+ARM GAS  /tmp/ccjpiEQT.s 			page 19
 
 
  437:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   }
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  452:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c **** /**
  453:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @brief  Clears the DCMI's pending flags.
  454:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @param  DCMI_FLAG: specifies the flag to clear.
-ARM GAS  /tmp/ccLcSMWA.s 			page 20
+ARM GAS  /tmp/ccjpiEQT.s 			page 20
 
 
  455:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *          This parameter can be any combination of the following values:
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  481:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_VSYNC: VSYNC interrupt mask
  482:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   *            @arg DCMI_IT_LINE: Line interrupt mask
  483:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   * @retval The new state of DCMI_IT (SET or RESET).
-ARM GAS  /tmp/ccLcSMWA.s 			page 21
+ARM GAS  /tmp/ccjpiEQT.s 			page 21
 
 
  484:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_dcmi.c ****   */
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  697 0010 00000550 		.word	1342504960
  698              		.cfi_endproc
  699              	.LFE143:
-ARM GAS  /tmp/ccLcSMWA.s 			page 22
+ARM GAS  /tmp/ccjpiEQT.s 			page 22
 
 
  701              		.section	.text.DCMI_ClearITPendingBit,"ax",%progbits
@@ -1315,54 +1315,54 @@ ARM GAS  /tmp/ccLcSMWA.s 			page 1
  735              		.file 5 "Inc/system_stm32f4xx.h"
  736              		.file 6 "Inc/stm32f4xx.h"
  737              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_dcmi.h"
-ARM GAS  /tmp/ccLcSMWA.s 			page 23
+ARM GAS  /tmp/ccjpiEQT.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_dcmi.c
-     /tmp/ccLcSMWA.s:18     .text.DCMI_DeInit:0000000000000000 $t
-     /tmp/ccLcSMWA.s:26     .text.DCMI_DeInit:0000000000000000 DCMI_DeInit
-     /tmp/ccLcSMWA.s:63     .text.DCMI_DeInit:0000000000000018 $d
-     /tmp/ccLcSMWA.s:68     .text.DCMI_Init:0000000000000000 $t
-     /tmp/ccLcSMWA.s:75     .text.DCMI_Init:0000000000000000 DCMI_Init
-     /tmp/ccLcSMWA.s:153    .text.DCMI_Init:0000000000000040 $d
-     /tmp/ccLcSMWA.s:158    .text.DCMI_StructInit:0000000000000000 $t
-     /tmp/ccLcSMWA.s:165    .text.DCMI_StructInit:0000000000000000 DCMI_StructInit
-     /tmp/ccLcSMWA.s:201    .text.DCMI_CROPConfig:0000000000000000 $t
-     /tmp/ccLcSMWA.s:208    .text.DCMI_CROPConfig:0000000000000000 DCMI_CROPConfig
-     /tmp/ccLcSMWA.s:240    .text.DCMI_CROPConfig:0000000000000018 $d
-     /tmp/ccLcSMWA.s:245    .text.DCMI_CROPCmd:0000000000000000 $t
-     /tmp/ccLcSMWA.s:252    .text.DCMI_CROPCmd:0000000000000000 DCMI_CROPCmd
-     /tmp/ccLcSMWA.s:283    .text.DCMI_CROPCmd:000000000000001c $d
-     /tmp/ccLcSMWA.s:288    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 $t
-     /tmp/ccLcSMWA.s:295    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 DCMI_SetEmbeddedSynchroCodes
-     /tmp/ccLcSMWA.s:326    .text.DCMI_SetEmbeddedSynchroCodes:000000000000001c $d
-     /tmp/ccLcSMWA.s:331    .text.DCMI_JPEGCmd:0000000000000000 $t
-     /tmp/ccLcSMWA.s:338    .text.DCMI_JPEGCmd:0000000000000000 DCMI_JPEGCmd
-     /tmp/ccLcSMWA.s:369    .text.DCMI_JPEGCmd:000000000000001c $d
-     /tmp/ccLcSMWA.s:374    .text.DCMI_Cmd:0000000000000000 $t
-     /tmp/ccLcSMWA.s:381    .text.DCMI_Cmd:0000000000000000 DCMI_Cmd
-     /tmp/ccLcSMWA.s:412    .text.DCMI_Cmd:000000000000001c $d
-     /tmp/ccLcSMWA.s:417    .text.DCMI_CaptureCmd:0000000000000000 $t
-     /tmp/ccLcSMWA.s:424    .text.DCMI_CaptureCmd:0000000000000000 DCMI_CaptureCmd
-     /tmp/ccLcSMWA.s:455    .text.DCMI_CaptureCmd:000000000000001c $d
-     /tmp/ccLcSMWA.s:460    .text.DCMI_ReadData:0000000000000000 $t
-     /tmp/ccLcSMWA.s:467    .text.DCMI_ReadData:0000000000000000 DCMI_ReadData
-     /tmp/ccLcSMWA.s:483    .text.DCMI_ReadData:0000000000000008 $d
-     /tmp/ccLcSMWA.s:488    .text.DCMI_ITConfig:0000000000000000 $t
-     /tmp/ccLcSMWA.s:495    .text.DCMI_ITConfig:0000000000000000 DCMI_ITConfig
-     /tmp/ccLcSMWA.s:536    .text.DCMI_ITConfig:000000000000001c $d
-     /tmp/ccLcSMWA.s:541    .text.DCMI_GetFlagStatus:0000000000000000 $t
-     /tmp/ccLcSMWA.s:548    .text.DCMI_GetFlagStatus:0000000000000000 DCMI_GetFlagStatus
-     /tmp/ccLcSMWA.s:619    .text.DCMI_GetFlagStatus:0000000000000024 $d
-     /tmp/ccLcSMWA.s:624    .text.DCMI_ClearFlag:0000000000000000 $t
-     /tmp/ccLcSMWA.s:631    .text.DCMI_ClearFlag:0000000000000000 DCMI_ClearFlag
-     /tmp/ccLcSMWA.s:649    .text.DCMI_ClearFlag:0000000000000008 $d
-     /tmp/ccLcSMWA.s:654    .text.DCMI_GetITStatus:0000000000000000 $t
-     /tmp/ccLcSMWA.s:661    .text.DCMI_GetITStatus:0000000000000000 DCMI_GetITStatus
-     /tmp/ccLcSMWA.s:697    .text.DCMI_GetITStatus:0000000000000010 $d
-     /tmp/ccLcSMWA.s:702    .text.DCMI_ClearITPendingBit:0000000000000000 $t
-     /tmp/ccLcSMWA.s:709    .text.DCMI_ClearITPendingBit:0000000000000000 DCMI_ClearITPendingBit
-     /tmp/ccLcSMWA.s:726    .text.DCMI_ClearITPendingBit:0000000000000008 $d
+     /tmp/ccjpiEQT.s:18     .text.DCMI_DeInit:0000000000000000 $t
+     /tmp/ccjpiEQT.s:26     .text.DCMI_DeInit:0000000000000000 DCMI_DeInit
+     /tmp/ccjpiEQT.s:63     .text.DCMI_DeInit:0000000000000018 $d
+     /tmp/ccjpiEQT.s:68     .text.DCMI_Init:0000000000000000 $t
+     /tmp/ccjpiEQT.s:75     .text.DCMI_Init:0000000000000000 DCMI_Init
+     /tmp/ccjpiEQT.s:153    .text.DCMI_Init:0000000000000040 $d
+     /tmp/ccjpiEQT.s:158    .text.DCMI_StructInit:0000000000000000 $t
+     /tmp/ccjpiEQT.s:165    .text.DCMI_StructInit:0000000000000000 DCMI_StructInit
+     /tmp/ccjpiEQT.s:201    .text.DCMI_CROPConfig:0000000000000000 $t
+     /tmp/ccjpiEQT.s:208    .text.DCMI_CROPConfig:0000000000000000 DCMI_CROPConfig
+     /tmp/ccjpiEQT.s:240    .text.DCMI_CROPConfig:0000000000000018 $d
+     /tmp/ccjpiEQT.s:245    .text.DCMI_CROPCmd:0000000000000000 $t
+     /tmp/ccjpiEQT.s:252    .text.DCMI_CROPCmd:0000000000000000 DCMI_CROPCmd
+     /tmp/ccjpiEQT.s:283    .text.DCMI_CROPCmd:000000000000001c $d
+     /tmp/ccjpiEQT.s:288    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 $t
+     /tmp/ccjpiEQT.s:295    .text.DCMI_SetEmbeddedSynchroCodes:0000000000000000 DCMI_SetEmbeddedSynchroCodes
+     /tmp/ccjpiEQT.s:326    .text.DCMI_SetEmbeddedSynchroCodes:000000000000001c $d
+     /tmp/ccjpiEQT.s:331    .text.DCMI_JPEGCmd:0000000000000000 $t
+     /tmp/ccjpiEQT.s:338    .text.DCMI_JPEGCmd:0000000000000000 DCMI_JPEGCmd
+     /tmp/ccjpiEQT.s:369    .text.DCMI_JPEGCmd:000000000000001c $d
+     /tmp/ccjpiEQT.s:374    .text.DCMI_Cmd:0000000000000000 $t
+     /tmp/ccjpiEQT.s:381    .text.DCMI_Cmd:0000000000000000 DCMI_Cmd
+     /tmp/ccjpiEQT.s:412    .text.DCMI_Cmd:000000000000001c $d
+     /tmp/ccjpiEQT.s:417    .text.DCMI_CaptureCmd:0000000000000000 $t
+     /tmp/ccjpiEQT.s:424    .text.DCMI_CaptureCmd:0000000000000000 DCMI_CaptureCmd
+     /tmp/ccjpiEQT.s:455    .text.DCMI_CaptureCmd:000000000000001c $d
+     /tmp/ccjpiEQT.s:460    .text.DCMI_ReadData:0000000000000000 $t
+     /tmp/ccjpiEQT.s:467    .text.DCMI_ReadData:0000000000000000 DCMI_ReadData
+     /tmp/ccjpiEQT.s:483    .text.DCMI_ReadData:0000000000000008 $d
+     /tmp/ccjpiEQT.s:488    .text.DCMI_ITConfig:0000000000000000 $t
+     /tmp/ccjpiEQT.s:495    .text.DCMI_ITConfig:0000000000000000 DCMI_ITConfig
+     /tmp/ccjpiEQT.s:536    .text.DCMI_ITConfig:000000000000001c $d
+     /tmp/ccjpiEQT.s:541    .text.DCMI_GetFlagStatus:0000000000000000 $t
+     /tmp/ccjpiEQT.s:548    .text.DCMI_GetFlagStatus:0000000000000000 DCMI_GetFlagStatus
+     /tmp/ccjpiEQT.s:619    .text.DCMI_GetFlagStatus:0000000000000024 $d
+     /tmp/ccjpiEQT.s:624    .text.DCMI_ClearFlag:0000000000000000 $t
+     /tmp/ccjpiEQT.s:631    .text.DCMI_ClearFlag:0000000000000000 DCMI_ClearFlag
+     /tmp/ccjpiEQT.s:649    .text.DCMI_ClearFlag:0000000000000008 $d
+     /tmp/ccjpiEQT.s:654    .text.DCMI_GetITStatus:0000000000000000 $t
+     /tmp/ccjpiEQT.s:661    .text.DCMI_GetITStatus:0000000000000000 DCMI_GetITStatus
+     /tmp/ccjpiEQT.s:697    .text.DCMI_GetITStatus:0000000000000010 $d
+     /tmp/ccjpiEQT.s:702    .text.DCMI_ClearITPendingBit:0000000000000000 $t
+     /tmp/ccjpiEQT.s:709    .text.DCMI_ClearITPendingBit:0000000000000000 DCMI_ClearITPendingBit
+     /tmp/ccjpiEQT.s:726    .text.DCMI_ClearITPendingBit:0000000000000008 $d
 
 NO UNDEFINED SYMBOLS

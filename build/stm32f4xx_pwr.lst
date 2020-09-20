@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccK2Dfrb.s 			page 1
+ARM GAS  /tmp/cckE3D8Q.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * Unless required by applicable law or agreed to in writing, software 
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-ARM GAS  /tmp/ccK2Dfrb.s 			page 2
+ARM GAS  /tmp/cckE3D8Q.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * See the License for the specific language governing permissions and
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** 
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** /* ------------------ PWR registers bit mask ------------------------ */
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** 
-ARM GAS  /tmp/ccK2Dfrb.s 			page 3
+ARM GAS  /tmp/cckE3D8Q.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** /* CR register bit mask */
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
   42              	.LVL0:
  129:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   RCC_APB1PeriphResetCmd(RCC_APB1Periph_PWR, DISABLE);
   43              		.loc 1 129 3 view .LVU2
-ARM GAS  /tmp/ccK2Dfrb.s 			page 4
+ARM GAS  /tmp/cckE3D8Q.s 			page 4
 
 
   44 000c 0021     		movs	r1, #0
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
   83              		.section	.text.PWR_PVDLevelConfig,"ax",%progbits
   84              		.align	1
   85              		.global	PWR_PVDLevelConfig
-ARM GAS  /tmp/ccK2Dfrb.s 			page 5
+ARM GAS  /tmp/cckE3D8Q.s 			page 5
 
 
   86              		.syntax unified
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
   98              		@ link register save eliminated.
  191:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   uint32_t tmpreg = 0;
   99              		.loc 1 191 3 view .LVU10
-ARM GAS  /tmp/ccK2Dfrb.s 			page 6
+ARM GAS  /tmp/cckE3D8Q.s 			page 6
 
 
  192:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  211:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   *         This parameter can be: ENABLE or DISABLE.
  212:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * @retval None
  213:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   */
-ARM GAS  /tmp/ccK2Dfrb.s 			page 7
+ARM GAS  /tmp/cckE3D8Q.s 			page 7
 
 
  214:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** void PWR_PVDCmd(FunctionalState NewState)
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  240:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   */
  241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** 
  242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** /**
-ARM GAS  /tmp/ccK2Dfrb.s 			page 8
+ARM GAS  /tmp/cckE3D8Q.s 			page 8
 
 
  243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   * @brief  Enables or disables the WakeUp Pin functionality.
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  269:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    CPU, and address in 32-bit, 16-bit or 8-bit mode. Its content is retained 
  270:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    even in Standby or VBAT mode when the low power backup regulator is enabled. 
  271:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    It can be considered as an internal EEPROM when VBAT is always present.
-ARM GAS  /tmp/ccK2Dfrb.s 			page 9
+ARM GAS  /tmp/cckE3D8Q.s 			page 9
 
 
  272:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    You can use the PWR_BackupRegulatorCmd() function to enable the low power
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  210 0006 00BF     		.align	2
  211              	.L16:
  212 0008 A4000E42 		.word	1108213924
-ARM GAS  /tmp/ccK2Dfrb.s 			page 10
+ARM GAS  /tmp/cckE3D8Q.s 			page 10
 
 
  213              		.cfi_endproc
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  244              		.loc 1 337 5 is_stmt 1 view .LVU42
  245              		.loc 1 337 13 is_stmt 0 view .LVU43
  246 000e 034A     		ldr	r2, .L21
-ARM GAS  /tmp/ccK2Dfrb.s 			page 11
+ARM GAS  /tmp/cckE3D8Q.s 			page 11
 
 
  247 0010 1368     		ldr	r3, [r2]
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  271              		.cfi_startproc
  272              		@ args = 0, pretend = 0, frame = 0
  273              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccK2Dfrb.s 			page 12
+ARM GAS  /tmp/cckE3D8Q.s 			page 12
 
 
  274              		@ link register save eliminated.
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  400:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** 
  401:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    Stop mode
  402:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    ==========
-ARM GAS  /tmp/ccK2Dfrb.s 			page 13
+ARM GAS  /tmp/cckE3D8Q.s 			page 13
 
 
  403:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****    In Stop mode, all clocks in the 1.2V domain are stopped, the PLL, the HSI,
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  457:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****          functions.
  458:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****      - To wake up from the Stop mode with an RTC WakeUp event, it is necessary to:
  459:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****        - Configure the EXTI Line 22 to be sensitive to rising edges (Interrupt 
-ARM GAS  /tmp/ccK2Dfrb.s 			page 14
+ARM GAS  /tmp/cckE3D8Q.s 			page 14
 
 
  460:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****          or Event modes) using the EXTI_Init() function.
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  304              		@ link register save eliminated.
  510:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   uint32_t tmpreg = 0;
  305              		.loc 1 510 3 view .LVU51
-ARM GAS  /tmp/ccK2Dfrb.s 			page 15
+ARM GAS  /tmp/cckE3D8Q.s 			page 15
 
 
  511:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  534:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****     __WFI();
  535:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   }
  536:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   else
-ARM GAS  /tmp/ccK2Dfrb.s 			page 16
+ARM GAS  /tmp/cckE3D8Q.s 			page 16
 
 
  537:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   {
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  549:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   *          - RTC_AF1 pin (PC13) if configured for tamper, time-stamp, RTC 
  550:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   *            Alarm out, or RTC clock calibration out.
  551:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   *          - RTC_AF2 pin (PI8) if configured for tamper or time-stamp.  
-ARM GAS  /tmp/ccK2Dfrb.s 			page 17
+ARM GAS  /tmp/cckE3D8Q.s 			page 17
 
 
  552:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c ****   *          - WKUP pin 1 (PA0) if enabled.       
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  412              		.align	2
  413              	.L33:
  414 0020 00700040 		.word	1073770496
-ARM GAS  /tmp/ccK2Dfrb.s 			page 18
+ARM GAS  /tmp/cckE3D8Q.s 			page 18
 
 
  415 0024 00ED00E0 		.word	-536810240
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  430              		.loc 1 614 1 is_stmt 1 view -0
  431              		.cfi_startproc
  432              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccK2Dfrb.s 			page 19
+ARM GAS  /tmp/cckE3D8Q.s 			page 19
 
 
  433              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  473              	.LVL22:
  474              	.LFB141:
  631:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** 
-ARM GAS  /tmp/ccK2Dfrb.s 			page 20
+ARM GAS  /tmp/cckE3D8Q.s 			page 20
 
 
  632:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_pwr.c **** /**
@@ -1184,46 +1184,46 @@ ARM GAS  /tmp/ccK2Dfrb.s 			page 1
  501              		.file 5 "Inc/system_stm32f4xx.h"
  502              		.file 6 "Inc/stm32f4xx.h"
  503              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccK2Dfrb.s 			page 21
+ARM GAS  /tmp/cckE3D8Q.s 			page 21
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_pwr.c
-     /tmp/ccK2Dfrb.s:18     .text.PWR_DeInit:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:26     .text.PWR_DeInit:0000000000000000 PWR_DeInit
-     /tmp/ccK2Dfrb.s:54     .text.PWR_BackupAccessCmd:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:61     .text.PWR_BackupAccessCmd:0000000000000000 PWR_BackupAccessCmd
-     /tmp/ccK2Dfrb.s:79     .text.PWR_BackupAccessCmd:0000000000000008 $d
-     /tmp/ccK2Dfrb.s:84     .text.PWR_PVDLevelConfig:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:91     .text.PWR_PVDLevelConfig:0000000000000000 PWR_PVDLevelConfig
-     /tmp/ccK2Dfrb.s:122    .text.PWR_PVDLevelConfig:0000000000000010 $d
-     /tmp/ccK2Dfrb.s:127    .text.PWR_PVDCmd:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:134    .text.PWR_PVDCmd:0000000000000000 PWR_PVDCmd
-     /tmp/ccK2Dfrb.s:152    .text.PWR_PVDCmd:0000000000000008 $d
-     /tmp/ccK2Dfrb.s:157    .text.PWR_WakeUpPinCmd:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:164    .text.PWR_WakeUpPinCmd:0000000000000000 PWR_WakeUpPinCmd
-     /tmp/ccK2Dfrb.s:182    .text.PWR_WakeUpPinCmd:0000000000000008 $d
-     /tmp/ccK2Dfrb.s:187    .text.PWR_BackupRegulatorCmd:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:194    .text.PWR_BackupRegulatorCmd:0000000000000000 PWR_BackupRegulatorCmd
-     /tmp/ccK2Dfrb.s:212    .text.PWR_BackupRegulatorCmd:0000000000000008 $d
-     /tmp/ccK2Dfrb.s:217    .text.PWR_MainRegulatorModeConfig:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:224    .text.PWR_MainRegulatorModeConfig:0000000000000000 PWR_MainRegulatorModeConfig
-     /tmp/ccK2Dfrb.s:255    .text.PWR_MainRegulatorModeConfig:000000000000001c $d
-     /tmp/ccK2Dfrb.s:260    .text.PWR_FlashPowerDownCmd:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:267    .text.PWR_FlashPowerDownCmd:0000000000000000 PWR_FlashPowerDownCmd
-     /tmp/ccK2Dfrb.s:285    .text.PWR_FlashPowerDownCmd:0000000000000008 $d
-     /tmp/ccK2Dfrb.s:290    .text.PWR_EnterSTOPMode:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:297    .text.PWR_EnterSTOPMode:0000000000000000 PWR_EnterSTOPMode
-     /tmp/ccK2Dfrb.s:365    .text.PWR_EnterSTOPMode:000000000000002c $d
-     /tmp/ccK2Dfrb.s:371    .text.PWR_EnterSTANDBYMode:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:378    .text.PWR_EnterSTANDBYMode:0000000000000000 PWR_EnterSTANDBYMode
-     /tmp/ccK2Dfrb.s:414    .text.PWR_EnterSTANDBYMode:0000000000000020 $d
-     /tmp/ccK2Dfrb.s:420    .text.PWR_GetFlagStatus:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:427    .text.PWR_GetFlagStatus:0000000000000000 PWR_GetFlagStatus
-     /tmp/ccK2Dfrb.s:460    .text.PWR_GetFlagStatus:0000000000000010 $d
-     /tmp/ccK2Dfrb.s:465    .text.PWR_ClearFlag:0000000000000000 $t
-     /tmp/ccK2Dfrb.s:472    .text.PWR_ClearFlag:0000000000000000 PWR_ClearFlag
-     /tmp/ccK2Dfrb.s:492    .text.PWR_ClearFlag:000000000000000c $d
+     /tmp/cckE3D8Q.s:18     .text.PWR_DeInit:0000000000000000 $t
+     /tmp/cckE3D8Q.s:26     .text.PWR_DeInit:0000000000000000 PWR_DeInit
+     /tmp/cckE3D8Q.s:54     .text.PWR_BackupAccessCmd:0000000000000000 $t
+     /tmp/cckE3D8Q.s:61     .text.PWR_BackupAccessCmd:0000000000000000 PWR_BackupAccessCmd
+     /tmp/cckE3D8Q.s:79     .text.PWR_BackupAccessCmd:0000000000000008 $d
+     /tmp/cckE3D8Q.s:84     .text.PWR_PVDLevelConfig:0000000000000000 $t
+     /tmp/cckE3D8Q.s:91     .text.PWR_PVDLevelConfig:0000000000000000 PWR_PVDLevelConfig
+     /tmp/cckE3D8Q.s:122    .text.PWR_PVDLevelConfig:0000000000000010 $d
+     /tmp/cckE3D8Q.s:127    .text.PWR_PVDCmd:0000000000000000 $t
+     /tmp/cckE3D8Q.s:134    .text.PWR_PVDCmd:0000000000000000 PWR_PVDCmd
+     /tmp/cckE3D8Q.s:152    .text.PWR_PVDCmd:0000000000000008 $d
+     /tmp/cckE3D8Q.s:157    .text.PWR_WakeUpPinCmd:0000000000000000 $t
+     /tmp/cckE3D8Q.s:164    .text.PWR_WakeUpPinCmd:0000000000000000 PWR_WakeUpPinCmd
+     /tmp/cckE3D8Q.s:182    .text.PWR_WakeUpPinCmd:0000000000000008 $d
+     /tmp/cckE3D8Q.s:187    .text.PWR_BackupRegulatorCmd:0000000000000000 $t
+     /tmp/cckE3D8Q.s:194    .text.PWR_BackupRegulatorCmd:0000000000000000 PWR_BackupRegulatorCmd
+     /tmp/cckE3D8Q.s:212    .text.PWR_BackupRegulatorCmd:0000000000000008 $d
+     /tmp/cckE3D8Q.s:217    .text.PWR_MainRegulatorModeConfig:0000000000000000 $t
+     /tmp/cckE3D8Q.s:224    .text.PWR_MainRegulatorModeConfig:0000000000000000 PWR_MainRegulatorModeConfig
+     /tmp/cckE3D8Q.s:255    .text.PWR_MainRegulatorModeConfig:000000000000001c $d
+     /tmp/cckE3D8Q.s:260    .text.PWR_FlashPowerDownCmd:0000000000000000 $t
+     /tmp/cckE3D8Q.s:267    .text.PWR_FlashPowerDownCmd:0000000000000000 PWR_FlashPowerDownCmd
+     /tmp/cckE3D8Q.s:285    .text.PWR_FlashPowerDownCmd:0000000000000008 $d
+     /tmp/cckE3D8Q.s:290    .text.PWR_EnterSTOPMode:0000000000000000 $t
+     /tmp/cckE3D8Q.s:297    .text.PWR_EnterSTOPMode:0000000000000000 PWR_EnterSTOPMode
+     /tmp/cckE3D8Q.s:365    .text.PWR_EnterSTOPMode:000000000000002c $d
+     /tmp/cckE3D8Q.s:371    .text.PWR_EnterSTANDBYMode:0000000000000000 $t
+     /tmp/cckE3D8Q.s:378    .text.PWR_EnterSTANDBYMode:0000000000000000 PWR_EnterSTANDBYMode
+     /tmp/cckE3D8Q.s:414    .text.PWR_EnterSTANDBYMode:0000000000000020 $d
+     /tmp/cckE3D8Q.s:420    .text.PWR_GetFlagStatus:0000000000000000 $t
+     /tmp/cckE3D8Q.s:427    .text.PWR_GetFlagStatus:0000000000000000 PWR_GetFlagStatus
+     /tmp/cckE3D8Q.s:460    .text.PWR_GetFlagStatus:0000000000000010 $d
+     /tmp/cckE3D8Q.s:465    .text.PWR_ClearFlag:0000000000000000 $t
+     /tmp/cckE3D8Q.s:472    .text.PWR_ClearFlag:0000000000000000 PWR_ClearFlag
+     /tmp/cckE3D8Q.s:492    .text.PWR_ClearFlag:000000000000000c $d
 
 UNDEFINED SYMBOLS
 RCC_APB1PeriphResetCmd

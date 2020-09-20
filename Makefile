@@ -7,6 +7,14 @@ OPT = -Og
 
 BUILD_DIR = build
 
+# C includes
+C_INCLUDES =  \
+-IInc \
+-IDrivers/STM32F4xx_StdPeriph_Driver/inc \
+-IDrivers/CMSIS/Core/Include \
+-IuCOSII/Include \
+-IuCOSII/Ports/ARM-Cortex-M4/Generic/GNU
+
 C_SOURCES =  \
 Src/main.c \
 Src/stm32f4xx_it.c \
@@ -41,12 +49,29 @@ Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_spi.c\
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_syscfg.c\
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_tim.c\
 Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_usart.c\
-Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.c
+Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_wwdg.c \
+uCOSII/Source/os_core.c \
+uCOSII/Source/os_flag.c \
+uCOSII/Source/os_mbox.c \
+uCOSII/Source/os_mem.c \
+uCOSII/Source/os_mutex.c \
+uCOSII/Source/os_q.c \
+uCOSII/Source/os_sem.c \
+uCOSII/Source/os_task.c \
+uCOSII/Source/os_time.c \
+uCOSII/Source/os_tmr.c \
+uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c \
+uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c
+
+# AS includes
+AS_INCLUDES = \
+-IuCOSII/Include \
+-IuCOSII/Ports/ARM-Cortex-M4/Generic/GNU
 # ASM sources
 
 ASM_SOURCES =  \
-startup_stm32f405xx.s
-
+startup_stm32f405xx.s \
+uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_a.s
 
 #######################################
 # binaries
@@ -93,15 +118,6 @@ C_DEFS =  \
 -DSTM32F405xx \
 -DSTM32F40X_HD
 
-
-# AS includes
-AS_INCLUDES = 
-
-# C includes
-C_INCLUDES =  \
--IInc \
--IDrivers/STM32F4xx_StdPeriph_Driver/inc \
--IDrivers/CMSIS/Core/Include
 # compile gcc flags
 ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections
 

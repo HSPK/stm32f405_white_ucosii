@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc2j1jlI.s 			page 1
+ARM GAS  /tmp/ccg0WxUB.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
   27:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @attention
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   *
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
-ARM GAS  /tmp/cc2j1jlI.s 			page 2
+ARM GAS  /tmp/ccg0WxUB.s 			page 2
 
 
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   *
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
   84:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c **** /**
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @brief  Compute the HASH SHA1 digest.
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Input: pointer to the Input buffer to be treated.
-ARM GAS  /tmp/cc2j1jlI.s 			page 3
+ARM GAS  /tmp/ccg0WxUB.s 			page 3
 
 
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Ilen: length of the Input buffer.
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  104:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c **** 
  105:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   /* Number of valid bits in last word of the Input data */
  106:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   nbvalidbitsdata = 8 * (Ilen % 4);
-ARM GAS  /tmp/cc2j1jlI.s 			page 4
+ARM GAS  /tmp/ccg0WxUB.s 			page 4
 
 
   67              		.loc 1 106 3 view .LVU14
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  104 0042 FFF7FEFF 		bl	HASH_DataIn
  105              	.LVL8:
  124:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****     inputaddr+=4;
-ARM GAS  /tmp/cc2j1jlI.s 			page 5
+ARM GAS  /tmp/ccg0WxUB.s 			page 5
 
 
  106              		.loc 1 124 5 is_stmt 1 discriminator 3 view .LVU30
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  144 0068 12B1     		cbz	r2, .L10
  138:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   {
  139:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****      status = ERROR;
-ARM GAS  /tmp/cc2j1jlI.s 			page 6
+ARM GAS  /tmp/ccg0WxUB.s 			page 6
 
 
  145              		.loc 1 139 13 view .LVU47
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
    5:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****  * @date     09. April 2018
    6:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****  ******************************************************************************/
    7:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** /*
-ARM GAS  /tmp/cc2j1jlI.s 			page 7
+ARM GAS  /tmp/ccg0WxUB.s 			page 7
 
 
    8:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****  * Copyright (c) 2009-2018 Arm Limited. All rights reserved.
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
   62:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   #define __PACKED                               __attribute__((packed, aligned(1)))
   63:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
   64:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #ifndef   __PACKED_STRUCT
-ARM GAS  /tmp/cc2j1jlI.s 			page 8
+ARM GAS  /tmp/ccg0WxUB.s 			page 8
 
 
   65:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   #define __PACKED_STRUCT                        struct __attribute__((packed, aligned(1)))
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  119:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
  120:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
  121:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   @{
-ARM GAS  /tmp/cc2j1jlI.s 			page 9
+ARM GAS  /tmp/ccg0WxUB.s 			page 9
 
 
  122:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****  */
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  176:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** /**
  177:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \brief   Set Control Register
  178:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \details Writes the given value to the Control Register.
-ARM GAS  /tmp/cc2j1jlI.s 			page 10
+ARM GAS  /tmp/ccg0WxUB.s 			page 10
 
 
  179:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \param [in]    control  Control Register value to set
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  233:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_xPSR(void)
  234:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** {
  235:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   uint32_t result;
-ARM GAS  /tmp/cc2j1jlI.s 			page 11
+ARM GAS  /tmp/ccg0WxUB.s 			page 11
 
 
  236:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  290:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** {
  291:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   __ASM volatile ("MSR psp_ns, %0" : : "r" (topOfProcStack) : );
  292:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** }
-ARM GAS  /tmp/cc2j1jlI.s 			page 12
+ARM GAS  /tmp/ccg0WxUB.s 			page 12
 
 
  293:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  347:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
  348:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
  349:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc2j1jlI.s 			page 13
+ARM GAS  /tmp/ccg0WxUB.s 			page 13
 
 
  350:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #if (defined (__ARM_FEATURE_CMSE ) && (__ARM_FEATURE_CMSE == 3))
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  404:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
  405:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
  406:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc2j1jlI.s 			page 14
+ARM GAS  /tmp/ccg0WxUB.s 			page 14
 
 
  407:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** /**
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  461:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE uint32_t __get_BASEPRI(void)
  462:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** {
  463:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   uint32_t result;
-ARM GAS  /tmp/cc2j1jlI.s 			page 15
+ARM GAS  /tmp/ccg0WxUB.s 			page 15
 
 
  464:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  518:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   __ASM volatile ("MSR basepri_max, %0" : : "r" (basePri) : "memory");
  519:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** }
  520:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc2j1jlI.s 			page 16
+ARM GAS  /tmp/ccg0WxUB.s 			page 16
 
 
  521:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  575:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif /* ((defined (__ARM_ARCH_7M__      ) && (__ARM_ARCH_7M__      == 1)) || \
  576:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_7EM__     ) && (__ARM_ARCH_7EM__     == 1)) || \
  577:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****            (defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1))    ) */
-ARM GAS  /tmp/cc2j1jlI.s 			page 17
+ARM GAS  /tmp/ccg0WxUB.s 			page 17
 
 
  578:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  632:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   mode.
  633:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   
  634:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer Limit (PSPLIM).
-ARM GAS  /tmp/cc2j1jlI.s 			page 18
+ARM GAS  /tmp/ccg0WxUB.s 			page 18
 
 
  635:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \param [in]    ProcStackPtrLimit  Process Stack Pointer Limit value to set
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  689:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
  690:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** }
  691:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
-ARM GAS  /tmp/cc2j1jlI.s 			page 19
+ARM GAS  /tmp/ccg0WxUB.s 			page 19
 
 
  692:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  746:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** __STATIC_FORCEINLINE void __TZ_set_MSPLIM_NS(uint32_t MainStackPtrLimit)
  747:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** {
  748:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #if (!(defined (__ARM_ARCH_8M_MAIN__ ) && (__ARM_ARCH_8M_MAIN__ == 1)))
-ARM GAS  /tmp/cc2j1jlI.s 			page 20
+ARM GAS  /tmp/ccg0WxUB.s 			page 20
 
 
  749:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   // without main extensions, the non-secure MSPLIM is RAZ/WI
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  803:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
  804:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #else
  805:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   (void)fpscr;
-ARM GAS  /tmp/cc2j1jlI.s 			page 21
+ARM GAS  /tmp/ccg0WxUB.s 			page 21
 
 
  806:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** #endif
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  860:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** /**
  861:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \brief   Instruction Synchronization Barrier
  862:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****   \details Instruction Synchronization Barrier flushes the pipeline in the processor,
-ARM GAS  /tmp/cc2j1jlI.s 			page 22
+ARM GAS  /tmp/ccg0WxUB.s 			page 22
 
 
  863:Drivers/CMSIS/Core/Include/cmsis_gcc.h ****            so that all instructions following the ISB are fetched from cache or memory,
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  185              		.loc 1 146 5 is_stmt 1 view .LVU59
  186              	.LVL19:
  147:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****     outputaddr+=4;
-ARM GAS  /tmp/cc2j1jlI.s 			page 23
+ARM GAS  /tmp/ccg0WxUB.s 			page 23
 
 
  187              		.loc 1 147 5 view .LVU60
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  230              	.LBI28:
  900:Drivers/CMSIS/Core/Include/cmsis_gcc.h **** {
  231              		.loc 2 900 31 is_stmt 1 view .LVU78
-ARM GAS  /tmp/cc2j1jlI.s 			page 24
+ARM GAS  /tmp/ccg0WxUB.s 			page 24
 
 
  232              	.LBB29:
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  160:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Key: pointer to the Key used for HMAC.
  161:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Keylen: length of the Key used for HMAC.  
  162:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Input: pointer to the Input buffer to be treated.
-ARM GAS  /tmp/cc2j1jlI.s 			page 25
+ARM GAS  /tmp/ccg0WxUB.s 			page 25
 
 
  163:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   * @param  Ilen: length of the Input buffer.
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  315              		.loc 1 179 3 view .LVU104
  180:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   uint32_t keyaddr    = (uint32_t)Key;
  316              		.loc 1 180 3 view .LVU105
-ARM GAS  /tmp/cc2j1jlI.s 			page 26
+ARM GAS  /tmp/ccg0WxUB.s 			page 26
 
 
  317              		.loc 1 180 12 is_stmt 0 view .LVU106
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  354 0040 13D9     		bls	.L12
  198:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   {
  199:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****     /* HMAC long Key */
-ARM GAS  /tmp/cc2j1jlI.s 			page 27
+ARM GAS  /tmp/ccg0WxUB.s 			page 27
 
 
  200:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****     SHA1_HASH_InitStructure.HASH_HMACKeyType = HASH_HMACKeyType_LongKey;
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  389              		.loc 1 213 23 discriminator 3 view .LVU137
  390 0068 F7E7     		b	.L14
  391              	.LVL44:
-ARM GAS  /tmp/cc2j1jlI.s 			page 28
+ARM GAS  /tmp/ccg0WxUB.s 			page 28
 
 
  392              	.L12:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  431 0092 03D0     		beq	.L32
  230:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****   {
  231:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****      status = ERROR;
-ARM GAS  /tmp/cc2j1jlI.s 			page 29
+ARM GAS  /tmp/ccg0WxUB.s 			page 29
 
 
  432              		.loc 1 231 13 view .LVU153
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  282:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****         counter++;
  283:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****       }while ((counter != SHA1BUSY_TIMEOUT) && (busystatus != RESET));
  284:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c **** 
-ARM GAS  /tmp/cc2j1jlI.s 			page 30
+ARM GAS  /tmp/ccg0WxUB.s 			page 30
 
 
  285:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****       if (busystatus != RESET)
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  462 00aa 56F8040B 		ldr	r0, [r6], #4
  463              	.LVL53:
  241:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****       inputaddr+=4;
-ARM GAS  /tmp/cc2j1jlI.s 			page 31
+ARM GAS  /tmp/ccg0WxUB.s 			page 31
 
 
  464              		.loc 1 241 7 is_stmt 0 discriminator 3 view .LVU162
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  502 00d4 01D0     		beq	.L21
  255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c **** 
  503              		.loc 1 255 43 discriminator 1 view .LVU179
-ARM GAS  /tmp/cc2j1jlI.s 			page 32
+ARM GAS  /tmp/ccg0WxUB.s 			page 32
 
 
  504 00d6 0028     		cmp	r0, #0
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****       {
  543              		.loc 1 268 7 is_stmt 0 discriminator 1 view .LVU195
  544 00f6 AC42     		cmp	r4, r5
-ARM GAS  /tmp/cc2j1jlI.s 			page 33
+ARM GAS  /tmp/ccg0WxUB.s 			page 33
 
 
  545 00f8 F8D3     		bcc	.L24
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  583              	.LVL70:
  287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****       }
  584              		.loc 1 287 16 view .LVU212
-ARM GAS  /tmp/cc2j1jlI.s 			page 34
+ARM GAS  /tmp/ccg0WxUB.s 			page 34
 
 
  585 0120 B9E7     		b	.L18
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  295:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****         outputaddr+=4;
  629              		.loc 1 295 35 view .LVU229
  630 0134 5360     		str	r3, [r2, #4]
-ARM GAS  /tmp/cc2j1jlI.s 			page 35
+ARM GAS  /tmp/ccg0WxUB.s 			page 35
 
 
  296:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_hash_sha1.c ****         *(uint32_t*)(outputaddr)  = __REV(SHA1_MessageDigest.Data[2]);
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  672              		.loc 1 301 37 is_stmt 0 view .LVU248
  673 0142 079B     		ldr	r3, [sp, #28]
  674              	.LVL86:
-ARM GAS  /tmp/cc2j1jlI.s 			page 36
+ARM GAS  /tmp/ccg0WxUB.s 			page 36
 
 
  675              	.LBB40:
@@ -2130,15 +2130,15 @@ ARM GAS  /tmp/cc2j1jlI.s 			page 1
  699              		.file 6 "Inc/system_stm32f4xx.h"
  700              		.file 7 "Inc/stm32f4xx.h"
  701              		.file 8 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_hash.h"
-ARM GAS  /tmp/cc2j1jlI.s 			page 37
+ARM GAS  /tmp/ccg0WxUB.s 			page 37
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_hash_sha1.c
-     /tmp/cc2j1jlI.s:18     .text.HASH_SHA1:0000000000000000 $t
-     /tmp/cc2j1jlI.s:26     .text.HASH_SHA1:0000000000000000 HASH_SHA1
-     /tmp/cc2j1jlI.s:268    .text.HMAC_SHA1:0000000000000000 $t
-     /tmp/cc2j1jlI.s:275    .text.HMAC_SHA1:0000000000000000 HMAC_SHA1
+     /tmp/ccg0WxUB.s:18     .text.HASH_SHA1:0000000000000000 $t
+     /tmp/ccg0WxUB.s:26     .text.HASH_SHA1:0000000000000000 HASH_SHA1
+     /tmp/ccg0WxUB.s:268    .text.HMAC_SHA1:0000000000000000 $t
+     /tmp/ccg0WxUB.s:275    .text.HMAC_SHA1:0000000000000000 HMAC_SHA1
 
 UNDEFINED SYMBOLS
 HASH_DeInit

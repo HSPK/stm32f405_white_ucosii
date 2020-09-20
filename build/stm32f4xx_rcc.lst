@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccynooWi.s 			page 1
+ARM GAS  /tmp/cccoroyX.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
   28:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *             are assigned to be used for debug purpose.
   29:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *        
   30:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *          Once the device started from reset, the user application has to:        
-ARM GAS  /tmp/ccynooWi.s 			page 2
+ARM GAS  /tmp/cccoroyX.s 			page 2
 
 
   31:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *           - Configure the clock source to be used to drive the System clock
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
   85:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /* Alias word address of PLLON bit */
   86:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** #define PLLON_BitNumber           0x18
   87:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** #define CR_PLLON_BB               (PERIPH_BB_BASE + (CR_OFFSET * 32) + (PLLON_BitNumber * 4))
-ARM GAS  /tmp/ccynooWi.s 			page 3
+ARM GAS  /tmp/cccoroyX.s 			page 3
 
 
   88:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /* Alias word address of PLLI2SON bit */
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  142:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /** @defgroup RCC_Group1 Internal and external clocks, PLL, CSS and MCO configuration functions
  143:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****  *  @brief   Internal and external clocks, PLL, CSS and MCO configuration functions 
  144:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****  *
-ARM GAS  /tmp/ccynooWi.s 			page 4
+ARM GAS  /tmp/cccoroyX.s 			page 4
 
 
  145:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** @verbatim   
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  199:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  None
  200:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @retval None
  201:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   */
-ARM GAS  /tmp/ccynooWi.s 			page 5
+ARM GAS  /tmp/cccoroyX.s 			page 5
 
 
  202:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** void RCC_DeInit(void)
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
   63 0028 7047     		bx	lr
   64              	.L3:
   65 002a 00BF     		.align	2
-ARM GAS  /tmp/ccynooWi.s 			page 6
+ARM GAS  /tmp/cccoroyX.s 			page 6
 
 
   66              	.L2:
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  250:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
  251:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Set the new HSE configuration -------------------------------------------*/
  252:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *(__IO uint8_t *) CR_BYTE3_ADDRESS = RCC_HSE;
-ARM GAS  /tmp/ccynooWi.s 			page 7
+ARM GAS  /tmp/cccoroyX.s 			page 7
 
 
   94              		.loc 1 252 3 is_stmt 1 view .LVU18
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  286:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   }
  287:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   return (status);
  288:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** }
-ARM GAS  /tmp/ccynooWi.s 			page 8
+ARM GAS  /tmp/cccoroyX.s 			page 8
 
 
  289:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  145 0010 00380240 		.word	1073887232
  146              		.cfi_endproc
  147              	.LFE133:
-ARM GAS  /tmp/ccynooWi.s 			page 9
+ARM GAS  /tmp/cccoroyX.s 			page 9
 
 
  149              		.section	.text.RCC_HSICmd,"ax",%progbits
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  179              		.section	.text.RCC_LSEConfig,"ax",%progbits
  180              		.align	1
  181              		.global	RCC_LSEConfig
-ARM GAS  /tmp/ccynooWi.s 			page 10
+ARM GAS  /tmp/cccoroyX.s 			page 10
 
 
  182              		.syntax unified
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  205 0008 0128     		cmp	r0, #1
  206 000a 02D0     		beq	.L14
  207 000c 0428     		cmp	r0, #4
-ARM GAS  /tmp/ccynooWi.s 			page 11
+ARM GAS  /tmp/cccoroyX.s 			page 11
 
 
  208 000e 04D0     		beq	.L15
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  392:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @note   LSI can not be disabled if the IWDG is running.  
  393:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  NewState: new state of the LSI.
  394:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *          This parameter can be: ENABLE or DISABLE.
-ARM GAS  /tmp/ccynooWi.s 			page 12
+ARM GAS  /tmp/cccoroyX.s 			page 12
 
 
  395:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @note   When the LSI is stopped, LSIRDY flag goes low after 6 LSI oscillator
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  421:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         of 2 MHz to limit PLL jitter.
  422:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *  
  423:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  PLLN: specifies the multiplication factor for PLL VCO output clock
-ARM GAS  /tmp/ccynooWi.s 			page 13
+ARM GAS  /tmp/cccoroyX.s 			page 13
 
 
  424:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *          This parameter must be a number between 192 and 432.
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  301              		.loc 1 451 82 view .LVU70
  302 0010 41EA0061 		orr	r1, r1, r0, lsl #24
  303              		.loc 1 451 16 view .LVU71
-ARM GAS  /tmp/ccynooWi.s 			page 14
+ARM GAS  /tmp/cccoroyX.s 			page 14
 
 
  304 0014 014B     		ldr	r3, .L23
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  341              	.L26:
  342 0008 60004742 		.word	1111949408
  343              		.cfi_endproc
-ARM GAS  /tmp/ccynooWi.s 			page 15
+ARM GAS  /tmp/cccoroyX.s 			page 15
 
 
  344              	.LFE138:
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  498:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** }
  373              		.loc 1 498 1 view .LVU85
  374 000c 7047     		bx	lr
-ARM GAS  /tmp/ccynooWi.s 			page 16
+ARM GAS  /tmp/cccoroyX.s 			page 16
 
 
  375              	.L30:
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  420              	RCC_ClockSecuritySystemCmd:
  421              	.LVL17:
  422              	.LFB141:
-ARM GAS  /tmp/ccynooWi.s 			page 17
+ARM GAS  /tmp/cccoroyX.s 			page 17
 
 
  512:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  538:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_MCO1Source_HSE: HSE clock selected as MCO1 source
  539:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_MCO1Source_PLLCLK: main PLL clock selected as MCO1 source
  540:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  RCC_MCO1Div: specifies the MCO1 prescaler.
-ARM GAS  /tmp/ccynooWi.s 			page 18
+ARM GAS  /tmp/cccoroyX.s 			page 18
 
 
  541:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *          This parameter can be one of the following values:
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  480              		.loc 1 567 1 view .LVU109
  481 000e 7047     		bx	lr
  482              	.L39:
-ARM GAS  /tmp/ccynooWi.s 			page 19
+ARM GAS  /tmp/cccoroyX.s 			page 19
 
 
  483              		.align	2
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  511 0002 9368     		ldr	r3, [r2, #8]
  512              	.LVL24:
  596:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   
-ARM GAS  /tmp/ccynooWi.s 			page 20
+ARM GAS  /tmp/cccoroyX.s 			page 20
 
 
  597:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Clear MCO2 and MCO2PRE[2:0] bits */
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  619:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   This section provide functions allowing to configure the System, AHB, APB1 and 
  620:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   APB2 busses clocks.
  621:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   
-ARM GAS  /tmp/ccynooWi.s 			page 21
+ARM GAS  /tmp/cccoroyX.s 			page 21
 
 
  622:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   1. Several clock sources can be used to drive the System clock (SYSCLK): HSI,
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  676:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @note   The HSI is used (enabled by hardware) as system clock source after
  677:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         startup from Reset, wake-up from STOP and STANDBY mode, or in case
  678:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         of failure of the HSE used directly or indirectly as system clock
-ARM GAS  /tmp/ccynooWi.s 			page 22
+ARM GAS  /tmp/cccoroyX.s 			page 22
 
 
  679:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         (if the Clock Security System CSS is enabled).
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  710:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** }
  570              		.loc 1 710 1 view .LVU135
  571 000c 7047     		bx	lr
-ARM GAS  /tmp/ccynooWi.s 			page 23
+ARM GAS  /tmp/cccoroyX.s 			page 23
 
 
  572              	.L45:
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  616              	RCC_HCLKConfig:
  617              	.LVL32:
  618              	.LFB146:
-ARM GAS  /tmp/ccynooWi.s 			page 24
+ARM GAS  /tmp/cccoroyX.s 			page 24
 
 
  725:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  638              	.LVL35:
  760:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
  761:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Store the new value */
-ARM GAS  /tmp/ccynooWi.s 			page 25
+ARM GAS  /tmp/cccoroyX.s 			page 25
 
 
  762:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   RCC->CFGR = tmpreg;
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  671 0000 034A     		ldr	r2, .L53
  672 0002 9368     		ldr	r3, [r2, #8]
  673              	.LVL37:
-ARM GAS  /tmp/ccynooWi.s 			page 26
+ARM GAS  /tmp/cccoroyX.s 			page 26
 
 
  786:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  705              		.loc 1 810 1 is_stmt 1 view -0
  706              		.cfi_startproc
  707              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /tmp/ccynooWi.s 			page 27
+ARM GAS  /tmp/cccoroyX.s 			page 27
 
 
  708              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  827:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
  828:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /**
  829:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @brief  Returns the frequencies of different on chip clocks; SYSCLK, HCLK, 
-ARM GAS  /tmp/ccynooWi.s 			page 28
+ARM GAS  /tmp/cccoroyX.s 			page 28
 
 
  830:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         PCLK1 and PCLK2.       
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  765 0006 03F00C03 		and	r3, r3, #12
  766              	.LVL46:
  867:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
-ARM GAS  /tmp/ccynooWi.s 			page 29
+ARM GAS  /tmp/cccoroyX.s 			page 29
 
 
  868:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   switch (tmp)
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  786              	.LVL49:
  871:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****       break;
  787              		.loc 1 871 36 view .LVU189
-ARM GAS  /tmp/ccynooWi.s 			page 30
+ARM GAS  /tmp/cccoroyX.s 			page 30
 
 
  788 001c 0360     		str	r3, [r0]
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  827              	.LVL57:
  828              		.loc 1 914 27 view .LVU208
  829 003a D2B2     		uxtb	r2, r2
-ARM GAS  /tmp/ccynooWi.s 			page 31
+ARM GAS  /tmp/cccoroyX.s 			page 31
 
 
  830              	.LVL58:
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  874:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****       break;
  872              		.loc 1 874 36 view .LVU225
  873 0058 0360     		str	r3, [r0]
-ARM GAS  /tmp/ccynooWi.s 			page 32
+ARM GAS  /tmp/cccoroyX.s 			page 32
 
 
  875:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****     case 0x08:  /* PLL used as system clock  source */
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  895:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****       RCC_Clocks->SYSCLK_Frequency = pllvco/pllp;
  912              		.loc 1 895 7 is_stmt 1 view .LVU242
  895:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****       RCC_Clocks->SYSCLK_Frequency = pllvco/pllp;
-ARM GAS  /tmp/ccynooWi.s 			page 33
+ARM GAS  /tmp/cccoroyX.s 			page 33
 
 
  913              		.loc 1 895 20 is_stmt 0 view .LVU243
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  952 00a6 00BF     		.align	2
  953              	.L67:
  954 00a8 00380240 		.word	1073887232
-ARM GAS  /tmp/ccynooWi.s 			page 34
+ARM GAS  /tmp/cccoroyX.s 			page 34
 
 
  955 00ac 0024F400 		.word	16000000
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  964:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         access using PWR_BackupAccessCmd(ENABLE) function before to configure
  965:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         the RTC clock source (to be done once after reset).    
  966:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @note   Once the RTC clock is configured it can't be changed unless the  
-ARM GAS  /tmp/ccynooWi.s 			page 35
+ARM GAS  /tmp/cccoroyX.s 			page 35
 
 
  967:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *         Backup domain is reset using RCC_BackupResetCmd() function, or by
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1006:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****     
 1007:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Select the RTC clock source */
 1008:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   RCC->BDCR |= (RCC_RTCCLKSource & 0x00000FFF);
-ARM GAS  /tmp/ccynooWi.s 			page 36
+ARM GAS  /tmp/cccoroyX.s 			page 36
 
 
  987              		.loc 1 1008 3 is_stmt 1 view .LVU265
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1032              		.thumb
  1033              		.thumb_func
  1034              		.fpu fpv4-sp-d16
-ARM GAS  /tmp/ccynooWi.s 			page 37
+ARM GAS  /tmp/cccoroyX.s 			page 37
 
 
  1036              	RCC_RTCCLKCmd:
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1033:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @retval None
 1034:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   */
 1035:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** void RCC_BackupResetCmd(FunctionalState NewState)
-ARM GAS  /tmp/ccynooWi.s 			page 38
+ARM GAS  /tmp/cccoroyX.s 			page 38
 
 
 1036:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** {
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1056:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
 1057:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *(__IO uint32_t *) CFGR_I2SSRC_BB = RCC_I2SCLKSource;
  1105              		.loc 1 1057 3 view .LVU291
-ARM GAS  /tmp/ccynooWi.s 			page 39
+ARM GAS  /tmp/cccoroyX.s 			page 39
 
 
  1106              		.loc 1 1057 37 is_stmt 0 view .LVU292
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1091:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** void RCC_AHB1PeriphClockCmd(uint32_t RCC_AHB1Periph, FunctionalState NewState)
 1092:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** {
  1129              		.loc 1 1092 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccynooWi.s 			page 40
+ARM GAS  /tmp/cccoroyX.s 			page 40
 
 
  1130              		.cfi_startproc
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1172              		.thumb_func
  1173              		.fpu fpv4-sp-d16
  1175              	RCC_AHB2PeriphClockCmd:
-ARM GAS  /tmp/ccynooWi.s 			page 41
+ARM GAS  /tmp/cccoroyX.s 			page 41
 
 
  1176              	.LVL93:
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1200              		.loc 1 1135 18 is_stmt 0 view .LVU315
  1201 000c 024A     		ldr	r2, .L91
  1202 000e 536B     		ldr	r3, [r2, #52]
-ARM GAS  /tmp/ccynooWi.s 			page 42
+ARM GAS  /tmp/cccoroyX.s 			page 42
 
 
  1203 0010 23EA0000 		bic	r0, r3, r0
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1158:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****     RCC->AHB3ENR |= RCC_AHB3Periph;
  1237              		.loc 1 1158 5 is_stmt 1 view .LVU323
  1238              		.loc 1 1158 18 is_stmt 0 view .LVU324
-ARM GAS  /tmp/ccynooWi.s 			page 43
+ARM GAS  /tmp/cccoroyX.s 			page 43
 
 
  1239 0002 054A     		ldr	r2, .L96
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1178:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_TIM7:   TIM7 clock
 1179:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_TIM12:  TIM12 clock
 1180:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_TIM13:  TIM13 clock
-ARM GAS  /tmp/ccynooWi.s 			page 44
+ARM GAS  /tmp/cccoroyX.s 			page 44
 
 
 1181:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_TIM14:  TIM14 clock
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1298              		.loc 1 1212 18 is_stmt 0 view .LVU339
  1299 000c 024A     		ldr	r2, .L101
  1300 000e 136C     		ldr	r3, [r2, #64]
-ARM GAS  /tmp/ccynooWi.s 			page 45
+ARM GAS  /tmp/cccoroyX.s 			page 45
 
 
  1301 0010 23EA0000 		bic	r0, r3, r0
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1328              		@ frame_needed = 0, uses_anonymous_args = 0
  1329              		@ link register save eliminated.
 1242:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Check the parameters */
-ARM GAS  /tmp/ccynooWi.s 			page 46
+ARM GAS  /tmp/cccoroyX.s 			page 46
 
 
 1243:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   assert_param(IS_RCC_APB2_PERIPH(RCC_APB2Periph));
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1255:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
 1256:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /**
 1257:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @brief  Forces or releases AHB1 peripheral reset.
-ARM GAS  /tmp/ccynooWi.s 			page 47
+ARM GAS  /tmp/cccoroyX.s 			page 47
 
 
 1258:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  RCC_AHB1Periph: specifies the AHB1 peripheral to reset.
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1291:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****     RCC->AHB1RSTR &= ~RCC_AHB1Periph;
  1395              		.loc 1 1291 5 is_stmt 1 view .LVU362
  1396              		.loc 1 1291 19 is_stmt 0 view .LVU363
-ARM GAS  /tmp/ccynooWi.s 			page 48
+ARM GAS  /tmp/cccoroyX.s 			page 48
 
 
  1397 000c 024A     		ldr	r2, .L111
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1430              		.loc 1 1314 3 view .LVU369
  1431              		.loc 1 1314 6 is_stmt 0 view .LVU370
  1432 0000 21B1     		cbz	r1, .L114
-ARM GAS  /tmp/ccynooWi.s 			page 49
+ARM GAS  /tmp/cccoroyX.s 			page 49
 
 
 1315:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   {
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1332:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** void RCC_AHB3PeriphResetCmd(uint32_t RCC_AHB3Periph, FunctionalState NewState)
 1333:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** {
  1472              		.loc 1 1333 1 is_stmt 1 view -0
-ARM GAS  /tmp/ccynooWi.s 			page 50
+ARM GAS  /tmp/cccoroyX.s 			page 50
 
 
  1473              		.cfi_startproc
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1515              		.thumb_func
  1516              		.fpu fpv4-sp-d16
  1518              	RCC_APB1PeriphResetCmd:
-ARM GAS  /tmp/ccynooWi.s 			page 51
+ARM GAS  /tmp/cccoroyX.s 			page 51
 
 
  1519              	.LVL121:
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1533 0002 054A     		ldr	r2, .L126
  1534 0004 136A     		ldr	r3, [r2, #32]
  1535 0006 1843     		orrs	r0, r0, r3
-ARM GAS  /tmp/ccynooWi.s 			page 52
+ARM GAS  /tmp/cccoroyX.s 			page 52
 
 
  1536              	.LVL122:
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1409:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB2Periph_TIM10:  TIM10 clock
 1410:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB2Periph_TIM11:  TIM11 clock
 1411:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  NewState: new state of the specified peripheral reset.
-ARM GAS  /tmp/ccynooWi.s 			page 53
+ARM GAS  /tmp/cccoroyX.s 			page 53
 
 
 1412:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *          This parameter can be: ENABLE or DISABLE.
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1608              		.section	.text.RCC_AHB1PeriphClockLPModeCmd,"ax",%progbits
  1609              		.align	1
  1610              		.global	RCC_AHB1PeriphClockLPModeCmd
-ARM GAS  /tmp/ccynooWi.s 			page 54
+ARM GAS  /tmp/cccoroyX.s 			page 54
 
 
  1611              		.syntax unified
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1628 0000 21B1     		cbz	r1, .L134
 1467:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   {
 1468:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****     RCC->AHB1LPENR |= RCC_AHB1Periph;
-ARM GAS  /tmp/ccynooWi.s 			page 55
+ARM GAS  /tmp/cccoroyX.s 			page 55
 
 
  1629              		.loc 1 1468 5 is_stmt 1 view .LVU419
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1486:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_AHB2Periph_HASH:   HASH clock
 1487:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_AHB2Periph_RNG:    RNG clock
 1488:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_AHB2Periph_OTG_FS: USB OTG FS clock  
-ARM GAS  /tmp/ccynooWi.s 			page 56
+ARM GAS  /tmp/cccoroyX.s 			page 56
 
 
 1489:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  NewState: new state of the specified peripheral clock.
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1704              	.LFE165:
  1706              		.section	.text.RCC_AHB3PeriphClockLPModeCmd,"ax",%progbits
  1707              		.align	1
-ARM GAS  /tmp/ccynooWi.s 			page 57
+ARM GAS  /tmp/cccoroyX.s 			page 57
 
 
  1708              		.global	RCC_AHB3PeriphClockLPModeCmd
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1738              		.loc 1 1531 5 is_stmt 1 view .LVU446
  1739              		.loc 1 1531 20 is_stmt 0 view .LVU447
  1740 000c 024A     		ldr	r2, .L146
-ARM GAS  /tmp/ccynooWi.s 			page 58
+ARM GAS  /tmp/cccoroyX.s 			page 58
 
 
  1741 000e 936D     		ldr	r3, [r2, #88]
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1563:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_CAN2:   CAN2 clock
 1564:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_PWR:    PWR clock
 1565:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   *            @arg RCC_APB1Periph_DAC:    DAC clock
-ARM GAS  /tmp/ccynooWi.s 			page 59
+ARM GAS  /tmp/cccoroyX.s 			page 59
 
 
 1566:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  NewState: new state of the specified peripheral clock.
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1802              	.LFE167:
  1804              		.section	.text.RCC_APB2PeriphClockLPModeCmd,"ax",%progbits
  1805              		.align	1
-ARM GAS  /tmp/ccynooWi.s 			page 60
+ARM GAS  /tmp/cccoroyX.s 			page 60
 
 
  1806              		.global	RCC_APB2PeriphClockLPModeCmd
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1827 0002 054A     		ldr	r2, .L156
  1828 0004 536E     		ldr	r3, [r2, #100]
  1829 0006 1843     		orrs	r0, r0, r3
-ARM GAS  /tmp/ccynooWi.s 			page 61
+ARM GAS  /tmp/cccoroyX.s 			page 61
 
 
  1830              	.LVL146:
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1640:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
 1641:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** /**
 1642:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @brief  Enables or disables the specified RCC interrupts.
-ARM GAS  /tmp/ccynooWi.s 			page 62
+ARM GAS  /tmp/cccoroyX.s 			page 62
 
 
 1643:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   * @param  RCC_IT: specifies the RCC interrupt sources to be enabled or disabled.
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1892 0014 1070     		strb	r0, [r2]
 1669:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   }
 1670:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** }
-ARM GAS  /tmp/ccynooWi.s 			page 63
+ARM GAS  /tmp/cccoroyX.s 			page 63
 
 
  1893              		.loc 1 1670 1 view .LVU485
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1921              		.loc 1 1698 3 view .LVU490
 1699:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** 
 1700:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   /* Get the RCC register index */
-ARM GAS  /tmp/ccynooWi.s 			page 64
+ARM GAS  /tmp/cccoroyX.s 			page 64
 
 
 1701:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   tmp = RCC_FLAG >> 5;
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1957              	.L169:
 1704:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   }
  1958              		.loc 1 1704 5 is_stmt 1 view .LVU506
-ARM GAS  /tmp/ccynooWi.s 			page 65
+ARM GAS  /tmp/cccoroyX.s 			page 65
 
 
 1704:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   }
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  1999              		.fpu fpv4-sp-d16
  2001              	RCC_WaitForHSEStartUp:
  2002              	.LFB132:
-ARM GAS  /tmp/ccynooWi.s 			page 66
+ARM GAS  /tmp/cccoroyX.s 			page 66
 
 
  268:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   __IO uint32_t startupcounter = 0;
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   {
  2043              		.loc 1 279 3 is_stmt 1 view .LVU531
  279:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   {
-ARM GAS  /tmp/ccynooWi.s 			page 67
+ARM GAS  /tmp/cccoroyX.s 			page 67
 
 
  2044              		.loc 1 279 7 is_stmt 0 view .LVU532
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  2083 0000 024A     		ldr	r2, .L179
  2084 0002 536F     		ldr	r3, [r2, #116]
  2085 0004 43F08073 		orr	r3, r3, #16777216
-ARM GAS  /tmp/ccynooWi.s 			page 68
+ARM GAS  /tmp/cccoroyX.s 			page 68
 
 
  2086 0008 5367     		str	r3, [r2, #116]
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  2118              		.loc 1 1763 6 view .LVU547
  2119 0004 1842     		tst	r0, r3
  2120 0006 01D0     		beq	.L183
-ARM GAS  /tmp/ccynooWi.s 			page 69
+ARM GAS  /tmp/cccoroyX.s 			page 69
 
 
 1764:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c ****   {
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
 1789:Drivers/STM32F4xx_StdPeriph_Driver/src/stm32f4xx_rcc.c **** {
  2152              		.loc 1 1789 1 is_stmt 1 view -0
  2153              		.cfi_startproc
-ARM GAS  /tmp/ccynooWi.s 			page 70
+ARM GAS  /tmp/cccoroyX.s 			page 70
 
 
  2154              		@ args = 0, pretend = 0, frame = 0
@@ -4181,149 +4181,149 @@ ARM GAS  /tmp/ccynooWi.s 			page 1
  2184              		.file 5 "Inc/system_stm32f4xx.h"
  2185              		.file 6 "Inc/stm32f4xx.h"
  2186              		.file 7 "Drivers/STM32F4xx_StdPeriph_Driver/inc/stm32f4xx_rcc.h"
-ARM GAS  /tmp/ccynooWi.s 			page 71
+ARM GAS  /tmp/cccoroyX.s 			page 71
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32f4xx_rcc.c
-     /tmp/ccynooWi.s:18     .text.RCC_DeInit:0000000000000000 $t
-     /tmp/ccynooWi.s:26     .text.RCC_DeInit:0000000000000000 RCC_DeInit
-     /tmp/ccynooWi.s:67     .text.RCC_DeInit:000000000000002c $d
-     /tmp/ccynooWi.s:73     .text.RCC_HSEConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:80     .text.RCC_HSEConfig:0000000000000000 RCC_HSEConfig
-     /tmp/ccynooWi.s:102    .text.RCC_HSEConfig:000000000000000c $d
-     /tmp/ccynooWi.s:107    .text.RCC_AdjustHSICalibrationValue:0000000000000000 $t
-     /tmp/ccynooWi.s:114    .text.RCC_AdjustHSICalibrationValue:0000000000000000 RCC_AdjustHSICalibrationValue
-     /tmp/ccynooWi.s:145    .text.RCC_AdjustHSICalibrationValue:0000000000000010 $d
-     /tmp/ccynooWi.s:150    .text.RCC_HSICmd:0000000000000000 $t
-     /tmp/ccynooWi.s:157    .text.RCC_HSICmd:0000000000000000 RCC_HSICmd
-     /tmp/ccynooWi.s:175    .text.RCC_HSICmd:0000000000000008 $d
-     /tmp/ccynooWi.s:180    .text.RCC_LSEConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:187    .text.RCC_LSEConfig:0000000000000000 RCC_LSEConfig
-     /tmp/ccynooWi.s:230    .text.RCC_LSEConfig:0000000000000024 $d
-     /tmp/ccynooWi.s:235    .text.RCC_LSICmd:0000000000000000 $t
-     /tmp/ccynooWi.s:242    .text.RCC_LSICmd:0000000000000000 RCC_LSICmd
-     /tmp/ccynooWi.s:260    .text.RCC_LSICmd:0000000000000008 $d
-     /tmp/ccynooWi.s:265    .text.RCC_PLLConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:272    .text.RCC_PLLConfig:0000000000000000 RCC_PLLConfig
-     /tmp/ccynooWi.s:312    .text.RCC_PLLConfig:000000000000001c $d
-     /tmp/ccynooWi.s:317    .text.RCC_PLLCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:324    .text.RCC_PLLCmd:0000000000000000 RCC_PLLCmd
-     /tmp/ccynooWi.s:342    .text.RCC_PLLCmd:0000000000000008 $d
-     /tmp/ccynooWi.s:347    .text.RCC_PLLI2SConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:354    .text.RCC_PLLI2SConfig:0000000000000000 RCC_PLLI2SConfig
-     /tmp/ccynooWi.s:378    .text.RCC_PLLI2SConfig:0000000000000010 $d
-     /tmp/ccynooWi.s:383    .text.RCC_PLLI2SCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:390    .text.RCC_PLLI2SCmd:0000000000000000 RCC_PLLI2SCmd
-     /tmp/ccynooWi.s:408    .text.RCC_PLLI2SCmd:0000000000000008 $d
-     /tmp/ccynooWi.s:413    .text.RCC_ClockSecuritySystemCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:420    .text.RCC_ClockSecuritySystemCmd:0000000000000000 RCC_ClockSecuritySystemCmd
-     /tmp/ccynooWi.s:438    .text.RCC_ClockSecuritySystemCmd:0000000000000008 $d
-     /tmp/ccynooWi.s:443    .text.RCC_MCO1Config:0000000000000000 $t
-     /tmp/ccynooWi.s:450    .text.RCC_MCO1Config:0000000000000000 RCC_MCO1Config
-     /tmp/ccynooWi.s:485    .text.RCC_MCO1Config:0000000000000010 $d
-     /tmp/ccynooWi.s:490    .text.RCC_MCO2Config:0000000000000000 $t
-     /tmp/ccynooWi.s:497    .text.RCC_MCO2Config:0000000000000000 RCC_MCO2Config
-     /tmp/ccynooWi.s:532    .text.RCC_MCO2Config:0000000000000010 $d
-     /tmp/ccynooWi.s:537    .text.RCC_SYSCLKConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:544    .text.RCC_SYSCLKConfig:0000000000000000 RCC_SYSCLKConfig
-     /tmp/ccynooWi.s:575    .text.RCC_SYSCLKConfig:0000000000000010 $d
-     /tmp/ccynooWi.s:580    .text.RCC_GetSYSCLKSource:0000000000000000 $t
-     /tmp/ccynooWi.s:587    .text.RCC_GetSYSCLKSource:0000000000000000 RCC_GetSYSCLKSource
-     /tmp/ccynooWi.s:604    .text.RCC_GetSYSCLKSource:000000000000000c $d
-     /tmp/ccynooWi.s:609    .text.RCC_HCLKConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:616    .text.RCC_HCLKConfig:0000000000000000 RCC_HCLKConfig
-     /tmp/ccynooWi.s:647    .text.RCC_HCLKConfig:0000000000000010 $d
-     /tmp/ccynooWi.s:652    .text.RCC_PCLK1Config:0000000000000000 $t
-     /tmp/ccynooWi.s:659    .text.RCC_PCLK1Config:0000000000000000 RCC_PCLK1Config
-     /tmp/ccynooWi.s:690    .text.RCC_PCLK1Config:0000000000000010 $d
-     /tmp/ccynooWi.s:695    .text.RCC_PCLK2Config:0000000000000000 $t
-     /tmp/ccynooWi.s:702    .text.RCC_PCLK2Config:0000000000000000 RCC_PCLK2Config
-     /tmp/ccynooWi.s:733    .text.RCC_PCLK2Config:0000000000000010 $d
-     /tmp/ccynooWi.s:738    .text.RCC_GetClocksFreq:0000000000000000 $t
-ARM GAS  /tmp/ccynooWi.s 			page 72
+     /tmp/cccoroyX.s:18     .text.RCC_DeInit:0000000000000000 $t
+     /tmp/cccoroyX.s:26     .text.RCC_DeInit:0000000000000000 RCC_DeInit
+     /tmp/cccoroyX.s:67     .text.RCC_DeInit:000000000000002c $d
+     /tmp/cccoroyX.s:73     .text.RCC_HSEConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:80     .text.RCC_HSEConfig:0000000000000000 RCC_HSEConfig
+     /tmp/cccoroyX.s:102    .text.RCC_HSEConfig:000000000000000c $d
+     /tmp/cccoroyX.s:107    .text.RCC_AdjustHSICalibrationValue:0000000000000000 $t
+     /tmp/cccoroyX.s:114    .text.RCC_AdjustHSICalibrationValue:0000000000000000 RCC_AdjustHSICalibrationValue
+     /tmp/cccoroyX.s:145    .text.RCC_AdjustHSICalibrationValue:0000000000000010 $d
+     /tmp/cccoroyX.s:150    .text.RCC_HSICmd:0000000000000000 $t
+     /tmp/cccoroyX.s:157    .text.RCC_HSICmd:0000000000000000 RCC_HSICmd
+     /tmp/cccoroyX.s:175    .text.RCC_HSICmd:0000000000000008 $d
+     /tmp/cccoroyX.s:180    .text.RCC_LSEConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:187    .text.RCC_LSEConfig:0000000000000000 RCC_LSEConfig
+     /tmp/cccoroyX.s:230    .text.RCC_LSEConfig:0000000000000024 $d
+     /tmp/cccoroyX.s:235    .text.RCC_LSICmd:0000000000000000 $t
+     /tmp/cccoroyX.s:242    .text.RCC_LSICmd:0000000000000000 RCC_LSICmd
+     /tmp/cccoroyX.s:260    .text.RCC_LSICmd:0000000000000008 $d
+     /tmp/cccoroyX.s:265    .text.RCC_PLLConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:272    .text.RCC_PLLConfig:0000000000000000 RCC_PLLConfig
+     /tmp/cccoroyX.s:312    .text.RCC_PLLConfig:000000000000001c $d
+     /tmp/cccoroyX.s:317    .text.RCC_PLLCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:324    .text.RCC_PLLCmd:0000000000000000 RCC_PLLCmd
+     /tmp/cccoroyX.s:342    .text.RCC_PLLCmd:0000000000000008 $d
+     /tmp/cccoroyX.s:347    .text.RCC_PLLI2SConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:354    .text.RCC_PLLI2SConfig:0000000000000000 RCC_PLLI2SConfig
+     /tmp/cccoroyX.s:378    .text.RCC_PLLI2SConfig:0000000000000010 $d
+     /tmp/cccoroyX.s:383    .text.RCC_PLLI2SCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:390    .text.RCC_PLLI2SCmd:0000000000000000 RCC_PLLI2SCmd
+     /tmp/cccoroyX.s:408    .text.RCC_PLLI2SCmd:0000000000000008 $d
+     /tmp/cccoroyX.s:413    .text.RCC_ClockSecuritySystemCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:420    .text.RCC_ClockSecuritySystemCmd:0000000000000000 RCC_ClockSecuritySystemCmd
+     /tmp/cccoroyX.s:438    .text.RCC_ClockSecuritySystemCmd:0000000000000008 $d
+     /tmp/cccoroyX.s:443    .text.RCC_MCO1Config:0000000000000000 $t
+     /tmp/cccoroyX.s:450    .text.RCC_MCO1Config:0000000000000000 RCC_MCO1Config
+     /tmp/cccoroyX.s:485    .text.RCC_MCO1Config:0000000000000010 $d
+     /tmp/cccoroyX.s:490    .text.RCC_MCO2Config:0000000000000000 $t
+     /tmp/cccoroyX.s:497    .text.RCC_MCO2Config:0000000000000000 RCC_MCO2Config
+     /tmp/cccoroyX.s:532    .text.RCC_MCO2Config:0000000000000010 $d
+     /tmp/cccoroyX.s:537    .text.RCC_SYSCLKConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:544    .text.RCC_SYSCLKConfig:0000000000000000 RCC_SYSCLKConfig
+     /tmp/cccoroyX.s:575    .text.RCC_SYSCLKConfig:0000000000000010 $d
+     /tmp/cccoroyX.s:580    .text.RCC_GetSYSCLKSource:0000000000000000 $t
+     /tmp/cccoroyX.s:587    .text.RCC_GetSYSCLKSource:0000000000000000 RCC_GetSYSCLKSource
+     /tmp/cccoroyX.s:604    .text.RCC_GetSYSCLKSource:000000000000000c $d
+     /tmp/cccoroyX.s:609    .text.RCC_HCLKConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:616    .text.RCC_HCLKConfig:0000000000000000 RCC_HCLKConfig
+     /tmp/cccoroyX.s:647    .text.RCC_HCLKConfig:0000000000000010 $d
+     /tmp/cccoroyX.s:652    .text.RCC_PCLK1Config:0000000000000000 $t
+     /tmp/cccoroyX.s:659    .text.RCC_PCLK1Config:0000000000000000 RCC_PCLK1Config
+     /tmp/cccoroyX.s:690    .text.RCC_PCLK1Config:0000000000000010 $d
+     /tmp/cccoroyX.s:695    .text.RCC_PCLK2Config:0000000000000000 $t
+     /tmp/cccoroyX.s:702    .text.RCC_PCLK2Config:0000000000000000 RCC_PCLK2Config
+     /tmp/cccoroyX.s:733    .text.RCC_PCLK2Config:0000000000000010 $d
+     /tmp/cccoroyX.s:738    .text.RCC_GetClocksFreq:0000000000000000 $t
+ARM GAS  /tmp/cccoroyX.s 			page 72
 
 
-     /tmp/ccynooWi.s:745    .text.RCC_GetClocksFreq:0000000000000000 RCC_GetClocksFreq
-     /tmp/ccynooWi.s:954    .text.RCC_GetClocksFreq:00000000000000a8 $d
-     /tmp/ccynooWi.s:962    .text.RCC_RTCCLKConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:969    .text.RCC_RTCCLKConfig:0000000000000000 RCC_RTCCLKConfig
-     /tmp/ccynooWi.s:1024   .text.RCC_RTCCLKConfig:0000000000000030 $d
-     /tmp/ccynooWi.s:1029   .text.RCC_RTCCLKCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1036   .text.RCC_RTCCLKCmd:0000000000000000 RCC_RTCCLKCmd
-     /tmp/ccynooWi.s:1054   .text.RCC_RTCCLKCmd:0000000000000008 $d
-     /tmp/ccynooWi.s:1059   .text.RCC_BackupResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1066   .text.RCC_BackupResetCmd:0000000000000000 RCC_BackupResetCmd
-     /tmp/ccynooWi.s:1084   .text.RCC_BackupResetCmd:0000000000000008 $d
-     /tmp/ccynooWi.s:1089   .text.RCC_I2SCLKConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:1096   .text.RCC_I2SCLKConfig:0000000000000000 RCC_I2SCLKConfig
-     /tmp/ccynooWi.s:1114   .text.RCC_I2SCLKConfig:0000000000000008 $d
-     /tmp/ccynooWi.s:1119   .text.RCC_AHB1PeriphClockCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1126   .text.RCC_AHB1PeriphClockCmd:0000000000000000 RCC_AHB1PeriphClockCmd
-     /tmp/ccynooWi.s:1163   .text.RCC_AHB1PeriphClockCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1168   .text.RCC_AHB2PeriphClockCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1175   .text.RCC_AHB2PeriphClockCmd:0000000000000000 RCC_AHB2PeriphClockCmd
-     /tmp/ccynooWi.s:1212   .text.RCC_AHB2PeriphClockCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1217   .text.RCC_AHB3PeriphClockCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1224   .text.RCC_AHB3PeriphClockCmd:0000000000000000 RCC_AHB3PeriphClockCmd
-     /tmp/ccynooWi.s:1261   .text.RCC_AHB3PeriphClockCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1266   .text.RCC_APB1PeriphClockCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1273   .text.RCC_APB1PeriphClockCmd:0000000000000000 RCC_APB1PeriphClockCmd
-     /tmp/ccynooWi.s:1310   .text.RCC_APB1PeriphClockCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1315   .text.RCC_APB2PeriphClockCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1322   .text.RCC_APB2PeriphClockCmd:0000000000000000 RCC_APB2PeriphClockCmd
-     /tmp/ccynooWi.s:1359   .text.RCC_APB2PeriphClockCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1364   .text.RCC_AHB1PeriphResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1371   .text.RCC_AHB1PeriphResetCmd:0000000000000000 RCC_AHB1PeriphResetCmd
-     /tmp/ccynooWi.s:1408   .text.RCC_AHB1PeriphResetCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1413   .text.RCC_AHB2PeriphResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1420   .text.RCC_AHB2PeriphResetCmd:0000000000000000 RCC_AHB2PeriphResetCmd
-     /tmp/ccynooWi.s:1457   .text.RCC_AHB2PeriphResetCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1462   .text.RCC_AHB3PeriphResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1469   .text.RCC_AHB3PeriphResetCmd:0000000000000000 RCC_AHB3PeriphResetCmd
-     /tmp/ccynooWi.s:1506   .text.RCC_AHB3PeriphResetCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1511   .text.RCC_APB1PeriphResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1518   .text.RCC_APB1PeriphResetCmd:0000000000000000 RCC_APB1PeriphResetCmd
-     /tmp/ccynooWi.s:1555   .text.RCC_APB1PeriphResetCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1560   .text.RCC_APB2PeriphResetCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1567   .text.RCC_APB2PeriphResetCmd:0000000000000000 RCC_APB2PeriphResetCmd
-     /tmp/ccynooWi.s:1604   .text.RCC_APB2PeriphResetCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1609   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1616   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000000 RCC_AHB1PeriphClockLPModeCmd
-     /tmp/ccynooWi.s:1653   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1658   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1665   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000000 RCC_AHB2PeriphClockLPModeCmd
-     /tmp/ccynooWi.s:1702   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1707   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1714   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000000 RCC_AHB3PeriphClockLPModeCmd
-     /tmp/ccynooWi.s:1751   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1756   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000000 $t
-     /tmp/ccynooWi.s:1763   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000000 RCC_APB1PeriphClockLPModeCmd
-     /tmp/ccynooWi.s:1800   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1805   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000000 $t
-ARM GAS  /tmp/ccynooWi.s 			page 73
+     /tmp/cccoroyX.s:745    .text.RCC_GetClocksFreq:0000000000000000 RCC_GetClocksFreq
+     /tmp/cccoroyX.s:954    .text.RCC_GetClocksFreq:00000000000000a8 $d
+     /tmp/cccoroyX.s:962    .text.RCC_RTCCLKConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:969    .text.RCC_RTCCLKConfig:0000000000000000 RCC_RTCCLKConfig
+     /tmp/cccoroyX.s:1024   .text.RCC_RTCCLKConfig:0000000000000030 $d
+     /tmp/cccoroyX.s:1029   .text.RCC_RTCCLKCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1036   .text.RCC_RTCCLKCmd:0000000000000000 RCC_RTCCLKCmd
+     /tmp/cccoroyX.s:1054   .text.RCC_RTCCLKCmd:0000000000000008 $d
+     /tmp/cccoroyX.s:1059   .text.RCC_BackupResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1066   .text.RCC_BackupResetCmd:0000000000000000 RCC_BackupResetCmd
+     /tmp/cccoroyX.s:1084   .text.RCC_BackupResetCmd:0000000000000008 $d
+     /tmp/cccoroyX.s:1089   .text.RCC_I2SCLKConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:1096   .text.RCC_I2SCLKConfig:0000000000000000 RCC_I2SCLKConfig
+     /tmp/cccoroyX.s:1114   .text.RCC_I2SCLKConfig:0000000000000008 $d
+     /tmp/cccoroyX.s:1119   .text.RCC_AHB1PeriphClockCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1126   .text.RCC_AHB1PeriphClockCmd:0000000000000000 RCC_AHB1PeriphClockCmd
+     /tmp/cccoroyX.s:1163   .text.RCC_AHB1PeriphClockCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1168   .text.RCC_AHB2PeriphClockCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1175   .text.RCC_AHB2PeriphClockCmd:0000000000000000 RCC_AHB2PeriphClockCmd
+     /tmp/cccoroyX.s:1212   .text.RCC_AHB2PeriphClockCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1217   .text.RCC_AHB3PeriphClockCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1224   .text.RCC_AHB3PeriphClockCmd:0000000000000000 RCC_AHB3PeriphClockCmd
+     /tmp/cccoroyX.s:1261   .text.RCC_AHB3PeriphClockCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1266   .text.RCC_APB1PeriphClockCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1273   .text.RCC_APB1PeriphClockCmd:0000000000000000 RCC_APB1PeriphClockCmd
+     /tmp/cccoroyX.s:1310   .text.RCC_APB1PeriphClockCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1315   .text.RCC_APB2PeriphClockCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1322   .text.RCC_APB2PeriphClockCmd:0000000000000000 RCC_APB2PeriphClockCmd
+     /tmp/cccoroyX.s:1359   .text.RCC_APB2PeriphClockCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1364   .text.RCC_AHB1PeriphResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1371   .text.RCC_AHB1PeriphResetCmd:0000000000000000 RCC_AHB1PeriphResetCmd
+     /tmp/cccoroyX.s:1408   .text.RCC_AHB1PeriphResetCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1413   .text.RCC_AHB2PeriphResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1420   .text.RCC_AHB2PeriphResetCmd:0000000000000000 RCC_AHB2PeriphResetCmd
+     /tmp/cccoroyX.s:1457   .text.RCC_AHB2PeriphResetCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1462   .text.RCC_AHB3PeriphResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1469   .text.RCC_AHB3PeriphResetCmd:0000000000000000 RCC_AHB3PeriphResetCmd
+     /tmp/cccoroyX.s:1506   .text.RCC_AHB3PeriphResetCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1511   .text.RCC_APB1PeriphResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1518   .text.RCC_APB1PeriphResetCmd:0000000000000000 RCC_APB1PeriphResetCmd
+     /tmp/cccoroyX.s:1555   .text.RCC_APB1PeriphResetCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1560   .text.RCC_APB2PeriphResetCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1567   .text.RCC_APB2PeriphResetCmd:0000000000000000 RCC_APB2PeriphResetCmd
+     /tmp/cccoroyX.s:1604   .text.RCC_APB2PeriphResetCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1609   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1616   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000000 RCC_AHB1PeriphClockLPModeCmd
+     /tmp/cccoroyX.s:1653   .text.RCC_AHB1PeriphClockLPModeCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1658   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1665   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000000 RCC_AHB2PeriphClockLPModeCmd
+     /tmp/cccoroyX.s:1702   .text.RCC_AHB2PeriphClockLPModeCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1707   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1714   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000000 RCC_AHB3PeriphClockLPModeCmd
+     /tmp/cccoroyX.s:1751   .text.RCC_AHB3PeriphClockLPModeCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1756   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000000 $t
+     /tmp/cccoroyX.s:1763   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000000 RCC_APB1PeriphClockLPModeCmd
+     /tmp/cccoroyX.s:1800   .text.RCC_APB1PeriphClockLPModeCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1805   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000000 $t
+ARM GAS  /tmp/cccoroyX.s 			page 73
 
 
-     /tmp/ccynooWi.s:1812   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000000 RCC_APB2PeriphClockLPModeCmd
-     /tmp/ccynooWi.s:1849   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000018 $d
-     /tmp/ccynooWi.s:1854   .text.RCC_ITConfig:0000000000000000 $t
-     /tmp/ccynooWi.s:1861   .text.RCC_ITConfig:0000000000000000 RCC_ITConfig
-     /tmp/ccynooWi.s:1898   .text.RCC_ITConfig:0000000000000018 $d
-     /tmp/ccynooWi.s:1903   .text.RCC_GetFlagStatus:0000000000000000 $t
-     /tmp/ccynooWi.s:1910   .text.RCC_GetFlagStatus:0000000000000000 RCC_GetFlagStatus
-     /tmp/ccynooWi.s:1989   .text.RCC_GetFlagStatus:0000000000000030 $d
-     /tmp/ccynooWi.s:1994   .text.RCC_WaitForHSEStartUp:0000000000000000 $t
-     /tmp/ccynooWi.s:2001   .text.RCC_WaitForHSEStartUp:0000000000000000 RCC_WaitForHSEStartUp
-     /tmp/ccynooWi.s:2067   .text.RCC_ClearFlag:0000000000000000 $t
-     /tmp/ccynooWi.s:2074   .text.RCC_ClearFlag:0000000000000000 RCC_ClearFlag
-     /tmp/ccynooWi.s:2092   .text.RCC_ClearFlag:000000000000000c $d
-     /tmp/ccynooWi.s:2097   .text.RCC_GetITStatus:0000000000000000 $t
-     /tmp/ccynooWi.s:2104   .text.RCC_GetITStatus:0000000000000000 RCC_GetITStatus
-     /tmp/ccynooWi.s:2137   .text.RCC_GetITStatus:0000000000000010 $d
-     /tmp/ccynooWi.s:2142   .text.RCC_ClearITPendingBit:0000000000000000 $t
-     /tmp/ccynooWi.s:2149   .text.RCC_ClearITPendingBit:0000000000000000 RCC_ClearITPendingBit
-     /tmp/ccynooWi.s:2167   .text.RCC_ClearITPendingBit:0000000000000008 $d
-     /tmp/ccynooWi.s:2172   .data.APBAHBPrescTable:0000000000000000 $d
-     /tmp/ccynooWi.s:2176   .data.APBAHBPrescTable:0000000000000000 APBAHBPrescTable
+     /tmp/cccoroyX.s:1812   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000000 RCC_APB2PeriphClockLPModeCmd
+     /tmp/cccoroyX.s:1849   .text.RCC_APB2PeriphClockLPModeCmd:0000000000000018 $d
+     /tmp/cccoroyX.s:1854   .text.RCC_ITConfig:0000000000000000 $t
+     /tmp/cccoroyX.s:1861   .text.RCC_ITConfig:0000000000000000 RCC_ITConfig
+     /tmp/cccoroyX.s:1898   .text.RCC_ITConfig:0000000000000018 $d
+     /tmp/cccoroyX.s:1903   .text.RCC_GetFlagStatus:0000000000000000 $t
+     /tmp/cccoroyX.s:1910   .text.RCC_GetFlagStatus:0000000000000000 RCC_GetFlagStatus
+     /tmp/cccoroyX.s:1989   .text.RCC_GetFlagStatus:0000000000000030 $d
+     /tmp/cccoroyX.s:1994   .text.RCC_WaitForHSEStartUp:0000000000000000 $t
+     /tmp/cccoroyX.s:2001   .text.RCC_WaitForHSEStartUp:0000000000000000 RCC_WaitForHSEStartUp
+     /tmp/cccoroyX.s:2067   .text.RCC_ClearFlag:0000000000000000 $t
+     /tmp/cccoroyX.s:2074   .text.RCC_ClearFlag:0000000000000000 RCC_ClearFlag
+     /tmp/cccoroyX.s:2092   .text.RCC_ClearFlag:000000000000000c $d
+     /tmp/cccoroyX.s:2097   .text.RCC_GetITStatus:0000000000000000 $t
+     /tmp/cccoroyX.s:2104   .text.RCC_GetITStatus:0000000000000000 RCC_GetITStatus
+     /tmp/cccoroyX.s:2137   .text.RCC_GetITStatus:0000000000000010 $d
+     /tmp/cccoroyX.s:2142   .text.RCC_ClearITPendingBit:0000000000000000 $t
+     /tmp/cccoroyX.s:2149   .text.RCC_ClearITPendingBit:0000000000000000 RCC_ClearITPendingBit
+     /tmp/cccoroyX.s:2167   .text.RCC_ClearITPendingBit:0000000000000008 $d
+     /tmp/cccoroyX.s:2172   .data.APBAHBPrescTable:0000000000000000 $d
+     /tmp/cccoroyX.s:2176   .data.APBAHBPrescTable:0000000000000000 APBAHBPrescTable
 
 NO UNDEFINED SYMBOLS
