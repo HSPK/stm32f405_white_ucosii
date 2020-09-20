@@ -40,7 +40,7 @@
     .global  OSStartHighRdy
     .global  OSCtxSw
     .global  OSIntCtxSw
-    .global  OS_CPU_PendSVHandler
+    .global  PendSV_Handler
     
 #if (defined(__VFP_FP__) && !defined(__SOFTFP__))
     .global  OS_CPU_FP_Reg_Push
@@ -275,7 +275,7 @@ OSIntCtxSw:
 @********************************************************************************************************
 
 .thumb_func
-OS_CPU_PendSVHandler:
+PendSV_Handler:
     CPSID   I                                                   @ Prevent interruption during context switch
     MRS     R0, PSP                                             @ PSP is process stack pointer
     CBZ     R0, OS_CPU_PendSVHandler_nosave                     @ Skip register save the first time

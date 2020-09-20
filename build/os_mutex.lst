@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cczXVWP5.s 			page 1
+ARM GAS  /tmp/ccyWPqe2.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
   28:uCOSII/Source/os_mutex.c **** #endif
   29:uCOSII/Source/os_mutex.c **** 
   30:uCOSII/Source/os_mutex.c **** 
-ARM GAS  /tmp/cczXVWP5.s 			page 2
+ARM GAS  /tmp/ccyWPqe2.s 			page 2
 
 
   31:uCOSII/Source/os_mutex.c **** #if OS_MUTEX_EN > 0u
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
   85:uCOSII/Source/os_mutex.c **** #if OS_MUTEX_ACCEPT_EN > 0u
   86:uCOSII/Source/os_mutex.c **** BOOLEAN  OSMutexAccept (OS_EVENT  *pevent,
   87:uCOSII/Source/os_mutex.c ****                         INT8U     *perr)
-ARM GAS  /tmp/cczXVWP5.s 			page 3
+ARM GAS  /tmp/ccyWPqe2.s 			page 3
 
 
   88:uCOSII/Source/os_mutex.c **** {
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  142:uCOSII/Source/os_mutex.c **** *                                 CREATE A MUTUAL EXCLUSION SEMAPHORE
  143:uCOSII/Source/os_mutex.c **** *
  144:uCOSII/Source/os_mutex.c **** * Description: This function creates a mutual exclusion semaphore.
-ARM GAS  /tmp/cczXVWP5.s 			page 4
+ARM GAS  /tmp/ccyWPqe2.s 			page 4
 
 
  145:uCOSII/Source/os_mutex.c **** *
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  199:uCOSII/Source/os_mutex.c **** #endif
  200:uCOSII/Source/os_mutex.c **** 
  201:uCOSII/Source/os_mutex.c **** #if OS_ARG_CHK_EN > 0u
-ARM GAS  /tmp/cczXVWP5.s 			page 5
+ARM GAS  /tmp/ccyWPqe2.s 			page 5
 
 
  202:uCOSII/Source/os_mutex.c ****     if (prio != OS_PRIO_MUTEX_CEIL_DIS) {
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  256:uCOSII/Source/os_mutex.c **** *                            opt == OS_DEL_ALWAYS    Deletes the mutex even if tasks are waiting.
  257:uCOSII/Source/os_mutex.c **** *                                                    In this case, all the tasks pending will be re
  258:uCOSII/Source/os_mutex.c **** *
-ARM GAS  /tmp/cczXVWP5.s 			page 6
+ARM GAS  /tmp/ccyWPqe2.s 			page 6
 
 
  259:uCOSII/Source/os_mutex.c **** *              perr          is a pointer to an error code that can contain one of the following va
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  313:uCOSII/Source/os_mutex.c ****     }
  314:uCOSII/Source/os_mutex.c **** #endif
  315:uCOSII/Source/os_mutex.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_MUTEX) {      /* Validate event block type            
-ARM GAS  /tmp/cczXVWP5.s 			page 7
+ARM GAS  /tmp/ccyWPqe2.s 			page 7
 
 
  316:uCOSII/Source/os_mutex.c ****         *perr = OS_ERR_EVENT_TYPE;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  370:uCOSII/Source/os_mutex.c ****              pcp                   = (INT8U)(pevent->OSEventCnt >> 8u);
  371:uCOSII/Source/os_mutex.c ****              if (pcp != OS_PRIO_MUTEX_CEIL_DIS) {
  372:uCOSII/Source/os_mutex.c ****                  OSTCBPrioTbl[pcp] = (OS_TCB *)0;          /* Free up the PCP                      
-ARM GAS  /tmp/cczXVWP5.s 			page 8
+ARM GAS  /tmp/ccyWPqe2.s 			page 8
 
 
  373:uCOSII/Source/os_mutex.c ****              }
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  427:uCOSII/Source/os_mutex.c **** *                               OS_ERR_PEND_LOCKED If you called this function when the scheduler i
  428:uCOSII/Source/os_mutex.c **** *
  429:uCOSII/Source/os_mutex.c **** * Returns    : none
-ARM GAS  /tmp/cczXVWP5.s 			page 9
+ARM GAS  /tmp/ccyWPqe2.s 			page 9
 
 
  430:uCOSII/Source/os_mutex.c **** *
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  484:uCOSII/Source/os_mutex.c ****         pevent->OSEventCnt |= OSTCBCur->OSTCBPrio;         /*      Save priority of owning task    
  485:uCOSII/Source/os_mutex.c ****         pevent->OSEventPtr  = (void *)OSTCBCur;            /*      Point to owning task's OS_TCB   
  486:uCOSII/Source/os_mutex.c ****         if ((pcp != OS_PRIO_MUTEX_CEIL_DIS) &&
-ARM GAS  /tmp/cczXVWP5.s 			page 10
+ARM GAS  /tmp/ccyWPqe2.s 			page 10
 
 
  487:uCOSII/Source/os_mutex.c ****             (OSTCBCur->OSTCBPrio <= pcp)) {                /*      PCP 'must' have a SMALLER prio .
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  541:uCOSII/Source/os_mutex.c ****             }
  542:uCOSII/Source/os_mutex.c ****         }
  543:uCOSII/Source/os_mutex.c ****     }
-ARM GAS  /tmp/cczXVWP5.s 			page 11
+ARM GAS  /tmp/ccyWPqe2.s 			page 11
 
 
  544:uCOSII/Source/os_mutex.c ****     OSTCBCur->OSTCBStat     |= OS_STAT_MUTEX;         /* Mutex not available, pend current task    
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  598:uCOSII/Source/os_mutex.c **** 
  599:uCOSII/Source/os_mutex.c **** INT8U  OSMutexPost (OS_EVENT *pevent)
  600:uCOSII/Source/os_mutex.c **** {
-ARM GAS  /tmp/cczXVWP5.s 			page 12
+ARM GAS  /tmp/ccyWPqe2.s 			page 12
 
 
  601:uCOSII/Source/os_mutex.c ****     INT8U      pcp;                                   /* Priority ceiling priority                 
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  655:uCOSII/Source/os_mutex.c **** /*$PAGE*/
  656:uCOSII/Source/os_mutex.c **** /*
  657:uCOSII/Source/os_mutex.c **** ***************************************************************************************************
-ARM GAS  /tmp/cczXVWP5.s 			page 13
+ARM GAS  /tmp/ccyWPqe2.s 			page 13
 
 
  658:uCOSII/Source/os_mutex.c **** *                                 QUERY A MUTUAL EXCLUSION SEMAPHORE
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  712:uCOSII/Source/os_mutex.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
  713:uCOSII/Source/os_mutex.c ****         *pdest++ = *psrc++;
  714:uCOSII/Source/os_mutex.c ****     }
-ARM GAS  /tmp/cczXVWP5.s 			page 14
+ARM GAS  /tmp/ccyWPqe2.s 			page 14
 
 
  715:uCOSII/Source/os_mutex.c ****     OS_EXIT_CRITICAL();
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
   54              		.loc 1 743 5 is_stmt 1 view .LVU8
   55              		.loc 1 743 8 is_stmt 0 view .LVU9
   56 0014 33B9     		cbnz	r3, .L2
-ARM GAS  /tmp/cczXVWP5.s 			page 15
+ARM GAS  /tmp/ccyWPqe2.s 			page 15
 
 
  744:uCOSII/Source/os_mutex.c ****         OSRdyGrp &= (OS_PRIO)~ptcb->OSTCBBitY;
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
   98 004a DBB2     		uxtb	r3, r3
   99              		.loc 1 756 29 view .LVU31
  100 004c 80F83930 		strb	r3, [r0, #57]
-ARM GAS  /tmp/cczXVWP5.s 			page 16
+ARM GAS  /tmp/ccyWPqe2.s 			page 16
 
 
  757:uCOSII/Source/os_mutex.c ****     OSRdyGrp               |= ptcb->OSTCBBitY;             /* Make task ready at original priority 
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  151 0000 70B5     		push	{r4, r5, r6, lr}
  152              	.LCFI2:
  153              		.cfi_def_cfa_offset 16
-ARM GAS  /tmp/cczXVWP5.s 			page 17
+ARM GAS  /tmp/ccyWPqe2.s 			page 17
 
 
  154              		.cfi_offset 4, -16
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  192 001c 0223     		movs	r3, #2
  193 001e 0B70     		strb	r3, [r1]
  115:uCOSII/Source/os_mutex.c ****     }
-ARM GAS  /tmp/cczXVWP5.s 			page 18
+ARM GAS  /tmp/ccyWPqe2.s 			page 18
 
 
  194              		.loc 1 115 9 is_stmt 1 view .LVU57
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  231              		.loc 1 121 9 is_stmt 1 view .LVU74
  121:uCOSII/Source/os_mutex.c ****         pevent->OSEventPtr  = (void *)OSTCBCur;        /*      Link TCB of task owning Mutex       
  232              		.loc 1 121 39 is_stmt 0 view .LVU75
-ARM GAS  /tmp/cczXVWP5.s 			page 19
+ARM GAS  /tmp/ccyWPqe2.s 			page 19
 
 
  233 0042 0D4A     		ldr	r2, .L16+4
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  271              		.loc 1 126 13 view .LVU91
  126:uCOSII/Source/os_mutex.c ****         } else {
  272              		.loc 1 126 19 is_stmt 0 view .LVU92
-ARM GAS  /tmp/cczXVWP5.s 			page 20
+ARM GAS  /tmp/ccyWPqe2.s 			page 20
 
 
  273 006c 7823     		movs	r3, #120
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  213:uCOSII/Source/os_mutex.c ****     if (prio != OS_PRIO_MUTEX_CEIL_DIS) {
  322              		.loc 1 213 5 is_stmt 1 view .LVU100
  323 000c FFF7FEFF 		bl	OS_CPU_SR_Save
-ARM GAS  /tmp/cczXVWP5.s 			page 21
+ARM GAS  /tmp/ccyWPqe2.s 			page 21
 
 
  324              	.LVL17:
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  360              		.loc 1 234 5 view .LVU118
  234:uCOSII/Source/os_mutex.c ****     pevent->OSEventCnt  = (INT16U)((INT16U)prio << 8u) | OS_MUTEX_AVAILABLE; /* Resource is avail. 
  361              		.loc 1 234 25 is_stmt 0 view .LVU119
-ARM GAS  /tmp/cczXVWP5.s 			page 22
+ARM GAS  /tmp/ccyWPqe2.s 			page 22
 
 
  362 0034 0423     		movs	r3, #4
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  400 005a F9E7     		b	.L18
  401              	.LVL23:
  402              	.L27:
-ARM GAS  /tmp/cczXVWP5.s 			page 23
+ARM GAS  /tmp/ccyWPqe2.s 			page 23
 
 
  216:uCOSII/Source/os_mutex.c ****            *perr = OS_ERR_PRIO_EXIST;                      /* ... ceiling priority                 
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  441 0080 00000000 		.word	OSIntNesting
  442 0084 00000000 		.word	OSTCBPrioTbl
  443 0088 00000000 		.word	OSEventFreeList
-ARM GAS  /tmp/cczXVWP5.s 			page 24
+ARM GAS  /tmp/ccyWPqe2.s 			page 24
 
 
  444 008c 00000000 		.word	.LC0
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  488              		.loc 1 316 9 is_stmt 1 view .LVU163
  316:uCOSII/Source/os_mutex.c ****         return (pevent);
  489              		.loc 1 316 15 is_stmt 0 view .LVU164
-ARM GAS  /tmp/cczXVWP5.s 			page 25
+ARM GAS  /tmp/ccyWPqe2.s 			page 25
 
 
  490 000e 0123     		movs	r3, #1
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  325:uCOSII/Source/os_mutex.c ****     } else {
  528              		.loc 1 325 23 view .LVU181
  529 0034 4FF00108 		mov	r8, #1
-ARM GAS  /tmp/cczXVWP5.s 			page 26
+ARM GAS  /tmp/ccyWPqe2.s 			page 26
 
 
  530              	.L35:
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  568              		.loc 1 348 18 view .LVU197
  348:uCOSII/Source/os_mutex.c ****                  pevent_return         = pevent;
  569              		.loc 1 348 40 is_stmt 0 view .LVU198
-ARM GAS  /tmp/cczXVWP5.s 			page 27
+ARM GAS  /tmp/ccyWPqe2.s 			page 27
 
 
  570 0058 4923     		movs	r3, #73
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  608 007a 1A68     		ldr	r2, [r3]
  609 007c 6260     		str	r2, [r4, #4]
  341:uCOSII/Source/os_mutex.c ****                  OSEventFreeList       = pevent;
-ARM GAS  /tmp/cczXVWP5.s 			page 28
+ARM GAS  /tmp/ccyWPqe2.s 			page 28
 
 
  610              		.loc 1 341 18 is_stmt 1 view .LVU215
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  357:uCOSII/Source/os_mutex.c ****                  if (ptcb != (OS_TCB *)0) {                /* See if any task owns the mutex       
  647              		.loc 1 357 18 is_stmt 1 view .LVU233
  357:uCOSII/Source/os_mutex.c ****                  if (ptcb != (OS_TCB *)0) {                /* See if any task owns the mutex       
-ARM GAS  /tmp/cczXVWP5.s 			page 29
+ARM GAS  /tmp/ccyWPqe2.s 			page 29
 
 
  648              		.loc 1 357 23 is_stmt 0 view .LVU234
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  686              		.loc 1 370 52 is_stmt 0 view .LVU250
  687 00c0 2389     		ldrh	r3, [r4, #8]
  370:uCOSII/Source/os_mutex.c ****              if (pcp != OS_PRIO_MUTEX_CEIL_DIS) {
-ARM GAS  /tmp/cczXVWP5.s 			page 30
+ARM GAS  /tmp/ccyWPqe2.s 			page 30
 
 
  688              		.loc 1 370 36 view .LVU251
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  725 00e4 B8F1010F 		cmp	r8, #1
  726 00e8 03D0     		beq	.L49
  727              	.L45:
-ARM GAS  /tmp/cczXVWP5.s 			page 31
+ARM GAS  /tmp/ccyWPqe2.s 			page 31
 
 
  382:uCOSII/Source/os_mutex.c ****              pevent_return = (OS_EVENT *)0;                /* Mutex has been deleted               
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  774              	.LCFI5:
  775              		.cfi_def_cfa_offset 24
  776              		.cfi_offset 4, -24
-ARM GAS  /tmp/cczXVWP5.s 			page 32
+ARM GAS  /tmp/ccyWPqe2.s 			page 32
 
 
  777              		.cfi_offset 5, -20
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  814 001a 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  470:uCOSII/Source/os_mutex.c ****         *perr = OS_ERR_PEND_ISR;                           /* ... can't PEND from an ISR           
  815              		.loc 1 470 8 view .LVU296
-ARM GAS  /tmp/cczXVWP5.s 			page 33
+ARM GAS  /tmp/ccyWPqe2.s 			page 33
 
 
  816 001c 2BB9     		cbnz	r3, .L72
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  482:uCOSII/Source/os_mutex.c ****         pevent->OSEventCnt &= OS_MUTEX_KEEP_UPPER_8;       /* Yes, Acquire the resource            
  853              		.loc 1 482 8 view .LVU314
  854 003c FF29     		cmp	r1, #255
-ARM GAS  /tmp/cczXVWP5.s 			page 34
+ARM GAS  /tmp/ccyWPqe2.s 			page 34
 
 
  855 003e 7BD0     		beq	.L73
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  892 0062 93F839C0 		ldrb	ip, [r3, #57]	@ zero_extendqisi2
  502:uCOSII/Source/os_mutex.c ****                     OSRdyTbl[y] &= (OS_PRIO)~ptcb->OSTCBBitX;     /*     Yes, Remove owner from Rdy
  893              		.loc 1 502 20 view .LVU332
-ARM GAS  /tmp/cczXVWP5.s 			page 35
+ARM GAS  /tmp/ccyWPqe2.s 			page 35
 
 
  894 0066 11EA0C0E 		ands	lr, r1, ip
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  931 00a2 83F83780 		strb	r8, [r3, #55]
  527:uCOSII/Source/os_mutex.c ****                 ptcb->OSTCBBitX = (OS_PRIO)(1uL << ptcb->OSTCBX);
  932              		.loc 1 527 17 is_stmt 1 view .LVU350
-ARM GAS  /tmp/cczXVWP5.s 			page 36
+ARM GAS  /tmp/ccyWPqe2.s 			page 36
 
 
  527:uCOSII/Source/os_mutex.c ****                 ptcb->OSTCBBitX = (OS_PRIO)(1uL << ptcb->OSTCBX);
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  968              		.loc 1 537 59 view .LVU369
  969 00d8 6144     		add	r1, r1, ip
  970              	.LVL76:
-ARM GAS  /tmp/cczXVWP5.s 			page 37
+ARM GAS  /tmp/ccyWPqe2.s 			page 37
 
 
  537:uCOSII/Source/os_mutex.c ****                     }
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  550:uCOSII/Source/os_mutex.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
  1011              		.loc 1 550 5 view .LVU384
  1012 0116 FFF7FEFF 		bl	OS_CPU_SR_Save
-ARM GAS  /tmp/cczXVWP5.s 			page 38
+ARM GAS  /tmp/ccyWPqe2.s 			page 38
 
 
  1013              	.LVL83:
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  485:uCOSII/Source/os_mutex.c ****         if ((pcp != OS_PRIO_MUTEX_CEIL_DIS) &&
  1053              		.loc 1 485 9 is_stmt 1 view .LVU399
  485:uCOSII/Source/os_mutex.c ****         if ((pcp != OS_PRIO_MUTEX_CEIL_DIS) &&
-ARM GAS  /tmp/cczXVWP5.s 			page 39
+ARM GAS  /tmp/ccyWPqe2.s 			page 39
 
 
  1054              		.loc 1 485 29 is_stmt 0 view .LVU400
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1093 0170 D3F81C80 		ldr	r8, [r3, #28]
  1094              	.LVL93:
  510:uCOSII/Source/os_mutex.c ****                         y = ptcb->OSTCBY;
-ARM GAS  /tmp/cczXVWP5.s 			page 40
+ARM GAS  /tmp/ccyWPqe2.s 			page 40
 
 
  1095              		.loc 1 510 21 is_stmt 1 view .LVU416
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  531:uCOSII/Source/os_mutex.c ****                     OSRdyTbl[ptcb->OSTCBY] |= ptcb->OSTCBBitX;
  1135              		.loc 1 531 44 view .LVU431
  1136 01aa 40EA0E00 		orr	r0, r0, lr
-ARM GAS  /tmp/cczXVWP5.s 			page 41
+ARM GAS  /tmp/ccyWPqe2.s 			page 41
 
 
  1137 01ae 88F80000 		strb	r0, [r8]
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1175              	.L66:
  557:uCOSII/Source/os_mutex.c ****              break;
  1176              		.loc 1 557 14 view .LVU448
-ARM GAS  /tmp/cczXVWP5.s 			page 42
+ARM GAS  /tmp/ccyWPqe2.s 			page 42
 
 
  557:uCOSII/Source/os_mutex.c ****              break;
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1224              		.loc 1 609 22 is_stmt 0 view .LVU457
  1225 0004 2D4B     		ldr	r3, .L92
  1226 0006 1E78     		ldrb	r6, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/cczXVWP5.s 			page 43
+ARM GAS  /tmp/ccyWPqe2.s 			page 43
 
 
  609:uCOSII/Source/os_mutex.c ****         return (OS_ERR_POST_ISR);                     /* ... can't POST mutex from an ISR          
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1265 002a 6368     		ldr	r3, [r4, #4]
  623:uCOSII/Source/os_mutex.c ****         OS_EXIT_CRITICAL();
  1266              		.loc 1 623 18 view .LVU474
-ARM GAS  /tmp/cczXVWP5.s 			page 44
+ARM GAS  /tmp/ccyWPqe2.s 			page 44
 
 
  1267 002c 244A     		ldr	r2, .L92+4
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1306 005a 2389     		ldrh	r3, [r4, #8]
  1307 005c 03F47F43 		and	r3, r3, #65280
  637:uCOSII/Source/os_mutex.c ****         pevent->OSEventPtr  = OSTCBPrioTbl[prio];     /*      Link to new mutex owner's OS_TCB     
-ARM GAS  /tmp/cczXVWP5.s 			page 45
+ARM GAS  /tmp/ccyWPqe2.s 			page 45
 
 
  1308              		.loc 1 637 9 is_stmt 1 view .LVU490
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  625:uCOSII/Source/os_mutex.c ****     }
  1347              		.loc 1 625 9 view .LVU506
  625:uCOSII/Source/os_mutex.c ****     }
-ARM GAS  /tmp/cczXVWP5.s 			page 46
+ARM GAS  /tmp/ccyWPqe2.s 			page 46
 
 
  1348              		.loc 1 625 16 is_stmt 0 view .LVU507
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1388              		.loc 1 652 23 view .LVU521
  653:uCOSII/Source/os_mutex.c **** }
  1389              		.loc 1 653 5 view .LVU522
-ARM GAS  /tmp/cczXVWP5.s 			page 47
+ARM GAS  /tmp/ccyWPqe2.s 			page 47
 
 
  653:uCOSII/Source/os_mutex.c **** }
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1436 0002 164B     		ldr	r3, .L105
  1437 0004 1E78     		ldrb	r6, [r3]	@ zero_extendqisi2
  687:uCOSII/Source/os_mutex.c ****         return (OS_ERR_QUERY_ISR);                         /* ... can't QUERY mutex from an ISR    
-ARM GAS  /tmp/cczXVWP5.s 			page 48
+ARM GAS  /tmp/ccyWPqe2.s 			page 48
 
 
  1438              		.loc 1 687 8 view .LVU533
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1476 0028 08D0     		beq	.L104
  707:uCOSII/Source/os_mutex.c ****     }
  1477              		.loc 1 707 9 is_stmt 1 view .LVU550
-ARM GAS  /tmp/cczXVWP5.s 			page 49
+ARM GAS  /tmp/ccyWPqe2.s 			page 49
 
 
  707:uCOSII/Source/os_mutex.c ****     }
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  712:uCOSII/Source/os_mutex.c ****         *pdest++ = *psrc++;
  1516              		.loc 1 712 41 is_stmt 1 discriminator 3 view .LVU567
  712:uCOSII/Source/os_mutex.c ****         *pdest++ = *psrc++;
-ARM GAS  /tmp/cczXVWP5.s 			page 50
+ARM GAS  /tmp/ccyWPqe2.s 			page 50
 
 
  1517              		.loc 1 712 42 is_stmt 0 discriminator 3 view .LVU568
@@ -2982,33 +2982,33 @@ ARM GAS  /tmp/cczXVWP5.s 			page 1
  1548              	.Letext0:
  1549              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
  1550              		.file 3 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/cczXVWP5.s 			page 51
+ARM GAS  /tmp/ccyWPqe2.s 			page 51
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_mutex.c
-     /tmp/cczXVWP5.s:18     .text.OSMutex_RdyAtPrio:0000000000000000 $t
-     /tmp/cczXVWP5.s:25     .text.OSMutex_RdyAtPrio:0000000000000000 OSMutex_RdyAtPrio
-     /tmp/cczXVWP5.s:128    .text.OSMutex_RdyAtPrio:000000000000006c $d
-     /tmp/cczXVWP5.s:136    .text.OSMutexAccept:0000000000000000 $t
-     /tmp/cczXVWP5.s:143    .text.OSMutexAccept:0000000000000000 OSMutexAccept
-     /tmp/cczXVWP5.s:279    .text.OSMutexAccept:0000000000000074 $d
-     /tmp/cczXVWP5.s:285    .rodata.OSMutexCreate.str1.4:0000000000000000 $d
-     /tmp/cczXVWP5.s:289    .text.OSMutexCreate:0000000000000000 $t
-     /tmp/cczXVWP5.s:296    .text.OSMutexCreate:0000000000000000 OSMutexCreate
-     /tmp/cczXVWP5.s:441    .text.OSMutexCreate:0000000000000080 $d
-     /tmp/cczXVWP5.s:449    .text.OSMutexDel:0000000000000000 $t
-     /tmp/cczXVWP5.s:456    .text.OSMutexDel:0000000000000000 OSMutexDel
-     /tmp/cczXVWP5.s:750    .text.OSMutexDel:00000000000000f8 $d
-     /tmp/cczXVWP5.s:758    .text.OSMutexPend:0000000000000000 $t
-     /tmp/cczXVWP5.s:765    .text.OSMutexPend:0000000000000000 OSMutexPend
-     /tmp/cczXVWP5.s:1185   .text.OSMutexPend:00000000000001e8 $d
-     /tmp/cczXVWP5.s:1195   .text.OSMutexPost:0000000000000000 $t
-     /tmp/cczXVWP5.s:1202   .text.OSMutexPost:0000000000000000 OSMutexPost
-     /tmp/cczXVWP5.s:1400   .text.OSMutexPost:00000000000000bc $d
-     /tmp/cczXVWP5.s:1407   .text.OSMutexQuery:0000000000000000 $t
-     /tmp/cczXVWP5.s:1414   .text.OSMutexQuery:0000000000000000 OSMutexQuery
-     /tmp/cczXVWP5.s:1543   .text.OSMutexQuery:000000000000005c $d
+     /tmp/ccyWPqe2.s:18     .text.OSMutex_RdyAtPrio:0000000000000000 $t
+     /tmp/ccyWPqe2.s:25     .text.OSMutex_RdyAtPrio:0000000000000000 OSMutex_RdyAtPrio
+     /tmp/ccyWPqe2.s:128    .text.OSMutex_RdyAtPrio:000000000000006c $d
+     /tmp/ccyWPqe2.s:136    .text.OSMutexAccept:0000000000000000 $t
+     /tmp/ccyWPqe2.s:143    .text.OSMutexAccept:0000000000000000 OSMutexAccept
+     /tmp/ccyWPqe2.s:279    .text.OSMutexAccept:0000000000000074 $d
+     /tmp/ccyWPqe2.s:285    .rodata.OSMutexCreate.str1.4:0000000000000000 $d
+     /tmp/ccyWPqe2.s:289    .text.OSMutexCreate:0000000000000000 $t
+     /tmp/ccyWPqe2.s:296    .text.OSMutexCreate:0000000000000000 OSMutexCreate
+     /tmp/ccyWPqe2.s:441    .text.OSMutexCreate:0000000000000080 $d
+     /tmp/ccyWPqe2.s:449    .text.OSMutexDel:0000000000000000 $t
+     /tmp/ccyWPqe2.s:456    .text.OSMutexDel:0000000000000000 OSMutexDel
+     /tmp/ccyWPqe2.s:750    .text.OSMutexDel:00000000000000f8 $d
+     /tmp/ccyWPqe2.s:758    .text.OSMutexPend:0000000000000000 $t
+     /tmp/ccyWPqe2.s:765    .text.OSMutexPend:0000000000000000 OSMutexPend
+     /tmp/ccyWPqe2.s:1185   .text.OSMutexPend:00000000000001e8 $d
+     /tmp/ccyWPqe2.s:1195   .text.OSMutexPost:0000000000000000 $t
+     /tmp/ccyWPqe2.s:1202   .text.OSMutexPost:0000000000000000 OSMutexPost
+     /tmp/ccyWPqe2.s:1400   .text.OSMutexPost:00000000000000bc $d
+     /tmp/ccyWPqe2.s:1407   .text.OSMutexQuery:0000000000000000 $t
+     /tmp/ccyWPqe2.s:1414   .text.OSMutexQuery:0000000000000000 OSMutexQuery
+     /tmp/ccyWPqe2.s:1543   .text.OSMutexQuery:000000000000005c $d
 
 UNDEFINED SYMBOLS
 OSRdyTbl

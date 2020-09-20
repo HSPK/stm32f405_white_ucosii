@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc5CWVKc.s 			page 1
+ARM GAS  /tmp/ccMi8zoc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
   27:uCOSII/Source/os_q.c **** #include <ucos_ii.h>
   28:uCOSII/Source/os_q.c **** #endif
   29:uCOSII/Source/os_q.c **** 
-ARM GAS  /tmp/cc5CWVKc.s 			page 2
+ARM GAS  /tmp/ccMi8zoc.s 			page 2
 
 
   30:uCOSII/Source/os_q.c **** #if (OS_Q_EN > 0u) && (OS_MAX_QS > 0u)
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
   69:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
   45              		.loc 1 69 5 view .LVU4
   46              	.LVL1:
-ARM GAS  /tmp/cc5CWVKc.s 			page 3
+ARM GAS  /tmp/ccMi8zoc.s 			page 3
 
 
   70:uCOSII/Source/os_q.c **** #endif
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
   76              	.LVL5:
   95:uCOSII/Source/os_q.c ****         pq->OSQEntries--;                        /* Update the number of entries in the queue      
   77              		.loc 1 95 9 is_stmt 1 view .LVU19
-ARM GAS  /tmp/cc5CWVKc.s 			page 4
+ARM GAS  /tmp/ccMi8zoc.s 			page 4
 
 
   78              		.loc 1 95 23 is_stmt 0 view .LVU20
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
   97:uCOSII/Source/os_q.c ****         }
  117              		.loc 1 97 13 is_stmt 1 view .LVU35
   97:uCOSII/Source/os_q.c ****         }
-ARM GAS  /tmp/cc5CWVKc.s 			page 5
+ARM GAS  /tmp/ccMi8zoc.s 			page 5
 
 
  118              		.loc 1 97 28 is_stmt 0 view .LVU36
@@ -298,7 +298,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  118:uCOSII/Source/os_q.c **** *                            void *MessageStorage[size]
  119:uCOSII/Source/os_q.c **** *
  120:uCOSII/Source/os_q.c **** *              size          is the number of elements in the storage area
-ARM GAS  /tmp/cc5CWVKc.s 			page 6
+ARM GAS  /tmp/ccMi8zoc.s 			page 6
 
 
  121:uCOSII/Source/os_q.c **** *
@@ -358,7 +358,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  148:uCOSII/Source/os_q.c ****     }
  149:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
  183              		.loc 1 149 5 is_stmt 1 view .LVU52
-ARM GAS  /tmp/cc5CWVKc.s 			page 7
+ARM GAS  /tmp/ccMi8zoc.s 			page 7
 
 
  184 000e FFF7FEFF 		bl	OS_CPU_SR_Save
@@ -418,7 +418,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  227              	.LVL22:
  228              		.loc 1 160 31 view .LVU75
  161:uCOSII/Source/os_q.c ****             pq->OSQStart           = start;               /*      Initialize the queue             
-ARM GAS  /tmp/cc5CWVKc.s 			page 8
+ARM GAS  /tmp/ccMi8zoc.s 			page 8
 
 
  229              		.loc 1 161 13 view .LVU76
@@ -478,7 +478,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  176:uCOSII/Source/os_q.c ****             OSEventFreeList    = pevent;
  177:uCOSII/Source/os_q.c ****             OS_EXIT_CRITICAL();
  178:uCOSII/Source/os_q.c ****             pevent = (OS_EVENT *)0;
-ARM GAS  /tmp/cc5CWVKc.s 			page 9
+ARM GAS  /tmp/ccMi8zoc.s 			page 9
 
 
  179:uCOSII/Source/os_q.c ****         }
@@ -538,7 +538,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  311              		.fpu fpv4-sp-d16
  313              	OSQDel:
  314              	.LVL27:
-ARM GAS  /tmp/cc5CWVKc.s 			page 10
+ARM GAS  /tmp/ccMi8zoc.s 			page 10
 
 
  315              	.LFB2:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  320              		.loc 1 231 1 is_stmt 0 view .LVU109
  321 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
  322              	.LCFI2:
-ARM GAS  /tmp/cc5CWVKc.s 			page 11
+ARM GAS  /tmp/ccMi8zoc.s 			page 11
 
 
  323              		.cfi_def_cfa_offset 24
@@ -658,7 +658,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  259:uCOSII/Source/os_q.c ****         *perr = OS_ERR_DEL_ISR;                            /* ... can't DELETE from an ISR         
  260:uCOSII/Source/os_q.c ****         return (pevent);
  261:uCOSII/Source/os_q.c ****     }
-ARM GAS  /tmp/cc5CWVKc.s 			page 12
+ARM GAS  /tmp/ccMi8zoc.s 			page 12
 
 
  262:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
@@ -718,7 +718,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  316:uCOSII/Source/os_q.c ****              pevent_return          = pevent;
  317:uCOSII/Source/os_q.c ****              break;
  318:uCOSII/Source/os_q.c ****     }
-ARM GAS  /tmp/cc5CWVKc.s 			page 13
+ARM GAS  /tmp/ccMi8zoc.s 			page 13
 
 
  319:uCOSII/Source/os_q.c ****     return (pevent_return);
@@ -778,7 +778,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  387              		.loc 1 268 5 is_stmt 1 view .LVU136
  388 0038 46B1     		cbz	r6, .L23
  389 003a 012E     		cmp	r6, #1
-ARM GAS  /tmp/cc5CWVKc.s 			page 14
+ARM GAS  /tmp/ccMi8zoc.s 			page 14
 
 
  390 003c 2AD0     		beq	.L24
@@ -838,7 +838,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  427              		.loc 1 287 18 is_stmt 1 view .LVU153
  428              	.LVL41:
  287:uCOSII/Source/os_q.c ****              }
-ARM GAS  /tmp/cc5CWVKc.s 			page 15
+ARM GAS  /tmp/ccMi8zoc.s 			page 15
 
 
  429              		.loc 1 287 41 is_stmt 0 view .LVU154
@@ -898,7 +898,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  466 007a 1C60     		str	r4, [r3]
  281:uCOSII/Source/os_q.c ****                  *perr                  = OS_ERR_NONE;
  467              		.loc 1 281 18 is_stmt 1 view .LVU172
-ARM GAS  /tmp/cc5CWVKc.s 			page 16
+ARM GAS  /tmp/ccMi8zoc.s 			page 16
 
 
  468 007c 3846     		mov	r0, r7
@@ -958,7 +958,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  299:uCOSII/Source/os_q.c ****              OSQFreeList            = pq;
  507              		.loc 1 299 14 is_stmt 1 view .LVU188
  299:uCOSII/Source/os_q.c ****              OSQFreeList            = pq;
-ARM GAS  /tmp/cc5CWVKc.s 			page 17
+ARM GAS  /tmp/ccMi8zoc.s 			page 17
 
 
  508              		.loc 1 299 37 is_stmt 0 view .LVU189
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  545 00c2 0024     		movs	r4, #0
  546              	.LVL54:
  309:uCOSII/Source/os_q.c ****              pevent_return          = (OS_EVENT *)0;       /* Queue has been deleted               
-ARM GAS  /tmp/cc5CWVKc.s 			page 18
+ARM GAS  /tmp/ccMi8zoc.s 			page 18
 
 
  547              		.loc 1 309 37 view .LVU207
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  336:uCOSII/Source/os_q.c **** * WARNING     : You should use this function with great care because, when to flush the queue, you 
  337:uCOSII/Source/os_q.c **** *               the references to what the queue entries are pointing to and thus, you could cause
  338:uCOSII/Source/os_q.c **** *               'memory leaks'.  In other words, the data you are pointing to that's being referenc
-ARM GAS  /tmp/cc5CWVKc.s 			page 19
+ARM GAS  /tmp/ccMi8zoc.s 			page 19
 
 
  339:uCOSII/Source/os_q.c **** *               by the queue entries should, most likely, need to be de-allocated (i.e. freed).
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  611              		.loc 1 364 20 is_stmt 0 view .LVU225
  612 000e 1A61     		str	r2, [r3, #16]
  365:uCOSII/Source/os_q.c ****     pq->OSQEntries = 0u;
-ARM GAS  /tmp/cc5CWVKc.s 			page 20
+ARM GAS  /tmp/ccMi8zoc.s 			page 20
 
 
  613              		.loc 1 365 5 is_stmt 1 view .LVU226
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  394:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_ISR     If you called this function from an ISR and the re
  395:uCOSII/Source/os_q.c **** *                                                would lead to a suspension.
  396:uCOSII/Source/os_q.c **** *                            OS_ERR_PEND_LOCKED  If you called this function with the scheduler is 
-ARM GAS  /tmp/cc5CWVKc.s 			page 21
+ARM GAS  /tmp/ccMi8zoc.s 			page 21
 
 
  397:uCOSII/Source/os_q.c **** *
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  432:uCOSII/Source/os_q.c **** #endif
  433:uCOSII/Source/os_q.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_Q) {/* Validate event block type                      
  660              		.loc 1 433 5 view .LVU238
-ARM GAS  /tmp/cc5CWVKc.s 			page 22
+ARM GAS  /tmp/ccMi8zoc.s 			page 22
 
 
  661              		.loc 1 433 15 is_stmt 0 view .LVU239
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  700              		.loc 1 448 27 view .LVU257
  701 002a 011D     		adds	r1, r0, #4
  702 002c 1961     		str	r1, [r3, #16]
-ARM GAS  /tmp/cc5CWVKc.s 			page 23
+ARM GAS  /tmp/ccMi8zoc.s 			page 23
 
 
  703              		.loc 1 448 14 view .LVU258
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  462:uCOSII/Source/os_q.c ****     OS_Sched();                                  /* Find next highest priority task ready to run   
  463:uCOSII/Source/os_q.c ****     OS_ENTER_CRITICAL();
  464:uCOSII/Source/os_q.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
-ARM GAS  /tmp/cc5CWVKc.s 			page 24
+ARM GAS  /tmp/ccMi8zoc.s 			page 24
 
 
  465:uCOSII/Source/os_q.c ****         case OS_STAT_PEND_OK:                         /* Extract message from TCB (Put there by QPo
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  759              		.loc 1 443 16 is_stmt 0 view .LVU282
  760 005e 0024     		movs	r4, #0
  761 0060 F4E7     		b	.L37
-ARM GAS  /tmp/cc5CWVKc.s 			page 25
+ARM GAS  /tmp/ccMi8zoc.s 			page 25
 
 
  762              	.LVL75:
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  801 0090 FFF7FEFF 		bl	OS_Sched
  802              	.LVL82:
  463:uCOSII/Source/os_q.c ****     switch (OSTCBCur->OSTCBStatPend) {                /* See if we timed-out or aborted            
-ARM GAS  /tmp/cc5CWVKc.s 			page 26
+ARM GAS  /tmp/ccMi8zoc.s 			page 26
 
 
  803              		.loc 1 463 5 view .LVU298
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  841              		.loc 1 467 19 is_stmt 0 view .LVU314
  842 00b8 0023     		movs	r3, #0
  843 00ba 2B70     		strb	r3, [r5]
-ARM GAS  /tmp/cc5CWVKc.s 			page 27
+ARM GAS  /tmp/ccMi8zoc.s 			page 27
 
 
  468:uCOSII/Source/os_q.c **** 
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  879 00d8 0E23     		movs	r3, #14
  880 00da 2B70     		strb	r3, [r5]
  473:uCOSII/Source/os_q.c **** 
-ARM GAS  /tmp/cc5CWVKc.s 			page 28
+ARM GAS  /tmp/ccMi8zoc.s 			page 28
 
 
  881              		.loc 1 473 14 is_stmt 1 view .LVU334
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  520:uCOSII/Source/os_q.c **** * Returns    : == 0          if no tasks were waiting on the queue, or upon error.
  521:uCOSII/Source/os_q.c **** *              >  0          if one or more tasks waiting on the queue are now readied and informed
  522:uCOSII/Source/os_q.c **** ***************************************************************************************************
-ARM GAS  /tmp/cc5CWVKc.s 			page 29
+ARM GAS  /tmp/ccMi8zoc.s 			page 29
 
 
  523:uCOSII/Source/os_q.c **** */
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  932              		.loc 1 551 15 is_stmt 0 view .LVU345
  933 000c 0123     		movs	r3, #1
  934 000e 1370     		strb	r3, [r2]
-ARM GAS  /tmp/cc5CWVKc.s 			page 30
+ARM GAS  /tmp/ccMi8zoc.s 			page 30
 
 
  552:uCOSII/Source/os_q.c ****         return (0u);
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  956              		.loc 1 555 15 is_stmt 0 view .LVU354
  957 0022 A57A     		ldrb	r5, [r4, #10]	@ zero_extendqisi2
  555:uCOSII/Source/os_q.c ****         nbr_tasks = 0u;
-ARM GAS  /tmp/cc5CWVKc.s 			page 31
+ARM GAS  /tmp/ccMi8zoc.s 			page 31
 
 
  958              		.loc 1 555 8 view .LVU355
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  998 0048 2046     		mov	r0, r4
  999              	.LVL106:
  567:uCOSII/Source/os_q.c ****                  nbr_tasks++;
-ARM GAS  /tmp/cc5CWVKc.s 			page 32
+ARM GAS  /tmp/ccMi8zoc.s 			page 32
 
 
  1000              		.loc 1 567 24 view .LVU370
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1038              	.LFE5:
  1040              		.section	.text.OSQPost,"ax",%progbits
  1041              		.align	1
-ARM GAS  /tmp/cc5CWVKc.s 			page 33
+ARM GAS  /tmp/ccMi8zoc.s 			page 33
 
 
  1042              		.global	OSQPost
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  609:uCOSII/Source/os_q.c **** #endif
  610:uCOSII/Source/os_q.c **** 
  611:uCOSII/Source/os_q.c **** 
-ARM GAS  /tmp/cc5CWVKc.s 			page 34
+ARM GAS  /tmp/ccMi8zoc.s 			page 34
 
 
  612:uCOSII/Source/os_q.c **** 
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1090 0016 0746     		mov	r7, r0
  1091              	.LVL118:
  621:uCOSII/Source/os_q.c ****     if (pevent->OSEventGrp != 0u) {                    /* See if any task pending on queue         
-ARM GAS  /tmp/cc5CWVKc.s 			page 35
+ARM GAS  /tmp/ccMi8zoc.s 			page 35
 
 
  1092              		.loc 1 621 24 is_stmt 1 view .LVU399
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1127              		.loc 1 636 24 view .LVU418
  1128 0036 9A68     		ldr	r2, [r3, #8]
  636:uCOSII/Source/os_q.c ****         pq->OSQIn = pq->OSQStart;
-ARM GAS  /tmp/cc5CWVKc.s 			page 36
+ARM GAS  /tmp/ccMi8zoc.s 			page 36
 
 
  1129              		.loc 1 636 8 view .LVU419
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1169              		.loc 1 631 9 is_stmt 1 view .LVU433
  1170 005e FFF7FEFF 		bl	OS_CPU_SR_Restore
  1171              	.LVL128:
-ARM GAS  /tmp/cc5CWVKc.s 			page 37
+ARM GAS  /tmp/ccMi8zoc.s 			page 37
 
 
  631:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  665:uCOSII/Source/os_q.c **** #if OS_Q_POST_FRONT_EN > 0u
  666:uCOSII/Source/os_q.c **** INT8U  OSQPostFront (OS_EVENT  *pevent,
  667:uCOSII/Source/os_q.c ****                      void      *pmsg)
-ARM GAS  /tmp/cc5CWVKc.s 			page 38
+ARM GAS  /tmp/ccMi8zoc.s 			page 38
 
 
  668:uCOSII/Source/os_q.c **** {
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  695:uCOSII/Source/os_q.c ****         return (OS_ERR_Q_FULL);
  696:uCOSII/Source/os_q.c ****     }
  697:uCOSII/Source/os_q.c ****     if (pq->OSQOut == pq->OSQStart) {                 /* Wrap OUT ptr if we are at the 1st queue en
-ARM GAS  /tmp/cc5CWVKc.s 			page 39
+ARM GAS  /tmp/ccMi8zoc.s 			page 39
 
 
  698:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
  1259              		.loc 1 697 11 is_stmt 0 view .LVU463
  1260 0026 1969     		ldr	r1, [r3, #16]
-ARM GAS  /tmp/cc5CWVKc.s 			page 40
+ARM GAS  /tmp/ccMi8zoc.s 			page 40
 
 
  697:uCOSII/Source/os_q.c ****         pq->OSQOut = pq->OSQEnd;
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1298 004a 3146     		mov	r1, r6
  1299 004c 2046     		mov	r0, r4
  1300              	.LVL140:
-ARM GAS  /tmp/cc5CWVKc.s 			page 41
+ARM GAS  /tmp/ccMi8zoc.s 			page 41
 
 
  687:uCOSII/Source/os_q.c ****         OS_EXIT_CRITICAL();
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1343              		.fpu fpv4-sp-d16
  1345              	OSQPostOpt:
  1346              	.LVL147:
-ARM GAS  /tmp/cc5CWVKc.s 			page 42
+ARM GAS  /tmp/ccMi8zoc.s 			page 42
 
 
  1347              	.LFB8:
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  744:uCOSII/Source/os_q.c ****     OS_CPU_SR  cpu_sr = 0u;
  1363              		.loc 1 744 5 view .LVU497
  1364              	.LVL148:
-ARM GAS  /tmp/cc5CWVKc.s 			page 43
+ARM GAS  /tmp/ccMi8zoc.s 			page 43
 
 
  745:uCOSII/Source/os_q.c **** #endif
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  789:uCOSII/Source/os_q.c ****     pq->OSQEntries++;                                 /* Update the nbr of entries in the queue    
  790:uCOSII/Source/os_q.c ****     OS_EXIT_CRITICAL();
  791:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
-ARM GAS  /tmp/cc5CWVKc.s 			page 44
+ARM GAS  /tmp/ccMi8zoc.s 			page 44
 
 
  792:uCOSII/Source/os_q.c **** }
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
  1413              		.loc 1 778 15 is_stmt 0 view .LVU519
  1414 0032 1969     		ldr	r1, [r3, #16]
-ARM GAS  /tmp/cc5CWVKc.s 			page 45
+ARM GAS  /tmp/ccMi8zoc.s 			page 45
 
 
  778:uCOSII/Source/os_q.c ****             pq->OSQOut = pq->OSQEnd;                  /*      ... are at the 1st queue entry       
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1452 0056 08D0     		beq	.L109
  1453              	.LVL157:
  1454              	.L93:
-ARM GAS  /tmp/cc5CWVKc.s 			page 46
+ARM GAS  /tmp/ccMi8zoc.s 			page 46
 
 
  760:uCOSII/Source/os_q.c ****                 (void)OS_EventTaskRdy(pevent, pmsg, OS_STAT_Q, OS_STAT_PEND_OK);
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1495 0084 C2E7     		b	.L91
  1496              	.L110:
  768:uCOSII/Source/os_q.c ****         }
-ARM GAS  /tmp/cc5CWVKc.s 			page 47
+ARM GAS  /tmp/ccMi8zoc.s 			page 47
 
 
  1497              		.loc 1 768 13 is_stmt 1 view .LVU551
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  786:uCOSII/Source/os_q.c ****         }
  1536              		.loc 1 786 13 is_stmt 1 view .LVU567
  786:uCOSII/Source/os_q.c ****         }
-ARM GAS  /tmp/cc5CWVKc.s 			page 48
+ARM GAS  /tmp/ccMi8zoc.s 			page 48
 
 
  1537              		.loc 1 786 27 is_stmt 0 view .LVU568
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  821:uCOSII/Source/os_q.c **** #if OS_CRITICAL_METHOD == 3u                           /* Allocate storage for CPU status register 
  822:uCOSII/Source/os_q.c ****     OS_CPU_SR   cpu_sr = 0u;
  1564              		.loc 1 822 5 view .LVU575
-ARM GAS  /tmp/cc5CWVKc.s 			page 49
+ARM GAS  /tmp/ccMi8zoc.s 			page 49
 
 
  823:uCOSII/Source/os_q.c **** #endif
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1585              		.cfi_offset 14, -4
  1586 000c 0546     		mov	r5, r0
  1587 000e 0E46     		mov	r6, r1
-ARM GAS  /tmp/cc5CWVKc.s 			page 50
+ARM GAS  /tmp/ccMi8zoc.s 			page 50
 
 
  838:uCOSII/Source/os_q.c ****     p_q_data->OSEventGrp = pevent->OSEventGrp;         /* Copy message queue wait list             
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1624 002e E4B2     		uxtb	r4, r4
  1625              	.LVL177:
  1626              	.L113:
-ARM GAS  /tmp/cc5CWVKc.s 			page 51
+ARM GAS  /tmp/ccMi8zoc.s 			page 51
 
 
  842:uCOSII/Source/os_q.c ****         *pdest++ = *psrc++;
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  853:uCOSII/Source/os_q.c ****     return (OS_ERR_NONE);
  1663              		.loc 1 853 23 view .LVU618
  854:uCOSII/Source/os_q.c **** }
-ARM GAS  /tmp/cc5CWVKc.s 			page 52
+ARM GAS  /tmp/ccMi8zoc.s 			page 52
 
 
  1664              		.loc 1 854 5 view .LVU619
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1697              		.cfi_offset 14, -4
  876:uCOSII/Source/os_q.c **** #if OS_MAX_QS == 1u
  877:uCOSII/Source/os_q.c ****     OSQFreeList         = &OSQTbl[0];                /* Only ONE queue!                            
-ARM GAS  /tmp/cc5CWVKc.s 			page 53
+ARM GAS  /tmp/ccMi8zoc.s 			page 53
 
 
  878:uCOSII/Source/os_q.c ****     OSQFreeList->OSQPtr = (OS_Q *)0;
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1734              		.loc 1 890 42 is_stmt 1 discriminator 3 view .LVU641
  1735              	.LVL188:
  890:uCOSII/Source/os_q.c ****         ix_next = ix + 1u;
-ARM GAS  /tmp/cc5CWVKc.s 			page 54
+ARM GAS  /tmp/ccMi8zoc.s 			page 54
 
 
  1736              		.loc 1 890 44 is_stmt 0 discriminator 3 view .LVU642
@@ -3225,38 +3225,38 @@ ARM GAS  /tmp/cc5CWVKc.s 			page 1
  1770              	.Letext0:
  1771              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
  1772              		.file 3 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/cc5CWVKc.s 			page 55
+ARM GAS  /tmp/ccMi8zoc.s 			page 55
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_q.c
-     /tmp/cc5CWVKc.s:18     .text.OSQAccept:0000000000000000 $t
-     /tmp/cc5CWVKc.s:26     .text.OSQAccept:0000000000000000 OSQAccept
-     /tmp/cc5CWVKc.s:142    .rodata.OSQCreate.str1.4:0000000000000000 $d
-     /tmp/cc5CWVKc.s:146    .text.OSQCreate:0000000000000000 $t
-     /tmp/cc5CWVKc.s:153    .text.OSQCreate:0000000000000000 OSQCreate
-     /tmp/cc5CWVKc.s:298    .text.OSQCreate:0000000000000070 $d
-     /tmp/cc5CWVKc.s:306    .text.OSQDel:0000000000000000 $t
-     /tmp/cc5CWVKc.s:313    .text.OSQDel:0000000000000000 OSQDel
-     /tmp/cc5CWVKc.s:565    .text.OSQDel:00000000000000d0 $d
-     /tmp/cc5CWVKc.s:573    .text.OSQFlush:0000000000000000 $t
-     /tmp/cc5CWVKc.s:580    .text.OSQFlush:0000000000000000 OSQFlush
-     /tmp/cc5CWVKc.s:631    .text.OSQPend:0000000000000000 $t
-     /tmp/cc5CWVKc.s:638    .text.OSQPend:0000000000000000 OSQPend
-     /tmp/cc5CWVKc.s:890    .text.OSQPend:00000000000000e0 $d
-     /tmp/cc5CWVKc.s:897    .text.OSQPendAbort:0000000000000000 $t
-     /tmp/cc5CWVKc.s:904    .text.OSQPendAbort:0000000000000000 OSQPendAbort
-     /tmp/cc5CWVKc.s:1041   .text.OSQPost:0000000000000000 $t
-     /tmp/cc5CWVKc.s:1048   .text.OSQPost:0000000000000000 OSQPost
-     /tmp/cc5CWVKc.s:1189   .text.OSQPostFront:0000000000000000 $t
-     /tmp/cc5CWVKc.s:1196   .text.OSQPostFront:0000000000000000 OSQPostFront
-     /tmp/cc5CWVKc.s:1338   .text.OSQPostOpt:0000000000000000 $t
-     /tmp/cc5CWVKc.s:1345   .text.OSQPostOpt:0000000000000000 OSQPostOpt
-     /tmp/cc5CWVKc.s:1546   .text.OSQQuery:0000000000000000 $t
-     /tmp/cc5CWVKc.s:1553   .text.OSQQuery:0000000000000000 OSQQuery
-     /tmp/cc5CWVKc.s:1680   .text.OS_QInit:0000000000000000 $t
-     /tmp/cc5CWVKc.s:1687   .text.OS_QInit:0000000000000000 OS_QInit
-     /tmp/cc5CWVKc.s:1764   .text.OS_QInit:000000000000003c $d
+     /tmp/ccMi8zoc.s:18     .text.OSQAccept:0000000000000000 $t
+     /tmp/ccMi8zoc.s:26     .text.OSQAccept:0000000000000000 OSQAccept
+     /tmp/ccMi8zoc.s:142    .rodata.OSQCreate.str1.4:0000000000000000 $d
+     /tmp/ccMi8zoc.s:146    .text.OSQCreate:0000000000000000 $t
+     /tmp/ccMi8zoc.s:153    .text.OSQCreate:0000000000000000 OSQCreate
+     /tmp/ccMi8zoc.s:298    .text.OSQCreate:0000000000000070 $d
+     /tmp/ccMi8zoc.s:306    .text.OSQDel:0000000000000000 $t
+     /tmp/ccMi8zoc.s:313    .text.OSQDel:0000000000000000 OSQDel
+     /tmp/ccMi8zoc.s:565    .text.OSQDel:00000000000000d0 $d
+     /tmp/ccMi8zoc.s:573    .text.OSQFlush:0000000000000000 $t
+     /tmp/ccMi8zoc.s:580    .text.OSQFlush:0000000000000000 OSQFlush
+     /tmp/ccMi8zoc.s:631    .text.OSQPend:0000000000000000 $t
+     /tmp/ccMi8zoc.s:638    .text.OSQPend:0000000000000000 OSQPend
+     /tmp/ccMi8zoc.s:890    .text.OSQPend:00000000000000e0 $d
+     /tmp/ccMi8zoc.s:897    .text.OSQPendAbort:0000000000000000 $t
+     /tmp/ccMi8zoc.s:904    .text.OSQPendAbort:0000000000000000 OSQPendAbort
+     /tmp/ccMi8zoc.s:1041   .text.OSQPost:0000000000000000 $t
+     /tmp/ccMi8zoc.s:1048   .text.OSQPost:0000000000000000 OSQPost
+     /tmp/ccMi8zoc.s:1189   .text.OSQPostFront:0000000000000000 $t
+     /tmp/ccMi8zoc.s:1196   .text.OSQPostFront:0000000000000000 OSQPostFront
+     /tmp/ccMi8zoc.s:1338   .text.OSQPostOpt:0000000000000000 $t
+     /tmp/ccMi8zoc.s:1345   .text.OSQPostOpt:0000000000000000 OSQPostOpt
+     /tmp/ccMi8zoc.s:1546   .text.OSQQuery:0000000000000000 $t
+     /tmp/ccMi8zoc.s:1553   .text.OSQQuery:0000000000000000 OSQQuery
+     /tmp/ccMi8zoc.s:1680   .text.OS_QInit:0000000000000000 $t
+     /tmp/ccMi8zoc.s:1687   .text.OS_QInit:0000000000000000 OS_QInit
+     /tmp/ccMi8zoc.s:1764   .text.OS_QInit:000000000000003c $d
 
 UNDEFINED SYMBOLS
 OS_CPU_SR_Save

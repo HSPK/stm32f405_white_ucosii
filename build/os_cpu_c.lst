@@ -1,4 +1,4 @@
-ARM GAS  /tmp/cc9Pf8AD.s 			page 1
+ARM GAS  /tmp/ccw5cOkE.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
   28:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
   29:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *           Please help us continue to provide the embedded community with the finest software avai
   30:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *           Your honesty is greatly appreciated.
-ARM GAS  /tmp/cc9Pf8AD.s 			page 2
+ARM GAS  /tmp/ccw5cOkE.s 			page 2
 
 
   31:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
@@ -118,7 +118,7 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
   85:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
   86:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** /*
   87:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** ***************************************************************************************************
-ARM GAS  /tmp/cc9Pf8AD.s 			page 3
+ARM GAS  /tmp/ccw5cOkE.s 			page 3
 
 
   88:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *                                       OS INITIALIZATION HOOK
@@ -178,7 +178,7 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
   59              	.L4:
  110:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
  111:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 4
+ARM GAS  /tmp/ccw5cOkE.s 			page 4
 
 
  112:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                                                                 /* Align the ISR stack to 8-bytes  
@@ -238,7 +238,7 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  136:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSInitHookEnd (void)
  137:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
   92              		.loc 1 137 1 is_stmt 1 view -0
-ARM GAS  /tmp/cc9Pf8AD.s 			page 5
+ARM GAS  /tmp/ccw5cOkE.s 			page 5
 
 
   93              		.cfi_startproc
@@ -281,38 +281,31 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  114              		.cfi_startproc
  115              		@ args = 0, pretend = 0, frame = 0
  116              		@ frame_needed = 0, uses_anonymous_args = 0
- 117              		.loc 1 155 1 is_stmt 0 view .LVU23
- 118 0000 08B5     		push	{r3, lr}
- 119              	.LCFI0:
- 120              		.cfi_def_cfa_offset 8
- 121              		.cfi_offset 3, -8
- 122              		.cfi_offset 14, -4
+ 117              		@ link register save eliminated.
  156:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  157:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskCreateHook(ptcb);
- 123              		.loc 1 157 5 is_stmt 1 view .LVU24
- 124 0002 FFF7FEFF 		bl	App_TaskCreateHook
- 125              	.LVL7:
  158:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #else
  159:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     (void)ptcb;                                  /* Prevent compiler warning                       
+ 118              		.loc 1 159 5 view .LVU23
  160:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  161:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 126              		.loc 1 161 1 is_stmt 0 view .LVU25
- 127 0006 08BD     		pop	{r3, pc}
-ARM GAS  /tmp/cc9Pf8AD.s 			page 6
+ 119              		.loc 1 161 1 is_stmt 0 view .LVU24
+ 120 0000 7047     		bx	lr
+ 121              		.cfi_endproc
+ 122              	.LFE2:
+ 124              		.section	.text.OSTaskDelHook,"ax",%progbits
+ 125              		.align	1
+ 126              		.global	OSTaskDelHook
+ 127              		.syntax unified
+ 128              		.thumb
+ARM GAS  /tmp/ccw5cOkE.s 			page 6
 
 
- 128              		.cfi_endproc
- 129              	.LFE2:
- 131              		.section	.text.OSTaskDelHook,"ax",%progbits
- 132              		.align	1
- 133              		.global	OSTaskDelHook
- 134              		.syntax unified
- 135              		.thumb
- 136              		.thumb_func
- 137              		.fpu fpv4-sp-d16
- 139              	OSTaskDelHook:
- 140              	.LVL8:
- 141              	.LFB3:
+ 129              		.thumb_func
+ 130              		.fpu fpv4-sp-d16
+ 132              	OSTaskDelHook:
+ 133              	.LVL7:
+ 134              	.LFB3:
  162:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  163:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  164:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -330,41 +323,31 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  176:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_CPU_HOOKS_EN > 0u
  177:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTaskDelHook (OS_TCB *ptcb)
  178:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 142              		.loc 1 178 1 is_stmt 1 view -0
- 143              		.cfi_startproc
- 144              		@ args = 0, pretend = 0, frame = 0
- 145              		@ frame_needed = 0, uses_anonymous_args = 0
- 146              		.loc 1 178 1 is_stmt 0 view .LVU27
- 147 0000 08B5     		push	{r3, lr}
- 148              	.LCFI1:
- 149              		.cfi_def_cfa_offset 8
- 150              		.cfi_offset 3, -8
- 151              		.cfi_offset 14, -4
+ 135              		.loc 1 178 1 is_stmt 1 view -0
+ 136              		.cfi_startproc
+ 137              		@ args = 0, pretend = 0, frame = 0
+ 138              		@ frame_needed = 0, uses_anonymous_args = 0
+ 139              		@ link register save eliminated.
  179:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  180:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskDelHook(ptcb);
- 152              		.loc 1 180 5 is_stmt 1 view .LVU28
- 153 0002 FFF7FEFF 		bl	App_TaskDelHook
- 154              	.LVL9:
  181:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #else
  182:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     (void)ptcb;                                  /* Prevent compiler warning                       
+ 140              		.loc 1 182 5 view .LVU26
  183:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  184:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 155              		.loc 1 184 1 is_stmt 0 view .LVU29
- 156 0006 08BD     		pop	{r3, pc}
- 157              		.cfi_endproc
- 158              	.LFE3:
- 160              		.section	.text.OSTaskIdleHook,"ax",%progbits
- 161              		.align	1
- 162              		.global	OSTaskIdleHook
- 163              		.syntax unified
- 164              		.thumb
-ARM GAS  /tmp/cc9Pf8AD.s 			page 7
-
-
- 165              		.thumb_func
- 166              		.fpu fpv4-sp-d16
- 168              	OSTaskIdleHook:
- 169              	.LFB4:
+ 141              		.loc 1 184 1 is_stmt 0 view .LVU27
+ 142 0000 7047     		bx	lr
+ 143              		.cfi_endproc
+ 144              	.LFE3:
+ 146              		.section	.text.OSTaskIdleHook,"ax",%progbits
+ 147              		.align	1
+ 148              		.global	OSTaskIdleHook
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.fpu fpv4-sp-d16
+ 154              	OSTaskIdleHook:
+ 155              	.LFB4:
  185:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  186:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  187:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -375,6 +358,9 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  192:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** * Description: This function is called by the idle task.  This hook has been added to allow you to 
  193:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *              such things as STOP the CPU to conserve power.
  194:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
+ARM GAS  /tmp/ccw5cOkE.s 			page 7
+
+
  195:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** * Arguments  : none
  196:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
  197:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** * Note(s)    : 1) Interrupts are enabled during this call.
@@ -383,44 +369,34 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  200:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_CPU_HOOKS_EN > 0u
  201:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTaskIdleHook (void)
  202:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 170              		.loc 1 202 1 is_stmt 1 view -0
- 171              		.cfi_startproc
- 172              		@ args = 0, pretend = 0, frame = 0
- 173              		@ frame_needed = 0, uses_anonymous_args = 0
- 174 0000 08B5     		push	{r3, lr}
- 175              	.LCFI2:
- 176              		.cfi_def_cfa_offset 8
- 177              		.cfi_offset 3, -8
- 178              		.cfi_offset 14, -4
+ 156              		.loc 1 202 1 is_stmt 1 view -0
+ 157              		.cfi_startproc
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
  203:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  204:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskIdleHook();
- 179              		.loc 1 204 5 view .LVU31
- 180 0002 FFF7FEFF 		bl	App_TaskIdleHook
- 181              	.LVL10:
  205:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  206:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 182              		.loc 1 206 1 is_stmt 0 view .LVU32
- 183 0006 08BD     		pop	{r3, pc}
- 184              		.cfi_endproc
- 185              	.LFE4:
- 187              		.section	.text.OSTaskReturnHook,"ax",%progbits
- 188              		.align	1
- 189              		.global	OSTaskReturnHook
- 190              		.syntax unified
- 191              		.thumb
- 192              		.thumb_func
- 193              		.fpu fpv4-sp-d16
- 195              	OSTaskReturnHook:
- 196              	.LVL11:
- 197              	.LFB5:
+ 161              		.loc 1 206 1 view .LVU29
+ 162 0000 7047     		bx	lr
+ 163              		.cfi_endproc
+ 164              	.LFE4:
+ 166              		.section	.text.OSTaskReturnHook,"ax",%progbits
+ 167              		.align	1
+ 168              		.global	OSTaskReturnHook
+ 169              		.syntax unified
+ 170              		.thumb
+ 171              		.thumb_func
+ 172              		.fpu fpv4-sp-d16
+ 174              	OSTaskReturnHook:
+ 175              	.LVL8:
+ 176              	.LFB5:
  207:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  208:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  209:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  210:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** /*
  211:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** ***************************************************************************************************
-ARM GAS  /tmp/cc9Pf8AD.s 			page 8
-
-
  212:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *                                            TASK RETURN HOOK
  213:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
  214:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** * Description: This function is called if a task accidentally returns.  In other words, a task shou
@@ -435,38 +411,34 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  223:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_CPU_HOOKS_EN > 0u
  224:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTaskReturnHook (OS_TCB  *ptcb)
  225:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 198              		.loc 1 225 1 is_stmt 1 view -0
- 199              		.cfi_startproc
- 200              		@ args = 0, pretend = 0, frame = 0
- 201              		@ frame_needed = 0, uses_anonymous_args = 0
- 202              		.loc 1 225 1 is_stmt 0 view .LVU34
- 203 0000 08B5     		push	{r3, lr}
- 204              	.LCFI3:
- 205              		.cfi_def_cfa_offset 8
- 206              		.cfi_offset 3, -8
- 207              		.cfi_offset 14, -4
+ 177              		.loc 1 225 1 view -0
+ 178              		.cfi_startproc
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
  226:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  227:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskReturnHook(ptcb);
- 208              		.loc 1 227 5 is_stmt 1 view .LVU35
- 209 0002 FFF7FEFF 		bl	App_TaskReturnHook
- 210              	.LVL12:
+ARM GAS  /tmp/ccw5cOkE.s 			page 8
+
+
  228:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #else
  229:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     (void)ptcb;
+ 182              		.loc 1 229 5 view .LVU31
  230:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  231:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 211              		.loc 1 231 1 is_stmt 0 view .LVU36
- 212 0006 08BD     		pop	{r3, pc}
- 213              		.cfi_endproc
- 214              	.LFE5:
- 216              		.section	.text.OSTaskStatHook,"ax",%progbits
- 217              		.align	1
- 218              		.global	OSTaskStatHook
- 219              		.syntax unified
- 220              		.thumb
- 221              		.thumb_func
- 222              		.fpu fpv4-sp-d16
- 224              	OSTaskStatHook:
- 225              	.LFB6:
+ 183              		.loc 1 231 1 is_stmt 0 view .LVU32
+ 184 0000 7047     		bx	lr
+ 185              		.cfi_endproc
+ 186              	.LFE5:
+ 188              		.section	.text.OSTaskStatHook,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	OSTaskStatHook
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 194              		.fpu fpv4-sp-d16
+ 196              	OSTaskStatHook:
+ 197              	.LFB6:
  232:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  233:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  234:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -478,45 +450,38 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  240:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *              application to add functionality to the statistics task.
  241:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
  242:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** * Arguments  : none
-ARM GAS  /tmp/cc9Pf8AD.s 			page 9
-
-
  243:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** ***************************************************************************************************
  244:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** */
  245:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  246:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_CPU_HOOKS_EN > 0u
  247:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTaskStatHook (void)
  248:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 226              		.loc 1 248 1 is_stmt 1 view -0
- 227              		.cfi_startproc
- 228              		@ args = 0, pretend = 0, frame = 0
- 229              		@ frame_needed = 0, uses_anonymous_args = 0
- 230 0000 08B5     		push	{r3, lr}
- 231              	.LCFI4:
- 232              		.cfi_def_cfa_offset 8
- 233              		.cfi_offset 3, -8
- 234              		.cfi_offset 14, -4
+ 198              		.loc 1 248 1 is_stmt 1 view -0
+ 199              		.cfi_startproc
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		@ link register save eliminated.
  249:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  250:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskStatHook();
- 235              		.loc 1 250 5 view .LVU38
- 236 0002 FFF7FEFF 		bl	App_TaskStatHook
- 237              	.LVL13:
  251:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  252:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 238              		.loc 1 252 1 is_stmt 0 view .LVU39
- 239 0006 08BD     		pop	{r3, pc}
- 240              		.cfi_endproc
- 241              	.LFE6:
- 243              		.section	.text.OSTaskStkInit,"ax",%progbits
- 244              		.align	1
- 245              		.global	OSTaskStkInit
- 246              		.syntax unified
- 247              		.thumb
- 248              		.thumb_func
- 249              		.fpu fpv4-sp-d16
- 251              	OSTaskStkInit:
- 252              	.LVL14:
- 253              	.LFB7:
+ 203              		.loc 1 252 1 view .LVU34
+ 204 0000 7047     		bx	lr
+ 205              		.cfi_endproc
+ 206              	.LFE6:
+ 208              		.section	.text.OSTaskStkInit,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	OSTaskStkInit
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 214              		.fpu fpv4-sp-d16
+ 216              	OSTaskStkInit:
+ 217              	.LVL9:
+ARM GAS  /tmp/ccw5cOkE.s 			page 9
+
+
+ 218              	.LFB7:
  253:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  254:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  255:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -538,9 +503,6 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  271:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *                            OS_STK_GROWTH is set to 0, the 'ptos' will contains the LOWEST valid a
  272:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *                            of the stack.
  273:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
-ARM GAS  /tmp/cc9Pf8AD.s 			page 10
-
-
  274:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *              opt           specifies options that can be used to alter the behavior of OSTaskStkI
  275:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *                            (see uCOS_II.H for OS_TASK_OPT_xxx).
  276:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** *
@@ -554,390 +516,393 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  284:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  285:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** OS_STK *OSTaskStkInit (void (*task)(void *p_arg), void *p_arg, OS_STK *ptos, INT16U opt)
  286:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 254              		.loc 1 286 1 is_stmt 1 view -0
- 255              		.cfi_startproc
- 256              		@ args = 0, pretend = 0, frame = 0
- 257              		@ frame_needed = 0, uses_anonymous_args = 0
- 258              		@ link register save eliminated.
- 259              		.loc 1 286 1 is_stmt 0 view .LVU41
- 260 0000 10B4     		push	{r4}
- 261              	.LCFI5:
- 262              		.cfi_def_cfa_offset 4
- 263              		.cfi_offset 4, -4
+ 219              		.loc 1 286 1 view -0
+ 220              		.cfi_startproc
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224              		.loc 1 286 1 is_stmt 0 view .LVU36
+ 225 0000 10B4     		push	{r4}
+ 226              	.LCFI0:
+ 227              		.cfi_def_cfa_offset 4
+ 228              		.cfi_offset 4, -4
  287:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OS_STK  *p_stk;
- 264              		.loc 1 287 5 is_stmt 1 view .LVU42
+ 229              		.loc 1 287 5 is_stmt 1 view .LVU37
  288:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  289:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  290:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     p_stk      = ptos + 1u;                                     /* Load stack pointer              
- 265              		.loc 1 290 5 view .LVU43
- 266              		.loc 1 290 16 is_stmt 0 view .LVU44
- 267 0002 0432     		adds	r2, r2, #4
- 268              	.LVL15:
+ 230              		.loc 1 290 5 view .LVU38
+ 231              		.loc 1 290 16 is_stmt 0 view .LVU39
+ 232 0002 0432     		adds	r2, r2, #4
+ 233              	.LVL10:
  291:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                                                                 /* Align the stack to 8-bytes.     
  292:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     p_stk      = (OS_STK *)((OS_STK)(p_stk) & 0xFFFFFFF8u);
- 269              		.loc 1 292 5 is_stmt 1 view .LVU45
- 270              		.loc 1 292 45 is_stmt 0 view .LVU46
- 271 0004 22F00702 		bic	r2, r2, #7
- 272              	.LVL16:
+ 234              		.loc 1 292 5 is_stmt 1 view .LVU40
+ARM GAS  /tmp/ccw5cOkE.s 			page 10
+
+
+ 235              		.loc 1 292 45 is_stmt 0 view .LVU41
+ 236 0004 22F00702 		bic	r2, r2, #7
+ 237              	.LVL11:
  293:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                                                                 /* Registers stacked as if auto-sav
  294:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x01000000uL;                          /* xPSR                            
- 273              		.loc 1 294 5 is_stmt 1 view .LVU47
- 274              		.loc 1 294 16 is_stmt 0 view .LVU48
- 275 0008 4FF08074 		mov	r4, #16777216
- 276 000c 42F8044C 		str	r4, [r2, #-4]
+ 238              		.loc 1 294 5 is_stmt 1 view .LVU42
+ 239              		.loc 1 294 16 is_stmt 0 view .LVU43
+ 240 0008 4FF08074 		mov	r4, #16777216
+ 241 000c 42F8044C 		str	r4, [r2, #-4]
  295:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)task;                                  /* Entry Point                     
- 277              		.loc 1 295 5 is_stmt 1 view .LVU49
- 278              	.LVL17:
- 279              		.loc 1 295 16 is_stmt 0 view .LVU50
- 280 0010 42F8080C 		str	r0, [r2, #-8]
+ 242              		.loc 1 295 5 is_stmt 1 view .LVU44
+ 243              	.LVL12:
+ 244              		.loc 1 295 16 is_stmt 0 view .LVU45
+ 245 0010 42F8080C 		str	r0, [r2, #-8]
  296:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)OS_TaskReturn;                         /* R14 (LR)                        
- 281              		.loc 1 296 5 is_stmt 1 view .LVU51
- 282              	.LVL18:
- 283              		.loc 1 296 18 is_stmt 0 view .LVU52
- 284 0014 6048     		ldr	r0, .L21
- 285              	.LVL19:
- 286              		.loc 1 296 16 view .LVU53
- 287 0016 42F80C0C 		str	r0, [r2, #-12]
-ARM GAS  /tmp/cc9Pf8AD.s 			page 11
-
-
+ 246              		.loc 1 296 5 is_stmt 1 view .LVU46
+ 247              	.LVL13:
+ 248              		.loc 1 296 18 is_stmt 0 view .LVU47
+ 249 0014 6048     		ldr	r0, .L16
+ 250              	.LVL14:
+ 251              		.loc 1 296 16 view .LVU48
+ 252 0016 42F80C0C 		str	r0, [r2, #-12]
  297:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x12121212uL;                          /* R12                             
- 288              		.loc 1 297 5 is_stmt 1 view .LVU54
- 289              	.LVL20:
- 290              		.loc 1 297 16 is_stmt 0 view .LVU55
- 291 001a 4FF01230 		mov	r0, #303174162
- 292 001e 42F8100C 		str	r0, [r2, #-16]
+ 253              		.loc 1 297 5 is_stmt 1 view .LVU49
+ 254              	.LVL15:
+ 255              		.loc 1 297 16 is_stmt 0 view .LVU50
+ 256 001a 4FF01230 		mov	r0, #303174162
+ 257 001e 42F8100C 		str	r0, [r2, #-16]
  298:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x03030303uL;                          /* R3                              
- 293              		.loc 1 298 5 is_stmt 1 view .LVU56
- 294              	.LVL21:
- 295              		.loc 1 298 16 is_stmt 0 view .LVU57
- 296 0022 4FF00330 		mov	r0, #50529027
- 297 0026 42F8140C 		str	r0, [r2, #-20]
+ 258              		.loc 1 298 5 is_stmt 1 view .LVU51
+ 259              	.LVL16:
+ 260              		.loc 1 298 16 is_stmt 0 view .LVU52
+ 261 0022 4FF00330 		mov	r0, #50529027
+ 262 0026 42F8140C 		str	r0, [r2, #-20]
  299:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x02020202uL;                          /* R2                              
- 298              		.loc 1 299 5 is_stmt 1 view .LVU58
- 299              	.LVL22:
- 300              		.loc 1 299 16 is_stmt 0 view .LVU59
- 301 002a 4FF00230 		mov	r0, #33686018
- 302 002e 42F8180C 		str	r0, [r2, #-24]
+ 263              		.loc 1 299 5 is_stmt 1 view .LVU53
+ 264              	.LVL17:
+ 265              		.loc 1 299 16 is_stmt 0 view .LVU54
+ 266 002a 4FF00230 		mov	r0, #33686018
+ 267 002e 42F8180C 		str	r0, [r2, #-24]
  300:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x01010101uL;                          /* R1                              
- 303              		.loc 1 300 5 is_stmt 1 view .LVU60
- 304              	.LVL23:
- 305              		.loc 1 300 16 is_stmt 0 view .LVU61
- 306 0032 4FF00130 		mov	r0, #16843009
- 307 0036 42F81C0C 		str	r0, [r2, #-28]
+ 268              		.loc 1 300 5 is_stmt 1 view .LVU55
+ 269              	.LVL18:
+ 270              		.loc 1 300 16 is_stmt 0 view .LVU56
+ 271 0032 4FF00130 		mov	r0, #16843009
+ 272 0036 42F81C0C 		str	r0, [r2, #-28]
  301:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)p_arg;                                 /* R0 : argument                   
- 308              		.loc 1 301 5 is_stmt 1 view .LVU62
- 309              	.LVL24:
- 310              		.loc 1 301 16 is_stmt 0 view .LVU63
- 311 003a 42F8201C 		str	r1, [r2, #-32]
+ 273              		.loc 1 301 5 is_stmt 1 view .LVU57
+ 274              	.LVL19:
+ 275              		.loc 1 301 16 is_stmt 0 view .LVU58
+ 276 003a 42F8201C 		str	r1, [r2, #-32]
  302:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  303:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                                                                 /* Remaining registers saved on pro
  304:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x11111111uL;                          /* R11                             
- 312              		.loc 1 304 5 is_stmt 1 view .LVU64
- 313              	.LVL25:
- 314              		.loc 1 304 16 is_stmt 0 view .LVU65
- 315 003e 4FF01131 		mov	r1, #286331153
- 316              	.LVL26:
- 317              		.loc 1 304 16 view .LVU66
- 318 0042 42F8241C 		str	r1, [r2, #-36]
+ 277              		.loc 1 304 5 is_stmt 1 view .LVU59
+ 278              	.LVL20:
+ 279              		.loc 1 304 16 is_stmt 0 view .LVU60
+ARM GAS  /tmp/ccw5cOkE.s 			page 11
+
+
+ 280 003e 4FF01131 		mov	r1, #286331153
+ 281              	.LVL21:
+ 282              		.loc 1 304 16 view .LVU61
+ 283 0042 42F8241C 		str	r1, [r2, #-36]
  305:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x10101010uL;                          /* R10                             
- 319              		.loc 1 305 5 is_stmt 1 view .LVU67
- 320              	.LVL27:
- 321              		.loc 1 305 16 is_stmt 0 view .LVU68
- 322 0046 4FF01031 		mov	r1, #269488144
- 323 004a 42F8281C 		str	r1, [r2, #-40]
+ 284              		.loc 1 305 5 is_stmt 1 view .LVU62
+ 285              	.LVL22:
+ 286              		.loc 1 305 16 is_stmt 0 view .LVU63
+ 287 0046 4FF01031 		mov	r1, #269488144
+ 288 004a 42F8281C 		str	r1, [r2, #-40]
  306:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x09090909uL;                          /* R9                              
- 324              		.loc 1 306 5 is_stmt 1 view .LVU69
- 325              	.LVL28:
- 326              		.loc 1 306 16 is_stmt 0 view .LVU70
- 327 004e 4FF00931 		mov	r1, #151587081
- 328 0052 42F82C1C 		str	r1, [r2, #-44]
+ 289              		.loc 1 306 5 is_stmt 1 view .LVU64
+ 290              	.LVL23:
+ 291              		.loc 1 306 16 is_stmt 0 view .LVU65
+ 292 004e 4FF00931 		mov	r1, #151587081
+ 293 0052 42F82C1C 		str	r1, [r2, #-44]
  307:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x08080808uL;                          /* R8                              
- 329              		.loc 1 307 5 is_stmt 1 view .LVU71
- 330              	.LVL29:
- 331              		.loc 1 307 16 is_stmt 0 view .LVU72
- 332 0056 4FF00831 		mov	r1, #134744072
- 333 005a 42F8301C 		str	r1, [r2, #-48]
-ARM GAS  /tmp/cc9Pf8AD.s 			page 12
-
-
+ 294              		.loc 1 307 5 is_stmt 1 view .LVU66
+ 295              	.LVL24:
+ 296              		.loc 1 307 16 is_stmt 0 view .LVU67
+ 297 0056 4FF00831 		mov	r1, #134744072
+ 298 005a 42F8301C 		str	r1, [r2, #-48]
  308:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x07070707uL;                          /* R7                              
- 334              		.loc 1 308 5 is_stmt 1 view .LVU73
- 335              	.LVL30:
- 336              		.loc 1 308 16 is_stmt 0 view .LVU74
- 337 005e 4FF00731 		mov	r1, #117901063
- 338 0062 42F8341C 		str	r1, [r2, #-52]
+ 299              		.loc 1 308 5 is_stmt 1 view .LVU68
+ 300              	.LVL25:
+ 301              		.loc 1 308 16 is_stmt 0 view .LVU69
+ 302 005e 4FF00731 		mov	r1, #117901063
+ 303 0062 42F8341C 		str	r1, [r2, #-52]
  309:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x06060606uL;                          /* R6                              
- 339              		.loc 1 309 5 is_stmt 1 view .LVU75
- 340              	.LVL31:
- 341              		.loc 1 309 16 is_stmt 0 view .LVU76
- 342 0066 4FF00631 		mov	r1, #101058054
- 343 006a 42F8381C 		str	r1, [r2, #-56]
+ 304              		.loc 1 309 5 is_stmt 1 view .LVU70
+ 305              	.LVL26:
+ 306              		.loc 1 309 16 is_stmt 0 view .LVU71
+ 307 0066 4FF00631 		mov	r1, #101058054
+ 308 006a 42F8381C 		str	r1, [r2, #-56]
  310:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x05050505uL;                          /* R5                              
- 344              		.loc 1 310 5 is_stmt 1 view .LVU77
- 345              	.LVL32:
- 346              		.loc 1 310 16 is_stmt 0 view .LVU78
- 347 006e 4FF00531 		mov	r1, #84215045
- 348 0072 42F83C1C 		str	r1, [r2, #-60]
+ 309              		.loc 1 310 5 is_stmt 1 view .LVU72
+ 310              	.LVL27:
+ 311              		.loc 1 310 16 is_stmt 0 view .LVU73
+ 312 006e 4FF00531 		mov	r1, #84215045
+ 313 0072 42F83C1C 		str	r1, [r2, #-60]
  311:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     *(--p_stk) = (OS_STK)0x04040404uL;                          /* R4                              
- 349              		.loc 1 311 5 is_stmt 1 view .LVU79
- 350              		.loc 1 311 16 is_stmt 0 view .LVU80
- 351 0076 A2F14000 		sub	r0, r2, #64
- 352              	.LVL33:
- 353              		.loc 1 311 16 view .LVU81
- 354 007a 4FF00431 		mov	r1, #67372036
- 355 007e 42F8401C 		str	r1, [r2, #-64]
+ 314              		.loc 1 311 5 is_stmt 1 view .LVU74
+ 315              		.loc 1 311 16 is_stmt 0 view .LVU75
+ 316 0076 A2F14000 		sub	r0, r2, #64
+ 317              	.LVL28:
+ 318              		.loc 1 311 16 view .LVU76
+ 319 007a 4FF00431 		mov	r1, #67372036
+ 320 007e 42F8401C 		str	r1, [r2, #-64]
  312:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     
  313:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if (OS_CPU_ARM_FP_EN > 0u)
  314:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     if ((opt & OS_TASK_OPT_SAVE_FP) != (INT16U)0) {
- 356              		.loc 1 314 5 is_stmt 1 view .LVU82
- 357              		.loc 1 314 8 is_stmt 0 view .LVU83
- 358 0082 13F0040F 		tst	r3, #4
- 359 0086 00F08480 		beq	.L18
+ 321              		.loc 1 314 5 is_stmt 1 view .LVU77
+ 322              		.loc 1 314 8 is_stmt 0 view .LVU78
+ 323 0082 13F0040F 		tst	r3, #4
+ 324 0086 00F08480 		beq	.L13
  315:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x02000000u;                         /* FPSCR                           
- 360              		.loc 1 315 9 is_stmt 1 view .LVU84
- 361              	.LVL34:
- 362              		.loc 1 315 18 is_stmt 0 view .LVU85
- 363 008a 4FF00073 		mov	r3, #33554432
- 364              	.LVL35:
- 365              		.loc 1 315 18 view .LVU86
- 366 008e 42F8443C 		str	r3, [r2, #-68]
+ 325              		.loc 1 315 9 is_stmt 1 view .LVU79
+ARM GAS  /tmp/ccw5cOkE.s 			page 12
+
+
+ 326              	.LVL29:
+ 327              		.loc 1 315 18 is_stmt 0 view .LVU80
+ 328 008a 4FF00073 		mov	r3, #33554432
+ 329              	.LVL30:
+ 330              		.loc 1 315 18 view .LVU81
+ 331 008e 42F8443C 		str	r3, [r2, #-68]
  316:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                                                                 /* Initialize S0-S31 floating point
  317:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41F80000u;                         /* S31                             
- 367              		.loc 1 317 9 is_stmt 1 view .LVU87
- 368              	.LVL36:
- 369              		.loc 1 317 18 is_stmt 0 view .LVU88
- 370 0092 424B     		ldr	r3, .L21+4
- 371 0094 42F8483C 		str	r3, [r2, #-72]
+ 332              		.loc 1 317 9 is_stmt 1 view .LVU82
+ 333              	.LVL31:
+ 334              		.loc 1 317 18 is_stmt 0 view .LVU83
+ 335 0092 424B     		ldr	r3, .L16+4
+ 336 0094 42F8483C 		str	r3, [r2, #-72]
  318:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41F00000u;                         /* S30                             
- 372              		.loc 1 318 9 is_stmt 1 view .LVU89
- 373              	.LVL37:
- 374              		.loc 1 318 18 is_stmt 0 view .LVU90
- 375 0098 A3F50023 		sub	r3, r3, #524288
- 376 009c 42F84C3C 		str	r3, [r2, #-76]
+ 337              		.loc 1 318 9 is_stmt 1 view .LVU84
+ 338              	.LVL32:
+ 339              		.loc 1 318 18 is_stmt 0 view .LVU85
+ 340 0098 A3F50023 		sub	r3, r3, #524288
+ 341 009c 42F84C3C 		str	r3, [r2, #-76]
  319:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41E80000u;                         /* S29                             
- 377              		.loc 1 319 9 is_stmt 1 view .LVU91
- 378              	.LVL38:
-ARM GAS  /tmp/cc9Pf8AD.s 			page 13
-
-
- 379              		.loc 1 319 18 is_stmt 0 view .LVU92
- 380 00a0 A3F50023 		sub	r3, r3, #524288
- 381 00a4 42F8503C 		str	r3, [r2, #-80]
+ 342              		.loc 1 319 9 is_stmt 1 view .LVU86
+ 343              	.LVL33:
+ 344              		.loc 1 319 18 is_stmt 0 view .LVU87
+ 345 00a0 A3F50023 		sub	r3, r3, #524288
+ 346 00a4 42F8503C 		str	r3, [r2, #-80]
  320:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41E00000u;                         /* S28                             
- 382              		.loc 1 320 9 is_stmt 1 view .LVU93
- 383              	.LVL39:
- 384              		.loc 1 320 18 is_stmt 0 view .LVU94
- 385 00a8 A3F50023 		sub	r3, r3, #524288
- 386 00ac 42F8543C 		str	r3, [r2, #-84]
+ 347              		.loc 1 320 9 is_stmt 1 view .LVU88
+ 348              	.LVL34:
+ 349              		.loc 1 320 18 is_stmt 0 view .LVU89
+ 350 00a8 A3F50023 		sub	r3, r3, #524288
+ 351 00ac 42F8543C 		str	r3, [r2, #-84]
  321:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41D80000u;                         /* S27                             
- 387              		.loc 1 321 9 is_stmt 1 view .LVU95
- 388              	.LVL40:
- 389              		.loc 1 321 18 is_stmt 0 view .LVU96
- 390 00b0 A3F50023 		sub	r3, r3, #524288
- 391 00b4 42F8583C 		str	r3, [r2, #-88]
+ 352              		.loc 1 321 9 is_stmt 1 view .LVU90
+ 353              	.LVL35:
+ 354              		.loc 1 321 18 is_stmt 0 view .LVU91
+ 355 00b0 A3F50023 		sub	r3, r3, #524288
+ 356 00b4 42F8583C 		str	r3, [r2, #-88]
  322:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41D00000u;                         /* S26                             
- 392              		.loc 1 322 9 is_stmt 1 view .LVU97
- 393              	.LVL41:
- 394              		.loc 1 322 18 is_stmt 0 view .LVU98
- 395 00b8 A3F50023 		sub	r3, r3, #524288
- 396 00bc 42F85C3C 		str	r3, [r2, #-92]
+ 357              		.loc 1 322 9 is_stmt 1 view .LVU92
+ 358              	.LVL36:
+ 359              		.loc 1 322 18 is_stmt 0 view .LVU93
+ 360 00b8 A3F50023 		sub	r3, r3, #524288
+ 361 00bc 42F85C3C 		str	r3, [r2, #-92]
  323:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41C80000u;                         /* S25                             
- 397              		.loc 1 323 9 is_stmt 1 view .LVU99
- 398              	.LVL42:
- 399              		.loc 1 323 18 is_stmt 0 view .LVU100
- 400 00c0 A3F50023 		sub	r3, r3, #524288
- 401 00c4 42F8603C 		str	r3, [r2, #-96]
+ 362              		.loc 1 323 9 is_stmt 1 view .LVU94
+ 363              	.LVL37:
+ 364              		.loc 1 323 18 is_stmt 0 view .LVU95
+ 365 00c0 A3F50023 		sub	r3, r3, #524288
+ 366 00c4 42F8603C 		str	r3, [r2, #-96]
  324:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41C00000u;                         /* S24                             
- 402              		.loc 1 324 9 is_stmt 1 view .LVU101
- 403              	.LVL43:
- 404              		.loc 1 324 18 is_stmt 0 view .LVU102
- 405 00c8 A3F50023 		sub	r3, r3, #524288
- 406 00cc 42F8643C 		str	r3, [r2, #-100]
+ 367              		.loc 1 324 9 is_stmt 1 view .LVU96
+ 368              	.LVL38:
+ 369              		.loc 1 324 18 is_stmt 0 view .LVU97
+ 370 00c8 A3F50023 		sub	r3, r3, #524288
+ 371 00cc 42F8643C 		str	r3, [r2, #-100]
  325:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41B80000u;                         /* S23                             
- 407              		.loc 1 325 9 is_stmt 1 view .LVU103
- 408              	.LVL44:
- 409              		.loc 1 325 18 is_stmt 0 view .LVU104
- 410 00d0 A3F50023 		sub	r3, r3, #524288
- 411 00d4 42F8683C 		str	r3, [r2, #-104]
+ 372              		.loc 1 325 9 is_stmt 1 view .LVU98
+ARM GAS  /tmp/ccw5cOkE.s 			page 13
+
+
+ 373              	.LVL39:
+ 374              		.loc 1 325 18 is_stmt 0 view .LVU99
+ 375 00d0 A3F50023 		sub	r3, r3, #524288
+ 376 00d4 42F8683C 		str	r3, [r2, #-104]
  326:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41B00000u;                         /* S22                             
- 412              		.loc 1 326 9 is_stmt 1 view .LVU105
- 413              	.LVL45:
- 414              		.loc 1 326 18 is_stmt 0 view .LVU106
- 415 00d8 A3F50023 		sub	r3, r3, #524288
- 416 00dc 42F86C3C 		str	r3, [r2, #-108]
+ 377              		.loc 1 326 9 is_stmt 1 view .LVU100
+ 378              	.LVL40:
+ 379              		.loc 1 326 18 is_stmt 0 view .LVU101
+ 380 00d8 A3F50023 		sub	r3, r3, #524288
+ 381 00dc 42F86C3C 		str	r3, [r2, #-108]
  327:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41A80000u;                         /* S21                             
- 417              		.loc 1 327 9 is_stmt 1 view .LVU107
- 418              	.LVL46:
- 419              		.loc 1 327 18 is_stmt 0 view .LVU108
- 420 00e0 A3F50023 		sub	r3, r3, #524288
- 421 00e4 42F8703C 		str	r3, [r2, #-112]
+ 382              		.loc 1 327 9 is_stmt 1 view .LVU102
+ 383              	.LVL41:
+ 384              		.loc 1 327 18 is_stmt 0 view .LVU103
+ 385 00e0 A3F50023 		sub	r3, r3, #524288
+ 386 00e4 42F8703C 		str	r3, [r2, #-112]
  328:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41A00000u;                         /* S20                             
- 422              		.loc 1 328 9 is_stmt 1 view .LVU109
- 423              	.LVL47:
- 424              		.loc 1 328 18 is_stmt 0 view .LVU110
- 425 00e8 A3F50023 		sub	r3, r3, #524288
- 426 00ec 42F8743C 		str	r3, [r2, #-116]
-ARM GAS  /tmp/cc9Pf8AD.s 			page 14
-
-
+ 387              		.loc 1 328 9 is_stmt 1 view .LVU104
+ 388              	.LVL42:
+ 389              		.loc 1 328 18 is_stmt 0 view .LVU105
+ 390 00e8 A3F50023 		sub	r3, r3, #524288
+ 391 00ec 42F8743C 		str	r3, [r2, #-116]
  329:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41980000u;                         /* S19                             
- 427              		.loc 1 329 9 is_stmt 1 view .LVU111
- 428              	.LVL48:
- 429              		.loc 1 329 18 is_stmt 0 view .LVU112
- 430 00f0 A3F50023 		sub	r3, r3, #524288
- 431 00f4 42F8783C 		str	r3, [r2, #-120]
+ 392              		.loc 1 329 9 is_stmt 1 view .LVU106
+ 393              	.LVL43:
+ 394              		.loc 1 329 18 is_stmt 0 view .LVU107
+ 395 00f0 A3F50023 		sub	r3, r3, #524288
+ 396 00f4 42F8783C 		str	r3, [r2, #-120]
  330:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41900000u;                         /* S18                             
- 432              		.loc 1 330 9 is_stmt 1 view .LVU113
- 433              	.LVL49:
- 434              		.loc 1 330 18 is_stmt 0 view .LVU114
- 435 00f8 A3F50023 		sub	r3, r3, #524288
- 436 00fc 42F87C3C 		str	r3, [r2, #-124]
+ 397              		.loc 1 330 9 is_stmt 1 view .LVU108
+ 398              	.LVL44:
+ 399              		.loc 1 330 18 is_stmt 0 view .LVU109
+ 400 00f8 A3F50023 		sub	r3, r3, #524288
+ 401 00fc 42F87C3C 		str	r3, [r2, #-124]
  331:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41880000u;                         /* S17                             
- 437              		.loc 1 331 9 is_stmt 1 view .LVU115
- 438              	.LVL50:
- 439              		.loc 1 331 18 is_stmt 0 view .LVU116
- 440 0100 A3F50023 		sub	r3, r3, #524288
- 441 0104 42F8803C 		str	r3, [r2, #-128]
+ 402              		.loc 1 331 9 is_stmt 1 view .LVU110
+ 403              	.LVL45:
+ 404              		.loc 1 331 18 is_stmt 0 view .LVU111
+ 405 0100 A3F50023 		sub	r3, r3, #524288
+ 406 0104 42F8803C 		str	r3, [r2, #-128]
  332:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41800000u;                         /* S16                             
- 442              		.loc 1 332 9 is_stmt 1 view .LVU117
- 443              	.LVL51:
- 444              		.loc 1 332 18 is_stmt 0 view .LVU118
- 445 0108 4FF08343 		mov	r3, #1098907648
- 446 010c 42F8843C 		str	r3, [r2, #-132]
+ 407              		.loc 1 332 9 is_stmt 1 view .LVU112
+ 408              	.LVL46:
+ 409              		.loc 1 332 18 is_stmt 0 view .LVU113
+ 410 0108 4FF08343 		mov	r3, #1098907648
+ 411 010c 42F8843C 		str	r3, [r2, #-132]
  333:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41700000u;                         /* S15                             
- 447              		.loc 1 333 9 is_stmt 1 view .LVU119
- 448              	.LVL52:
- 449              		.loc 1 333 18 is_stmt 0 view .LVU120
- 450 0110 A3F58013 		sub	r3, r3, #1048576
- 451 0114 42F8883C 		str	r3, [r2, #-136]
+ 412              		.loc 1 333 9 is_stmt 1 view .LVU114
+ 413              	.LVL47:
+ 414              		.loc 1 333 18 is_stmt 0 view .LVU115
+ 415 0110 A3F58013 		sub	r3, r3, #1048576
+ 416 0114 42F8883C 		str	r3, [r2, #-136]
  334:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41600000u;                         /* S14                             
- 452              		.loc 1 334 9 is_stmt 1 view .LVU121
- 453              	.LVL53:
- 454              		.loc 1 334 18 is_stmt 0 view .LVU122
- 455 0118 A3F58013 		sub	r3, r3, #1048576
- 456 011c 42F88C3C 		str	r3, [r2, #-140]
+ 417              		.loc 1 334 9 is_stmt 1 view .LVU116
+ 418              	.LVL48:
+ 419              		.loc 1 334 18 is_stmt 0 view .LVU117
+ 420 0118 A3F58013 		sub	r3, r3, #1048576
+ARM GAS  /tmp/ccw5cOkE.s 			page 14
+
+
+ 421 011c 42F88C3C 		str	r3, [r2, #-140]
  335:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41500000u;                         /* S13                             
- 457              		.loc 1 335 9 is_stmt 1 view .LVU123
- 458              	.LVL54:
- 459              		.loc 1 335 18 is_stmt 0 view .LVU124
- 460 0120 A3F58013 		sub	r3, r3, #1048576
- 461 0124 42F8903C 		str	r3, [r2, #-144]
+ 422              		.loc 1 335 9 is_stmt 1 view .LVU118
+ 423              	.LVL49:
+ 424              		.loc 1 335 18 is_stmt 0 view .LVU119
+ 425 0120 A3F58013 		sub	r3, r3, #1048576
+ 426 0124 42F8903C 		str	r3, [r2, #-144]
  336:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41400000u;                         /* S12                             
- 462              		.loc 1 336 9 is_stmt 1 view .LVU125
- 463              	.LVL55:
- 464              		.loc 1 336 18 is_stmt 0 view .LVU126
- 465 0128 A3F58013 		sub	r3, r3, #1048576
- 466 012c 42F8943C 		str	r3, [r2, #-148]
+ 427              		.loc 1 336 9 is_stmt 1 view .LVU120
+ 428              	.LVL50:
+ 429              		.loc 1 336 18 is_stmt 0 view .LVU121
+ 430 0128 A3F58013 		sub	r3, r3, #1048576
+ 431 012c 42F8943C 		str	r3, [r2, #-148]
  337:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41300000u;                         /* S11                             
- 467              		.loc 1 337 9 is_stmt 1 view .LVU127
- 468              	.LVL56:
- 469              		.loc 1 337 18 is_stmt 0 view .LVU128
- 470 0130 A3F58013 		sub	r3, r3, #1048576
- 471 0134 42F8983C 		str	r3, [r2, #-152]
+ 432              		.loc 1 337 9 is_stmt 1 view .LVU122
+ 433              	.LVL51:
+ 434              		.loc 1 337 18 is_stmt 0 view .LVU123
+ 435 0130 A3F58013 		sub	r3, r3, #1048576
+ 436 0134 42F8983C 		str	r3, [r2, #-152]
  338:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41200000u;                         /* S10                             
- 472              		.loc 1 338 9 is_stmt 1 view .LVU129
- 473              	.LVL57:
-ARM GAS  /tmp/cc9Pf8AD.s 			page 15
-
-
- 474              		.loc 1 338 18 is_stmt 0 view .LVU130
- 475 0138 A3F58013 		sub	r3, r3, #1048576
- 476 013c 42F89C3C 		str	r3, [r2, #-156]
+ 437              		.loc 1 338 9 is_stmt 1 view .LVU124
+ 438              	.LVL52:
+ 439              		.loc 1 338 18 is_stmt 0 view .LVU125
+ 440 0138 A3F58013 		sub	r3, r3, #1048576
+ 441 013c 42F89C3C 		str	r3, [r2, #-156]
  339:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41100000u;                         /* S9                              
- 477              		.loc 1 339 9 is_stmt 1 view .LVU131
- 478              	.LVL58:
- 479              		.loc 1 339 18 is_stmt 0 view .LVU132
- 480 0140 A3F58013 		sub	r3, r3, #1048576
- 481 0144 42F8A03C 		str	r3, [r2, #-160]
+ 442              		.loc 1 339 9 is_stmt 1 view .LVU126
+ 443              	.LVL53:
+ 444              		.loc 1 339 18 is_stmt 0 view .LVU127
+ 445 0140 A3F58013 		sub	r3, r3, #1048576
+ 446 0144 42F8A03C 		str	r3, [r2, #-160]
  340:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x41000000u;                         /* S8                              
- 482              		.loc 1 340 9 is_stmt 1 view .LVU133
- 483              	.LVL59:
- 484              		.loc 1 340 18 is_stmt 0 view .LVU134
- 485 0148 4FF08243 		mov	r3, #1090519040
- 486 014c 42F8A43C 		str	r3, [r2, #-164]
+ 447              		.loc 1 340 9 is_stmt 1 view .LVU128
+ 448              	.LVL54:
+ 449              		.loc 1 340 18 is_stmt 0 view .LVU129
+ 450 0148 4FF08243 		mov	r3, #1090519040
+ 451 014c 42F8A43C 		str	r3, [r2, #-164]
  341:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40E00000u;                         /* S7                              
- 487              		.loc 1 341 9 is_stmt 1 view .LVU135
- 488              	.LVL60:
- 489              		.loc 1 341 18 is_stmt 0 view .LVU136
- 490 0150 A3F50013 		sub	r3, r3, #2097152
- 491 0154 42F8A83C 		str	r3, [r2, #-168]
+ 452              		.loc 1 341 9 is_stmt 1 view .LVU130
+ 453              	.LVL55:
+ 454              		.loc 1 341 18 is_stmt 0 view .LVU131
+ 455 0150 A3F50013 		sub	r3, r3, #2097152
+ 456 0154 42F8A83C 		str	r3, [r2, #-168]
  342:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40C00000u;                         /* S6                              
- 492              		.loc 1 342 9 is_stmt 1 view .LVU137
- 493              	.LVL61:
- 494              		.loc 1 342 18 is_stmt 0 view .LVU138
- 495 0158 A3F50013 		sub	r3, r3, #2097152
- 496 015c 42F8AC3C 		str	r3, [r2, #-172]
+ 457              		.loc 1 342 9 is_stmt 1 view .LVU132
+ 458              	.LVL56:
+ 459              		.loc 1 342 18 is_stmt 0 view .LVU133
+ 460 0158 A3F50013 		sub	r3, r3, #2097152
+ 461 015c 42F8AC3C 		str	r3, [r2, #-172]
  343:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40A00000u;                         /* S5                              
- 497              		.loc 1 343 9 is_stmt 1 view .LVU139
- 498              	.LVL62:
- 499              		.loc 1 343 18 is_stmt 0 view .LVU140
- 500 0160 A3F50013 		sub	r3, r3, #2097152
- 501 0164 42F8B03C 		str	r3, [r2, #-176]
+ 462              		.loc 1 343 9 is_stmt 1 view .LVU134
+ 463              	.LVL57:
+ 464              		.loc 1 343 18 is_stmt 0 view .LVU135
+ 465 0160 A3F50013 		sub	r3, r3, #2097152
+ 466 0164 42F8B03C 		str	r3, [r2, #-176]
  344:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40800000u;                         /* S4                              
- 502              		.loc 1 344 9 is_stmt 1 view .LVU141
- 503              	.LVL63:
- 504              		.loc 1 344 18 is_stmt 0 view .LVU142
- 505 0168 4FF08143 		mov	r3, #1082130432
- 506 016c 42F8B43C 		str	r3, [r2, #-180]
+ 467              		.loc 1 344 9 is_stmt 1 view .LVU136
+ARM GAS  /tmp/ccw5cOkE.s 			page 15
+
+
+ 468              	.LVL58:
+ 469              		.loc 1 344 18 is_stmt 0 view .LVU137
+ 470 0168 4FF08143 		mov	r3, #1082130432
+ 471 016c 42F8B43C 		str	r3, [r2, #-180]
  345:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40400000u;                         /* S3                              
- 507              		.loc 1 345 9 is_stmt 1 view .LVU143
- 508              	.LVL64:
- 509              		.loc 1 345 18 is_stmt 0 view .LVU144
- 510 0170 A3F58003 		sub	r3, r3, #4194304
- 511 0174 42F8B83C 		str	r3, [r2, #-184]
+ 472              		.loc 1 345 9 is_stmt 1 view .LVU138
+ 473              	.LVL59:
+ 474              		.loc 1 345 18 is_stmt 0 view .LVU139
+ 475 0170 A3F58003 		sub	r3, r3, #4194304
+ 476 0174 42F8B83C 		str	r3, [r2, #-184]
  346:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x40000000u;                         /* S2                              
- 512              		.loc 1 346 9 is_stmt 1 view .LVU145
- 513              	.LVL65:
- 514              		.loc 1 346 18 is_stmt 0 view .LVU146
- 515 0178 4FF08043 		mov	r3, #1073741824
- 516 017c 42F8BC3C 		str	r3, [r2, #-188]
+ 477              		.loc 1 346 9 is_stmt 1 view .LVU140
+ 478              	.LVL60:
+ 479              		.loc 1 346 18 is_stmt 0 view .LVU141
+ 480 0178 4FF08043 		mov	r3, #1073741824
+ 481 017c 42F8BC3C 		str	r3, [r2, #-188]
  347:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x3F800000u;                         /* S1                              
- 517              		.loc 1 347 9 is_stmt 1 view .LVU147
- 518              	.LVL66:
- 519              		.loc 1 347 18 is_stmt 0 view .LVU148
- 520 0180 4FF07E53 		mov	r3, #1065353216
- 521 0184 42F8C03C 		str	r3, [r2, #-192]
-ARM GAS  /tmp/cc9Pf8AD.s 			page 16
-
-
+ 482              		.loc 1 347 9 is_stmt 1 view .LVU142
+ 483              	.LVL61:
+ 484              		.loc 1 347 18 is_stmt 0 view .LVU143
+ 485 0180 4FF07E53 		mov	r3, #1065353216
+ 486 0184 42F8C03C 		str	r3, [r2, #-192]
  348:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         *--p_stk = (OS_STK)0x00000000u;                         /* S0                              
- 522              		.loc 1 348 9 is_stmt 1 view .LVU149
- 523              		.loc 1 348 18 is_stmt 0 view .LVU150
- 524 0188 A2F1C400 		sub	r0, r2, #196
- 525              	.LVL67:
- 526              		.loc 1 348 18 view .LVU151
- 527 018c 0023     		movs	r3, #0
- 528 018e 42F8C43C 		str	r3, [r2, #-196]
+ 487              		.loc 1 348 9 is_stmt 1 view .LVU144
+ 488              		.loc 1 348 18 is_stmt 0 view .LVU145
+ 489 0188 A2F1C400 		sub	r0, r2, #196
+ 490              	.LVL62:
+ 491              		.loc 1 348 18 view .LVU146
+ 492 018c 0023     		movs	r3, #0
+ 493 018e 42F8C43C 		str	r3, [r2, #-196]
  349:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
  350:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif    
  351:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  352:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     return (p_stk);
- 529              		.loc 1 352 5 is_stmt 1 view .LVU152
- 530              	.L18:
+ 494              		.loc 1 352 5 is_stmt 1 view .LVU147
+ 495              	.L13:
  353:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 531              		.loc 1 353 1 is_stmt 0 view .LVU153
- 532 0192 5DF8044B 		ldr	r4, [sp], #4
- 533              	.LCFI6:
- 534              		.cfi_restore 4
- 535              		.cfi_def_cfa_offset 0
- 536 0196 7047     		bx	lr
- 537              	.L22:
- 538              		.align	2
- 539              	.L21:
- 540 0198 00000000 		.word	OS_TaskReturn
- 541 019c 0000F841 		.word	1106771968
- 542              		.cfi_endproc
- 543              	.LFE7:
- 545              		.section	.text.OSTaskSwHook,"ax",%progbits
- 546              		.align	1
- 547              		.global	OSTaskSwHook
- 548              		.syntax unified
- 549              		.thumb
- 550              		.thumb_func
- 551              		.fpu fpv4-sp-d16
- 553              	OSTaskSwHook:
- 554              	.LFB8:
+ 496              		.loc 1 353 1 is_stmt 0 view .LVU148
+ 497 0192 5DF8044B 		ldr	r4, [sp], #4
+ 498              	.LCFI1:
+ 499              		.cfi_restore 4
+ 500              		.cfi_def_cfa_offset 0
+ 501 0196 7047     		bx	lr
+ 502              	.L17:
+ 503              		.align	2
+ 504              	.L16:
+ 505 0198 00000000 		.word	OS_TaskReturn
+ 506 019c 0000F841 		.word	1106771968
+ 507              		.cfi_endproc
+ 508              	.LFE7:
+ 510              		.section	.text.OSTaskSwHook,"ax",%progbits
+ 511              		.align	1
+ 512              		.global	OSTaskSwHook
+ 513              		.syntax unified
+ 514              		.thumb
+ 515              		.thumb_func
+ 516              		.fpu fpv4-sp-d16
+ARM GAS  /tmp/ccw5cOkE.s 			page 16
+
+
+ 518              	OSTaskSwHook:
+ 519              	.LFB8:
  354:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  355:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  356:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** /*
@@ -958,90 +923,85 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  371:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if (OS_CPU_HOOKS_EN > 0u) && (OS_TASK_SW_HOOK_EN > 0u)
  372:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTaskSwHook (void)
  373:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
-ARM GAS  /tmp/cc9Pf8AD.s 			page 17
-
-
- 555              		.loc 1 373 1 is_stmt 1 view -0
- 556              		.cfi_startproc
- 557              		@ args = 0, pretend = 0, frame = 0
- 558              		@ frame_needed = 0, uses_anonymous_args = 0
- 559 0000 08B5     		push	{r3, lr}
- 560              	.LCFI7:
- 561              		.cfi_def_cfa_offset 8
- 562              		.cfi_offset 3, -8
- 563              		.cfi_offset 14, -4
+ 520              		.loc 1 373 1 is_stmt 1 view -0
+ 521              		.cfi_startproc
+ 522              		@ args = 0, pretend = 0, frame = 0
+ 523              		@ frame_needed = 0, uses_anonymous_args = 0
+ 524 0000 08B5     		push	{r3, lr}
+ 525              	.LCFI2:
+ 526              		.cfi_def_cfa_offset 8
+ 527              		.cfi_offset 3, -8
+ 528              		.cfi_offset 14, -4
  374:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     
  375:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if (OS_CPU_ARM_FP_EN > 0u)
  376:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     if ((OSTCBCur->OSTCBOpt & OS_TASK_OPT_SAVE_FP) != (INT16U)0) {
- 564              		.loc 1 376 5 view .LVU155
- 565              		.loc 1 376 18 is_stmt 0 view .LVU156
- 566 0002 0B4B     		ldr	r3, .L29
- 567 0004 1B68     		ldr	r3, [r3]
- 568 0006 1A8A     		ldrh	r2, [r3, #16]
- 569              		.loc 1 376 8 view .LVU157
- 570 0008 12F0040F 		tst	r2, #4
- 571 000c 08D1     		bne	.L27
- 572              	.L24:
+ 529              		.loc 1 376 5 view .LVU150
+ 530              		.loc 1 376 18 is_stmt 0 view .LVU151
+ 531 0002 0A4B     		ldr	r3, .L24
+ 532 0004 1B68     		ldr	r3, [r3]
+ 533 0006 1A8A     		ldrh	r2, [r3, #16]
+ 534              		.loc 1 376 8 view .LVU152
+ 535 0008 12F0040F 		tst	r2, #4
+ 536 000c 06D1     		bne	.L22
+ 537              	.L19:
  377:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OS_CPU_FP_Reg_Push(OSTCBCur->OSTCBStkPtr);
  378:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
  379:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  380:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     if ((OSTCBHighRdy->OSTCBOpt & OS_TASK_OPT_SAVE_FP) != (INT16U)0) {
- 573              		.loc 1 380 5 is_stmt 1 view .LVU158
- 574              		.loc 1 380 22 is_stmt 0 view .LVU159
- 575 000e 094B     		ldr	r3, .L29+4
- 576 0010 1B68     		ldr	r3, [r3]
- 577 0012 1A8A     		ldrh	r2, [r3, #16]
- 578              		.loc 1 380 8 view .LVU160
- 579 0014 12F0040F 		tst	r2, #4
- 580 0018 06D1     		bne	.L28
- 581              	.L25:
+ 538              		.loc 1 380 5 is_stmt 1 view .LVU153
+ 539              		.loc 1 380 22 is_stmt 0 view .LVU154
+ 540 000e 084B     		ldr	r3, .L24+4
+ 541 0010 1B68     		ldr	r3, [r3]
+ 542 0012 1A8A     		ldrh	r2, [r3, #16]
+ 543              		.loc 1 380 8 view .LVU155
+ 544 0014 12F0040F 		tst	r2, #4
+ 545 0018 04D1     		bne	.L23
+ 546              	.L18:
  381:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OS_CPU_FP_Reg_Pop(OSTCBHighRdy->OSTCBStkPtr);
+ARM GAS  /tmp/ccw5cOkE.s 			page 17
+
+
  382:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
  383:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  384:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     
  385:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  386:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TaskSwHook();
- 582              		.loc 1 386 5 is_stmt 1 view .LVU161
- 583 001a FFF7FEFF 		bl	App_TaskSwHook
- 584              	.LVL68:
  387:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  388:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 585              		.loc 1 388 1 is_stmt 0 view .LVU162
- 586 001e 08BD     		pop	{r3, pc}
- 587              	.L27:
- 377:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
- 588              		.loc 1 377 9 is_stmt 1 view .LVU163
- 589 0020 1868     		ldr	r0, [r3]
- 590 0022 FFF7FEFF 		bl	OS_CPU_FP_Reg_Push
- 591              	.LVL69:
- 592 0026 F2E7     		b	.L24
- 593              	.L28:
+ 547              		.loc 1 388 1 view .LVU156
+ 548 001a 08BD     		pop	{r3, pc}
+ 549              	.L22:
+ 377:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OS_CPU_FP_Reg_Push(OSTCBCur->OSTCBStkPtr);
+ 550              		.loc 1 377 9 is_stmt 1 view .LVU157
+ 551 001c 1868     		ldr	r0, [r3]
+ 552 001e FFF7FEFF 		bl	OS_CPU_FP_Reg_Push
+ 553              	.LVL63:
+ 554 0022 F4E7     		b	.L19
+ 555              	.L23:
  381:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OS_CPU_FP_Reg_Pop(OSTCBHighRdy->OSTCBStkPtr);
- 594              		.loc 1 381 9 view .LVU164
-ARM GAS  /tmp/cc9Pf8AD.s 			page 18
-
-
- 595 0028 1868     		ldr	r0, [r3]
- 596 002a FFF7FEFF 		bl	OS_CPU_FP_Reg_Pop
- 597              	.LVL70:
- 598 002e F4E7     		b	.L25
- 599              	.L30:
- 600              		.align	2
- 601              	.L29:
- 602 0030 00000000 		.word	OSTCBCur
- 603 0034 00000000 		.word	OSTCBHighRdy
- 604              		.cfi_endproc
- 605              	.LFE8:
- 607              		.section	.text.OSTCBInitHook,"ax",%progbits
- 608              		.align	1
- 609              		.global	OSTCBInitHook
- 610              		.syntax unified
- 611              		.thumb
- 612              		.thumb_func
- 613              		.fpu fpv4-sp-d16
- 615              	OSTCBInitHook:
- 616              	.LVL71:
- 617              	.LFB9:
+ 556              		.loc 1 381 9 view .LVU158
+ 557 0024 1868     		ldr	r0, [r3]
+ 558 0026 FFF7FEFF 		bl	OS_CPU_FP_Reg_Pop
+ 559              	.LVL64:
+ 560              		.loc 1 388 1 is_stmt 0 view .LVU159
+ 561 002a F6E7     		b	.L18
+ 562              	.L25:
+ 563              		.align	2
+ 564              	.L24:
+ 565 002c 00000000 		.word	OSTCBCur
+ 566 0030 00000000 		.word	OSTCBHighRdy
+ 567              		.cfi_endproc
+ 568              	.LFE8:
+ 570              		.section	.text.OSTCBInitHook,"ax",%progbits
+ 571              		.align	1
+ 572              		.global	OSTCBInitHook
+ 573              		.syntax unified
+ 574              		.thumb
+ 575              		.thumb_func
+ 576              		.fpu fpv4-sp-d16
+ 578              	OSTCBInitHook:
+ 579              	.LVL65:
+ 580              	.LFB9:
  389:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  390:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  391:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -1058,42 +1018,35 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  402:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** */
  403:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_CPU_HOOKS_EN > 0u
  404:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTCBInitHook (OS_TCB *ptcb)
+ARM GAS  /tmp/ccw5cOkE.s 			page 18
+
+
  405:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 618              		.loc 1 405 1 view -0
- 619              		.cfi_startproc
- 620              		@ args = 0, pretend = 0, frame = 0
- 621              		@ frame_needed = 0, uses_anonymous_args = 0
- 622              		.loc 1 405 1 is_stmt 0 view .LVU166
- 623 0000 08B5     		push	{r3, lr}
- 624              	.LCFI8:
- 625              		.cfi_def_cfa_offset 8
- 626              		.cfi_offset 3, -8
- 627              		.cfi_offset 14, -4
+ 581              		.loc 1 405 1 is_stmt 1 view -0
+ 582              		.cfi_startproc
+ 583              		@ args = 0, pretend = 0, frame = 0
+ 584              		@ frame_needed = 0, uses_anonymous_args = 0
+ 585              		@ link register save eliminated.
  406:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  407:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TCBInitHook(ptcb);
- 628              		.loc 1 407 5 is_stmt 1 view .LVU167
- 629 0002 FFF7FEFF 		bl	App_TCBInitHook
- 630              	.LVL72:
  408:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #else
  409:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     (void)ptcb;                                  /* Prevent compiler warning                       
+ 586              		.loc 1 409 5 view .LVU161
  410:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  411:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
-ARM GAS  /tmp/cc9Pf8AD.s 			page 19
-
-
- 631              		.loc 1 411 1 is_stmt 0 view .LVU168
- 632 0006 08BD     		pop	{r3, pc}
- 633              		.cfi_endproc
- 634              	.LFE9:
- 636              		.section	.text.OSTimeTickHook,"ax",%progbits
- 637              		.align	1
- 638              		.global	OSTimeTickHook
- 639              		.syntax unified
- 640              		.thumb
- 641              		.thumb_func
- 642              		.fpu fpv4-sp-d16
- 644              	OSTimeTickHook:
- 645              	.LFB10:
+ 587              		.loc 1 411 1 is_stmt 0 view .LVU162
+ 588 0000 7047     		bx	lr
+ 589              		.cfi_endproc
+ 590              	.LFE9:
+ 592              		.section	.text.OSTimeTickHook,"ax",%progbits
+ 593              		.align	1
+ 594              		.global	OSTimeTickHook
+ 595              		.syntax unified
+ 596              		.thumb
+ 597              		.thumb_func
+ 598              		.fpu fpv4-sp-d16
+ 600              	OSTimeTickHook:
+ 601              	.LFB10:
  412:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  413:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  414:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -1111,20 +1064,13 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  426:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if (OS_CPU_HOOKS_EN > 0u) && (OS_TIME_TICK_HOOK_EN > 0u)
  427:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OSTimeTickHook (void)
  428:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 646              		.loc 1 428 1 is_stmt 1 view -0
- 647              		.cfi_startproc
- 648              		@ args = 0, pretend = 0, frame = 0
- 649              		@ frame_needed = 0, uses_anonymous_args = 0
- 650 0000 08B5     		push	{r3, lr}
- 651              	.LCFI9:
- 652              		.cfi_def_cfa_offset 8
- 653              		.cfi_offset 3, -8
- 654              		.cfi_offset 14, -4
+ 602              		.loc 1 428 1 is_stmt 1 view -0
+ 603              		.cfi_startproc
+ 604              		@ args = 0, pretend = 0, frame = 0
+ 605              		@ frame_needed = 0, uses_anonymous_args = 0
+ 606              		@ link register save eliminated.
  429:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_APP_HOOKS_EN > 0u
  430:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     App_TimeTickHook();
- 655              		.loc 1 430 5 view .LVU170
- 656 0002 FFF7FEFF 		bl	App_TimeTickHook
- 657              	.LVL73:
  431:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  432:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  433:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #if OS_TMR_EN > 0u
@@ -1132,25 +1078,25 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  435:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     if (OSTmrCtr >= (OS_TICKS_PER_SEC / OS_TMR_CFG_TICKS_PER_SEC)) {
  436:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OSTmrCtr = 0;
  437:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****         OSTmrSignal();
+ARM GAS  /tmp/ccw5cOkE.s 			page 19
+
+
  438:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     }
  439:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  440:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 658              		.loc 1 440 1 is_stmt 0 view .LVU171
- 659 0006 08BD     		pop	{r3, pc}
- 660              		.cfi_endproc
-ARM GAS  /tmp/cc9Pf8AD.s 			page 20
-
-
- 661              	.LFE10:
- 663              		.section	.text.OS_CPU_SysTickHandler,"ax",%progbits
- 664              		.align	1
- 665              		.global	OS_CPU_SysTickHandler
- 666              		.syntax unified
- 667              		.thumb
- 668              		.thumb_func
- 669              		.fpu fpv4-sp-d16
- 671              	OS_CPU_SysTickHandler:
- 672              	.LFB11:
+ 607              		.loc 1 440 1 view .LVU164
+ 608 0000 7047     		bx	lr
+ 609              		.cfi_endproc
+ 610              	.LFE10:
+ 612              		.section	.text.OS_CPU_SysTickHandler,"ax",%progbits
+ 613              		.align	1
+ 614              		.global	OS_CPU_SysTickHandler
+ 615              		.syntax unified
+ 616              		.thumb
+ 617              		.thumb_func
+ 618              		.fpu fpv4-sp-d16
+ 620              	OS_CPU_SysTickHandler:
+ 621              	.LFB11:
  441:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #endif
  442:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  443:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
@@ -1169,68 +1115,68 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  456:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  457:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OS_CPU_SysTickHandler (void)
  458:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 673              		.loc 1 458 1 is_stmt 1 view -0
- 674              		.cfi_startproc
- 675              		@ args = 0, pretend = 0, frame = 0
- 676              		@ frame_needed = 0, uses_anonymous_args = 0
- 677 0000 08B5     		push	{r3, lr}
- 678              	.LCFI10:
- 679              		.cfi_def_cfa_offset 8
- 680              		.cfi_offset 3, -8
- 681              		.cfi_offset 14, -4
+ 622              		.loc 1 458 1 view -0
+ 623              		.cfi_startproc
+ 624              		@ args = 0, pretend = 0, frame = 0
+ 625              		@ frame_needed = 0, uses_anonymous_args = 0
+ 626 0000 08B5     		push	{r3, lr}
+ 627              	.LCFI3:
+ 628              		.cfi_def_cfa_offset 8
+ 629              		.cfi_offset 3, -8
+ 630              		.cfi_offset 14, -4
  459:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OS_CPU_SR  cpu_sr;
- 682              		.loc 1 459 5 view .LVU173
+ 631              		.loc 1 459 5 view .LVU166
  460:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  461:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  462:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OS_ENTER_CRITICAL();                         /* Tell uC/OS-II that we are starting an ISR      
- 683              		.loc 1 462 5 view .LVU174
- 684 0002 FFF7FEFF 		bl	OS_CPU_SR_Save
- 685              	.LVL74:
- 686              		.loc 1 462 24 view .LVU175
+ 632              		.loc 1 462 5 view .LVU167
+ 633 0002 FFF7FEFF 		bl	OS_CPU_SR_Save
+ 634              	.LVL66:
+ 635              		.loc 1 462 24 view .LVU168
  463:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OSIntNesting++;
- 687              		.loc 1 463 5 view .LVU176
- 688              		.loc 1 463 17 is_stmt 0 view .LVU177
- 689 0006 054A     		ldr	r2, .L37
- 690 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 691 000a 0133     		adds	r3, r3, #1
- 692 000c 1370     		strb	r3, [r2]
+ 636              		.loc 1 463 5 view .LVU169
+ 637              		.loc 1 463 17 is_stmt 0 view .LVU170
+ 638 0006 054A     		ldr	r2, .L30
+ 639 0008 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ARM GAS  /tmp/ccw5cOkE.s 			page 20
+
+
+ 640 000a 0133     		adds	r3, r3, #1
+ 641 000c 1370     		strb	r3, [r2]
  464:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OS_EXIT_CRITICAL();
- 693              		.loc 1 464 5 is_stmt 1 view .LVU178
- 694 000e FFF7FEFF 		bl	OS_CPU_SR_Restore
- 695              	.LVL75:
-ARM GAS  /tmp/cc9Pf8AD.s 			page 21
-
-
- 696              		.loc 1 464 23 view .LVU179
+ 642              		.loc 1 464 5 is_stmt 1 view .LVU171
+ 643 000e FFF7FEFF 		bl	OS_CPU_SR_Restore
+ 644              	.LVL67:
+ 645              		.loc 1 464 23 view .LVU172
  465:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  466:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OSTimeTick();                                /* Call uC/OS-II's OSTimeTick()                   
- 697              		.loc 1 466 5 view .LVU180
- 698 0012 FFF7FEFF 		bl	OSTimeTick
- 699              	.LVL76:
+ 646              		.loc 1 466 5 view .LVU173
+ 647 0012 FFF7FEFF 		bl	OSTimeTick
+ 648              	.LVL68:
  467:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  468:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     OSIntExit();                                 /* Tell uC/OS-II that we are leaving the ISR      
- 700              		.loc 1 468 5 view .LVU181
- 701 0016 FFF7FEFF 		bl	OSIntExit
- 702              	.LVL77:
+ 649              		.loc 1 468 5 view .LVU174
+ 650 0016 FFF7FEFF 		bl	OSIntExit
+ 651              	.LVL69:
  469:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 703              		.loc 1 469 1 is_stmt 0 view .LVU182
- 704 001a 08BD     		pop	{r3, pc}
- 705              	.L38:
- 706              		.align	2
- 707              	.L37:
- 708 001c 00000000 		.word	OSIntNesting
- 709              		.cfi_endproc
- 710              	.LFE11:
- 712              		.section	.text.OS_CPU_SysTickInit,"ax",%progbits
- 713              		.align	1
- 714              		.global	OS_CPU_SysTickInit
- 715              		.syntax unified
- 716              		.thumb
- 717              		.thumb_func
- 718              		.fpu fpv4-sp-d16
- 720              	OS_CPU_SysTickInit:
- 721              	.LVL78:
- 722              	.LFB142:
+ 652              		.loc 1 469 1 is_stmt 0 view .LVU175
+ 653 001a 08BD     		pop	{r3, pc}
+ 654              	.L31:
+ 655              		.align	2
+ 656              	.L30:
+ 657 001c 00000000 		.word	OSIntNesting
+ 658              		.cfi_endproc
+ 659              	.LFE11:
+ 661              		.section	.text.OS_CPU_SysTickInit,"ax",%progbits
+ 662              		.align	1
+ 663              		.global	OS_CPU_SysTickInit
+ 664              		.syntax unified
+ 665              		.thumb
+ 666              		.thumb_func
+ 667              		.fpu fpv4-sp-d16
+ 669              	OS_CPU_SysTickInit:
+ 670              	.LVL70:
+ 671              	.LFB142:
  470:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  471:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** 
  472:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** /*
@@ -1248,33 +1194,33 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  484:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** #include "stm32f4xx.h"
  485:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** void  OS_CPU_SysTickInit (INT32U  cnts)
  486:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** {
- 723              		.loc 1 486 1 is_stmt 1 view -0
- 724              		.cfi_startproc
- 725              		@ args = 0, pretend = 0, frame = 0
- 726              		@ frame_needed = 0, uses_anonymous_args = 0
- 727              		@ link register save eliminated.
+ 672              		.loc 1 486 1 is_stmt 1 view -0
+ 673              		.cfi_startproc
+ 674              		@ args = 0, pretend = 0, frame = 0
+ 675              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccw5cOkE.s 			page 21
+
+
+ 676              		@ link register save eliminated.
  487:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     if ((cnts - 1) > SysTick_LOAD_RELOAD_Msk) return;
- 728              		.loc 1 487 5 view .LVU184
- 729              		.loc 1 487 15 is_stmt 0 view .LVU185
- 730 0000 0138     		subs	r0, r0, #1
- 731              	.LVL79:
-ARM GAS  /tmp/cc9Pf8AD.s 			page 22
-
-
- 732              		.loc 1 487 8 view .LVU186
- 733 0002 B0F1807F 		cmp	r0, #16777216
- 734 0006 09D2     		bcs	.L39
+ 677              		.loc 1 487 5 view .LVU177
+ 678              		.loc 1 487 15 is_stmt 0 view .LVU178
+ 679 0000 0138     		subs	r0, r0, #1
+ 680              	.LVL71:
+ 681              		.loc 1 487 8 view .LVU179
+ 682 0002 B0F1807F 		cmp	r0, #16777216
+ 683 0006 09D2     		bcs	.L32
  488:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     SysTick->LOAD = cnts - 1;
- 735              		.loc 1 488 5 is_stmt 1 view .LVU187
- 736              		.loc 1 488 19 is_stmt 0 view .LVU188
- 737 0008 054B     		ldr	r3, .L41
- 738 000a 5860     		str	r0, [r3, #4]
+ 684              		.loc 1 488 5 is_stmt 1 view .LVU180
+ 685              		.loc 1 488 19 is_stmt 0 view .LVU181
+ 686 0008 054B     		ldr	r3, .L34
+ 687 000a 5860     		str	r0, [r3, #4]
  489:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     NVIC_SetPriority(SysTick_IRQn, (1 << __NVIC_PRIO_BITS) - 1);
- 739              		.loc 1 489 5 is_stmt 1 view .LVU189
- 740              	.LVL80:
- 741              	.LBB4:
- 742              	.LBI4:
- 743              		.file 2 "Drivers/CMSIS/Core/Include/core_cm4.h"
+ 688              		.loc 1 489 5 is_stmt 1 view .LVU182
+ 689              	.LVL72:
+ 690              	.LBB4:
+ 691              	.LBI4:
+ 692              		.file 2 "Drivers/CMSIS/Core/Include/core_cm4.h"
    1:Drivers/CMSIS/Core/Include/core_cm4.h **** /**************************************************************************//**
    2:Drivers/CMSIS/Core/Include/core_cm4.h ****  * @file     core_cm4.h
    3:Drivers/CMSIS/Core/Include/core_cm4.h ****  * @brief    CMSIS Cortex-M4 Core Peripheral Access Layer Header File
@@ -1312,15 +1258,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
   35:Drivers/CMSIS/Core/Include/core_cm4.h **** 
   36:Drivers/CMSIS/Core/Include/core_cm4.h **** #ifdef __cplusplus
   37:Drivers/CMSIS/Core/Include/core_cm4.h ****  extern "C" {
+ARM GAS  /tmp/ccw5cOkE.s 			page 22
+
+
   38:Drivers/CMSIS/Core/Include/core_cm4.h **** #endif
   39:Drivers/CMSIS/Core/Include/core_cm4.h **** 
   40:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
   41:Drivers/CMSIS/Core/Include/core_cm4.h ****   \page CMSIS_MISRA_Exceptions  MISRA-C:2004 Compliance Exceptions
   42:Drivers/CMSIS/Core/Include/core_cm4.h ****   CMSIS violates the following MISRA-C:2004 rules:
   43:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 23
-
-
   44:Drivers/CMSIS/Core/Include/core_cm4.h ****    \li Required Rule 8.5, object/function definition in header file.<br>
   45:Drivers/CMSIS/Core/Include/core_cm4.h ****      Function definitions in header files are used to allow 'inlining'.
   46:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -1372,15 +1318,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
   92:Drivers/CMSIS/Core/Include/core_cm4.h ****     #else
   93:Drivers/CMSIS/Core/Include/core_cm4.h ****       #warning "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESEN
   94:Drivers/CMSIS/Core/Include/core_cm4.h ****       #define __FPU_USED       0U
+ARM GAS  /tmp/ccw5cOkE.s 			page 23
+
+
   95:Drivers/CMSIS/Core/Include/core_cm4.h ****     #endif
   96:Drivers/CMSIS/Core/Include/core_cm4.h ****   #else
   97:Drivers/CMSIS/Core/Include/core_cm4.h ****     #define __FPU_USED         0U
   98:Drivers/CMSIS/Core/Include/core_cm4.h ****   #endif
   99:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  100:Drivers/CMSIS/Core/Include/core_cm4.h **** #elif defined ( __GNUC__ )
-ARM GAS  /tmp/cc9Pf8AD.s 			page 24
-
-
  101:Drivers/CMSIS/Core/Include/core_cm4.h ****   #if defined (__VFP_FP__) && !defined(__SOFTFP__)
  102:Drivers/CMSIS/Core/Include/core_cm4.h ****     #if defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)
  103:Drivers/CMSIS/Core/Include/core_cm4.h ****       #define __FPU_USED       1U
@@ -1432,15 +1378,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  149:Drivers/CMSIS/Core/Include/core_cm4.h ****   #if ( __CSMC__ & 0x400U)
  150:Drivers/CMSIS/Core/Include/core_cm4.h ****     #if defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)
  151:Drivers/CMSIS/Core/Include/core_cm4.h ****       #define __FPU_USED       1U
+ARM GAS  /tmp/ccw5cOkE.s 			page 24
+
+
  152:Drivers/CMSIS/Core/Include/core_cm4.h ****     #else
  153:Drivers/CMSIS/Core/Include/core_cm4.h ****       #error "Compiler generates FPU instructions for a device without an FPU (check __FPU_PRESENT)
  154:Drivers/CMSIS/Core/Include/core_cm4.h ****       #define __FPU_USED       0U
  155:Drivers/CMSIS/Core/Include/core_cm4.h ****     #endif
  156:Drivers/CMSIS/Core/Include/core_cm4.h ****   #else
  157:Drivers/CMSIS/Core/Include/core_cm4.h ****     #define __FPU_USED         0U
-ARM GAS  /tmp/cc9Pf8AD.s 			page 25
-
-
  158:Drivers/CMSIS/Core/Include/core_cm4.h ****   #endif
  159:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  160:Drivers/CMSIS/Core/Include/core_cm4.h **** #endif
@@ -1492,15 +1438,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  206:Drivers/CMSIS/Core/Include/core_cm4.h **** #endif
  207:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  208:Drivers/CMSIS/Core/Include/core_cm4.h **** /* IO definitions (access restrictions to peripheral registers) */
+ARM GAS  /tmp/ccw5cOkE.s 			page 25
+
+
  209:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
  210:Drivers/CMSIS/Core/Include/core_cm4.h ****     \defgroup CMSIS_glob_defs CMSIS Global Defines
  211:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  212:Drivers/CMSIS/Core/Include/core_cm4.h ****     <strong>IO Type Qualifiers</strong> are used
  213:Drivers/CMSIS/Core/Include/core_cm4.h ****     \li to specify the access to peripheral variables.
  214:Drivers/CMSIS/Core/Include/core_cm4.h ****     \li for automatic generation of peripheral register debug information.
-ARM GAS  /tmp/cc9Pf8AD.s 			page 26
-
-
  215:Drivers/CMSIS/Core/Include/core_cm4.h **** */
  216:Drivers/CMSIS/Core/Include/core_cm4.h **** #ifdef __cplusplus
  217:Drivers/CMSIS/Core/Include/core_cm4.h ****   #define   __I     volatile             /*!< Defines 'read only' permissions */
@@ -1552,15 +1498,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  263:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t _reserved0:16;              /*!< bit:  0..15  Reserved */
  264:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags */
  265:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t _reserved1:7;               /*!< bit: 20..26  Reserved */
+ARM GAS  /tmp/ccw5cOkE.s 			page 26
+
+
  266:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
  267:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
  268:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
  269:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
  270:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
  271:Drivers/CMSIS/Core/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 27
-
-
  272:Drivers/CMSIS/Core/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access */
  273:Drivers/CMSIS/Core/Include/core_cm4.h **** } APSR_Type;
  274:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -1612,15 +1558,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  320:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t ISR:9;                      /*!< bit:  0.. 8  Exception number */
  321:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t _reserved0:1;               /*!< bit:      9  Reserved */
  322:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t ICI_IT_1:6;                 /*!< bit: 10..15  ICI/IT part 1 */
+ARM GAS  /tmp/ccw5cOkE.s 			page 27
+
+
  323:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t GE:4;                       /*!< bit: 16..19  Greater than or Equal flags */
  324:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t _reserved1:4;               /*!< bit: 20..23  Reserved */
  325:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t T:1;                        /*!< bit:     24  Thumb bit */
  326:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t ICI_IT_2:2;                 /*!< bit: 25..26  ICI/IT part 2 */
  327:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t Q:1;                        /*!< bit:     27  Saturation condition flag */
  328:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t V:1;                        /*!< bit:     28  Overflow condition code flag */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 28
-
-
  329:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t C:1;                        /*!< bit:     29  Carry condition code flag */
  330:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t Z:1;                        /*!< bit:     30  Zero condition code flag */
  331:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t N:1;                        /*!< bit:     31  Negative condition code flag */
@@ -1672,15 +1618,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  377:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t FPCA:1;                     /*!< bit:      2  FP extension active flag */
  378:Drivers/CMSIS/Core/Include/core_cm4.h ****     uint32_t _reserved0:29;              /*!< bit:  3..31  Reserved */
  379:Drivers/CMSIS/Core/Include/core_cm4.h ****   } b;                                   /*!< Structure used for bit  access */
+ARM GAS  /tmp/ccw5cOkE.s 			page 28
+
+
  380:Drivers/CMSIS/Core/Include/core_cm4.h ****   uint32_t w;                            /*!< Type      used for word access */
  381:Drivers/CMSIS/Core/Include/core_cm4.h **** } CONTROL_Type;
  382:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  383:Drivers/CMSIS/Core/Include/core_cm4.h **** /* CONTROL Register Definitions */
  384:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CONTROL_FPCA_Pos                    2U                                            /*!< CONT
  385:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CONTROL_FPCA_Msk                   (1UL << CONTROL_FPCA_Pos)                      /*!< CONT
-ARM GAS  /tmp/cc9Pf8AD.s 			page 29
-
-
  386:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  387:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CONTROL_SPSEL_Pos                   1U                                            /*!< CONT
  388:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CONTROL_SPSEL_Msk                  (1UL << CONTROL_SPSEL_Pos)                     /*!< CONT
@@ -1732,15 +1678,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  434:Drivers/CMSIS/Core/Include/core_cm4.h ****   @{
  435:Drivers/CMSIS/Core/Include/core_cm4.h ****  */
  436:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 29
+
+
  437:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
  438:Drivers/CMSIS/Core/Include/core_cm4.h ****   \brief  Structure type to access the System Control Block (SCB).
  439:Drivers/CMSIS/Core/Include/core_cm4.h ****  */
  440:Drivers/CMSIS/Core/Include/core_cm4.h **** typedef struct
  441:Drivers/CMSIS/Core/Include/core_cm4.h **** {
  442:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t CPUID;                  /*!< Offset: 0x000 (R/ )  CPUID Base Register */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 30
-
-
  443:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t ICSR;                   /*!< Offset: 0x004 (R/W)  Interrupt Control and State Regi
  444:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t VTOR;                   /*!< Offset: 0x008 (R/W)  Vector Table Offset Register */
  445:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t AIRCR;                  /*!< Offset: 0x00C (R/W)  Application Interrupt and Reset 
@@ -1792,15 +1738,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  491:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_PENDSTSET_Pos             26U                                            /*!< SCB 
  492:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_PENDSTSET_Msk             (1UL << SCB_ICSR_PENDSTSET_Pos)                /*!< SCB 
  493:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 30
+
+
  494:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_PENDSTCLR_Pos             25U                                            /*!< SCB 
  495:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_PENDSTCLR_Msk             (1UL << SCB_ICSR_PENDSTCLR_Pos)                /*!< SCB 
  496:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  497:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_ISRPREEMPT_Pos            23U                                            /*!< SCB 
  498:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_ISRPREEMPT_Msk            (1UL << SCB_ICSR_ISRPREEMPT_Pos)               /*!< SCB 
  499:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 31
-
-
  500:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_ISRPENDING_Pos            22U                                            /*!< SCB 
  501:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_ICSR_ISRPENDING_Msk            (1UL << SCB_ICSR_ISRPENDING_Pos)               /*!< SCB 
  502:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -1852,15 +1798,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  548:Drivers/CMSIS/Core/Include/core_cm4.h **** /* SCB Configuration Control Register Definitions */
  549:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_STKALIGN_Pos                9U                                            /*!< SCB 
  550:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_STKALIGN_Msk               (1UL << SCB_CCR_STKALIGN_Pos)                  /*!< SCB 
+ARM GAS  /tmp/ccw5cOkE.s 			page 31
+
+
  551:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  552:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_BFHFNMIGN_Pos               8U                                            /*!< SCB 
  553:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_BFHFNMIGN_Msk              (1UL << SCB_CCR_BFHFNMIGN_Pos)                 /*!< SCB 
  554:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  555:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_DIV_0_TRP_Pos               4U                                            /*!< SCB 
  556:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_DIV_0_TRP_Msk              (1UL << SCB_CCR_DIV_0_TRP_Pos)                 /*!< SCB 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 32
-
-
  557:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  558:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_UNALIGN_TRP_Pos             3U                                            /*!< SCB 
  559:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CCR_UNALIGN_TRP_Msk            (1UL << SCB_CCR_UNALIGN_TRP_Pos)               /*!< SCB 
@@ -1912,15 +1858,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  605:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_SHCSR_BUSFAULTACT_Msk          (1UL << SCB_SHCSR_BUSFAULTACT_Pos)             /*!< SCB 
  606:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  607:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTACT_Pos           0U                                            /*!< SCB 
+ARM GAS  /tmp/ccw5cOkE.s 			page 32
+
+
  608:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_SHCSR_MEMFAULTACT_Msk          (1UL /*<< SCB_SHCSR_MEMFAULTACT_Pos*/)         /*!< SCB 
  609:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  610:Drivers/CMSIS/Core/Include/core_cm4.h **** /* SCB Configurable Fault Status Register Definitions */
  611:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_USGFAULTSR_Pos            16U                                            /*!< SCB 
  612:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_USGFAULTSR_Msk            (0xFFFFUL << SCB_CFSR_USGFAULTSR_Pos)          /*!< SCB 
  613:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 33
-
-
  614:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_BUSFAULTSR_Pos             8U                                            /*!< SCB 
  615:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_BUSFAULTSR_Msk            (0xFFUL << SCB_CFSR_BUSFAULTSR_Pos)            /*!< SCB 
  616:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -1972,15 +1918,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  662:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_DIVBYZERO_Pos            (SCB_CFSR_USGFAULTSR_Pos + 9U)                  /*!< SCB 
  663:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_DIVBYZERO_Msk            (1UL << SCB_CFSR_DIVBYZERO_Pos)                 /*!< SCB 
  664:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 33
+
+
  665:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_UNALIGNED_Pos            (SCB_CFSR_USGFAULTSR_Pos + 8U)                  /*!< SCB 
  666:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_UNALIGNED_Msk            (1UL << SCB_CFSR_UNALIGNED_Pos)                 /*!< SCB 
  667:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  668:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_NOCP_Pos                 (SCB_CFSR_USGFAULTSR_Pos + 3U)                  /*!< SCB 
  669:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_NOCP_Msk                 (1UL << SCB_CFSR_NOCP_Pos)                      /*!< SCB 
  670:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 34
-
-
  671:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_INVPC_Pos                (SCB_CFSR_USGFAULTSR_Pos + 2U)                  /*!< SCB 
  672:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCB_CFSR_INVPC_Msk                (1UL << SCB_CFSR_INVPC_Pos)                     /*!< SCB 
  673:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2032,15 +1978,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  719:Drivers/CMSIS/Core/Include/core_cm4.h **** typedef struct
  720:Drivers/CMSIS/Core/Include/core_cm4.h **** {
  721:Drivers/CMSIS/Core/Include/core_cm4.h ****         uint32_t RESERVED0[1U];
+ARM GAS  /tmp/ccw5cOkE.s 			page 34
+
+
  722:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t ICTR;                   /*!< Offset: 0x004 (R/ )  Interrupt Controller Type Regist
  723:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t ACTLR;                  /*!< Offset: 0x008 (R/W)  Auxiliary Control Register */
  724:Drivers/CMSIS/Core/Include/core_cm4.h **** } SCnSCB_Type;
  725:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  726:Drivers/CMSIS/Core/Include/core_cm4.h **** /* Interrupt Controller Type Register Definitions */
  727:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCnSCB_ICTR_INTLINESNUM_Pos         0U                                         /*!< ICTR: I
-ARM GAS  /tmp/cc9Pf8AD.s 			page 35
-
-
  728:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SCnSCB_ICTR_INTLINESNUM_Msk        (0xFUL /*<< SCnSCB_ICTR_INTLINESNUM_Pos*/)  /*!< ICTR: I
  729:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  730:Drivers/CMSIS/Core/Include/core_cm4.h **** /* Auxiliary Control Register Definitions */
@@ -2092,15 +2038,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  776:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  777:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_CTRL_ENABLE_Pos             0U                                            /*!< SysT
  778:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_CTRL_ENABLE_Msk            (1UL /*<< SysTick_CTRL_ENABLE_Pos*/)           /*!< SysT
+ARM GAS  /tmp/ccw5cOkE.s 			page 35
+
+
  779:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  780:Drivers/CMSIS/Core/Include/core_cm4.h **** /* SysTick Reload Register Definitions */
  781:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_LOAD_RELOAD_Pos             0U                                            /*!< SysT
  782:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_LOAD_RELOAD_Msk            (0xFFFFFFUL /*<< SysTick_LOAD_RELOAD_Pos*/)    /*!< SysT
  783:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  784:Drivers/CMSIS/Core/Include/core_cm4.h **** /* SysTick Current Register Definitions */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 36
-
-
  785:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_VAL_CURRENT_Pos             0U                                            /*!< SysT
  786:Drivers/CMSIS/Core/Include/core_cm4.h **** #define SysTick_VAL_CURRENT_Msk            (0xFFFFFFUL /*<< SysTick_VAL_CURRENT_Pos*/)    /*!< SysT
  787:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2152,15 +2098,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  833:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID4;                   /*!< Offset: 0xFD0 (R/ )  ITM Peripheral Identification Re
  834:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID5;                   /*!< Offset: 0xFD4 (R/ )  ITM Peripheral Identification Re
  835:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID6;                   /*!< Offset: 0xFD8 (R/ )  ITM Peripheral Identification Re
+ARM GAS  /tmp/ccw5cOkE.s 			page 36
+
+
  836:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID7;                   /*!< Offset: 0xFDC (R/ )  ITM Peripheral Identification Re
  837:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID0;                   /*!< Offset: 0xFE0 (R/ )  ITM Peripheral Identification Re
  838:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID1;                   /*!< Offset: 0xFE4 (R/ )  ITM Peripheral Identification Re
  839:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID2;                   /*!< Offset: 0xFE8 (R/ )  ITM Peripheral Identification Re
  840:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t PID3;                   /*!< Offset: 0xFEC (R/ )  ITM Peripheral Identification Re
  841:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t CID0;                   /*!< Offset: 0xFF0 (R/ )  ITM Component  Identification Re
-ARM GAS  /tmp/cc9Pf8AD.s 			page 37
-
-
  842:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t CID1;                   /*!< Offset: 0xFF4 (R/ )  ITM Component  Identification Re
  843:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t CID2;                   /*!< Offset: 0xFF8 (R/ )  ITM Component  Identification Re
  844:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t CID3;                   /*!< Offset: 0xFFC (R/ )  ITM Component  Identification Re
@@ -2212,15 +2158,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  890:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  891:Drivers/CMSIS/Core/Include/core_cm4.h **** /* ITM Lock Status Register Definitions */
  892:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_ByteAcc_Pos                 2U                                            /*!< ITM 
+ARM GAS  /tmp/ccw5cOkE.s 			page 37
+
+
  893:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_ByteAcc_Msk                (1UL << ITM_LSR_ByteAcc_Pos)                   /*!< ITM 
  894:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  895:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_Access_Pos                  1U                                            /*!< ITM 
  896:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_Access_Msk                 (1UL << ITM_LSR_Access_Pos)                    /*!< ITM 
  897:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  898:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_Present_Pos                 0U                                            /*!< ITM 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 38
-
-
  899:Drivers/CMSIS/Core/Include/core_cm4.h **** #define ITM_LSR_Present_Msk                (1UL /*<< ITM_LSR_Present_Pos*/)               /*!< ITM 
  900:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  901:Drivers/CMSIS/Core/Include/core_cm4.h **** /*@}*/ /* end of group CMSIS_ITM */
@@ -2272,15 +2218,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
  947:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  948:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOEXTTRIG_Pos             26U                                         /*!< DWT CTR
  949:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOEXTTRIG_Msk             (0x1UL << DWT_CTRL_NOEXTTRIG_Pos)           /*!< DWT CTR
+ARM GAS  /tmp/ccw5cOkE.s 			page 38
+
+
  950:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  951:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOCYCCNT_Pos              25U                                         /*!< DWT CTR
  952:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOCYCCNT_Msk              (0x1UL << DWT_CTRL_NOCYCCNT_Pos)            /*!< DWT CTR
  953:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  954:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOPRFCNT_Pos              24U                                         /*!< DWT CTR
  955:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_NOPRFCNT_Msk              (0x1UL << DWT_CTRL_NOPRFCNT_Pos)            /*!< DWT CTR
-ARM GAS  /tmp/cc9Pf8AD.s 			page 39
-
-
  956:Drivers/CMSIS/Core/Include/core_cm4.h **** 
  957:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_CYCEVTENA_Pos             22U                                         /*!< DWT CTR
  958:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_CTRL_CYCEVTENA_Msk             (0x1UL << DWT_CTRL_CYCEVTENA_Pos)           /*!< DWT CTR
@@ -2332,15 +2278,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1004:Drivers/CMSIS/Core/Include/core_cm4.h **** /* DWT Sleep Count Register Definitions */
 1005:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_SLEEPCNT_SLEEPCNT_Pos           0U                                         /*!< DWT SLE
 1006:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_SLEEPCNT_SLEEPCNT_Msk          (0xFFUL /*<< DWT_SLEEPCNT_SLEEPCNT_Pos*/)   /*!< DWT SLE
+ARM GAS  /tmp/ccw5cOkE.s 			page 39
+
+
 1007:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1008:Drivers/CMSIS/Core/Include/core_cm4.h **** /* DWT LSU Count Register Definitions */
 1009:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_LSUCNT_LSUCNT_Pos               0U                                         /*!< DWT LSU
 1010:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_LSUCNT_LSUCNT_Msk              (0xFFUL /*<< DWT_LSUCNT_LSUCNT_Pos*/)       /*!< DWT LSU
 1011:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1012:Drivers/CMSIS/Core/Include/core_cm4.h **** /* DWT Folded-instruction Count Register Definitions */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 40
-
-
 1013:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_FOLDCNT_FOLDCNT_Pos             0U                                         /*!< DWT FOL
 1014:Drivers/CMSIS/Core/Include/core_cm4.h **** #define DWT_FOLDCNT_FOLDCNT_Msk            (0xFFUL /*<< DWT_FOLDCNT_FOLDCNT_Pos*/)     /*!< DWT FOL
 1015:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2392,15 +2338,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1061:Drivers/CMSIS/Core/Include/core_cm4.h **** typedef struct
 1062:Drivers/CMSIS/Core/Include/core_cm4.h **** {
 1063:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t SSPSR;                  /*!< Offset: 0x000 (R/ )  Supported Parallel Port Size Reg
+ARM GAS  /tmp/ccw5cOkE.s 			page 40
+
+
 1064:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t CSPSR;                  /*!< Offset: 0x004 (R/W)  Current Parallel Port Size Regis
 1065:Drivers/CMSIS/Core/Include/core_cm4.h ****         uint32_t RESERVED0[2U];
 1066:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t ACPR;                   /*!< Offset: 0x010 (R/W)  Asynchronous Clock Prescaler Reg
 1067:Drivers/CMSIS/Core/Include/core_cm4.h ****         uint32_t RESERVED1[55U];
 1068:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t SPPR;                   /*!< Offset: 0x0F0 (R/W)  Selected Pin Protocol Register *
 1069:Drivers/CMSIS/Core/Include/core_cm4.h ****         uint32_t RESERVED2[131U];
-ARM GAS  /tmp/cc9Pf8AD.s 			page 41
-
-
 1070:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t FFSR;                   /*!< Offset: 0x300 (R/ )  Formatter and Flush Status Regis
 1071:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t FFCR;                   /*!< Offset: 0x304 (R/W)  Formatter and Flush Control Regi
 1072:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IM  uint32_t FSCR;                   /*!< Offset: 0x308 (R/ )  Formatter Synchronization Counte
@@ -2452,15 +2398,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1118:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_TRIGGER_TRIGGER_Pos             0U                                         /*!< TPI TRI
 1119:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_TRIGGER_TRIGGER_Msk            (0x1UL /*<< TPI_TRIGGER_TRIGGER_Pos*/)      /*!< TPI TRI
 1120:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 41
+
+
 1121:Drivers/CMSIS/Core/Include/core_cm4.h **** /* TPI Integration ETM Data Register Definitions (FIFO0) */
 1122:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ITM_ATVALID_Pos          29U                                         /*!< TPI FIF
 1123:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ITM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ITM_ATVALID_Pos)        /*!< TPI FIF
 1124:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1125:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ITM_bytecount_Pos        27U                                         /*!< TPI FIF
 1126:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ITM_bytecount_Msk        (0x3UL << TPI_FIFO0_ITM_bytecount_Pos)      /*!< TPI FIF
-ARM GAS  /tmp/cc9Pf8AD.s 			page 42
-
-
 1127:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1128:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ETM_ATVALID_Pos          26U                                         /*!< TPI FIF
 1129:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_FIFO0_ETM_ATVALID_Msk          (0x3UL << TPI_FIFO0_ETM_ATVALID_Pos)        /*!< TPI FIF
@@ -2512,15 +2458,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1175:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1176:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_ITATBCTR0_ATREADY1_Pos          0U                                         /*!< TPI ITA
 1177:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_ITATBCTR0_ATREADY1_Msk         (0x1UL /*<< TPI_ITATBCTR0_ATREADY1_Pos*/)   /*!< TPI ITA
+ARM GAS  /tmp/ccw5cOkE.s 			page 42
+
+
 1178:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1179:Drivers/CMSIS/Core/Include/core_cm4.h **** /* TPI Integration Mode Control Register Definitions */
 1180:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Pos                 0U                                         /*!< TPI ITC
 1181:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_ITCTRL_Mode_Msk                (0x3UL /*<< TPI_ITCTRL_Mode_Pos*/)          /*!< TPI ITC
 1182:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1183:Drivers/CMSIS/Core/Include/core_cm4.h **** /* TPI DEVID Register Definitions */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 43
-
-
 1184:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_DEVID_NRZVALID_Pos             11U                                         /*!< TPI DEV
 1185:Drivers/CMSIS/Core/Include/core_cm4.h **** #define TPI_DEVID_NRZVALID_Msk             (0x1UL << TPI_DEVID_NRZVALID_Pos)           /*!< TPI DEV
 1186:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2572,15 +2518,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1232:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t RBAR_A2;                /*!< Offset: 0x01C (R/W)  MPU Alias 2 Region Base Address 
 1233:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t RASR_A2;                /*!< Offset: 0x020 (R/W)  MPU Alias 2 Region Attribute and
 1234:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t RBAR_A3;                /*!< Offset: 0x024 (R/W)  MPU Alias 3 Region Base Address 
+ARM GAS  /tmp/ccw5cOkE.s 			page 43
+
+
 1235:Drivers/CMSIS/Core/Include/core_cm4.h ****   __IOM uint32_t RASR_A3;                /*!< Offset: 0x028 (R/W)  MPU Alias 3 Region Attribute and
 1236:Drivers/CMSIS/Core/Include/core_cm4.h **** } MPU_Type;
 1237:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1238:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_TYPE_RALIASES                  4U
 1239:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1240:Drivers/CMSIS/Core/Include/core_cm4.h **** /* MPU Type Register Definitions */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 44
-
-
 1241:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_TYPE_IREGION_Pos               16U                                            /*!< MPU 
 1242:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_TYPE_IREGION_Msk               (0xFFUL << MPU_TYPE_IREGION_Pos)               /*!< MPU 
 1243:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2632,15 +2578,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1289:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1290:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_C_Pos                     17U                                            /*!< MPU 
 1291:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_C_Msk                     (1UL << MPU_RASR_C_Pos)                        /*!< MPU 
+ARM GAS  /tmp/ccw5cOkE.s 			page 44
+
+
 1292:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1293:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_B_Pos                     16U                                            /*!< MPU 
 1294:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_B_Msk                     (1UL << MPU_RASR_B_Pos)                        /*!< MPU 
 1295:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1296:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_SRD_Pos                    8U                                            /*!< MPU 
 1297:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_SRD_Msk                   (0xFFUL << MPU_RASR_SRD_Pos)                   /*!< MPU 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 45
-
-
 1298:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1299:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_SIZE_Pos                   1U                                            /*!< MPU 
 1300:Drivers/CMSIS/Core/Include/core_cm4.h **** #define MPU_RASR_SIZE_Msk                  (0x1FUL << MPU_RASR_SIZE_Pos)                  /*!< MPU 
@@ -2692,15 +2638,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1346:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_HFRDY_Msk                (1UL << FPU_FPCCR_HFRDY_Pos)                   /*!< FPCC
 1347:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1348:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_THREAD_Pos                3U                                            /*!< FPCC
+ARM GAS  /tmp/ccw5cOkE.s 			page 45
+
+
 1349:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_THREAD_Msk               (1UL << FPU_FPCCR_THREAD_Pos)                  /*!< FPCC
 1350:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1351:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_USER_Pos                  1U                                            /*!< FPCC
 1352:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_USER_Msk                 (1UL << FPU_FPCCR_USER_Pos)                    /*!< FPCC
 1353:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1354:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_LSPACT_Pos                0U                                            /*!< FPCC
-ARM GAS  /tmp/cc9Pf8AD.s 			page 46
-
-
 1355:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_FPCCR_LSPACT_Msk               (1UL /*<< FPU_FPCCR_LSPACT_Pos*/)              /*!< FPCC
 1356:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1357:Drivers/CMSIS/Core/Include/core_cm4.h **** /* Floating-Point Context Address Register Definitions */
@@ -2752,15 +2698,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1403:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_FP_HPFP_Pos              24U                                            /*!< MVFR
 1404:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_FP_HPFP_Msk              (0xFUL << FPU_MVFR1_FP_HPFP_Pos)               /*!< MVFR
 1405:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 46
+
+
 1406:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_D_NaN_mode_Pos            4U                                            /*!< MVFR
 1407:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_D_NaN_mode_Msk           (0xFUL << FPU_MVFR1_D_NaN_mode_Pos)            /*!< MVFR
 1408:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1409:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Pos              0U                                            /*!< MVFR
 1410:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_MVFR1_FtZ_mode_Msk             (0xFUL /*<< FPU_MVFR1_FtZ_mode_Pos*/)          /*!< MVFR
 1411:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 47
-
-
 1412:Drivers/CMSIS/Core/Include/core_cm4.h **** /*@} end of group CMSIS_FPU */
 1413:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1414:Drivers/CMSIS/Core/Include/core_cm4.h **** 
@@ -2812,15 +2758,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1460:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1461:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_STEP_Pos          2U                                            /*!< Core
 1462:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_STEP_Msk         (1UL << CoreDebug_DHCSR_C_STEP_Pos)            /*!< Core
+ARM GAS  /tmp/ccw5cOkE.s 			page 47
+
+
 1463:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1464:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Pos          1U                                            /*!< Core
 1465:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_HALT_Msk         (1UL << CoreDebug_DHCSR_C_HALT_Pos)            /*!< Core
 1466:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1467:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Pos       0U                                            /*!< Core
 1468:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DHCSR_C_DEBUGEN_Msk      (1UL /*<< CoreDebug_DHCSR_C_DEBUGEN_Pos*/)     /*!< Core
-ARM GAS  /tmp/cc9Pf8AD.s 			page 48
-
-
 1469:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1470:Drivers/CMSIS/Core/Include/core_cm4.h **** /* Debug Core Register Selector Register Definitions */
 1471:Drivers/CMSIS/Core/Include/core_cm4.h **** #define CoreDebug_DCRSR_REGWnR_Pos         16U                                            /*!< Core
@@ -2872,15 +2818,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1517:Drivers/CMSIS/Core/Include/core_cm4.h **** /*@} end of group CMSIS_CoreDebug */
 1518:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1519:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 48
+
+
 1520:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
 1521:Drivers/CMSIS/Core/Include/core_cm4.h ****   \ingroup    CMSIS_core_register
 1522:Drivers/CMSIS/Core/Include/core_cm4.h ****   \defgroup   CMSIS_core_bitfield     Core register bit field macros
 1523:Drivers/CMSIS/Core/Include/core_cm4.h ****   \brief      Macros for use with bit field definitions (xxx_Pos, xxx_Msk).
 1524:Drivers/CMSIS/Core/Include/core_cm4.h ****   @{
 1525:Drivers/CMSIS/Core/Include/core_cm4.h ****  */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 49
-
-
 1526:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1527:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
 1528:Drivers/CMSIS/Core/Include/core_cm4.h ****   \brief   Mask and shift a bit field value for use in a register bit range.
@@ -2932,15 +2878,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1574:Drivers/CMSIS/Core/Include/core_cm4.h ****   #define MPU               ((MPU_Type       *)     MPU_BASE      )   /*!< Memory Protection Unit *
 1575:Drivers/CMSIS/Core/Include/core_cm4.h **** #endif
 1576:Drivers/CMSIS/Core/Include/core_cm4.h **** 
+ARM GAS  /tmp/ccw5cOkE.s 			page 49
+
+
 1577:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU_BASE            (SCS_BASE +  0x0F30UL)                    /*!< Floating Point Unit */
 1578:Drivers/CMSIS/Core/Include/core_cm4.h **** #define FPU                 ((FPU_Type       *)     FPU_BASE      )   /*!< Floating Point Unit */
 1579:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1580:Drivers/CMSIS/Core/Include/core_cm4.h **** /*@} */
 1581:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1582:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 50
-
-
 1583:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1584:Drivers/CMSIS/Core/Include/core_cm4.h **** /*******************************************************************************
 1585:Drivers/CMSIS/Core/Include/core_cm4.h ****  *                Hardware Abstraction Layer
@@ -2992,15 +2938,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1631:Drivers/CMSIS/Core/Include/core_cm4.h **** #else
 1632:Drivers/CMSIS/Core/Include/core_cm4.h ****   #define NVIC_SetVector              __NVIC_SetVector
 1633:Drivers/CMSIS/Core/Include/core_cm4.h ****   #define NVIC_GetVector              __NVIC_GetVector
+ARM GAS  /tmp/ccw5cOkE.s 			page 50
+
+
 1634:Drivers/CMSIS/Core/Include/core_cm4.h **** #endif  /* (CMSIS_VECTAB_VIRTUAL) */
 1635:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1636:Drivers/CMSIS/Core/Include/core_cm4.h **** #define NVIC_USER_IRQ_OFFSET          16
 1637:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1638:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1639:Drivers/CMSIS/Core/Include/core_cm4.h **** /* The following EXC_RETURN values are saved the LR on exception entry */
-ARM GAS  /tmp/cc9Pf8AD.s 			page 51
-
-
 1640:Drivers/CMSIS/Core/Include/core_cm4.h **** #define EXC_RETURN_HANDLER         (0xFFFFFFF1UL)     /* return to Handler mode, uses MSP after ret
 1641:Drivers/CMSIS/Core/Include/core_cm4.h **** #define EXC_RETURN_THREAD_MSP      (0xFFFFFFF9UL)     /* return to Thread mode, uses MSP after retu
 1642:Drivers/CMSIS/Core/Include/core_cm4.h **** #define EXC_RETURN_THREAD_PSP      (0xFFFFFFFDUL)     /* return to Thread mode, uses PSP after retu
@@ -3052,15 +2998,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1688:Drivers/CMSIS/Core/Include/core_cm4.h **** __STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
 1689:Drivers/CMSIS/Core/Include/core_cm4.h **** {
 1690:Drivers/CMSIS/Core/Include/core_cm4.h ****   if ((int32_t)(IRQn) >= 0)
+ARM GAS  /tmp/ccw5cOkE.s 			page 51
+
+
 1691:Drivers/CMSIS/Core/Include/core_cm4.h ****   {
 1692:Drivers/CMSIS/Core/Include/core_cm4.h ****     NVIC->ISER[(((uint32_t)IRQn) >> 5UL)] = (uint32_t)(1UL << (((uint32_t)IRQn) & 0x1FUL));
 1693:Drivers/CMSIS/Core/Include/core_cm4.h ****   }
 1694:Drivers/CMSIS/Core/Include/core_cm4.h **** }
 1695:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1696:Drivers/CMSIS/Core/Include/core_cm4.h **** 
-ARM GAS  /tmp/cc9Pf8AD.s 			page 52
-
-
 1697:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
 1698:Drivers/CMSIS/Core/Include/core_cm4.h ****   \brief   Get Interrupt Enable status
 1699:Drivers/CMSIS/Core/Include/core_cm4.h ****   \details Returns a device specific interrupt enable status from the NVIC interrupt controller.
@@ -3112,15 +3058,15 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1745:Drivers/CMSIS/Core/Include/core_cm4.h ****   if ((int32_t)(IRQn) >= 0)
 1746:Drivers/CMSIS/Core/Include/core_cm4.h ****   {
 1747:Drivers/CMSIS/Core/Include/core_cm4.h ****     return((uint32_t)(((NVIC->ISPR[(((uint32_t)IRQn) >> 5UL)] & (1UL << (((uint32_t)IRQn) & 0x1FUL)
+ARM GAS  /tmp/ccw5cOkE.s 			page 52
+
+
 1748:Drivers/CMSIS/Core/Include/core_cm4.h ****   }
 1749:Drivers/CMSIS/Core/Include/core_cm4.h ****   else
 1750:Drivers/CMSIS/Core/Include/core_cm4.h ****   {
 1751:Drivers/CMSIS/Core/Include/core_cm4.h ****     return(0U);
 1752:Drivers/CMSIS/Core/Include/core_cm4.h ****   }
 1753:Drivers/CMSIS/Core/Include/core_cm4.h **** }
-ARM GAS  /tmp/cc9Pf8AD.s 			page 53
-
-
 1754:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1755:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1756:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
@@ -3172,132 +3118,124 @@ ARM GAS  /tmp/cc9Pf8AD.s 			page 1
 1802:Drivers/CMSIS/Core/Include/core_cm4.h ****     return(0U);
 1803:Drivers/CMSIS/Core/Include/core_cm4.h ****   }
 1804:Drivers/CMSIS/Core/Include/core_cm4.h **** }
+ARM GAS  /tmp/ccw5cOkE.s 			page 53
+
+
 1805:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1806:Drivers/CMSIS/Core/Include/core_cm4.h **** 
 1807:Drivers/CMSIS/Core/Include/core_cm4.h **** /**
 1808:Drivers/CMSIS/Core/Include/core_cm4.h ****   \brief   Set Interrupt Priority
 1809:Drivers/CMSIS/Core/Include/core_cm4.h ****   \details Sets the priority of a device specific interrupt or a processor exception.
 1810:Drivers/CMSIS/Core/Include/core_cm4.h ****            The interrupt number can be positive to specify a device specific interrupt,
-ARM GAS  /tmp/cc9Pf8AD.s 			page 54
-
-
 1811:Drivers/CMSIS/Core/Include/core_cm4.h ****            or negative to specify a processor exception.
 1812:Drivers/CMSIS/Core/Include/core_cm4.h ****   \param [in]      IRQn  Interrupt number.
 1813:Drivers/CMSIS/Core/Include/core_cm4.h ****   \param [in]  priority  Priority to set.
 1814:Drivers/CMSIS/Core/Include/core_cm4.h ****   \note    The priority cannot be set for every processor exception.
 1815:Drivers/CMSIS/Core/Include/core_cm4.h ****  */
 1816:Drivers/CMSIS/Core/Include/core_cm4.h **** __STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
- 744              		.loc 2 1816 22 view .LVU190
- 745              	.LBB5:
+ 693              		.loc 2 1816 22 view .LVU183
+ 694              	.LBB5:
 1817:Drivers/CMSIS/Core/Include/core_cm4.h **** {
 1818:Drivers/CMSIS/Core/Include/core_cm4.h ****   if ((int32_t)(IRQn) >= 0)
- 746              		.loc 2 1818 3 view .LVU191
+ 695              		.loc 2 1818 3 view .LVU184
 1819:Drivers/CMSIS/Core/Include/core_cm4.h ****   {
 1820:Drivers/CMSIS/Core/Include/core_cm4.h ****     NVIC->IP[((uint32_t)IRQn)]               = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (u
 1821:Drivers/CMSIS/Core/Include/core_cm4.h ****   }
 1822:Drivers/CMSIS/Core/Include/core_cm4.h ****   else
 1823:Drivers/CMSIS/Core/Include/core_cm4.h ****   {
 1824:Drivers/CMSIS/Core/Include/core_cm4.h ****     SCB->SHP[(((uint32_t)IRQn) & 0xFUL)-4UL] = (uint8_t)((priority << (8U - __NVIC_PRIO_BITS)) & (u
- 747              		.loc 2 1824 5 view .LVU192
- 748              		.loc 2 1824 46 is_stmt 0 view .LVU193
- 749 000c 054A     		ldr	r2, .L41+4
- 750 000e F021     		movs	r1, #240
- 751 0010 82F82310 		strb	r1, [r2, #35]
- 752              	.LVL81:
- 753              		.loc 2 1824 46 view .LVU194
- 754              	.LBE5:
- 755              	.LBE4:
+ 696              		.loc 2 1824 5 view .LVU185
+ 697              		.loc 2 1824 46 is_stmt 0 view .LVU186
+ 698 000c 054A     		ldr	r2, .L34+4
+ 699 000e F021     		movs	r1, #240
+ 700 0010 82F82310 		strb	r1, [r2, #35]
+ 701              	.LVL73:
+ 702              		.loc 2 1824 46 view .LVU187
+ 703              	.LBE5:
+ 704              	.LBE4:
  490:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     SysTick->VAL = 0;
- 756              		.loc 1 490 5 is_stmt 1 view .LVU195
- 757              		.loc 1 490 18 is_stmt 0 view .LVU196
- 758 0014 0022     		movs	r2, #0
- 759 0016 9A60     		str	r2, [r3, #8]
+ 705              		.loc 1 490 5 is_stmt 1 view .LVU188
+ 706              		.loc 1 490 18 is_stmt 0 view .LVU189
+ 707 0014 0022     		movs	r2, #0
+ 708 0016 9A60     		str	r2, [r3, #8]
  491:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     SysTick->CTRL = SysTick_CTRL_ENABLE_Msk |
- 760              		.loc 1 491 5 is_stmt 1 view .LVU197
- 761              		.loc 1 491 19 is_stmt 0 view .LVU198
- 762 0018 0722     		movs	r2, #7
- 763 001a 1A60     		str	r2, [r3]
+ 709              		.loc 1 491 5 is_stmt 1 view .LVU190
+ 710              		.loc 1 491 19 is_stmt 0 view .LVU191
+ 711 0018 0722     		movs	r2, #7
+ 712 001a 1A60     		str	r2, [r3]
  492:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                     SysTick_CTRL_CLKSOURCE_Msk |
  493:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****                     SysTick_CTRL_TICKINT_Msk;
  494:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c ****     return;
- 764              		.loc 1 494 5 is_stmt 1 view .LVU199
- 765              	.L39:
+ 713              		.loc 1 494 5 is_stmt 1 view .LVU192
+ 714              	.L32:
  495:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu_c.c **** }
- 766              		.loc 1 495 1 is_stmt 0 view .LVU200
- 767 001c 7047     		bx	lr
- 768              	.L42:
- 769 001e 00BF     		.align	2
- 770              	.L41:
- 771 0020 10E000E0 		.word	-536813552
- 772 0024 00ED00E0 		.word	-536810240
- 773              		.cfi_endproc
- 774              	.LFE142:
- 776              		.comm	OS_CPU_ExceptStkBase,4,4
- 777              		.comm	OS_CPU_ExceptStk,512,4
- 778              		.text
- 779              	.Letext0:
- 780              		.file 3 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
- 781              		.file 4 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/cc9Pf8AD.s 			page 55
+ 715              		.loc 1 495 1 is_stmt 0 view .LVU193
+ 716 001c 7047     		bx	lr
+ 717              	.L35:
+ 718 001e 00BF     		.align	2
+ 719              	.L34:
+ 720 0020 10E000E0 		.word	-536813552
+ 721 0024 00ED00E0 		.word	-536810240
+ 722              		.cfi_endproc
+ 723              	.LFE142:
+ARM GAS  /tmp/ccw5cOkE.s 			page 54
 
 
- 782              		.file 5 "Inc/stm32f4xx.h"
- 783              		.file 6 "/home/way/Programs/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
- 784              		.file 7 "/home/way/Programs/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
- 785              		.file 8 "Inc/system_stm32f4xx.h"
-ARM GAS  /tmp/cc9Pf8AD.s 			page 56
+ 725              		.comm	OS_CPU_ExceptStkBase,4,4
+ 726              		.comm	OS_CPU_ExceptStk,512,4
+ 727              		.text
+ 728              	.Letext0:
+ 729              		.file 3 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
+ 730              		.file 4 "uCOSII/Include/ucos_ii.h"
+ 731              		.file 5 "Inc/stm32f4xx.h"
+ 732              		.file 6 "/home/way/Programs/gcc-arm-none-eabi/arm-none-eabi/include/machine/_default_types.h"
+ 733              		.file 7 "/home/way/Programs/gcc-arm-none-eabi/arm-none-eabi/include/sys/_stdint.h"
+ 734              		.file 8 "Inc/system_stm32f4xx.h"
+ARM GAS  /tmp/ccw5cOkE.s 			page 55
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_cpu_c.c
-     /tmp/cc9Pf8AD.s:18     .text.OSInitHookBegin:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:26     .text.OSInitHookBegin:0000000000000000 OSInitHookBegin
-     /tmp/cc9Pf8AD.s:76     .text.OSInitHookBegin:000000000000001c $d
+     /tmp/ccw5cOkE.s:18     .text.OSInitHookBegin:0000000000000000 $t
+     /tmp/ccw5cOkE.s:26     .text.OSInitHookBegin:0000000000000000 OSInitHookBegin
+     /tmp/ccw5cOkE.s:76     .text.OSInitHookBegin:000000000000001c $d
                             *COM*:0000000000000200 OS_CPU_ExceptStk
                             *COM*:0000000000000004 OS_CPU_ExceptStkBase
-     /tmp/cc9Pf8AD.s:83     .text.OSInitHookEnd:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:90     .text.OSInitHookEnd:0000000000000000 OSInitHookEnd
-     /tmp/cc9Pf8AD.s:103    .text.OSTaskCreateHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:110    .text.OSTaskCreateHook:0000000000000000 OSTaskCreateHook
-     /tmp/cc9Pf8AD.s:132    .text.OSTaskDelHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:139    .text.OSTaskDelHook:0000000000000000 OSTaskDelHook
-     /tmp/cc9Pf8AD.s:161    .text.OSTaskIdleHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:168    .text.OSTaskIdleHook:0000000000000000 OSTaskIdleHook
-     /tmp/cc9Pf8AD.s:188    .text.OSTaskReturnHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:195    .text.OSTaskReturnHook:0000000000000000 OSTaskReturnHook
-     /tmp/cc9Pf8AD.s:217    .text.OSTaskStatHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:224    .text.OSTaskStatHook:0000000000000000 OSTaskStatHook
-     /tmp/cc9Pf8AD.s:244    .text.OSTaskStkInit:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:251    .text.OSTaskStkInit:0000000000000000 OSTaskStkInit
-     /tmp/cc9Pf8AD.s:540    .text.OSTaskStkInit:0000000000000198 $d
-     /tmp/cc9Pf8AD.s:546    .text.OSTaskSwHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:553    .text.OSTaskSwHook:0000000000000000 OSTaskSwHook
-     /tmp/cc9Pf8AD.s:602    .text.OSTaskSwHook:0000000000000030 $d
-     /tmp/cc9Pf8AD.s:608    .text.OSTCBInitHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:615    .text.OSTCBInitHook:0000000000000000 OSTCBInitHook
-     /tmp/cc9Pf8AD.s:637    .text.OSTimeTickHook:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:644    .text.OSTimeTickHook:0000000000000000 OSTimeTickHook
-     /tmp/cc9Pf8AD.s:664    .text.OS_CPU_SysTickHandler:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:671    .text.OS_CPU_SysTickHandler:0000000000000000 OS_CPU_SysTickHandler
-     /tmp/cc9Pf8AD.s:708    .text.OS_CPU_SysTickHandler:000000000000001c $d
-     /tmp/cc9Pf8AD.s:713    .text.OS_CPU_SysTickInit:0000000000000000 $t
-     /tmp/cc9Pf8AD.s:720    .text.OS_CPU_SysTickInit:0000000000000000 OS_CPU_SysTickInit
-     /tmp/cc9Pf8AD.s:771    .text.OS_CPU_SysTickInit:0000000000000020 $d
+     /tmp/ccw5cOkE.s:83     .text.OSInitHookEnd:0000000000000000 $t
+     /tmp/ccw5cOkE.s:90     .text.OSInitHookEnd:0000000000000000 OSInitHookEnd
+     /tmp/ccw5cOkE.s:103    .text.OSTaskCreateHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:110    .text.OSTaskCreateHook:0000000000000000 OSTaskCreateHook
+     /tmp/ccw5cOkE.s:125    .text.OSTaskDelHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:132    .text.OSTaskDelHook:0000000000000000 OSTaskDelHook
+     /tmp/ccw5cOkE.s:147    .text.OSTaskIdleHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:154    .text.OSTaskIdleHook:0000000000000000 OSTaskIdleHook
+     /tmp/ccw5cOkE.s:167    .text.OSTaskReturnHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:174    .text.OSTaskReturnHook:0000000000000000 OSTaskReturnHook
+     /tmp/ccw5cOkE.s:189    .text.OSTaskStatHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:196    .text.OSTaskStatHook:0000000000000000 OSTaskStatHook
+     /tmp/ccw5cOkE.s:209    .text.OSTaskStkInit:0000000000000000 $t
+     /tmp/ccw5cOkE.s:216    .text.OSTaskStkInit:0000000000000000 OSTaskStkInit
+     /tmp/ccw5cOkE.s:505    .text.OSTaskStkInit:0000000000000198 $d
+     /tmp/ccw5cOkE.s:511    .text.OSTaskSwHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:518    .text.OSTaskSwHook:0000000000000000 OSTaskSwHook
+     /tmp/ccw5cOkE.s:565    .text.OSTaskSwHook:000000000000002c $d
+     /tmp/ccw5cOkE.s:571    .text.OSTCBInitHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:578    .text.OSTCBInitHook:0000000000000000 OSTCBInitHook
+     /tmp/ccw5cOkE.s:593    .text.OSTimeTickHook:0000000000000000 $t
+     /tmp/ccw5cOkE.s:600    .text.OSTimeTickHook:0000000000000000 OSTimeTickHook
+     /tmp/ccw5cOkE.s:613    .text.OS_CPU_SysTickHandler:0000000000000000 $t
+     /tmp/ccw5cOkE.s:620    .text.OS_CPU_SysTickHandler:0000000000000000 OS_CPU_SysTickHandler
+     /tmp/ccw5cOkE.s:657    .text.OS_CPU_SysTickHandler:000000000000001c $d
+     /tmp/ccw5cOkE.s:662    .text.OS_CPU_SysTickInit:0000000000000000 $t
+     /tmp/ccw5cOkE.s:669    .text.OS_CPU_SysTickInit:0000000000000000 OS_CPU_SysTickInit
+     /tmp/ccw5cOkE.s:720    .text.OS_CPU_SysTickInit:0000000000000020 $d
 
 UNDEFINED SYMBOLS
-App_TaskCreateHook
-App_TaskDelHook
-App_TaskIdleHook
-App_TaskReturnHook
-App_TaskStatHook
 OS_TaskReturn
-App_TaskSwHook
 OS_CPU_FP_Reg_Push
 OS_CPU_FP_Reg_Pop
 OSTCBCur
 OSTCBHighRdy
-App_TCBInitHook
-App_TimeTickHook
 OS_CPU_SR_Save
 OS_CPU_SR_Restore
 OSTimeTick

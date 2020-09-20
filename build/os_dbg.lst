@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccjw4q1L.s 			page 1
+ARM GAS  /tmp/ccz1uZ6A.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
   28:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** *           You can contact us at www.micrium.com, or by phone at +1 (954) 217-2036.
   29:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** *
   30:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** * For       : ARMv7 Cortex-M4
-ARM GAS  /tmp/ccjw4q1L.s 			page 2
+ARM GAS  /tmp/ccz1uZ6A.s 			page 2
 
 
   31:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** * Mode      : Thumb-2 ISA
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
   85:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** #if (OS_MEM_EN > 0u) && (OS_MAX_MEM_PART > 0u)
   86:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** OS_COMPILER_OPT  INT16U  const  OSMemSize           = sizeof(OS_MEM);            /* Mem. Partition 
   87:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** OS_COMPILER_OPT  INT16U  const  OSMemTblSize        = sizeof(OSMemTbl);
-ARM GAS  /tmp/ccjw4q1L.s 			page 3
+ARM GAS  /tmp/ccz1uZ6A.s 			page 3
 
 
   88:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** #else
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  142:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** OS_COMPILER_OPT  INT16U  const  OSTmrTblSize        = 0u;
  143:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** OS_COMPILER_OPT  INT16U  const  OSTmrWheelSize      = 0u;
  144:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** OS_COMPILER_OPT  INT16U  const  OSTmrWheelTblSize   = 0u;
-ARM GAS  /tmp/ccjw4q1L.s 			page 4
+ARM GAS  /tmp/ccz1uZ6A.s 			page 4
 
 
  145:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** #endif
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  199:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****                           + sizeof(OSIntNesting)
  200:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****                           + sizeof(OSLockNesting)
  201:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****                           + sizeof(OSPrioCur)
-ARM GAS  /tmp/ccjw4q1L.s 			page 5
+ARM GAS  /tmp/ccz1uZ6A.s 			page 5
 
 
  202:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****                           + sizeof(OSPrioHighRdy)
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  248:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** 
  249:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****     ptemp = (void *)&OSEventMax;
   37              		.loc 1 249 5 view .LVU4
-ARM GAS  /tmp/ccjw4q1L.s 			page 6
+ARM GAS  /tmp/ccz1uZ6A.s 			page 6
 
 
  250:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****     ptemp = (void *)&OSEventNameEn;
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  281:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****     ptemp = (void *)&OSRdyTblSize;
   61              		.loc 1 281 5 view .LVU28
  282:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** 
-ARM GAS  /tmp/ccjw4q1L.s 			page 7
+ARM GAS  /tmp/ccz1uZ6A.s 			page 7
 
 
  283:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****     ptemp = (void *)&OSSemEn;
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  320:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** 
  321:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c ****     ptemp = (void *)&OSVersionNbr;
   79              		.loc 1 321 5 view .LVU46
-ARM GAS  /tmp/ccjw4q1L.s 			page 8
+ARM GAS  /tmp/ccz1uZ6A.s 			page 8
 
 
  322:uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_dbg.c **** 
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  130              		.global	OSFlagMax
  131              		.global	OSFlagWidth
  132              		.global	OSFlagNodeSize
-ARM GAS  /tmp/ccjw4q1L.s 			page 9
+ARM GAS  /tmp/ccz1uZ6A.s 			page 9
 
 
  133              		.global	OSFlagGrpSize
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  209              		.section	.rodata.OSFlagMax,"a"
  210              		.align	1
  213              	OSFlagMax:
-ARM GAS  /tmp/ccjw4q1L.s 			page 10
+ARM GAS  /tmp/ccz1uZ6A.s 			page 10
 
 
  214 0000 0500     		.short	5
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  294              		.align	1
  297              	OSQMax:
  298 0000 0400     		.short	4
-ARM GAS  /tmp/ccjw4q1L.s 			page 11
+ARM GAS  /tmp/ccz1uZ6A.s 			page 11
 
 
  299              		.section	.rodata.OSQSize,"a"
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  381              	OSTaskRegTblSize:
  382 0000 0100     		.short	1
  383              		.section	.rodata.OSTaskStatEn,"a"
-ARM GAS  /tmp/ccjw4q1L.s 			page 12
+ARM GAS  /tmp/ccz1uZ6A.s 			page 12
 
 
  384              		.align	1
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  466 0000 0000     		.space	2
  467              		.section	.rodata.OSTmrWheelTblSize,"a"
  468              		.align	1
-ARM GAS  /tmp/ccjw4q1L.s 			page 13
+ARM GAS  /tmp/ccz1uZ6A.s 			page 13
 
 
  471              	OSTmrWheelTblSize:
@@ -731,130 +731,130 @@ ARM GAS  /tmp/ccjw4q1L.s 			page 1
  480              	.Letext0:
  481              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
  482              		.file 3 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/ccjw4q1L.s 			page 14
+ARM GAS  /tmp/ccz1uZ6A.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_dbg.c
-     /tmp/ccjw4q1L.s:18     .text.OSDebugInit:0000000000000000 $t
-     /tmp/ccjw4q1L.s:26     .text.OSDebugInit:0000000000000000 OSDebugInit
-     /tmp/ccjw4q1L.s:147    .rodata.OSDataSize:0000000000000000 OSDataSize
-     /tmp/ccjw4q1L.s:471    .rodata.OSTmrWheelTblSize:0000000000000000 OSTmrWheelTblSize
-     /tmp/ccjw4q1L.s:465    .rodata.OSTmrWheelSize:0000000000000000 OSTmrWheelSize
-     /tmp/ccjw4q1L.s:459    .rodata.OSTmrTblSize:0000000000000000 OSTmrTblSize
-     /tmp/ccjw4q1L.s:453    .rodata.OSTmrSize:0000000000000000 OSTmrSize
-     /tmp/ccjw4q1L.s:435    .rodata.OSTmrCfgTicksPerSec:0000000000000000 OSTmrCfgTicksPerSec
-     /tmp/ccjw4q1L.s:441    .rodata.OSTmrCfgWheelSize:0000000000000000 OSTmrCfgWheelSize
-     /tmp/ccjw4q1L.s:429    .rodata.OSTmrCfgNameEn:0000000000000000 OSTmrCfgNameEn
-     /tmp/ccjw4q1L.s:423    .rodata.OSTmrCfgMax:0000000000000000 OSTmrCfgMax
-     /tmp/ccjw4q1L.s:447    .rodata.OSTmrEn:0000000000000000 OSTmrEn
-     /tmp/ccjw4q1L.s:477    .rodata.OSVersionNbr:0000000000000000 OSVersionNbr
-     /tmp/ccjw4q1L.s:417    .rodata.OSTimeTickHookEn:0000000000000000 OSTimeTickHookEn
-     /tmp/ccjw4q1L.s:411    .rodata.OSTicksPerSec:0000000000000000 OSTicksPerSec
-     /tmp/ccjw4q1L.s:333    .rodata.OSTCBSize:0000000000000000 OSTCBSize
-     /tmp/ccjw4q1L.s:327    .rodata.OSTCBPrioTblMax:0000000000000000 OSTCBPrioTblMax
-     /tmp/ccjw4q1L.s:381    .rodata.OSTaskRegTblSize:0000000000000000 OSTaskRegTblSize
-     /tmp/ccjw4q1L.s:405    .rodata.OSTaskSwHookEn:0000000000000000 OSTaskSwHookEn
-     /tmp/ccjw4q1L.s:393    .rodata.OSTaskStatStkChkEn:0000000000000000 OSTaskStatStkChkEn
-     /tmp/ccjw4q1L.s:399    .rodata.OSTaskStatStkSize:0000000000000000 OSTaskStatStkSize
-     /tmp/ccjw4q1L.s:387    .rodata.OSTaskStatEn:0000000000000000 OSTaskStatEn
-     /tmp/ccjw4q1L.s:369    .rodata.OSTaskNameEn:0000000000000000 OSTaskNameEn
-     /tmp/ccjw4q1L.s:363    .rodata.OSTaskMax:0000000000000000 OSTaskMax
-     /tmp/ccjw4q1L.s:375    .rodata.OSTaskProfileEn:0000000000000000 OSTaskProfileEn
-     /tmp/ccjw4q1L.s:357    .rodata.OSTaskIdleStkSize:0000000000000000 OSTaskIdleStkSize
-     /tmp/ccjw4q1L.s:351    .rodata.OSTaskDelEn:0000000000000000 OSTaskDelEn
-     /tmp/ccjw4q1L.s:345    .rodata.OSTaskCreateExtEn:0000000000000000 OSTaskCreateExtEn
-     /tmp/ccjw4q1L.s:339    .rodata.OSTaskCreateEn:0000000000000000 OSTaskCreateEn
-     /tmp/ccjw4q1L.s:321    .rodata.OSStkWidth:0000000000000000 OSStkWidth
-     /tmp/ccjw4q1L.s:315    .rodata.OSSemEn:0000000000000000 OSSemEn
-     /tmp/ccjw4q1L.s:309    .rodata.OSRdyTblSize:0000000000000000 OSRdyTblSize
-     /tmp/ccjw4q1L.s:303    .rodata.OSQSize:0000000000000000 OSQSize
-     /tmp/ccjw4q1L.s:297    .rodata.OSQMax:0000000000000000 OSQMax
-     /tmp/ccjw4q1L.s:291    .rodata.OSQEn:0000000000000000 OSQEn
-     /tmp/ccjw4q1L.s:285    .rodata.OSPtrSize:0000000000000000 OSPtrSize
-     /tmp/ccjw4q1L.s:279    .rodata.OSMutexEn:0000000000000000 OSMutexEn
-     /tmp/ccjw4q1L.s:273    .rodata.OSMemTblSize:0000000000000000 OSMemTblSize
-     /tmp/ccjw4q1L.s:267    .rodata.OSMemSize:0000000000000000 OSMemSize
-     /tmp/ccjw4q1L.s:261    .rodata.OSMemNameEn:0000000000000000 OSMemNameEn
-     /tmp/ccjw4q1L.s:255    .rodata.OSMemMax:0000000000000000 OSMemMax
-     /tmp/ccjw4q1L.s:249    .rodata.OSMemEn:0000000000000000 OSMemEn
-     /tmp/ccjw4q1L.s:243    .rodata.OSMboxEn:0000000000000000 OSMboxEn
-     /tmp/ccjw4q1L.s:237    .rodata.OSLowestPrio:0000000000000000 OSLowestPrio
-     /tmp/ccjw4q1L.s:219    .rodata.OSFlagNameEn:0000000000000000 OSFlagNameEn
-     /tmp/ccjw4q1L.s:213    .rodata.OSFlagMax:0000000000000000 OSFlagMax
-     /tmp/ccjw4q1L.s:231    .rodata.OSFlagWidth:0000000000000000 OSFlagWidth
-     /tmp/ccjw4q1L.s:225    .rodata.OSFlagNodeSize:0000000000000000 OSFlagNodeSize
-     /tmp/ccjw4q1L.s:207    .rodata.OSFlagGrpSize:0000000000000000 OSFlagGrpSize
-     /tmp/ccjw4q1L.s:201    .rodata.OSFlagEn:0000000000000000 OSFlagEn
-     /tmp/ccjw4q1L.s:177    .rodata.OSEventMultiEn:0000000000000000 OSEventMultiEn
-     /tmp/ccjw4q1L.s:195    .rodata.OSEventTblSize:0000000000000000 OSEventTblSize
-     /tmp/ccjw4q1L.s:189    .rodata.OSEventSize:0000000000000000 OSEventSize
-     /tmp/ccjw4q1L.s:183    .rodata.OSEventNameEn:0000000000000000 OSEventNameEn
-     /tmp/ccjw4q1L.s:171    .rodata.OSEventMax:0000000000000000 OSEventMax
-ARM GAS  /tmp/ccjw4q1L.s 			page 15
+     /tmp/ccz1uZ6A.s:18     .text.OSDebugInit:0000000000000000 $t
+     /tmp/ccz1uZ6A.s:26     .text.OSDebugInit:0000000000000000 OSDebugInit
+     /tmp/ccz1uZ6A.s:147    .rodata.OSDataSize:0000000000000000 OSDataSize
+     /tmp/ccz1uZ6A.s:471    .rodata.OSTmrWheelTblSize:0000000000000000 OSTmrWheelTblSize
+     /tmp/ccz1uZ6A.s:465    .rodata.OSTmrWheelSize:0000000000000000 OSTmrWheelSize
+     /tmp/ccz1uZ6A.s:459    .rodata.OSTmrTblSize:0000000000000000 OSTmrTblSize
+     /tmp/ccz1uZ6A.s:453    .rodata.OSTmrSize:0000000000000000 OSTmrSize
+     /tmp/ccz1uZ6A.s:435    .rodata.OSTmrCfgTicksPerSec:0000000000000000 OSTmrCfgTicksPerSec
+     /tmp/ccz1uZ6A.s:441    .rodata.OSTmrCfgWheelSize:0000000000000000 OSTmrCfgWheelSize
+     /tmp/ccz1uZ6A.s:429    .rodata.OSTmrCfgNameEn:0000000000000000 OSTmrCfgNameEn
+     /tmp/ccz1uZ6A.s:423    .rodata.OSTmrCfgMax:0000000000000000 OSTmrCfgMax
+     /tmp/ccz1uZ6A.s:447    .rodata.OSTmrEn:0000000000000000 OSTmrEn
+     /tmp/ccz1uZ6A.s:477    .rodata.OSVersionNbr:0000000000000000 OSVersionNbr
+     /tmp/ccz1uZ6A.s:417    .rodata.OSTimeTickHookEn:0000000000000000 OSTimeTickHookEn
+     /tmp/ccz1uZ6A.s:411    .rodata.OSTicksPerSec:0000000000000000 OSTicksPerSec
+     /tmp/ccz1uZ6A.s:333    .rodata.OSTCBSize:0000000000000000 OSTCBSize
+     /tmp/ccz1uZ6A.s:327    .rodata.OSTCBPrioTblMax:0000000000000000 OSTCBPrioTblMax
+     /tmp/ccz1uZ6A.s:381    .rodata.OSTaskRegTblSize:0000000000000000 OSTaskRegTblSize
+     /tmp/ccz1uZ6A.s:405    .rodata.OSTaskSwHookEn:0000000000000000 OSTaskSwHookEn
+     /tmp/ccz1uZ6A.s:393    .rodata.OSTaskStatStkChkEn:0000000000000000 OSTaskStatStkChkEn
+     /tmp/ccz1uZ6A.s:399    .rodata.OSTaskStatStkSize:0000000000000000 OSTaskStatStkSize
+     /tmp/ccz1uZ6A.s:387    .rodata.OSTaskStatEn:0000000000000000 OSTaskStatEn
+     /tmp/ccz1uZ6A.s:369    .rodata.OSTaskNameEn:0000000000000000 OSTaskNameEn
+     /tmp/ccz1uZ6A.s:363    .rodata.OSTaskMax:0000000000000000 OSTaskMax
+     /tmp/ccz1uZ6A.s:375    .rodata.OSTaskProfileEn:0000000000000000 OSTaskProfileEn
+     /tmp/ccz1uZ6A.s:357    .rodata.OSTaskIdleStkSize:0000000000000000 OSTaskIdleStkSize
+     /tmp/ccz1uZ6A.s:351    .rodata.OSTaskDelEn:0000000000000000 OSTaskDelEn
+     /tmp/ccz1uZ6A.s:345    .rodata.OSTaskCreateExtEn:0000000000000000 OSTaskCreateExtEn
+     /tmp/ccz1uZ6A.s:339    .rodata.OSTaskCreateEn:0000000000000000 OSTaskCreateEn
+     /tmp/ccz1uZ6A.s:321    .rodata.OSStkWidth:0000000000000000 OSStkWidth
+     /tmp/ccz1uZ6A.s:315    .rodata.OSSemEn:0000000000000000 OSSemEn
+     /tmp/ccz1uZ6A.s:309    .rodata.OSRdyTblSize:0000000000000000 OSRdyTblSize
+     /tmp/ccz1uZ6A.s:303    .rodata.OSQSize:0000000000000000 OSQSize
+     /tmp/ccz1uZ6A.s:297    .rodata.OSQMax:0000000000000000 OSQMax
+     /tmp/ccz1uZ6A.s:291    .rodata.OSQEn:0000000000000000 OSQEn
+     /tmp/ccz1uZ6A.s:285    .rodata.OSPtrSize:0000000000000000 OSPtrSize
+     /tmp/ccz1uZ6A.s:279    .rodata.OSMutexEn:0000000000000000 OSMutexEn
+     /tmp/ccz1uZ6A.s:273    .rodata.OSMemTblSize:0000000000000000 OSMemTblSize
+     /tmp/ccz1uZ6A.s:267    .rodata.OSMemSize:0000000000000000 OSMemSize
+     /tmp/ccz1uZ6A.s:261    .rodata.OSMemNameEn:0000000000000000 OSMemNameEn
+     /tmp/ccz1uZ6A.s:255    .rodata.OSMemMax:0000000000000000 OSMemMax
+     /tmp/ccz1uZ6A.s:249    .rodata.OSMemEn:0000000000000000 OSMemEn
+     /tmp/ccz1uZ6A.s:243    .rodata.OSMboxEn:0000000000000000 OSMboxEn
+     /tmp/ccz1uZ6A.s:237    .rodata.OSLowestPrio:0000000000000000 OSLowestPrio
+     /tmp/ccz1uZ6A.s:219    .rodata.OSFlagNameEn:0000000000000000 OSFlagNameEn
+     /tmp/ccz1uZ6A.s:213    .rodata.OSFlagMax:0000000000000000 OSFlagMax
+     /tmp/ccz1uZ6A.s:231    .rodata.OSFlagWidth:0000000000000000 OSFlagWidth
+     /tmp/ccz1uZ6A.s:225    .rodata.OSFlagNodeSize:0000000000000000 OSFlagNodeSize
+     /tmp/ccz1uZ6A.s:207    .rodata.OSFlagGrpSize:0000000000000000 OSFlagGrpSize
+     /tmp/ccz1uZ6A.s:201    .rodata.OSFlagEn:0000000000000000 OSFlagEn
+     /tmp/ccz1uZ6A.s:177    .rodata.OSEventMultiEn:0000000000000000 OSEventMultiEn
+     /tmp/ccz1uZ6A.s:195    .rodata.OSEventTblSize:0000000000000000 OSEventTblSize
+     /tmp/ccz1uZ6A.s:189    .rodata.OSEventSize:0000000000000000 OSEventSize
+     /tmp/ccz1uZ6A.s:183    .rodata.OSEventNameEn:0000000000000000 OSEventNameEn
+     /tmp/ccz1uZ6A.s:171    .rodata.OSEventMax:0000000000000000 OSEventMax
+ARM GAS  /tmp/ccz1uZ6A.s 			page 15
 
 
-     /tmp/ccjw4q1L.s:165    .rodata.OSEventEn:0000000000000000 OSEventEn
-     /tmp/ccjw4q1L.s:159    .rodata.OSEndiannessTest:0000000000000000 OSEndiannessTest
-     /tmp/ccjw4q1L.s:153    .rodata.OSDebugEn:0000000000000000 OSDebugEn
-     /tmp/ccjw4q1L.s:144    .rodata.OSDataSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:150    .rodata.OSDebugEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:156    .rodata.OSEndiannessTest:0000000000000000 $d
-     /tmp/ccjw4q1L.s:162    .rodata.OSEventEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:168    .rodata.OSEventMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:174    .rodata.OSEventMultiEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:180    .rodata.OSEventNameEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:186    .rodata.OSEventSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:192    .rodata.OSEventTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:198    .rodata.OSFlagEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:204    .rodata.OSFlagGrpSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:210    .rodata.OSFlagMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:216    .rodata.OSFlagNameEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:222    .rodata.OSFlagNodeSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:228    .rodata.OSFlagWidth:0000000000000000 $d
-     /tmp/ccjw4q1L.s:234    .rodata.OSLowestPrio:0000000000000000 $d
-     /tmp/ccjw4q1L.s:240    .rodata.OSMboxEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:246    .rodata.OSMemEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:252    .rodata.OSMemMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:258    .rodata.OSMemNameEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:264    .rodata.OSMemSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:270    .rodata.OSMemTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:276    .rodata.OSMutexEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:282    .rodata.OSPtrSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:288    .rodata.OSQEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:294    .rodata.OSQMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:300    .rodata.OSQSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:306    .rodata.OSRdyTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:312    .rodata.OSSemEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:318    .rodata.OSStkWidth:0000000000000000 $d
-     /tmp/ccjw4q1L.s:324    .rodata.OSTCBPrioTblMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:330    .rodata.OSTCBSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:336    .rodata.OSTaskCreateEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:342    .rodata.OSTaskCreateExtEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:348    .rodata.OSTaskDelEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:354    .rodata.OSTaskIdleStkSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:360    .rodata.OSTaskMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:366    .rodata.OSTaskNameEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:372    .rodata.OSTaskProfileEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:378    .rodata.OSTaskRegTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:384    .rodata.OSTaskStatEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:390    .rodata.OSTaskStatStkChkEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:396    .rodata.OSTaskStatStkSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:402    .rodata.OSTaskSwHookEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:408    .rodata.OSTicksPerSec:0000000000000000 $d
-     /tmp/ccjw4q1L.s:414    .rodata.OSTimeTickHookEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:420    .rodata.OSTmrCfgMax:0000000000000000 $d
-     /tmp/ccjw4q1L.s:426    .rodata.OSTmrCfgNameEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:432    .rodata.OSTmrCfgTicksPerSec:0000000000000000 $d
-     /tmp/ccjw4q1L.s:438    .rodata.OSTmrCfgWheelSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:444    .rodata.OSTmrEn:0000000000000000 $d
-     /tmp/ccjw4q1L.s:450    .rodata.OSTmrSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:456    .rodata.OSTmrTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:462    .rodata.OSTmrWheelSize:0000000000000000 $d
-ARM GAS  /tmp/ccjw4q1L.s 			page 16
+     /tmp/ccz1uZ6A.s:165    .rodata.OSEventEn:0000000000000000 OSEventEn
+     /tmp/ccz1uZ6A.s:159    .rodata.OSEndiannessTest:0000000000000000 OSEndiannessTest
+     /tmp/ccz1uZ6A.s:153    .rodata.OSDebugEn:0000000000000000 OSDebugEn
+     /tmp/ccz1uZ6A.s:144    .rodata.OSDataSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:150    .rodata.OSDebugEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:156    .rodata.OSEndiannessTest:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:162    .rodata.OSEventEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:168    .rodata.OSEventMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:174    .rodata.OSEventMultiEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:180    .rodata.OSEventNameEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:186    .rodata.OSEventSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:192    .rodata.OSEventTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:198    .rodata.OSFlagEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:204    .rodata.OSFlagGrpSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:210    .rodata.OSFlagMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:216    .rodata.OSFlagNameEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:222    .rodata.OSFlagNodeSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:228    .rodata.OSFlagWidth:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:234    .rodata.OSLowestPrio:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:240    .rodata.OSMboxEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:246    .rodata.OSMemEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:252    .rodata.OSMemMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:258    .rodata.OSMemNameEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:264    .rodata.OSMemSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:270    .rodata.OSMemTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:276    .rodata.OSMutexEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:282    .rodata.OSPtrSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:288    .rodata.OSQEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:294    .rodata.OSQMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:300    .rodata.OSQSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:306    .rodata.OSRdyTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:312    .rodata.OSSemEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:318    .rodata.OSStkWidth:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:324    .rodata.OSTCBPrioTblMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:330    .rodata.OSTCBSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:336    .rodata.OSTaskCreateEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:342    .rodata.OSTaskCreateExtEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:348    .rodata.OSTaskDelEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:354    .rodata.OSTaskIdleStkSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:360    .rodata.OSTaskMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:366    .rodata.OSTaskNameEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:372    .rodata.OSTaskProfileEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:378    .rodata.OSTaskRegTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:384    .rodata.OSTaskStatEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:390    .rodata.OSTaskStatStkChkEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:396    .rodata.OSTaskStatStkSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:402    .rodata.OSTaskSwHookEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:408    .rodata.OSTicksPerSec:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:414    .rodata.OSTimeTickHookEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:420    .rodata.OSTmrCfgMax:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:426    .rodata.OSTmrCfgNameEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:432    .rodata.OSTmrCfgTicksPerSec:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:438    .rodata.OSTmrCfgWheelSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:444    .rodata.OSTmrEn:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:450    .rodata.OSTmrSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:456    .rodata.OSTmrTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:462    .rodata.OSTmrWheelSize:0000000000000000 $d
+ARM GAS  /tmp/ccz1uZ6A.s 			page 16
 
 
-     /tmp/ccjw4q1L.s:468    .rodata.OSTmrWheelTblSize:0000000000000000 $d
-     /tmp/ccjw4q1L.s:474    .rodata.OSVersionNbr:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:468    .rodata.OSTmrWheelTblSize:0000000000000000 $d
+     /tmp/ccz1uZ6A.s:474    .rodata.OSVersionNbr:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

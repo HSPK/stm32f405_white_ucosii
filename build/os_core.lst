@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccEO57zB.s 			page 1
+ARM GAS  /tmp/ccxgEmFy.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
   29:uCOSII/Source/os_core.c **** #endif
   30:uCOSII/Source/os_core.c **** 
   31:uCOSII/Source/os_core.c **** /*
-ARM GAS  /tmp/ccEO57zB.s 			page 2
+ARM GAS  /tmp/ccxgEmFy.s 			page 2
 
 
   32:uCOSII/Source/os_core.c **** ***************************************************************************************************
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
   86:uCOSII/Source/os_core.c **** *
   87:uCOSII/Source/os_core.c **** * Description: This function is used to obtain the name assigned to a semaphore, mutex, mailbox or 
   88:uCOSII/Source/os_core.c **** *
-ARM GAS  /tmp/ccEO57zB.s 			page 3
+ARM GAS  /tmp/ccxgEmFy.s 			page 3
 
 
   89:uCOSII/Source/os_core.c **** * Arguments  : pevent    is a pointer to the event group.  'pevent' can point either to a semaphore
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  143:uCOSII/Source/os_core.c ****         case OS_EVENT_TYPE_SEM:
  144:uCOSII/Source/os_core.c ****         case OS_EVENT_TYPE_MUTEX:
  145:uCOSII/Source/os_core.c ****         case OS_EVENT_TYPE_MBOX:
-ARM GAS  /tmp/ccEO57zB.s 			page 4
+ARM GAS  /tmp/ccxgEmFy.s 			page 4
 
 
  146:uCOSII/Source/os_core.c ****         case OS_EVENT_TYPE_Q:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  200:uCOSII/Source/os_core.c **** #ifdef OS_SAFETY_CRITICAL
  201:uCOSII/Source/os_core.c ****     if (perr == (INT8U *)0) {
  202:uCOSII/Source/os_core.c ****         OS_SAFETY_CRITICAL_EXCEPTION();
-ARM GAS  /tmp/ccEO57zB.s 			page 5
+ARM GAS  /tmp/ccxgEmFy.s 			page 5
 
 
  203:uCOSII/Source/os_core.c ****         return;
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  257:uCOSII/Source/os_core.c **** *                            messages are valid messages, this array cannot be NULL-terminated.  In
  258:uCOSII/Source/os_core.c **** *                            every available message-type event returns its messages in the 'pmsgs_
  259:uCOSII/Source/os_core.c **** *                            array at the same index as the event is returned in the 'pevents_rdy' 
-ARM GAS  /tmp/ccEO57zB.s 			page 6
+ARM GAS  /tmp/ccxgEmFy.s 			page 6
 
 
  260:uCOSII/Source/os_core.c **** *                            All other 'pmsgs_rdy' array indices are filled with NULL messages.
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  314:uCOSII/Source/os_core.c ****                           void      **pmsgs_rdy,
  315:uCOSII/Source/os_core.c ****                           INT32U      timeout,
  316:uCOSII/Source/os_core.c ****                           INT8U      *perr)
-ARM GAS  /tmp/ccEO57zB.s 			page 7
+ARM GAS  /tmp/ccxgEmFy.s 			page 7
 
 
  317:uCOSII/Source/os_core.c **** {
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  371:uCOSII/Source/os_core.c **** #endif
  372:uCOSII/Source/os_core.c **** #if ((OS_Q_EN   > 0u) && (OS_MAX_QS > 0u))
  373:uCOSII/Source/os_core.c ****             case OS_EVENT_TYPE_Q:
-ARM GAS  /tmp/ccEO57zB.s 			page 8
+ARM GAS  /tmp/ccxgEmFy.s 			page 8
 
 
  374:uCOSII/Source/os_core.c ****                  break;
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  428:uCOSII/Source/os_core.c ****                       events_rdy_nbr++;
  429:uCOSII/Source/os_core.c **** 
  430:uCOSII/Source/os_core.c ****                  } else {
-ARM GAS  /tmp/ccEO57zB.s 			page 9
+ARM GAS  /tmp/ccxgEmFy.s 			page 9
 
 
  431:uCOSII/Source/os_core.c ****                       events_stat |= OS_STAT_MBOX;      /* Configure multi-pend for mailbox events 
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  485:uCOSII/Source/os_core.c **** 
  486:uCOSII/Source/os_core.c ****     switch (OSTCBCur->OSTCBStatPend) {                  /* Handle event posted, aborted, or timed-o
  487:uCOSII/Source/os_core.c ****         case OS_STAT_PEND_OK:
-ARM GAS  /tmp/ccEO57zB.s 			page 10
+ARM GAS  /tmp/ccxgEmFy.s 			page 10
 
 
  488:uCOSII/Source/os_core.c ****         case OS_STAT_PEND_ABORT:
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  542:uCOSII/Source/os_core.c ****             *pmsgs_rdy++ = (void *)0;                   /* NO message returned for timeout         
  543:uCOSII/Source/os_core.c ****             *perr        =  OS_ERR_TIMEOUT;             /* Indicate that events timed out          
  544:uCOSII/Source/os_core.c ****              break;
-ARM GAS  /tmp/ccEO57zB.s 			page 11
+ARM GAS  /tmp/ccxgEmFy.s 			page 11
 
 
  545:uCOSII/Source/os_core.c ****     }
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  599:uCOSII/Source/os_core.c **** #endif
  600:uCOSII/Source/os_core.c **** 
  601:uCOSII/Source/os_core.c **** #if (OS_Q_EN > 0u) && (OS_MAX_QS > 0u)
-ARM GAS  /tmp/ccEO57zB.s 			page 12
+ARM GAS  /tmp/ccxgEmFy.s 			page 12
 
 
  602:uCOSII/Source/os_core.c ****     OS_QInit();                                                  /* Initialize the message queue st
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  656:uCOSII/Source/os_core.c **** {
  657:uCOSII/Source/os_core.c ****     if (OSRunning == OS_TRUE) {
  658:uCOSII/Source/os_core.c ****         if (OSIntNesting < 255u) {
-ARM GAS  /tmp/ccEO57zB.s 			page 13
+ARM GAS  /tmp/ccxgEmFy.s 			page 13
 
 
  659:uCOSII/Source/os_core.c ****             OSIntNesting++;                      /* Increment ISR nesting level                    
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  713:uCOSII/Source/os_core.c ****                 }
  714:uCOSII/Source/os_core.c ****             }
  715:uCOSII/Source/os_core.c ****         }
-ARM GAS  /tmp/ccEO57zB.s 			page 14
+ARM GAS  /tmp/ccxgEmFy.s 			page 14
 
 
  716:uCOSII/Source/os_core.c ****         OS_EXIT_CRITICAL();
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  770:uCOSII/Source/os_core.c **** 
  771:uCOSII/Source/os_core.c ****     if (OSRunning == OS_TRUE) {                  /* Make sure multitasking is running              
  772:uCOSII/Source/os_core.c ****         OS_ENTER_CRITICAL();
-ARM GAS  /tmp/ccEO57zB.s 			page 15
+ARM GAS  /tmp/ccxgEmFy.s 			page 15
 
 
  773:uCOSII/Source/os_core.c ****         if (OSIntNesting == 0u) {                /* Can't call from an ISR                         
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  827:uCOSII/Source/os_core.c **** #endif
  828:uCOSII/Source/os_core.c **** 
  829:uCOSII/Source/os_core.c **** /*$PAGE*/
-ARM GAS  /tmp/ccEO57zB.s 			page 16
+ARM GAS  /tmp/ccxgEmFy.s 			page 16
 
 
  830:uCOSII/Source/os_core.c **** /*
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  884:uCOSII/Source/os_core.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
  885:uCOSII/Source/os_core.c ****     OS_CPU_SR  cpu_sr = 0u;
  886:uCOSII/Source/os_core.c **** #endif
-ARM GAS  /tmp/ccEO57zB.s 			page 17
+ARM GAS  /tmp/ccxgEmFy.s 			page 17
 
 
  887:uCOSII/Source/os_core.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  941:uCOSII/Source/os_core.c ****                  break;
  942:uCOSII/Source/os_core.c **** 
  943:uCOSII/Source/os_core.c ****             case OS_TICK_STEP_WAIT:                        /* No,  waiting for uC/OS-View to set ..
-ARM GAS  /tmp/ccEO57zB.s 			page 18
+ARM GAS  /tmp/ccxgEmFy.s 			page 18
 
 
  944:uCOSII/Source/os_core.c ****                  step = OS_FALSE;                          /*      .. OSTickStepState to OS_TICK_ST
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  998:uCOSII/Source/os_core.c **** * Returns    : The version number of uC/OS-II multiplied by 10000.
  999:uCOSII/Source/os_core.c **** ***************************************************************************************************
 1000:uCOSII/Source/os_core.c **** */
-ARM GAS  /tmp/ccEO57zB.s 			page 19
+ARM GAS  /tmp/ccxgEmFy.s 			page 19
 
 
 1001:uCOSII/Source/os_core.c **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1055:uCOSII/Source/os_core.c **** INT8U  OS_EventTaskRdy (OS_EVENT  *pevent,
 1056:uCOSII/Source/os_core.c ****                         void      *pmsg,
 1057:uCOSII/Source/os_core.c ****                         INT8U      msk,
-ARM GAS  /tmp/ccEO57zB.s 			page 20
+ARM GAS  /tmp/ccxgEmFy.s 			page 20
 
 
 1058:uCOSII/Source/os_core.c ****                         INT8U      pend_stat)
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1112:uCOSII/Source/os_core.c **** }
 1113:uCOSII/Source/os_core.c **** #endif
 1114:uCOSII/Source/os_core.c **** /*$PAGE*/
-ARM GAS  /tmp/ccEO57zB.s 			page 21
+ARM GAS  /tmp/ccxgEmFy.s 			page 21
 
 
 1115:uCOSII/Source/os_core.c **** /*
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1169:uCOSII/Source/os_core.c **** 
 1170:uCOSII/Source/os_core.c **** 
 1171:uCOSII/Source/os_core.c ****     OSTCBCur->OSTCBEventPtr      = (OS_EVENT  *)0;
-ARM GAS  /tmp/ccEO57zB.s 			page 22
+ARM GAS  /tmp/ccxgEmFy.s 			page 22
 
 
 1172:uCOSII/Source/os_core.c ****     OSTCBCur->OSTCBEventMultiPtr = (OS_EVENT **)pevents_wait;       /* Store ptr to ECBs in TCB    
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1226:uCOSII/Source/os_core.c **** * Description: Remove a task from multiple events' wait lists.
 1227:uCOSII/Source/os_core.c **** *
 1228:uCOSII/Source/os_core.c **** * Arguments  : ptcb             is a pointer to the task to remove.
-ARM GAS  /tmp/ccEO57zB.s 			page 23
+ARM GAS  /tmp/ccxgEmFy.s 			page 23
 
 
 1229:uCOSII/Source/os_core.c **** *
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1283:uCOSII/Source/os_core.c ****     pevent->OSEventGrp = 0u;                     /* No task waiting on event                       
 1284:uCOSII/Source/os_core.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
 1285:uCOSII/Source/os_core.c ****         pevent->OSEventTbl[i] = 0u;
-ARM GAS  /tmp/ccEO57zB.s 			page 24
+ARM GAS  /tmp/ccxgEmFy.s 			page 24
 
 
 1286:uCOSII/Source/os_core.c ****     }
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1340:uCOSII/Source/os_core.c **** }
 1341:uCOSII/Source/os_core.c **** /*$PAGE*/
 1342:uCOSII/Source/os_core.c **** /*
-ARM GAS  /tmp/ccEO57zB.s 			page 25
+ARM GAS  /tmp/ccxgEmFy.s 			page 25
 
 
 1343:uCOSII/Source/os_core.c **** ***************************************************************************************************
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
   56 0016 0B4A     		ldr	r2, .L2+20
   57 0018 1360     		str	r3, [r2]
 1369:uCOSII/Source/os_core.c ****     OSIdleCtr                 = 0uL;                       /* Clear the 32-bit idle counter        
-ARM GAS  /tmp/ccEO57zB.s 			page 26
+ARM GAS  /tmp/ccxgEmFy.s 			page 26
 
 
   58              		.loc 1 1369 5 is_stmt 1 view .LVU13
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
   98              		.align	1
   99              		.syntax unified
  100              		.thumb
-ARM GAS  /tmp/ccEO57zB.s 			page 27
+ARM GAS  /tmp/ccxgEmFy.s 			page 27
 
 
  101              		.thumb_func
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1405:uCOSII/Source/os_core.c ****     for (i = 0u; i < OS_RDY_TBL_SIZE; i++) {
  132              		.loc 1 1405 40 discriminator 3 view .LVU34
  133 0010 DBB2     		uxtb	r3, r3
-ARM GAS  /tmp/ccEO57zB.s 			page 28
+ARM GAS  /tmp/ccxgEmFy.s 			page 28
 
 
  134              	.LVL3:
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  180              	OS_SchedNew:
  181              	.LFB28:
 1415:uCOSII/Source/os_core.c **** 
-ARM GAS  /tmp/ccEO57zB.s 			page 29
+ARM GAS  /tmp/ccxgEmFy.s 			page 29
 
 
 1416:uCOSII/Source/os_core.c **** /*$PAGE*/
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1470:uCOSII/Source/os_core.c ****     #endif
 1471:uCOSII/Source/os_core.c **** #endif
 1472:uCOSII/Source/os_core.c **** 
-ARM GAS  /tmp/ccEO57zB.s 			page 30
+ARM GAS  /tmp/ccxgEmFy.s 			page 30
 
 
 1473:uCOSII/Source/os_core.c **** #if OS_TASK_NAME_EN > 0u
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1527:uCOSII/Source/os_core.c ****     #else
 1528:uCOSII/Source/os_core.c ****     (void)OSTaskCreate(OS_TaskStat,
 1529:uCOSII/Source/os_core.c ****                        (void *)0,                                      /* No args passed to OS_Task
-ARM GAS  /tmp/ccEO57zB.s 			page 31
+ARM GAS  /tmp/ccxgEmFy.s 			page 31
 
 
 1530:uCOSII/Source/os_core.c ****                        &OSTaskStatStk[0],                              /* Set Top-Of-Stack         
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1584:uCOSII/Source/os_core.c **** *                                      CLEAR A SECTION OF MEMORY
 1585:uCOSII/Source/os_core.c **** *
 1586:uCOSII/Source/os_core.c **** * Description: This function is called by other uC/OS-II services to clear a contiguous block of RA
-ARM GAS  /tmp/ccEO57zB.s 			page 32
+ARM GAS  /tmp/ccxgEmFy.s 			page 32
 
 
 1587:uCOSII/Source/os_core.c **** *
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1641:uCOSII/Source/os_core.c ****         size--;
 1642:uCOSII/Source/os_core.c ****     }
 1643:uCOSII/Source/os_core.c **** }
-ARM GAS  /tmp/ccEO57zB.s 			page 33
+ARM GAS  /tmp/ccxgEmFy.s 			page 33
 
 
 1644:uCOSII/Source/os_core.c **** /*$PAGE*/
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1698:uCOSII/Source/os_core.c **** *
 1699:uCOSII/Source/os_core.c **** * Description: This function is called by other uC/OS-II services to determine the highest priority
 1700:uCOSII/Source/os_core.c **** *              that is ready to run.  The global variable 'OSPrioHighRdy' is changed accordingly.
-ARM GAS  /tmp/ccEO57zB.s 			page 34
+ARM GAS  /tmp/ccxgEmFy.s 			page 34
 
 
 1701:uCOSII/Source/os_core.c **** *
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1725:uCOSII/Source/os_core.c ****         y = OSUnMapTbl[OSRdyGrp & 0xFFu];
 1726:uCOSII/Source/os_core.c ****     } else {
 1727:uCOSII/Source/os_core.c ****         y = OSUnMapTbl[(OS_PRIO)(OSRdyGrp >> 8u) & 0xFFu] + 8u;
-ARM GAS  /tmp/ccEO57zB.s 			page 35
+ARM GAS  /tmp/ccxgEmFy.s 			page 35
 
 
 1728:uCOSII/Source/os_core.c ****     }
@@ -2098,7 +2098,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  252 0006 0323     		movs	r3, #3
  253 0008 0493     		str	r3, [sp, #16]
  254 000a 0021     		movs	r1, #0
-ARM GAS  /tmp/ccEO57zB.s 			page 36
+ARM GAS  /tmp/ccxgEmFy.s 			page 36
 
 
  255 000c 0391     		str	r1, [sp, #12]
@@ -2158,7 +2158,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  305              	.LCFI3:
  306              		.cfi_def_cfa_offset 4
  307              		.cfi_offset 14, -4
-ARM GAS  /tmp/ccEO57zB.s 			page 37
+ARM GAS  /tmp/ccxgEmFy.s 			page 37
 
 
  308 0002 89B0     		sub	sp, sp, #36
@@ -2218,7 +2218,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  359              	.LFB30:
 1737:uCOSII/Source/os_core.c **** 
 1738:uCOSII/Source/os_core.c **** /*$PAGE*/
-ARM GAS  /tmp/ccEO57zB.s 			page 38
+ARM GAS  /tmp/ccxgEmFy.s 			page 38
 
 
 1739:uCOSII/Source/os_core.c **** /*
@@ -2278,7 +2278,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1793:uCOSII/Source/os_core.c **** *                 power.
 1794:uCOSII/Source/os_core.c **** ***************************************************************************************************
 1795:uCOSII/Source/os_core.c **** */
-ARM GAS  /tmp/ccEO57zB.s 			page 39
+ARM GAS  /tmp/ccxgEmFy.s 			page 39
 
 
 1796:uCOSII/Source/os_core.c **** 
@@ -2338,7 +2338,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  398              	.LFE30:
  400              		.section	.text.OSEventNameSet,"ax",%progbits
  401              		.align	1
-ARM GAS  /tmp/ccEO57zB.s 			page 40
+ARM GAS  /tmp/ccxgEmFy.s 			page 40
 
 
  402              		.global	OSEventNameSet
@@ -2398,7 +2398,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  445              		.loc 1 230 14 is_stmt 1 view .LVU93
  446              	.LVL19:
  447              	.L25:
-ARM GAS  /tmp/ccEO57zB.s 			page 41
+ARM GAS  /tmp/ccxgEmFy.s 			page 41
 
 
  236:uCOSII/Source/os_core.c **** #endif
@@ -2458,7 +2458,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  491              	OSIntEnter:
  492              	.LFB4:
  656:uCOSII/Source/os_core.c ****     if (OSRunning == OS_TRUE) {
-ARM GAS  /tmp/ccEO57zB.s 			page 42
+ARM GAS  /tmp/ccxgEmFy.s 			page 42
 
 
  493              		.loc 1 656 1 is_stmt 1 view -0
@@ -2518,7 +2518,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  539              	OSIntExit:
  540              	.LFB5:
  684:uCOSII/Source/os_core.c **** #if OS_CRITICAL_METHOD == 3u                               /* Allocate storage for CPU status regis
-ARM GAS  /tmp/ccEO57zB.s 			page 43
+ARM GAS  /tmp/ccxgEmFy.s 			page 43
 
 
  541              		.loc 1 684 1 is_stmt 1 view -0
@@ -2578,7 +2578,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  581              		.loc 1 696 26 is_stmt 0 view .LVU132
  582 001e 114B     		ldr	r3, .L48+4
  583 0020 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  /tmp/ccEO57zB.s 			page 44
+ARM GAS  /tmp/ccxgEmFy.s 			page 44
 
 
  696:uCOSII/Source/os_core.c ****             if (OSLockNesting == 0u) {                     /* ... and not locked.                  
@@ -2638,7 +2638,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  702:uCOSII/Source/os_core.c **** #endif
  623              		.loc 1 702 33 is_stmt 0 view .LVU148
  624 004c D36B     		ldr	r3, [r2, #60]
-ARM GAS  /tmp/ccEO57zB.s 			page 45
+ARM GAS  /tmp/ccxgEmFy.s 			page 45
 
 
  702:uCOSII/Source/os_core.c **** #endif
@@ -2698,7 +2698,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  771:uCOSII/Source/os_core.c ****         OS_ENTER_CRITICAL();
  674              		.loc 1 771 19 is_stmt 0 view .LVU156
  675 0002 0A4B     		ldr	r3, .L55
-ARM GAS  /tmp/ccEO57zB.s 			page 46
+ARM GAS  /tmp/ccxgEmFy.s 			page 46
 
 
  676 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -2758,7 +2758,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  715              	.L56:
  716 002a 00BF     		.align	2
  717              	.L55:
-ARM GAS  /tmp/ccEO57zB.s 			page 47
+ARM GAS  /tmp/ccxgEmFy.s 			page 47
 
 
  718 002c 00000000 		.word	OSRunning
@@ -2818,7 +2818,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  764 0016 084A     		ldr	r2, .L61+12
  765 0018 52F82330 		ldr	r3, [r2, r3, lsl #2]
  855:uCOSII/Source/os_core.c ****         OSTCBCur      = OSTCBHighRdy;
-ARM GAS  /tmp/ccEO57zB.s 			page 48
+ARM GAS  /tmp/ccxgEmFy.s 			page 48
 
 
  766              		.loc 1 855 23 view .LVU182
@@ -2878,7 +2878,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  891:uCOSII/Source/os_core.c ****     OSIdleCtr    = 0uL;                          /* Clear idle counter                             
  815              		.loc 1 891 5 view .LVU190
  816 0008 FFF7FEFF 		bl	OS_CPU_SR_Save
-ARM GAS  /tmp/ccEO57zB.s 			page 49
+ARM GAS  /tmp/ccxgEmFy.s 			page 49
 
 
  817              	.LVL40:
@@ -2938,7 +2938,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  856 0038 00000000 		.word	OSIdleCtrMax
  857 003c 00000000 		.word	OSStatRdy
  858              		.cfi_endproc
-ARM GAS  /tmp/ccEO57zB.s 			page 50
+ARM GAS  /tmp/ccxgEmFy.s 			page 50
 
 
  859              	.LFE9:
@@ -2998,7 +2998,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  903              		.loc 1 936 5 view .LVU217
  936:uCOSII/Source/os_core.c **** #if OS_TICK_STEP_EN > 0u
  904              		.loc 1 936 19 is_stmt 0 view .LVU218
-ARM GAS  /tmp/ccEO57zB.s 			page 51
+ARM GAS  /tmp/ccxgEmFy.s 			page 51
 
 
  905 0016 264B     		ldr	r3, .L80+4
@@ -3058,7 +3058,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  961:uCOSII/Source/os_core.c ****         while (ptcb->OSTCBPrio != OS_TASK_IDLE_PRIO) {     /* Go through all TCBs in TCB list      
  945              		.loc 1 961 14 is_stmt 0 view .LVU233
  946 003c 1E4B     		ldr	r3, .L80+12
-ARM GAS  /tmp/ccEO57zB.s 			page 52
+ARM GAS  /tmp/ccxgEmFy.s 			page 52
 
 
  947 003e 1C68     		ldr	r4, [r3]
@@ -3118,7 +3118,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  965:uCOSII/Source/os_core.c ****                 if (ptcb->OSTCBDly == 0u) {                /* Check for timeout                    
  985              		.loc 1 965 17 is_stmt 1 view .LVU250
  965:uCOSII/Source/os_core.c ****                 if (ptcb->OSTCBDly == 0u) {                /* Check for timeout                    
-ARM GAS  /tmp/ccEO57zB.s 			page 53
+ARM GAS  /tmp/ccxgEmFy.s 			page 53
 
 
  986              		.loc 1 965 31 is_stmt 0 view .LVU251
@@ -3178,7 +3178,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1023              		.loc 1 977 38 is_stmt 0 view .LVU268
  1024 0098 94F83820 		ldrb	r2, [r4, #56]	@ zero_extendqisi2
  977:uCOSII/Source/os_core.c ****                     }
-ARM GAS  /tmp/ccEO57zB.s 			page 54
+ARM GAS  /tmp/ccxgEmFy.s 			page 54
 
 
  1025              		.loc 1 977 55 view .LVU269
@@ -3238,7 +3238,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1078              		.cfi_startproc
  1079              		@ args = 0, pretend = 0, frame = 0
  1080              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccEO57zB.s 			page 55
+ARM GAS  /tmp/ccxgEmFy.s 			page 55
 
 
  1081              		@ link register save eliminated.
@@ -3298,7 +3298,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1125              		.loc 1 1138 5 is_stmt 1 view .LVU286
 1138:uCOSII/Source/os_core.c **** 
  1126              		.loc 1 1138 53 is_stmt 0 view .LVU287
-ARM GAS  /tmp/ccEO57zB.s 			page 56
+ARM GAS  /tmp/ccxgEmFy.s 			page 56
 
 
  1127 0018 93F83A20 		ldrb	r2, [r3, #58]	@ zero_extendqisi2
@@ -3358,7 +3358,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1167              	.L88:
  1168 004a 00BF     		.align	2
  1169              	.L87:
-ARM GAS  /tmp/ccEO57zB.s 			page 57
+ARM GAS  /tmp/ccxgEmFy.s 			page 57
 
 
  1170 004c 00000000 		.word	OSTCBCur
@@ -3418,7 +3418,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1175:uCOSII/Source/os_core.c ****     while (pevent != (OS_EVENT *)0) {                               /* Put task in waiting lists   
  1214              		.loc 1 1175 13 is_stmt 0 view .LVU314
  1215 000c 0368     		ldr	r3, [r0]
-ARM GAS  /tmp/ccEO57zB.s 			page 58
+ARM GAS  /tmp/ccxgEmFy.s 			page 58
 
 
  1216              	.LVL64:
@@ -3478,7 +3478,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1253 0034 94F83900 		ldrb	r0, [r4, #57]	@ zero_extendqisi2
  1254              	.LVL68:
 1184:uCOSII/Source/os_core.c ****     if (OSRdyTbl[y] == 0u) {                      /* Clear event grp bit if this was only task pend
-ARM GAS  /tmp/ccEO57zB.s 			page 59
+ARM GAS  /tmp/ccxgEmFy.s 			page 59
 
 
  1255              		.loc 1 1184 18 view .LVU332
@@ -3538,7 +3538,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1302              	OS_EventTaskRemove:
  1303              	.LVL72:
  1304              	.LFB16:
-ARM GAS  /tmp/ccEO57zB.s 			page 60
+ARM GAS  /tmp/ccxgEmFy.s 			page 60
 
 
 1209:uCOSII/Source/os_core.c ****     INT8U  y;
@@ -3598,7 +3598,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1343              		.loc 1 1218 29 is_stmt 0 view .LVU357
  1344 0022 0023     		movs	r3, #0
  1345 0024 C361     		str	r3, [r0, #28]
-ARM GAS  /tmp/ccEO57zB.s 			page 61
+ARM GAS  /tmp/ccxgEmFy.s 			page 61
 
 
 1219:uCOSII/Source/os_core.c **** #endif
@@ -3658,7 +3658,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1390              	.LVL78:
 1250:uCOSII/Source/os_core.c ****     pevents =  pevents_multi;
  1391              		.loc 1 1250 5 is_stmt 1 view .LVU370
-ARM GAS  /tmp/ccEO57zB.s 			page 62
+ARM GAS  /tmp/ccxgEmFy.s 			page 62
 
 
 1250:uCOSII/Source/os_core.c ****     pevents =  pevents_multi;
@@ -3718,7 +3718,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1261:uCOSII/Source/os_core.c **** #endif
  1430              		.loc 1 1261 1 view .LVU387
  1431 0030 70BC     		pop	{r4, r5, r6}
-ARM GAS  /tmp/ccEO57zB.s 			page 63
+ARM GAS  /tmp/ccxgEmFy.s 			page 63
 
 
  1432              	.LCFI20:
@@ -3778,7 +3778,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1478 0006 194C     		ldr	r4, .L110
  1479 0008 205C     		ldrb	r0, [r4, r0]	@ zero_extendqisi2
 1071:uCOSII/Source/os_core.c ****     prio = (INT8U)((y << 3u) + x);                      /* Find priority of task getting the msg   
-ARM GAS  /tmp/ccEO57zB.s 			page 64
+ARM GAS  /tmp/ccxgEmFy.s 			page 64
 
 
  1480              		.loc 1 1071 5 is_stmt 1 view .LVU398
@@ -3838,7 +3838,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1518 002c 84F83420 		strb	r2, [r4, #52]
 1096:uCOSII/Source/os_core.c ****                                                         /* See if task is ready (could be susp'd)  
  1519              		.loc 1 1096 5 is_stmt 1 view .LVU415
-ARM GAS  /tmp/ccEO57zB.s 			page 65
+ARM GAS  /tmp/ccxgEmFy.s 			page 65
 
 
 1096:uCOSII/Source/os_core.c ****                                                         /* See if task is ready (could be susp'd)  
@@ -3898,7 +3898,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1107:uCOSII/Source/os_core.c ****     }
  1559              		.loc 1 1107 35 is_stmt 0 view .LVU431
  1560 0064 E661     		str	r6, [r4, #28]
-ARM GAS  /tmp/ccEO57zB.s 			page 66
+ARM GAS  /tmp/ccxgEmFy.s 			page 66
 
 
  1561              	.L108:
@@ -3958,7 +3958,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1606              		.loc 1 1285 31 is_stmt 0 discriminator 3 view .LVU442
  1607 0006 C218     		adds	r2, r0, r3
  1608 0008 0021     		movs	r1, #0
-ARM GAS  /tmp/ccEO57zB.s 			page 67
+ARM GAS  /tmp/ccxgEmFy.s 			page 67
 
 
  1609 000a D172     		strb	r1, [r2, #11]
@@ -4018,7 +4018,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1653              		.loc 1 1607 9 is_stmt 1 view .LVU454
 1607:uCOSII/Source/os_core.c ****     }
  1654              		.loc 1 1607 13 is_stmt 0 view .LVU455
-ARM GAS  /tmp/ccEO57zB.s 			page 68
+ARM GAS  /tmp/ccxgEmFy.s 			page 68
 
 
  1655 0008 0139     		subs	r1, r1, #1
@@ -4078,7 +4078,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1701 0010 1048     		ldr	r0, .L123+4
  1702 0012 FFF7FEFF 		bl	OS_MemClr
  1703              	.LVL108:
-ARM GAS  /tmp/ccEO57zB.s 			page 69
+ARM GAS  /tmp/ccxgEmFy.s 			page 69
 
 
 1564:uCOSII/Source/os_core.c ****         ix_next =  ix + 1u;
@@ -4138,7 +4138,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1741 0032 142B     		cmp	r3, #20
  1742 0034 F1D9     		bls	.L121
 1573:uCOSII/Source/os_core.c ****     ptcb1->OSTCBNext        = (OS_TCB *)0;                       /* Last OS_TCB                    
-ARM GAS  /tmp/ccEO57zB.s 			page 70
+ARM GAS  /tmp/ccxgEmFy.s 			page 70
 
 
  1743              		.loc 1 1573 5 is_stmt 1 view .LVU483
@@ -4198,7 +4198,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1788              	OS_InitEventList:
  1789              	.LFB19:
 1304:uCOSII/Source/os_core.c **** #if (OS_EVENT_EN) && (OS_MAX_EVENTS > 0u)
-ARM GAS  /tmp/ccEO57zB.s 			page 71
+ARM GAS  /tmp/ccxgEmFy.s 			page 71
 
 
  1790              		.loc 1 1304 1 is_stmt 1 view -0
@@ -4258,7 +4258,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1830 001e 1044     		add	r0, r0, r2
  1831              	.LVL121:
 1318:uCOSII/Source/os_core.c ****         pevent1->OSEventPtr     = pevent2;
-ARM GAS  /tmp/ccEO57zB.s 			page 72
+ARM GAS  /tmp/ccxgEmFy.s 			page 72
 
 
  1832              		.loc 1 1318 9 is_stmt 1 discriminator 3 view .LVU510
@@ -4318,7 +4318,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1328:uCOSII/Source/os_core.c **** #endif
  1871              		.loc 1 1328 37 view .LVU526
  1872 0048 6361     		str	r3, [r4, #20]
-ARM GAS  /tmp/ccEO57zB.s 			page 73
+ARM GAS  /tmp/ccxgEmFy.s 			page 73
 
 
 1330:uCOSII/Source/os_core.c **** #else
@@ -4378,7 +4378,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1920 0012 FFF7FEFF 		bl	OS_InitEventList
  1921              	.LVL130:
  594:uCOSII/Source/os_core.c **** #endif
-ARM GAS  /tmp/ccEO57zB.s 			page 74
+ARM GAS  /tmp/ccxgEmFy.s 			page 74
 
 
  1922              		.loc 1 594 5 view .LVU536
@@ -4438,7 +4438,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  1967              		.loc 1 1640 20 is_stmt 0 view .LVU547
  1968 0002 11F8013B 		ldrb	r3, [r1], #1	@ zero_extendqisi2
  1969              	.LVL139:
-ARM GAS  /tmp/ccEO57zB.s 			page 75
+ARM GAS  /tmp/ccxgEmFy.s 			page 75
 
 
 1640:uCOSII/Source/os_core.c ****         size--;
@@ -4498,7 +4498,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2015              		.loc 1 1671 5 view .LVU558
 1671:uCOSII/Source/os_core.c ****         if (OSLockNesting == 0u) {                     /* ... scheduler is not locked              
  2016              		.loc 1 1671 22 is_stmt 0 view .LVU559
-ARM GAS  /tmp/ccEO57zB.s 			page 76
+ARM GAS  /tmp/ccxgEmFy.s 			page 76
 
 
  2017 0008 104B     		ldr	r3, .L142
@@ -4558,7 +4558,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1677:uCOSII/Source/os_core.c **** #endif
  2057              		.loc 1 1677 17 is_stmt 1 view .LVU574
 1677:uCOSII/Source/os_core.c **** #endif
-ARM GAS  /tmp/ccEO57zB.s 			page 77
+ARM GAS  /tmp/ccxgEmFy.s 			page 77
 
 
  2058              		.loc 1 1677 29 is_stmt 0 view .LVU575
@@ -4618,7 +4618,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2108              		.cfi_offset 6, -28
  2109              		.cfi_offset 7, -24
  2110              		.cfi_offset 8, -20
-ARM GAS  /tmp/ccEO57zB.s 			page 78
+ARM GAS  /tmp/ccxgEmFy.s 			page 78
 
 
  2111              		.cfi_offset 9, -16
@@ -4678,7 +4678,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  363:uCOSII/Source/os_core.c **** #if (OS_SEM_EN  > 0u)
  2148              		.loc 1 363 9 view .LVU599
  363:uCOSII/Source/os_core.c **** #if (OS_SEM_EN  > 0u)
-ARM GAS  /tmp/ccEO57zB.s 			page 79
+ARM GAS  /tmp/ccxgEmFy.s 			page 79
 
 
  2149              		.loc 1 363 23 is_stmt 0 view .LVU600
@@ -4738,7 +4738,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  387:uCOSII/Source/os_core.c ****        *perr =  OS_ERR_PEND_ISR;                        /* ... can't PEND from an ISR              
  2189              		.loc 1 387 8 view .LVU615
  2190 003a 5BB9     		cbnz	r3, .L180
-ARM GAS  /tmp/ccEO57zB.s 			page 80
+ARM GAS  /tmp/ccxgEmFy.s 			page 80
 
 
  391:uCOSII/Source/os_core.c ****        *perr =  OS_ERR_PEND_LOCKED;                     /* ... can't PEND when locked              
@@ -4798,7 +4798,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  401:uCOSII/Source/os_core.c ****     OS_ENTER_CRITICAL();
  2228              		.loc 1 401 5 view .LVU633
  402:uCOSII/Source/os_core.c ****     while (pevent != (OS_EVENT *)0) {                   /* See if any events already available     
-ARM GAS  /tmp/ccEO57zB.s 			page 81
+ARM GAS  /tmp/ccxgEmFy.s 			page 81
 
 
  2229              		.loc 1 402 5 view .LVU634
@@ -4858,7 +4858,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2266 007e 46F8043B 		str	r3, [r6], #4
  2267              	.LVL175:
  412:uCOSII/Source/os_core.c **** 
-ARM GAS  /tmp/ccEO57zB.s 			page 82
+ARM GAS  /tmp/ccxgEmFy.s 			page 82
 
 
  2268              		.loc 1 412 23 is_stmt 1 view .LVU652
@@ -4918,7 +4918,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2306              		.loc 1 426 42 is_stmt 0 view .LVU668
  2307 00a6 44F8047B 		str	r7, [r4], #4
  2308              	.LVL184:
-ARM GAS  /tmp/ccEO57zB.s 			page 83
+ARM GAS  /tmp/ccxgEmFy.s 			page 83
 
 
  427:uCOSII/Source/os_core.c ****                       events_rdy_nbr++;
@@ -4978,7 +4978,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2347              		.loc 1 460 17 view .LVU684
  460:uCOSII/Source/os_core.c ****                 *perr        =  OS_ERR_EVENT_TYPE;
  2348              		.loc 1 460 30 is_stmt 0 view .LVU685
-ARM GAS  /tmp/ccEO57zB.s 			page 84
+ARM GAS  /tmp/ccxgEmFy.s 			page 84
 
 
  2349 00d0 0023     		movs	r3, #0
@@ -5038,7 +5038,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  441:uCOSII/Source/os_core.c ****                      if (pq->OSQOut == pq->OSQEnd) {    /* If OUT ptr at queue end, ...            
  2387              		.loc 1 441 36 view .LVU702
  2388 00f2 1B68     		ldr	r3, [r3]
-ARM GAS  /tmp/ccEO57zB.s 			page 85
+ARM GAS  /tmp/ccxgEmFy.s 			page 85
 
 
  441:uCOSII/Source/os_core.c ****                      if (pq->OSQOut == pq->OSQEnd) {    /* If OUT ptr at queue end, ...            
@@ -5098,7 +5098,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2426              		.loc 1 443 42 is_stmt 0 view .LVU719
  2427 0118 5368     		ldr	r3, [r2, #4]
  443:uCOSII/Source/os_core.c ****                      }
-ARM GAS  /tmp/ccEO57zB.s 			page 86
+ARM GAS  /tmp/ccxgEmFy.s 			page 86
 
 
  2428              		.loc 1 443 38 view .LVU720
@@ -5158,7 +5158,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2467              		.loc 1 480 5 is_stmt 0 view .LVU735
  2468 0152 FFF7FEFF 		bl	OS_EventTaskWaitMulti
  2469              	.LVL207:
-ARM GAS  /tmp/ccEO57zB.s 			page 87
+ARM GAS  /tmp/ccxgEmFy.s 			page 87
 
 
  482:uCOSII/Source/os_core.c ****     OS_Sched();                                         /* Find next highest priority task ready   
@@ -5218,7 +5218,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2508              	.LVL215:
  492:uCOSII/Source/os_core.c ****                   events_rdy_nbr =  1;
  2509              		.loc 1 492 17 is_stmt 1 view .LVU752
-ARM GAS  /tmp/ccEO57zB.s 			page 88
+ARM GAS  /tmp/ccxgEmFy.s 			page 88
 
 
  492:uCOSII/Source/os_core.c ****                   events_rdy_nbr =  1;
@@ -5278,7 +5278,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  470:uCOSII/Source/os_core.c ****        *perr        =  OS_ERR_NONE;
  2549              		.loc 1 470 9 is_stmt 1 view .LVU768
  2550 01a4 5846     		mov	r0, fp
-ARM GAS  /tmp/ccEO57zB.s 			page 89
+ARM GAS  /tmp/ccxgEmFy.s 			page 89
 
 
  2551              	.LVL221:
@@ -5338,7 +5338,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  509:uCOSII/Source/os_core.c **** #if (OS_SEM_EN > 0u)
  2591              		.loc 1 509 28 is_stmt 0 view .LVU783
  2592 01ca 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
-ARM GAS  /tmp/ccEO57zB.s 			page 90
+ARM GAS  /tmp/ccxgEmFy.s 			page 90
 
 
  2593 01cc 022B     		cmp	r3, #2
@@ -5398,7 +5398,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2632              		.loc 1 533 14 is_stmt 1 view .LVU798
  2633 01f4 07E0     		b	.L174
  2634              	.LVL233:
-ARM GAS  /tmp/ccEO57zB.s 			page 91
+ARM GAS  /tmp/ccxgEmFy.s 			page 91
 
 
  2635              	.L185:
@@ -5458,7 +5458,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2671              		.loc 1 550 34 is_stmt 0 view .LVU816
  2672 0216 1A62     		str	r2, [r3, #32]
  553:uCOSII/Source/os_core.c **** #endif
-ARM GAS  /tmp/ccEO57zB.s 			page 92
+ARM GAS  /tmp/ccxgEmFy.s 			page 92
 
 
  2673              		.loc 1 553 5 is_stmt 1 view .LVU817
@@ -5518,7 +5518,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2719 0006 012B     		cmp	r3, #1
  2720 0008 00D0     		beq	.L194
  2721              	.LVL238:
-ARM GAS  /tmp/ccEO57zB.s 			page 93
+ARM GAS  /tmp/ccxgEmFy.s 			page 93
 
 
  2722              	.L188:
@@ -5578,7 +5578,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2760              	.LVL243:
  2761              	.L192:
  817:uCOSII/Source/os_core.c ****                 }
-ARM GAS  /tmp/ccEO57zB.s 			page 94
+ARM GAS  /tmp/ccxgEmFy.s 			page 94
 
 
  2762              		.loc 1 817 21 view .LVU844
@@ -5638,7 +5638,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2809              		.loc 1 1758 5 is_stmt 1 view .LVU853
 1767:uCOSII/Source/os_core.c ****     while (*psrc != OS_ASCII_NUL) {
  2810              		.loc 1 1767 5 view .LVU854
-ARM GAS  /tmp/ccEO57zB.s 			page 95
+ARM GAS  /tmp/ccxgEmFy.s 			page 95
 
 
  2811              	.LVL250:
@@ -5698,7 +5698,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2854              		@ args = 0, pretend = 0, frame = 0
  2855              		@ frame_needed = 0, uses_anonymous_args = 0
  113:uCOSII/Source/os_core.c ****     INT8U      len;
-ARM GAS  /tmp/ccEO57zB.s 			page 96
+ARM GAS  /tmp/ccxgEmFy.s 			page 96
 
 
  2856              		.loc 1 113 1 is_stmt 0 view .LVU868
@@ -5758,7 +5758,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2897              		.loc 1 139 9 is_stmt 1 view .LVU881
  139:uCOSII/Source/os_core.c ****         return (0u);
  2898              		.loc 1 139 16 is_stmt 0 view .LVU882
-ARM GAS  /tmp/ccEO57zB.s 			page 97
+ARM GAS  /tmp/ccxgEmFy.s 			page 97
 
 
  2899 0022 1123     		movs	r3, #17
@@ -5818,7 +5818,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2936              		.loc 1 158 12 is_stmt 0 view .LVU899
  2937 0044 EAE7     		b	.L203
  2938              	.L208:
-ARM GAS  /tmp/ccEO57zB.s 			page 98
+ARM GAS  /tmp/ccxgEmFy.s 			page 98
 
 
  2939 0046 00BF     		.align	2
@@ -5878,7 +5878,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1851:uCOSII/Source/os_core.c ****     OSIdleCtrMax /= 100uL;
 1852:uCOSII/Source/os_core.c ****     if (OSIdleCtrMax == 0uL) {
 1853:uCOSII/Source/os_core.c ****         OSCPUUsage = 0u;
-ARM GAS  /tmp/ccEO57zB.s 			page 99
+ARM GAS  /tmp/ccxgEmFy.s 			page 99
 
 
 1854:uCOSII/Source/os_core.c **** #if OS_TASK_SUSPEND_EN > 0u
@@ -5938,7 +5938,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  2967              		.loc 1 1895 5 view .LVU901
 1896:uCOSII/Source/os_core.c ****     OS_STK_DATA  stk_data;
  2968              		.loc 1 1896 5 view .LVU902
-ARM GAS  /tmp/ccEO57zB.s 			page 100
+ARM GAS  /tmp/ccxgEmFy.s 			page 100
 
 
 1897:uCOSII/Source/os_core.c ****     INT8U        err;
@@ -5998,7 +5998,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3013 0028 EED0     		beq	.L211
 1907:uCOSII/Source/os_core.c **** #if OS_TASK_PROFILE_EN > 0u
 1908:uCOSII/Source/os_core.c ****                     #if OS_STK_GROWTH == 1u
-ARM GAS  /tmp/ccEO57zB.s 			page 101
+ARM GAS  /tmp/ccxgEmFy.s 			page 101
 
 
 1909:uCOSII/Source/os_core.c ****                     ptcb->OSTCBStkBase = ptcb->OSTCBStkBottom + ptcb->OSTCBStkSize;
@@ -6058,7 +6058,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3058              		.cfi_startproc
  3059              		@ args = 0, pretend = 0, frame = 0
  3060              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccEO57zB.s 			page 102
+ARM GAS  /tmp/ccxgEmFy.s 			page 102
 
 
 1840:uCOSII/Source/os_core.c **** #if OS_CRITICAL_METHOD == 3u                     /* Allocate storage for CPU status register       
@@ -6118,7 +6118,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3101              	.LVL277:
 1862:uCOSII/Source/os_core.c ****     OSIdleCtr = OSIdleCtrMax * 100uL;            /* Set initial CPU usage as 0%                    
  3102              		.loc 1 1862 24 view .LVU948
-ARM GAS  /tmp/ccEO57zB.s 			page 103
+ARM GAS  /tmp/ccxgEmFy.s 			page 103
 
 
 1863:uCOSII/Source/os_core.c ****     OS_EXIT_CRITICAL();
@@ -6178,7 +6178,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3141 0052 B3FBF2F3 		udiv	r3, r3, r2
 1870:uCOSII/Source/os_core.c ****         OSTaskStatHook();                        /* Invoke user definable hook                     
  3142              		.loc 1 1870 24 discriminator 1 view .LVU965
-ARM GAS  /tmp/ccEO57zB.s 			page 104
+ARM GAS  /tmp/ccxgEmFy.s 			page 104
 
 
  3143 0056 C3F16403 		rsb	r3, r3, #100
@@ -6238,7 +6238,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3189              		.thumb_func
  3190              		.fpu fpv4-sp-d16
  3192              	OS_TCBInit:
-ARM GAS  /tmp/ccEO57zB.s 			page 105
+ARM GAS  /tmp/ccxgEmFy.s 			page 105
 
 
  3193              	.LVL286:
@@ -6298,7 +6298,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 1972:uCOSII/Source/os_core.c **** {
  3195              		.loc 1 1972 1 is_stmt 1 view -0
  3196              		.cfi_startproc
-ARM GAS  /tmp/ccEO57zB.s 			page 106
+ARM GAS  /tmp/ccxgEmFy.s 			page 106
 
 
  3197              		@ args = 12, pretend = 0, frame = 0
@@ -6358,7 +6358,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3233              		.loc 1 1990 34 view .LVU988
  3234 001a 1A60     		str	r2, [r3]
 1991:uCOSII/Source/os_core.c ****         OS_EXIT_CRITICAL();
-ARM GAS  /tmp/ccEO57zB.s 			page 107
+ARM GAS  /tmp/ccxgEmFy.s 			page 107
 
 
  3235              		.loc 1 1991 9 is_stmt 1 view .LVU989
@@ -6418,7 +6418,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 2008:uCOSII/Source/os_core.c ****         opt                      = opt;
 2009:uCOSII/Source/os_core.c ****         id                       = id;
 2010:uCOSII/Source/os_core.c **** #endif
-ARM GAS  /tmp/ccEO57zB.s 			page 108
+ARM GAS  /tmp/ccxgEmFy.s 			page 108
 
 
 2011:uCOSII/Source/os_core.c **** 
@@ -6478,7 +6478,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 2035:uCOSII/Source/os_core.c ****         ptcb->OSTCBFlagNode      = (OS_FLAG_NODE *)0;      /* Task is not pending on an event flag 
  3303              		.loc 1 2035 9 is_stmt 1 view .LVU1029
  3304              		.loc 1 2035 34 is_stmt 0 view .LVU1030
-ARM GAS  /tmp/ccEO57zB.s 			page 109
+ARM GAS  /tmp/ccxgEmFy.s 			page 109
 
 
  3305 006c A162     		str	r1, [r4, #40]
@@ -6538,7 +6538,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3334              		.loc 1 2060 9 is_stmt 1 view .LVU1048
  3335 0080 2046     		mov	r0, r4
  3336 0082 FFF7FEFF 		bl	OSTCBInitHook
-ARM GAS  /tmp/ccEO57zB.s 			page 110
+ARM GAS  /tmp/ccxgEmFy.s 			page 110
 
 
  3337              	.LVL292:
@@ -6598,7 +6598,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3370              		.loc 1 2081 13 is_stmt 1 view .LVU1064
  3371              		.loc 1 2081 34 is_stmt 0 view .LVU1065
  3372 00aa 9C61     		str	r4, [r3, #24]
-ARM GAS  /tmp/ccEO57zB.s 			page 111
+ARM GAS  /tmp/ccxgEmFy.s 			page 111
 
 
  3373              	.L230:
@@ -6658,7 +6658,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
 2056:uCOSII/Source/os_core.c ****         }
  3416              		.loc 1 2056 13 is_stmt 1 discriminator 3 view .LVU1083
 2056:uCOSII/Source/os_core.c ****         }
-ARM GAS  /tmp/ccEO57zB.s 			page 112
+ARM GAS  /tmp/ccxgEmFy.s 			page 112
 
 
  3417              		.loc 1 2056 34 is_stmt 0 discriminator 3 view .LVU1084
@@ -6718,7 +6718,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3464              		.comm	OSTCBFreeList,4,4
  3465              		.comm	OSTCBCur,4,4
  3466              		.comm	OSTaskIdleStk,512,4
-ARM GAS  /tmp/ccEO57zB.s 			page 113
+ARM GAS  /tmp/ccxgEmFy.s 			page 113
 
 
  3467              		.comm	OSIdleCtr,4,4
@@ -6778,7 +6778,7 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3499      00
  3500 0068 03000100 		.ascii	"\003\000\001\000\002\000\001\000\004\000\001\000\002"
  3500      02000100 
-ARM GAS  /tmp/ccEO57zB.s 			page 114
+ARM GAS  /tmp/ccxgEmFy.s 			page 114
 
 
  3500      04000100 
@@ -6830,14 +6830,14 @@ ARM GAS  /tmp/ccEO57zB.s 			page 1
  3513              	.Letext0:
  3514              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
  3515              		.file 3 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/ccEO57zB.s 			page 115
+ARM GAS  /tmp/ccxgEmFy.s 			page 115
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_core.c
-     /tmp/ccEO57zB.s:18     .text.OS_InitMisc:0000000000000000 $t
-     /tmp/ccEO57zB.s:25     .text.OS_InitMisc:0000000000000000 OS_InitMisc
-     /tmp/ccEO57zB.s:83     .text.OS_InitMisc:0000000000000030 $d
+     /tmp/ccxgEmFy.s:18     .text.OS_InitMisc:0000000000000000 $t
+     /tmp/ccxgEmFy.s:25     .text.OS_InitMisc:0000000000000000 OS_InitMisc
+     /tmp/ccxgEmFy.s:83     .text.OS_InitMisc:0000000000000030 $d
                             *COM*:0000000000000004 OSTime
                             *COM*:0000000000000001 OSIntNesting
                             *COM*:0000000000000001 OSLockNesting
@@ -6849,127 +6849,127 @@ DEFINED SYMBOLS
                             *COM*:0000000000000004 OSIdleCtrMax
                             *COM*:0000000000000001 OSStatRdy
                             *COM*:0000000000000001 OSTaskRegNextAvailID
-     /tmp/ccEO57zB.s:98     .text.OS_InitRdyList:0000000000000000 $t
-     /tmp/ccEO57zB.s:104    .text.OS_InitRdyList:0000000000000000 OS_InitRdyList
-     /tmp/ccEO57zB.s:164    .text.OS_InitRdyList:000000000000002c $d
+     /tmp/ccxgEmFy.s:98     .text.OS_InitRdyList:0000000000000000 $t
+     /tmp/ccxgEmFy.s:104    .text.OS_InitRdyList:0000000000000000 OS_InitRdyList
+     /tmp/ccxgEmFy.s:164    .text.OS_InitRdyList:000000000000002c $d
                             *COM*:0000000000000001 OSRdyGrp
                             *COM*:0000000000000008 OSRdyTbl
                             *COM*:0000000000000001 OSPrioCur
                             *COM*:0000000000000001 OSPrioHighRdy
                             *COM*:0000000000000004 OSTCBHighRdy
                             *COM*:0000000000000004 OSTCBCur
-     /tmp/ccEO57zB.s:174    .text.OS_SchedNew:0000000000000000 $t
-     /tmp/ccEO57zB.s:180    .text.OS_SchedNew:0000000000000000 OS_SchedNew
-     /tmp/ccEO57zB.s:217    .text.OS_SchedNew:000000000000001c $d
-     /tmp/ccEO57zB.s:225    .rodata.OS_InitTaskIdle.str1.4:0000000000000000 $d
-     /tmp/ccEO57zB.s:229    .text.OS_InitTaskIdle:0000000000000000 $t
-     /tmp/ccEO57zB.s:235    .text.OS_InitTaskIdle:0000000000000000 OS_InitTaskIdle
-     /tmp/ccEO57zB.s:281    .text.OS_InitTaskIdle:0000000000000038 $d
+     /tmp/ccxgEmFy.s:174    .text.OS_SchedNew:0000000000000000 $t
+     /tmp/ccxgEmFy.s:180    .text.OS_SchedNew:0000000000000000 OS_SchedNew
+     /tmp/ccxgEmFy.s:217    .text.OS_SchedNew:000000000000001c $d
+     /tmp/ccxgEmFy.s:225    .rodata.OS_InitTaskIdle.str1.4:0000000000000000 $d
+     /tmp/ccxgEmFy.s:229    .text.OS_InitTaskIdle:0000000000000000 $t
+     /tmp/ccxgEmFy.s:235    .text.OS_InitTaskIdle:0000000000000000 OS_InitTaskIdle
+     /tmp/ccxgEmFy.s:281    .text.OS_InitTaskIdle:0000000000000038 $d
                             *COM*:0000000000000200 OSTaskIdleStk
-     /tmp/ccEO57zB.s:358    .text.OS_TaskIdle:0000000000000000 OS_TaskIdle
-     /tmp/ccEO57zB.s:288    .rodata.OS_InitTaskStat.str1.4:0000000000000000 $d
-     /tmp/ccEO57zB.s:292    .text.OS_InitTaskStat:0000000000000000 $t
-     /tmp/ccEO57zB.s:298    .text.OS_InitTaskStat:0000000000000000 OS_InitTaskStat
-     /tmp/ccEO57zB.s:344    .text.OS_InitTaskStat:0000000000000038 $d
+     /tmp/ccxgEmFy.s:358    .text.OS_TaskIdle:0000000000000000 OS_TaskIdle
+     /tmp/ccxgEmFy.s:288    .rodata.OS_InitTaskStat.str1.4:0000000000000000 $d
+     /tmp/ccxgEmFy.s:292    .text.OS_InitTaskStat:0000000000000000 $t
+     /tmp/ccxgEmFy.s:298    .text.OS_InitTaskStat:0000000000000000 OS_InitTaskStat
+     /tmp/ccxgEmFy.s:344    .text.OS_InitTaskStat:0000000000000038 $d
                             *COM*:0000000000000200 OSTaskStatStk
-     /tmp/ccEO57zB.s:3054   .text.OS_TaskStat:0000000000000000 OS_TaskStat
-     /tmp/ccEO57zB.s:351    .text.OS_TaskIdle:0000000000000000 $t
-     /tmp/ccEO57zB.s:396    .text.OS_TaskIdle:0000000000000018 $d
-     /tmp/ccEO57zB.s:401    .text.OSEventNameSet:0000000000000000 $t
-     /tmp/ccEO57zB.s:408    .text.OSEventNameSet:0000000000000000 OSEventNameSet
-     /tmp/ccEO57zB.s:479    .text.OSEventNameSet:0000000000000034 $d
-     /tmp/ccEO57zB.s:484    .text.OSIntEnter:0000000000000000 $t
-     /tmp/ccEO57zB.s:491    .text.OSIntEnter:0000000000000000 OSIntEnter
-     /tmp/ccEO57zB.s:526    .text.OSIntEnter:000000000000001c $d
-     /tmp/ccEO57zB.s:532    .text.OSIntExit:0000000000000000 $t
-     /tmp/ccEO57zB.s:539    .text.OSIntExit:0000000000000000 OSIntExit
-     /tmp/ccEO57zB.s:641    .text.OSIntExit:0000000000000060 $d
+     /tmp/ccxgEmFy.s:3054   .text.OS_TaskStat:0000000000000000 OS_TaskStat
+     /tmp/ccxgEmFy.s:351    .text.OS_TaskIdle:0000000000000000 $t
+     /tmp/ccxgEmFy.s:396    .text.OS_TaskIdle:0000000000000018 $d
+     /tmp/ccxgEmFy.s:401    .text.OSEventNameSet:0000000000000000 $t
+     /tmp/ccxgEmFy.s:408    .text.OSEventNameSet:0000000000000000 OSEventNameSet
+     /tmp/ccxgEmFy.s:479    .text.OSEventNameSet:0000000000000034 $d
+     /tmp/ccxgEmFy.s:484    .text.OSIntEnter:0000000000000000 $t
+     /tmp/ccxgEmFy.s:491    .text.OSIntEnter:0000000000000000 OSIntEnter
+     /tmp/ccxgEmFy.s:526    .text.OSIntEnter:000000000000001c $d
+     /tmp/ccxgEmFy.s:532    .text.OSIntExit:0000000000000000 $t
+     /tmp/ccxgEmFy.s:539    .text.OSIntExit:0000000000000000 OSIntExit
+     /tmp/ccxgEmFy.s:641    .text.OSIntExit:0000000000000060 $d
                             *COM*:0000000000000100 OSTCBPrioTbl
-     /tmp/ccEO57zB.s:653    .text.OSSchedLock:0000000000000000 $t
-     /tmp/ccEO57zB.s:660    .text.OSSchedLock:0000000000000000 OSSchedLock
-     /tmp/ccEO57zB.s:718    .text.OSSchedLock:000000000000002c $d
-     /tmp/ccEO57zB.s:725    .text.OSStart:0000000000000000 $t
-     /tmp/ccEO57zB.s:732    .text.OSStart:0000000000000000 OSStart
-ARM GAS  /tmp/ccEO57zB.s 			page 116
+     /tmp/ccxgEmFy.s:653    .text.OSSchedLock:0000000000000000 $t
+     /tmp/ccxgEmFy.s:660    .text.OSSchedLock:0000000000000000 OSSchedLock
+     /tmp/ccxgEmFy.s:718    .text.OSSchedLock:000000000000002c $d
+     /tmp/ccxgEmFy.s:725    .text.OSStart:0000000000000000 $t
+     /tmp/ccxgEmFy.s:732    .text.OSStart:0000000000000000 OSStart
+ARM GAS  /tmp/ccxgEmFy.s 			page 116
 
 
-     /tmp/ccEO57zB.s:781    .text.OSStart:000000000000002c $d
-     /tmp/ccEO57zB.s:791    .text.OSStatInit:0000000000000000 $t
-     /tmp/ccEO57zB.s:798    .text.OSStatInit:0000000000000000 OSStatInit
-     /tmp/ccEO57zB.s:855    .text.OSStatInit:0000000000000034 $d
-     /tmp/ccEO57zB.s:862    .text.OSTimeTick:0000000000000000 $t
-     /tmp/ccEO57zB.s:869    .text.OSTimeTick:0000000000000000 OSTimeTick
-     /tmp/ccEO57zB.s:1036   .text.OSTimeTick:00000000000000ac $d
+     /tmp/ccxgEmFy.s:781    .text.OSStart:000000000000002c $d
+     /tmp/ccxgEmFy.s:791    .text.OSStatInit:0000000000000000 $t
+     /tmp/ccxgEmFy.s:798    .text.OSStatInit:0000000000000000 OSStatInit
+     /tmp/ccxgEmFy.s:855    .text.OSStatInit:0000000000000034 $d
+     /tmp/ccxgEmFy.s:862    .text.OSTimeTick:0000000000000000 $t
+     /tmp/ccxgEmFy.s:869    .text.OSTimeTick:0000000000000000 OSTimeTick
+     /tmp/ccxgEmFy.s:1036   .text.OSTimeTick:00000000000000ac $d
                             *COM*:0000000000000001 OSTickStepState
                             *COM*:0000000000000004 OSTCBList
-     /tmp/ccEO57zB.s:1046   .text.OSVersion:0000000000000000 $t
-     /tmp/ccEO57zB.s:1053   .text.OSVersion:0000000000000000 OSVersion
-     /tmp/ccEO57zB.s:1068   .text.OS_Dummy:0000000000000000 $t
-     /tmp/ccEO57zB.s:1075   .text.OS_Dummy:0000000000000000 OS_Dummy
-     /tmp/ccEO57zB.s:1088   .text.OS_EventTaskWait:0000000000000000 $t
-     /tmp/ccEO57zB.s:1095   .text.OS_EventTaskWait:0000000000000000 OS_EventTaskWait
-     /tmp/ccEO57zB.s:1170   .text.OS_EventTaskWait:000000000000004c $d
-     /tmp/ccEO57zB.s:1177   .text.OS_EventTaskWaitMulti:0000000000000000 $t
-     /tmp/ccEO57zB.s:1184   .text.OS_EventTaskWaitMulti:0000000000000000 OS_EventTaskWaitMulti
-     /tmp/ccEO57zB.s:1288   .text.OS_EventTaskWaitMulti:0000000000000058 $d
-     /tmp/ccEO57zB.s:1295   .text.OS_EventTaskRemove:0000000000000000 $t
-     /tmp/ccEO57zB.s:1302   .text.OS_EventTaskRemove:0000000000000000 OS_EventTaskRemove
-     /tmp/ccEO57zB.s:1356   .text.OS_EventTaskRemoveMulti:0000000000000000 $t
-     /tmp/ccEO57zB.s:1363   .text.OS_EventTaskRemoveMulti:0000000000000000 OS_EventTaskRemoveMulti
-     /tmp/ccEO57zB.s:1444   .text.OS_EventTaskRdy:0000000000000000 $t
-     /tmp/ccEO57zB.s:1451   .text.OS_EventTaskRdy:0000000000000000 OS_EventTaskRdy
-     /tmp/ccEO57zB.s:1571   .text.OS_EventTaskRdy:000000000000006c $d
-     /tmp/ccEO57zB.s:1579   .text.OS_EventWaitListInit:0000000000000000 $t
-     /tmp/ccEO57zB.s:1586   .text.OS_EventWaitListInit:0000000000000000 OS_EventWaitListInit
-     /tmp/ccEO57zB.s:1628   .text.OS_MemClr:0000000000000000 $t
-     /tmp/ccEO57zB.s:1635   .text.OS_MemClr:0000000000000000 OS_MemClr
-     /tmp/ccEO57zB.s:1669   .rodata.OS_InitTCBList.str1.4:0000000000000000 $d
-     /tmp/ccEO57zB.s:1673   .text.OS_InitTCBList:0000000000000000 $t
-     /tmp/ccEO57zB.s:1679   .text.OS_InitTCBList:0000000000000000 OS_InitTCBList
-     /tmp/ccEO57zB.s:1773   .text.OS_InitTCBList:0000000000000050 $d
+     /tmp/ccxgEmFy.s:1046   .text.OSVersion:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1053   .text.OSVersion:0000000000000000 OSVersion
+     /tmp/ccxgEmFy.s:1068   .text.OS_Dummy:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1075   .text.OS_Dummy:0000000000000000 OS_Dummy
+     /tmp/ccxgEmFy.s:1088   .text.OS_EventTaskWait:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1095   .text.OS_EventTaskWait:0000000000000000 OS_EventTaskWait
+     /tmp/ccxgEmFy.s:1170   .text.OS_EventTaskWait:000000000000004c $d
+     /tmp/ccxgEmFy.s:1177   .text.OS_EventTaskWaitMulti:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1184   .text.OS_EventTaskWaitMulti:0000000000000000 OS_EventTaskWaitMulti
+     /tmp/ccxgEmFy.s:1288   .text.OS_EventTaskWaitMulti:0000000000000058 $d
+     /tmp/ccxgEmFy.s:1295   .text.OS_EventTaskRemove:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1302   .text.OS_EventTaskRemove:0000000000000000 OS_EventTaskRemove
+     /tmp/ccxgEmFy.s:1356   .text.OS_EventTaskRemoveMulti:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1363   .text.OS_EventTaskRemoveMulti:0000000000000000 OS_EventTaskRemoveMulti
+     /tmp/ccxgEmFy.s:1444   .text.OS_EventTaskRdy:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1451   .text.OS_EventTaskRdy:0000000000000000 OS_EventTaskRdy
+     /tmp/ccxgEmFy.s:1571   .text.OS_EventTaskRdy:000000000000006c $d
+     /tmp/ccxgEmFy.s:1579   .text.OS_EventWaitListInit:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1586   .text.OS_EventWaitListInit:0000000000000000 OS_EventWaitListInit
+     /tmp/ccxgEmFy.s:1628   .text.OS_MemClr:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1635   .text.OS_MemClr:0000000000000000 OS_MemClr
+     /tmp/ccxgEmFy.s:1669   .rodata.OS_InitTCBList.str1.4:0000000000000000 $d
+     /tmp/ccxgEmFy.s:1673   .text.OS_InitTCBList:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1679   .text.OS_InitTCBList:0000000000000000 OS_InitTCBList
+     /tmp/ccxgEmFy.s:1773   .text.OS_InitTCBList:0000000000000050 $d
                             *COM*:0000000000000790 OSTCBTbl
                             *COM*:0000000000000004 OSTCBFreeList
-     /tmp/ccEO57zB.s:1782   .text.OS_InitEventList:0000000000000000 $t
-     /tmp/ccEO57zB.s:1788   .text.OS_InitEventList:0000000000000000 OS_InitEventList
-     /tmp/ccEO57zB.s:1882   .text.OS_InitEventList:0000000000000050 $d
+     /tmp/ccxgEmFy.s:1782   .text.OS_InitEventList:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1788   .text.OS_InitEventList:0000000000000000 OS_InitEventList
+     /tmp/ccxgEmFy.s:1882   .text.OS_InitEventList:0000000000000050 $d
                             *COM*:00000000000001e0 OSEventTbl
                             *COM*:0000000000000004 OSEventFreeList
-     /tmp/ccEO57zB.s:1889   .text.OSInit:0000000000000000 $t
-     /tmp/ccEO57zB.s:1896   .text.OSInit:0000000000000000 OSInit
-     /tmp/ccEO57zB.s:1946   .text.OS_MemCopy:0000000000000000 $t
-     /tmp/ccEO57zB.s:1953   .text.OS_MemCopy:0000000000000000 OS_MemCopy
-     /tmp/ccEO57zB.s:1989   .text.OS_Sched:0000000000000000 $t
-     /tmp/ccEO57zB.s:1996   .text.OS_Sched:0000000000000000 OS_Sched
-     /tmp/ccEO57zB.s:2076   .text.OS_Sched:000000000000004c $d
-     /tmp/ccEO57zB.s:2087   .text.OSEventPendMulti:0000000000000000 $t
-     /tmp/ccEO57zB.s:2094   .text.OSEventPendMulti:0000000000000000 OSEventPendMulti
-     /tmp/ccEO57zB.s:2687   .text.OSEventPendMulti:0000000000000224 $d
-     /tmp/ccEO57zB.s:2694   .text.OSSchedUnlock:0000000000000000 $t
-     /tmp/ccEO57zB.s:2701   .text.OSSchedUnlock:0000000000000000 OSSchedUnlock
-     /tmp/ccEO57zB.s:2785   .text.OSSchedUnlock:0000000000000044 $d
-     /tmp/ccEO57zB.s:2792   .text.OS_StrLen:0000000000000000 $t
-     /tmp/ccEO57zB.s:2799   .text.OS_StrLen:0000000000000000 OS_StrLen
-     /tmp/ccEO57zB.s:2842   .text.OSEventNameGet:0000000000000000 $t
-ARM GAS  /tmp/ccEO57zB.s 			page 117
+     /tmp/ccxgEmFy.s:1889   .text.OSInit:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1896   .text.OSInit:0000000000000000 OSInit
+     /tmp/ccxgEmFy.s:1946   .text.OS_MemCopy:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1953   .text.OS_MemCopy:0000000000000000 OS_MemCopy
+     /tmp/ccxgEmFy.s:1989   .text.OS_Sched:0000000000000000 $t
+     /tmp/ccxgEmFy.s:1996   .text.OS_Sched:0000000000000000 OS_Sched
+     /tmp/ccxgEmFy.s:2076   .text.OS_Sched:000000000000004c $d
+     /tmp/ccxgEmFy.s:2087   .text.OSEventPendMulti:0000000000000000 $t
+     /tmp/ccxgEmFy.s:2094   .text.OSEventPendMulti:0000000000000000 OSEventPendMulti
+     /tmp/ccxgEmFy.s:2687   .text.OSEventPendMulti:0000000000000224 $d
+     /tmp/ccxgEmFy.s:2694   .text.OSSchedUnlock:0000000000000000 $t
+     /tmp/ccxgEmFy.s:2701   .text.OSSchedUnlock:0000000000000000 OSSchedUnlock
+     /tmp/ccxgEmFy.s:2785   .text.OSSchedUnlock:0000000000000044 $d
+     /tmp/ccxgEmFy.s:2792   .text.OS_StrLen:0000000000000000 $t
+     /tmp/ccxgEmFy.s:2799   .text.OS_StrLen:0000000000000000 OS_StrLen
+     /tmp/ccxgEmFy.s:2842   .text.OSEventNameGet:0000000000000000 $t
+ARM GAS  /tmp/ccxgEmFy.s 			page 117
 
 
-     /tmp/ccEO57zB.s:2849   .text.OSEventNameGet:0000000000000000 OSEventNameGet
-     /tmp/ccEO57zB.s:2941   .text.OSEventNameGet:0000000000000048 $d
-     /tmp/ccEO57zB.s:2946   .text.OS_TaskStatStkChk:0000000000000000 $t
-     /tmp/ccEO57zB.s:2953   .text.OS_TaskStatStkChk:0000000000000000 OS_TaskStatStkChk
-     /tmp/ccEO57zB.s:3042   .text.OS_TaskStatStkChk:0000000000000040 $d
-     /tmp/ccEO57zB.s:3047   .text.OS_TaskStat:0000000000000000 $t
-     /tmp/ccEO57zB.s:3175   .text.OS_TaskStat:000000000000007c $d
+     /tmp/ccxgEmFy.s:2849   .text.OSEventNameGet:0000000000000000 OSEventNameGet
+     /tmp/ccxgEmFy.s:2941   .text.OSEventNameGet:0000000000000048 $d
+     /tmp/ccxgEmFy.s:2946   .text.OS_TaskStatStkChk:0000000000000000 $t
+     /tmp/ccxgEmFy.s:2953   .text.OS_TaskStatStkChk:0000000000000000 OS_TaskStatStkChk
+     /tmp/ccxgEmFy.s:3042   .text.OS_TaskStatStkChk:0000000000000040 $d
+     /tmp/ccxgEmFy.s:3047   .text.OS_TaskStat:0000000000000000 $t
+     /tmp/ccxgEmFy.s:3175   .text.OS_TaskStat:000000000000007c $d
                             *COM*:0000000000000001 OSCPUUsage
-     /tmp/ccEO57zB.s:3185   .text.OS_TCBInit:0000000000000000 $t
-     /tmp/ccEO57zB.s:3192   .text.OS_TCBInit:0000000000000000 OS_TCBInit
-     /tmp/ccEO57zB.s:3444   .text.OS_TCBInit:00000000000000f8 $d
-     /tmp/ccEO57zB.s:3491   .rodata.OSUnMapTbl:0000000000000000 OSUnMapTbl
+     /tmp/ccxgEmFy.s:3185   .text.OS_TCBInit:0000000000000000 $t
+     /tmp/ccxgEmFy.s:3192   .text.OS_TCBInit:0000000000000000 OS_TCBInit
+     /tmp/ccxgEmFy.s:3444   .text.OS_TCBInit:00000000000000f8 $d
+     /tmp/ccxgEmFy.s:3491   .rodata.OSUnMapTbl:0000000000000000 OSUnMapTbl
                             *COM*:0000000000000060 OSQTbl
                             *COM*:0000000000000004 OSQFreeList
                             *COM*:0000000000000004 OSFlagFreeList
                             *COM*:0000000000000050 OSFlagTbl
-     /tmp/ccEO57zB.s:3487   .rodata.OSUnMapTbl:0000000000000000 $d
+     /tmp/ccxgEmFy.s:3487   .rodata.OSUnMapTbl:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 OSTaskCreateExt

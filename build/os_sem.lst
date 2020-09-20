@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccB5tS9j.s 			page 1
+ARM GAS  /tmp/cccW03zj.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
   27:uCOSII/Source/os_sem.c **** #include <ucos_ii.h>
   28:uCOSII/Source/os_sem.c **** #endif
   29:uCOSII/Source/os_sem.c **** 
-ARM GAS  /tmp/ccB5tS9j.s 			page 2
+ARM GAS  /tmp/cccW03zj.s 			page 2
 
 
   30:uCOSII/Source/os_sem.c **** #if OS_SEM_EN > 0u
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
   48              		.loc 1 65 8 view .LVU6
   49 0004 032B     		cmp	r3, #3
   50 0006 02D0     		beq	.L6
-ARM GAS  /tmp/ccB5tS9j.s 			page 3
+ARM GAS  /tmp/cccW03zj.s 			page 3
 
 
   66:uCOSII/Source/os_sem.c ****         return (0u);
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
   83              		.loc 1 74 12 is_stmt 0 view .LVU21
   84 0020 F3E7     		b	.L2
   85              		.cfi_endproc
-ARM GAS  /tmp/ccB5tS9j.s 			page 4
+ARM GAS  /tmp/cccW03zj.s 			page 4
 
 
   86              	.LFE0:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  117              	.LVL8:
  101:uCOSII/Source/os_sem.c **** #endif
  102:uCOSII/Source/os_sem.c **** 
-ARM GAS  /tmp/ccB5tS9j.s 			page 5
+ARM GAS  /tmp/cccW03zj.s 			page 5
 
 
  103:uCOSII/Source/os_sem.c **** 
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  152 001e 0323     		movs	r3, #3
  153 0020 2370     		strb	r3, [r4]
  123:uCOSII/Source/os_sem.c ****         pevent->OSEventCnt     = cnt;                      /* Set semaphore value                  
-ARM GAS  /tmp/ccB5tS9j.s 			page 6
+ARM GAS  /tmp/cccW03zj.s 			page 6
 
 
  154              		.loc 1 123 9 is_stmt 1 view .LVU44
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  135:uCOSII/Source/os_sem.c **** ***************************************************************************************************
  136:uCOSII/Source/os_sem.c **** *                                         DELETE A SEMAPHORE
  137:uCOSII/Source/os_sem.c **** *
-ARM GAS  /tmp/ccB5tS9j.s 			page 7
+ARM GAS  /tmp/cccW03zj.s 			page 7
 
 
  138:uCOSII/Source/os_sem.c **** * Description: This function deletes a semaphore and readies all tasks pending on the semaphore.
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  212 0004 0446     		mov	r4, r0
  213 0006 1546     		mov	r5, r2
  178:uCOSII/Source/os_sem.c ****     BOOLEAN    tasks_waiting;
-ARM GAS  /tmp/ccB5tS9j.s 			page 8
+ARM GAS  /tmp/cccW03zj.s 			page 8
 
 
  214              		.loc 1 178 5 is_stmt 1 view .LVU55
@@ -478,7 +478,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  216:uCOSII/Source/os_sem.c **** #if OS_EVENT_NAME_EN > 0u
  217:uCOSII/Source/os_sem.c ****                  pevent->OSEventName    = (INT8U *)(void *)"?";
  218:uCOSII/Source/os_sem.c **** #endif
-ARM GAS  /tmp/ccB5tS9j.s 			page 9
+ARM GAS  /tmp/cccW03zj.s 			page 9
 
 
  219:uCOSII/Source/os_sem.c ****                  pevent->OSEventType    = OS_EVENT_TYPE_UNUSED;
@@ -538,7 +538,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  241              		.loc 1 203 8 view .LVU68
  242 001c 13B1     		cbz	r3, .L17
  204:uCOSII/Source/os_sem.c ****         return (pevent);
-ARM GAS  /tmp/ccB5tS9j.s 			page 10
+ARM GAS  /tmp/cccW03zj.s 			page 10
 
 
  243              		.loc 1 204 9 is_stmt 1 view .LVU69
@@ -598,7 +598,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  281 0044 0723     		movs	r3, #7
  282 0046 2B70     		strb	r3, [r5]
  255:uCOSII/Source/os_sem.c ****              break;
-ARM GAS  /tmp/ccB5tS9j.s 			page 11
+ARM GAS  /tmp/cccW03zj.s 			page 11
 
 
  283              		.loc 1 255 14 is_stmt 1 view .LVU86
@@ -658,7 +658,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  321 0064 0026     		movs	r6, #0
  322 0066 2670     		strb	r6, [r4]
  220:uCOSII/Source/os_sem.c ****                  pevent->OSEventCnt     = 0u;
-ARM GAS  /tmp/ccB5tS9j.s 			page 12
+ARM GAS  /tmp/cccW03zj.s 			page 12
 
 
  323              		.loc 1 220 18 is_stmt 1 view .LVU103
@@ -718,7 +718,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  361              		.loc 1 234 27 is_stmt 0 view .LVU119
  362 008a A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
  234:uCOSII/Source/os_sem.c ****                  (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_SEM, OS_STAT_PEND_ABORT);
-ARM GAS  /tmp/ccB5tS9j.s 			page 13
+ARM GAS  /tmp/cccW03zj.s 			page 13
 
 
  363              		.loc 1 234 20 view .LVU120
@@ -778,7 +778,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  400 00b0 2C70     		strb	r4, [r5]
  249:uCOSII/Source/os_sem.c ****              break;
  401              		.loc 1 249 14 is_stmt 1 view .LVU138
-ARM GAS  /tmp/ccB5tS9j.s 			page 14
+ARM GAS  /tmp/cccW03zj.s 			page 14
 
 
  402              	.LVL37:
@@ -838,7 +838,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  280:uCOSII/Source/os_sem.c **** *                            OS_ERR_NONE         The call was successful and your task owns the res
  281:uCOSII/Source/os_sem.c **** *                                                or, the event you are waiting for occurred.
  282:uCOSII/Source/os_sem.c **** *                            OS_ERR_TIMEOUT      The semaphore was not received within the specifie
-ARM GAS  /tmp/ccB5tS9j.s 			page 15
+ARM GAS  /tmp/cccW03zj.s 			page 15
 
 
  283:uCOSII/Source/os_sem.c **** *                                                'timeout'.
@@ -898,7 +898,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  452              		.loc 1 318 15 is_stmt 0 view .LVU147
  453 0006 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
  454              		.loc 1 318 8 view .LVU148
-ARM GAS  /tmp/ccB5tS9j.s 			page 16
+ARM GAS  /tmp/cccW03zj.s 			page 16
 
 
  455 0008 032B     		cmp	r3, #3
@@ -958,7 +958,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  364:uCOSII/Source/os_sem.c ****     OSTCBCur->OSTCBEventMultiPtr = (OS_EVENT **)0;
  365:uCOSII/Source/os_sem.c **** #endif
  366:uCOSII/Source/os_sem.c ****     OS_EXIT_CRITICAL();
-ARM GAS  /tmp/ccB5tS9j.s 			page 17
+ARM GAS  /tmp/cccW03zj.s 			page 17
 
 
  367:uCOSII/Source/os_sem.c **** }
@@ -1018,7 +1018,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  330:uCOSII/Source/os_sem.c ****     if (pevent->OSEventCnt > 0u) {                    /* If sem. is positive, resource available ..
  503              		.loc 1 330 24 is_stmt 1 view .LVU168
  331:uCOSII/Source/os_sem.c ****         pevent->OSEventCnt--;                         /* ... decrement semaphore only if positive. 
-ARM GAS  /tmp/ccB5tS9j.s 			page 18
+ARM GAS  /tmp/cccW03zj.s 			page 18
 
 
  504              		.loc 1 331 5 view .LVU169
@@ -1078,7 +1078,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  345:uCOSII/Source/os_sem.c ****         case OS_STAT_PEND_OK:
  543              		.loc 1 345 5 view .LVU185
  345:uCOSII/Source/os_sem.c ****         case OS_STAT_PEND_OK:
-ARM GAS  /tmp/ccB5tS9j.s 			page 19
+ARM GAS  /tmp/cccW03zj.s 			page 19
 
 
  544              		.loc 1 345 21 is_stmt 0 view .LVU186
@@ -1138,7 +1138,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  583 0094 0023     		movs	r3, #0
  584 0096 2B70     		strb	r3, [r5]
  348:uCOSII/Source/os_sem.c **** 
-ARM GAS  /tmp/ccB5tS9j.s 			page 20
+ARM GAS  /tmp/cccW03zj.s 			page 20
 
 
  585              		.loc 1 348 14 is_stmt 1 view .LVU202
@@ -1198,7 +1198,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  626              		.align	1
  627              		.global	OSSemPendAbort
  628              		.syntax unified
-ARM GAS  /tmp/ccB5tS9j.s 			page 21
+ARM GAS  /tmp/cccW03zj.s 			page 21
 
 
  629              		.thumb
@@ -1258,7 +1258,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  644              		.cfi_offset 4, -24
  645              		.cfi_offset 5, -20
  646              		.cfi_offset 6, -16
-ARM GAS  /tmp/ccB5tS9j.s 			page 22
+ARM GAS  /tmp/cccW03zj.s 			page 22
 
 
  647              		.cfi_offset 7, -12
@@ -1318,7 +1318,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  440:uCOSII/Source/os_sem.c ****                  }
  441:uCOSII/Source/os_sem.c ****                  break;
  442:uCOSII/Source/os_sem.c **** 
-ARM GAS  /tmp/ccB5tS9j.s 			page 23
+ARM GAS  /tmp/cccW03zj.s 			page 23
 
 
  443:uCOSII/Source/os_sem.c ****             case OS_PEND_OPT_NONE:
@@ -1378,7 +1378,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  698              		.loc 1 437 24 is_stmt 1 view .LVU239
  437:uCOSII/Source/os_sem.c ****                      (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_SEM, OS_STAT_PEND_ABORT);
  699              		.loc 1 437 31 is_stmt 0 view .LVU240
-ARM GAS  /tmp/ccB5tS9j.s 			page 24
+ARM GAS  /tmp/cccW03zj.s 			page 24
 
 
  700 002c A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
@@ -1438,7 +1438,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  740 0052 FFF7FEFF 		bl	OS_CPU_SR_Restore
  741              	.LVL73:
  449:uCOSII/Source/os_sem.c ****         OS_Sched();                                   /* Find HPT ready to run                     
-ARM GAS  /tmp/ccB5tS9j.s 			page 25
+ARM GAS  /tmp/cccW03zj.s 			page 25
 
 
  742              		.loc 1 449 27 view .LVU255
@@ -1498,7 +1498,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  465:uCOSII/Source/os_sem.c **** * Description: This function signals a semaphore
  466:uCOSII/Source/os_sem.c **** *
  467:uCOSII/Source/os_sem.c **** * Arguments  : pevent        is a pointer to the event control block associated with the desired
-ARM GAS  /tmp/ccB5tS9j.s 			page 26
+ARM GAS  /tmp/cccW03zj.s 			page 26
 
 
  468:uCOSII/Source/os_sem.c **** *                            semaphore.
@@ -1558,7 +1558,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  498:uCOSII/Source/os_sem.c ****         (void)OS_EventTaskRdy(pevent, (void *)0, OS_STAT_SEM, OS_STAT_PEND_OK);
  499:uCOSII/Source/os_sem.c ****         OS_EXIT_CRITICAL();
  500:uCOSII/Source/os_sem.c ****         OS_Sched();                                   /* Find HPT ready to run                     
-ARM GAS  /tmp/ccB5tS9j.s 			page 27
+ARM GAS  /tmp/cccW03zj.s 			page 27
 
 
  501:uCOSII/Source/os_sem.c ****         return (OS_ERR_NONE);
@@ -1618,7 +1618,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  836              	.LVL83:
  505:uCOSII/Source/os_sem.c ****         return (OS_ERR_NONE);
  837              		.loc 1 505 27 view .LVU288
-ARM GAS  /tmp/ccB5tS9j.s 			page 28
+ARM GAS  /tmp/cccW03zj.s 			page 28
 
 
  506:uCOSII/Source/os_sem.c ****     }
@@ -1678,7 +1678,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  879              		.align	1
  880              		.global	OSSemQuery
  881              		.syntax unified
-ARM GAS  /tmp/ccB5tS9j.s 			page 29
+ARM GAS  /tmp/cccW03zj.s 			page 29
 
 
  882              		.thumb
@@ -1738,7 +1738,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  551:uCOSII/Source/os_sem.c ****     }
  552:uCOSII/Source/os_sem.c **** #endif
  553:uCOSII/Source/os_sem.c ****     if (pevent->OSEventType != OS_EVENT_TYPE_SEM) {        /* Validate event block type            
-ARM GAS  /tmp/ccB5tS9j.s 			page 30
+ARM GAS  /tmp/cccW03zj.s 			page 30
 
 
  897              		.loc 1 553 5 view .LVU308
@@ -1798,7 +1798,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  930              		.loc 1 558 28 is_stmt 0 view .LVU320
  931 0018 05F10B02 		add	r2, r5, #11
  932              	.LVL95:
-ARM GAS  /tmp/ccB5tS9j.s 			page 31
+ARM GAS  /tmp/cccW03zj.s 			page 31
 
 
  559:uCOSII/Source/os_sem.c ****     for (i = 0u; i < OS_EVENT_TBL_SIZE; i++) {
@@ -1858,7 +1858,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  970 0036 FFF7FEFF 		bl	OS_CPU_SR_Restore
  971              	.LVL103:
  564:uCOSII/Source/os_sem.c ****     return (OS_ERR_NONE);
-ARM GAS  /tmp/ccB5tS9j.s 			page 32
+ARM GAS  /tmp/cccW03zj.s 			page 32
 
 
  972              		.loc 1 564 23 view .LVU338
@@ -1918,7 +1918,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  994              		.cfi_startproc
  995              		@ args = 0, pretend = 0, frame = 0
  996              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /tmp/ccB5tS9j.s 			page 33
+ARM GAS  /tmp/cccW03zj.s 			page 33
 
 
  997              		.loc 1 598 1 is_stmt 0 view .LVU344
@@ -1978,7 +1978,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  629:uCOSII/Source/os_sem.c ****         } else {
  630:uCOSII/Source/os_sem.c ****             *perr              = OS_ERR_TASK_WAITING;
  631:uCOSII/Source/os_sem.c ****         }
-ARM GAS  /tmp/ccB5tS9j.s 			page 34
+ARM GAS  /tmp/cccW03zj.s 			page 34
 
 
  632:uCOSII/Source/os_sem.c ****     }
@@ -2038,7 +2038,7 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  1057              		.loc 1 628 13 is_stmt 1 view .LVU368
  628:uCOSII/Source/os_sem.c ****         } else {
  1058              		.loc 1 628 32 is_stmt 0 view .LVU369
-ARM GAS  /tmp/ccB5tS9j.s 			page 35
+ARM GAS  /tmp/cccW03zj.s 			page 35
 
 
  1059 002c 2681     		strh	r6, [r4, #8]	@ movhi
@@ -2057,31 +2057,31 @@ ARM GAS  /tmp/ccB5tS9j.s 			page 1
  1071              	.Letext0:
  1072              		.file 2 "uCOSII/Ports/ARM-Cortex-M4/Generic/GNU/os_cpu.h"
  1073              		.file 3 "uCOSII/Include/ucos_ii.h"
-ARM GAS  /tmp/ccB5tS9j.s 			page 36
+ARM GAS  /tmp/cccW03zj.s 			page 36
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 os_sem.c
-     /tmp/ccB5tS9j.s:18     .text.OSSemAccept:0000000000000000 $t
-     /tmp/ccB5tS9j.s:26     .text.OSSemAccept:0000000000000000 OSSemAccept
-     /tmp/ccB5tS9j.s:89     .rodata.OSSemCreate.str1.4:0000000000000000 $d
-     /tmp/ccB5tS9j.s:93     .text.OSSemCreate:0000000000000000 $t
-     /tmp/ccB5tS9j.s:100    .text.OSSemCreate:0000000000000000 OSSemCreate
-     /tmp/ccB5tS9j.s:181    .text.OSSemCreate:000000000000003c $d
-     /tmp/ccB5tS9j.s:188    .text.OSSemDel:0000000000000000 $t
-     /tmp/ccB5tS9j.s:195    .text.OSSemDel:0000000000000000 OSSemDel
-     /tmp/ccB5tS9j.s:417    .text.OSSemDel:00000000000000bc $d
-     /tmp/ccB5tS9j.s:424    .text.OSSemPend:0000000000000000 $t
-     /tmp/ccB5tS9j.s:431    .text.OSSemPend:0000000000000000 OSSemPend
-     /tmp/ccB5tS9j.s:619    .text.OSSemPend:00000000000000b8 $d
-     /tmp/ccB5tS9j.s:626    .text.OSSemPendAbort:0000000000000000 $t
-     /tmp/ccB5tS9j.s:633    .text.OSSemPendAbort:0000000000000000 OSSemPendAbort
-     /tmp/ccB5tS9j.s:770    .text.OSSemPost:0000000000000000 $t
-     /tmp/ccB5tS9j.s:777    .text.OSSemPost:0000000000000000 OSSemPost
-     /tmp/ccB5tS9j.s:879    .text.OSSemQuery:0000000000000000 $t
-     /tmp/ccB5tS9j.s:886    .text.OSSemQuery:0000000000000000 OSSemQuery
-     /tmp/ccB5tS9j.s:983    .text.OSSemSet:0000000000000000 $t
-     /tmp/ccB5tS9j.s:990    .text.OSSemSet:0000000000000000 OSSemSet
+     /tmp/cccW03zj.s:18     .text.OSSemAccept:0000000000000000 $t
+     /tmp/cccW03zj.s:26     .text.OSSemAccept:0000000000000000 OSSemAccept
+     /tmp/cccW03zj.s:89     .rodata.OSSemCreate.str1.4:0000000000000000 $d
+     /tmp/cccW03zj.s:93     .text.OSSemCreate:0000000000000000 $t
+     /tmp/cccW03zj.s:100    .text.OSSemCreate:0000000000000000 OSSemCreate
+     /tmp/cccW03zj.s:181    .text.OSSemCreate:000000000000003c $d
+     /tmp/cccW03zj.s:188    .text.OSSemDel:0000000000000000 $t
+     /tmp/cccW03zj.s:195    .text.OSSemDel:0000000000000000 OSSemDel
+     /tmp/cccW03zj.s:417    .text.OSSemDel:00000000000000bc $d
+     /tmp/cccW03zj.s:424    .text.OSSemPend:0000000000000000 $t
+     /tmp/cccW03zj.s:431    .text.OSSemPend:0000000000000000 OSSemPend
+     /tmp/cccW03zj.s:619    .text.OSSemPend:00000000000000b8 $d
+     /tmp/cccW03zj.s:626    .text.OSSemPendAbort:0000000000000000 $t
+     /tmp/cccW03zj.s:633    .text.OSSemPendAbort:0000000000000000 OSSemPendAbort
+     /tmp/cccW03zj.s:770    .text.OSSemPost:0000000000000000 $t
+     /tmp/cccW03zj.s:777    .text.OSSemPost:0000000000000000 OSSemPost
+     /tmp/cccW03zj.s:879    .text.OSSemQuery:0000000000000000 $t
+     /tmp/cccW03zj.s:886    .text.OSSemQuery:0000000000000000 OSSemQuery
+     /tmp/cccW03zj.s:983    .text.OSSemSet:0000000000000000 $t
+     /tmp/cccW03zj.s:990    .text.OSSemSet:0000000000000000 OSSemSet
 
 UNDEFINED SYMBOLS
 OS_CPU_SR_Save
