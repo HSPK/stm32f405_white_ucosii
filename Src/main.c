@@ -8,15 +8,6 @@
 #define LED_RED_OFF() GPIO_SetBits(GPIOB, GPIO_Pin_8)
 #define LED_RED_TOGGLE() GPIO_ToggleBits(GPIOB, GPIO_Pin_8)
 
-void delay_ms(volatile u16 nms) {
-    u16 i, j = 42000;
-    for (i = 0; i < nms; i++) {
-        j = 42000;
-        while (j--)
-            ;
-    }
-}
-
 void LedInit(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -30,18 +21,33 @@ void LedInit(void)
 	GPIO_SetBits(GPIOB,GPIO_Pin_8 | GPIO_Pin_9); 
 }
 
+void task1(void *pdata) {
+    while (1) {
+        OSTimeDlyHMSM(0, 0, 0, 500);
+        LED_GREEN_TOGGLE();
+    }    
+}
+
+void task2(void *pdata) {
+    while (1) {
+        OSTimeDlyHMSM(0, 0, 0, 500);
+        LED_RED_TOGGLE();
+    } 
+}
+
 int main()
 {
-    // SystemInit();
     LedInit();
-
-	while (1) {
-		delay_ms(500);
-		LED_GREEN_ON();
-        LED_RED_OFF();
-        delay_ms(500);
-        LED_GREEN_OFF();
-        LED_RED_ON();
-	}
+    OS_CPU_SysTickInit(168000000 / OS_TICKS_PER_SEC);
+    OSInit();
+    OS_STK OSTask1Stk[128];
+    OS_STK OSTask2Stk[128];
+	OSTaskCreate(task1, NULL, &OSTask1Stk[127], 10);
+	OSTaskCreate(task2, NULL, &OSTask2Stk[127], 20);
+    OSStart();
+    while (1)
+    {
+        OSTimeDlyHMSM(0, 0, 1, 0);
+    }
     return 0;
 }
